@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/background">
+
+    <View
+        android:id="@+id/line"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="341dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="99dp"
+        android:background="@color/divider" />
+<!--
+    <Button
+        android:layout_width="341dp"
+        android:layout_height="99dp"
+        android:id="@+id/operation_button"
+        android:background="@color/active"
+        android:textColor="@color/for_text"
+        android:fontFamily="@font/comfortaa_light"
+        tools:text="@tools:sample/full_names"
+        android:layout_gravity="center_horizontal"/>-->
+    
+    <View
+        android:layout_width="341dp"
+        android:layout_height="99dp"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/operation_view"
+        android:background="@color/active"/>
+    
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:textColor="@color/for_text"
+        android:fontFamily="@font/comfortaa_light"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:id="@+id/operation_name"
+        android:textSize="17sp"
+        tools:text="@tools:sample/full_names"/>
+
+</FrameLayout>

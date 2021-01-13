@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".ui.app.AboutProgramFragment">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/About_program"
+        android:layout_gravity="center_horizontal"
+        android:textAppearance="@style/Text"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/comfortaa_light"
+        android:layout_marginTop="27dp"/>
+
+    <TextView
+        android:layout_width="371dp"
+        android:layout_height="415dp"
+        android:text="@string/app_description"
+        android:textSize="20sp"
+        android:textAppearance="@style/Text"
+        android:layout_marginTop="80dp"
+        android:layout_marginStart="21dp"/>
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginStart="20dp"
+        android:scaleType="centerCrop"
+        android:background="@color/background"
+        android:src="@drawable/ic_nav"
+        android:contentDescription="@string/navicon"/>
+
+    <EditText
+        android:layout_width="371dp"
+        android:layout_height="40dp"
+        android:hint="@string/info_error"
+        android:textColor="@color/for_text"
+        android:fontFamily="@font/comfortaa_light"
+        android:textColorHint="@color/for_text"
+        android:inputType="textNoSuggestions"
+        android:layout_marginTop="515dp"
+        android:background="@null"
+        android:layout_marginStart="20dp"
+        android:autofillHints="function"/>
+
+    <Button
+        android:layout_width="286dp"
+        android:layout_height="42dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/express_button"
+        android:textAppearance="@style/Text"
+        android:text="@string/send"
+        android:layout_marginTop="580dp"/>
+
+</FrameLayout>

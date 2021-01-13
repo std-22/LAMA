@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">La</string>
+    <string name="math_anal">Mathematical Analysis</string>
+    <string name="lin_al_amp"><![CDATA[Linear Algebra &]]></string>
+    <string name="lama">LAMA</string>
+    <string name="two_matrix">two_matrix</string>
+    <string name="lyambda_matrix">lyambda_matrix</string>
+    <string name="one_matrix">one_matrix</string>
+    <string name="list_op_two_matrix">МАТРИЦА-МАТРИЦА</string>
+    <string name="list_op_lyam_matrix">МАТРИЦА-ЧИСЛО</string>
+    <string name="list_op_matrix">МАТРИЦА</string>
+    <string name="search">Поиск функции</string>
+    <string name="title_activity_menu_nav">MenuNavActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="matrix_operations">Матричные операции</string>
+    <string name="About_program">О программе</string>
+    <string name="achievements">Достижения</string>
+    <string name="navicon">навикон</string>
+    <string name="backspace">backspace</string>
+    <string name="app_description">Данное приложение является матричным калькулятором, который разработан для экономии вашего времени при работе с матричными операциями. В отличае от других подобных приложений, здесь можно найти справочную информацию по любому преобразованию над матрицами, и есть возможность вычисления критерия Сильвестра. В платной версии данной программы добавляется возможность фото-ввода матриц и полностью отключается реклама.</string>
+    <string name="info_error">Введите сообщение об ошибке</string>
+    <string name="send">Отправить</string>
+    <string name="dark_theme">dark theme</string>
+    <string name="title_activity_menu_nav_dark">MenuNavDarkActivity</string>
+</resources>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@color/background">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <View
+            android:layout_width="290dp"
+            android:layout_height="33dp"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="33dp"
+            android:background="@drawable/view" />
+
+        <EditText
+            android:layout_width="251dp"
+            android:layout_height="40dp"
+            android:hint="@string/search"
+            android:textColor="@color/for_text"
+            android:fontFamily="@font/comfortaa_light"
+            android:textColorHint="@color/for_text"
+            android:inputType="textNoSuggestions"
+            android:layout_marginTop="27dp"
+            android:background="@null"
+            android:layout_marginStart="100dp"
+            android:autofillHints="function"/>
+
+        <View
+            android:id="@+id/line_3"
+            android:layout_width="2dp"
+            android:layout_height="33dp"
+            android:layout_marginTop="33dp"
+            android:layout_marginStart="94dp"
+            android:background="@color/separator" />
+
+        <ImageButton
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="37dp"
+            android:layout_marginStart="64dp"
+            android:scaleType="centerCrop"
+            android:background="@color/active"
+            android:src="@drawable/ic_search"
+            android:contentDescription="@string/search"/>
+
+        <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="33dp"
+            android:scaleType="centerCrop"
+            android:background="@color/background"
+            android:src="@drawable/ic_backspace"
+            android:onClick="OnClickBackMatrixLyambda"
+            android:contentDescription="@string/backspace"/>
+
+    </FrameLayout>
+</LinearLayout>
