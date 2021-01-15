@@ -1,13 +1,18 @@
 package io.github.studio22.la;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class Matrix extends AppCompatActivity {
     ArrayList<Operation> operations = new ArrayList<>();
@@ -18,20 +23,49 @@ public class Matrix extends AppCompatActivity {
         setContentView(R.layout.matrix);
 
         setInitialData();
-        RecyclerView recyclerView = findViewById(R.id.matrix_operations);
+        final RecyclerView recyclerView = findViewById(R.id.matrix_operations);
 
-        OperationAdapter adapter = new OperationAdapter(this, operations, new OperationAdapter.ClickListener() {
+        final OperationAdapter adapter = new OperationAdapter(this, operations, new OperationAdapter.ClickListener() {
             @Override
             public void onPositionClick(int position) {
                 if (position == 0){
                     Intent intent = new Intent(Matrix.this, CategoryOperation.class);
-                    //intent.putExtra(CategoryOperation.EXTRA_OPERATION, position);
                     intent.putExtra("selected", operations.get(position));
                     startActivity(intent);
                 }
             }
         });
         recyclerView.setAdapter(adapter);
+//
+        SwipeHelper swipeHelper = new SwipeHelper(this){
+
+            @Override
+            public void instantiateUnderlayButton(RecyclerView.ViewHolder viewHolder, List<UnderlayButton> underlayButtons) {
+                underlayButtons.add(new SwipeHelper.UnderlayButton(
+                        Matrix.this,
+                        "Delete",
+                        R.drawable.ic_info,
+                        Color.parseColor("#F9D19A"),
+                        new SwipeHelper.UnderlayButtonClickListener() {
+                            @Override
+                            public void onClick(final int pos) {
+
+                                Snackbar snackbar = Snackbar.make(recyclerView, "Item was removed from the list.", Snackbar.LENGTH_LONG);
+                                snackbar.setAction("UNDO", new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        recyclerView.scrollToPosition(pos);
+                                    }
+                                });
+
+                                snackbar.show();
+                            }
+                        }
+                ));
+            }
+        };
+        swipeHelper.attachToRecyclerView(recyclerView);
+        //
     }
 
     private void setInitialData(){
