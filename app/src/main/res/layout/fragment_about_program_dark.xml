@@ -32,12 +32,13 @@
         android:layout_marginStart="20dp"
         android:scaleType="centerCrop"
         android:background="@color/background_dark"
-        android:src="@drawable/ic_nav"
+        android:src="@drawable/ic_nav_dark"
         android:contentDescription="@string/navicon"/>
 
     <EditText
         android:layout_width="371dp"
         android:layout_height="40dp"
+        android:id="@+id/for_message_dark"
         android:hint="@string/info_error"
         android:textAppearance="@style/TextDark"
         android:textColorHint="@color/background"
@@ -53,7 +54,10 @@
         android:layout_gravity="center_horizontal"
         android:background="@drawable/express_button_dark"
         android:textAppearance="@style/TextDark"
+        android:id="@+id/send_button_dark"
         android:text="@string/send"
-        android:layout_marginTop="595dp"/>
+        android:layout_marginTop="580dp"
+        android:onClick="onClickSendEmailDark"
+        tools:ignore="OnClick"/>
 
 </FrameLayout>

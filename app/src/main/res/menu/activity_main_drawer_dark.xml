@@ -4,15 +4,15 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/matrix_fragment_dark"
-            android:icon="@drawable/ic_star"
+            android:icon="@drawable/ic_star_dark"
             android:title="@string/matrix_operations" />
         <item
             android:id="@+id/app_fragment_dark"
-            android:icon="@drawable/ic_star"
+            android:icon="@drawable/ic_star_dark"
             android:title="@string/About_program" />
         <item
             android:id="@+id/achievements_fragment_dark"
-            android:icon="@drawable/ic_star"
+            android:icon="@drawable/ic_star_dark"
             android:title="@string/achievements" />
     </group>
 </menu>
