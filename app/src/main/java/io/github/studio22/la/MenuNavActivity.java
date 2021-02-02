@@ -37,7 +37,7 @@ public class MenuNavActivity extends AppCompatActivity {
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.matrix_fragment, R.id.app_fragment, R.id.achievements_fragment)
-                .setDrawerLayout(drawer)
+                .setOpenableLayout(drawer)   //setDrawerLayout(drawer) deprecated
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
@@ -50,6 +50,8 @@ public class MenuNavActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
+    /* buttons */
 
     public void onClickMatrixMatrix(View view) {
         Intent intent = new Intent(MenuNavActivity.this, MatrixMatrix.class);
@@ -71,6 +73,8 @@ public class MenuNavActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /* about program buttons */
+
     public void onClickSendEmail(View view) {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,22 +92,7 @@ public class MenuNavActivity extends AppCompatActivity {
         });
     }
 
-    public void onClickSendEmailDark(View view) {
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mail to", "studio-22-5600@pages.plusgoogle.com", null));
-                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Разработчикам");
-                emailIntent.putExtra(Intent.EXTRA_TEXT, ((EditText) findViewById(R.id.for_message_dark)).getText().toString());
-
-                if (isIntentSafe(emailIntent)){
-                    startActivity(emailIntent);
-                } else {
-                    Toast.makeText(getApplicationContext(), "no app for dial on your device", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-    }
+    /* check safety of opening app */
 
     private Boolean isIntentSafe(Intent intent){
         PackageManager packageManager = getPackageManager();

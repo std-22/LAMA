@@ -13,16 +13,6 @@
         android:layout_height="2dp"
         android:layout_marginTop="99dp"
         android:background="@color/divider" />
-<!--
-    <Button
-        android:layout_width="341dp"
-        android:layout_height="99dp"
-        android:id="@+id/operation_button"
-        android:background="@color/active"
-        android:textColor="@color/for_text"
-        android:fontFamily="@font/comfortaa_light"
-        tools:text="@tools:sample/full_names"
-        android:layout_gravity="center_horizontal"/>-->
     
     <View
         android:layout_width="341dp"

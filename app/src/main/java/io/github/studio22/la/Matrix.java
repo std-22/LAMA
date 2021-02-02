@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,7 +35,7 @@ public class Matrix extends AppCompatActivity {
             }
         });
         recyclerView.setAdapter(adapter);
-//
+
         SwipeHelper swipeHelper = new SwipeHelper(this){
 
             @Override
@@ -65,7 +64,6 @@ public class Matrix extends AppCompatActivity {
             }
         };
         swipeHelper.attachToRecyclerView(recyclerView);
-        //
     }
 
     private void setInitialData(){

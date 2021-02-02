@@ -28,4 +28,5 @@
     <string name="send">Отправить</string>
     <string name="dark_theme">dark theme</string>
     <string name="title_activity_menu_nav_dark">MenuNavDarkActivity</string>
+    <string name="attention">Внимание! При удалении приложения весь прогресс будет потерян.</string>
 </resources>

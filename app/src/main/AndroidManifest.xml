@@ -10,11 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
         <activity
-            android:name=".MenuNavDarkActivity"
-            android:label="@string/title_activity_menu_nav_dark"/>
-        <activity
             android:name=".MenuNavActivity"
             android:label="@string/title_activity_menu_nav" />
+
+        <activity
+            android:name=".MenuNavDarkActivity"
+            android:label="@string/title_activity_menu_nav_dark"/>
+
         <activity android:name=".MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

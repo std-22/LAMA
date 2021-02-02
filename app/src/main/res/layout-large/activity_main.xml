@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/startit"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
@@ -11,8 +10,8 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:layout_width="362dp"
-        android:layout_height="362dp"
+        android:layout_width="562dp"
+        android:layout_height="562dp"
         android:layout_marginTop="50dp"
         app:srcCompat="@drawable/logo_new"
         android:contentDescription="@string/lama"
@@ -23,7 +22,8 @@
         android:layout_height="wrap_content"
         android:text="@string/lama"
         android:textAlignment="center"
-        android:textSize="38.4sp"
+        android:textSize="58.4sp"
+        android:layout_marginTop="-50dp"
         android:textAppearance="@style/Text"/>
 
     <TextView
@@ -31,13 +31,13 @@
         android:layout_height="wrap_content"
         android:text="@string/lin_al_amp"
         android:textAppearance="@style/Text"
-        android:textSize="25.6sp" />
+        android:textSize="35.6sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/math_anal"
         android:textAppearance="@style/Text"
-        android:textSize="25.6sp"/>
+        android:textSize="35.6sp"/>
 
 </LinearLayout>
