@@ -73,7 +73,7 @@ public class MenuNavActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    /* about program buttons */
+    /* about program button */
 
     public void onClickSendEmail(View view) {
         view.setOnClickListener(new View.OnClickListener() {

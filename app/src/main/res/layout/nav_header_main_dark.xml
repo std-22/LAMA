@@ -20,12 +20,13 @@
         android:textSize="34sp"/>
 
     <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="22dp"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="25dp"
         android:src="@drawable/ic_sun"
-        android:layout_marginStart="235dp"
+        android:layout_marginStart="240dp"
         android:scaleType="centerCrop"
+        android:onClick="onClickToLight"
         android:background="@color/background_dark"
         android:contentDescription="@string/dark_theme"/>
 

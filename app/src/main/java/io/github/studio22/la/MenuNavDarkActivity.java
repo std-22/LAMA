@@ -37,7 +37,7 @@ public class MenuNavDarkActivity extends AppCompatActivity {
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.matrix_fragment_dark, R.id.app_fragment_dark, R.id.achievements_fragment_dark)
-                .setDrawerLayout(drawer)
+                .setOpenableLayout(drawer)   //setDrawerLayout(drawer) deprecated
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_dark);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
@@ -65,6 +65,13 @@ public class MenuNavDarkActivity extends AppCompatActivity {
         Intent intent = new Intent(MenuNavDarkActivity.this, Matrix.class);
         startActivity(intent);
     }
+
+    public void onClickToLight(View view) {
+        Intent intent = new Intent(MenuNavDarkActivity.this, MenuNavActivity.class);
+        startActivity(intent);
+    }
+
+    /* about program button */
 
     public void onClickSendEmailDark(View view) {
         view.setOnClickListener(new View.OnClickListener() {

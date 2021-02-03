@@ -11,23 +11,30 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
         <activity
             android:name=".MenuNavActivity"
-            android:label="@string/title_activity_menu_nav" />
+            android:label="@string/title_activity_menu_nav"
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name=".MenuNavDarkActivity"
-            android:label="@string/title_activity_menu_nav_dark"/>
+            android:label="@string/title_activity_menu_nav_dark"
+            android:screenOrientation="portrait"/>
 
-        <activity android:name=".MainActivity" >
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MatrixMatrix" />
-        <activity android:name=".MatrixLyambda" />
-        <activity android:name=".Matrix" />
-        <activity android:name=".CategoryOperation" />
+        <activity android:name=".MatrixMatrix"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".MatrixLyambda"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Matrix"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".CategoryOperation"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

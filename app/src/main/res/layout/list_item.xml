@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/background">
+    android:background="@android:color/transparent">
 
     <View
         android:id="@+id/line"
@@ -19,7 +19,7 @@
         android:layout_height="99dp"
         android:layout_gravity="center_horizontal"
         android:id="@+id/operation_view"
-        android:background="@color/active"/>
+        android:background="@color/active" />
     
     <TextView
         android:layout_width="300dp"
