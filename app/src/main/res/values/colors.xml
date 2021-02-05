@@ -10,4 +10,5 @@
     <color name="divider">#828282</color>
     <color name="background_dark">#151e27</color>
     <color name="active_dark">#253040</color>
+    <color name="bar_theme_color">#dddfe6</color>
 </resources>

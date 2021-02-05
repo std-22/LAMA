@@ -29,4 +29,13 @@
     <string name="dark_theme">dark theme</string>
     <string name="title_activity_menu_nav_dark">MenuNavDarkActivity</string>
     <string name="attention">Внимание! При удалении приложения весь прогресс будет потерян.</string>
+    <string name="achieve_1">Первопроходец</string>
+    <string name="achieve_2">Знаток</string>
+    <string name="achieve_3">Модник</string>
+    <string name="achieve_4">Исследователь</string>
+    <string name="achieve_5">Наблюдатель</string>
+    <string name="achieve_6">Ламовед ур. 1</string>
+    <string name="achieve_7">Ламовед ур. 2</string>
+    <string name="achieve_8">Ламовед ур. 3</string>
+    <string name="achieve_9">Ламовед ур. 4</string>
 </resources>
