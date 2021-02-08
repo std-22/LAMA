@@ -1,13 +1,10 @@
 package io.github.studio22.la;
 
+import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.Path;
-import android.graphics.Picture;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.RectF;
@@ -16,8 +13,6 @@ import android.graphics.drawable.Drawable;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ImageView;
-
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
@@ -39,6 +34,7 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
     private float swipeThreshold = 0.5f;
     private Map<Integer, List<UnderlayButton>> buttonsBuffer;
     private Queue<Integer> recoverQueue;
+    private View view;
 
     private GestureDetector.SimpleOnGestureListener gestureListener = new GestureDetector.SimpleOnGestureListener() {
         @Override
@@ -75,8 +71,9 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
         }
     };
 
-    public SwipeHelper(Context context) {
+    public SwipeHelper(Context context, View view) {
         super(0, ItemTouchHelper.LEFT);
+        this.view = view;
         this.buttons = new ArrayList<>();
         this.gestureDetector = new GestureDetector(context, gestureListener);
         buttonsBuffer = new HashMap<>();
@@ -100,6 +97,7 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
     @Override
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
         int pos = viewHolder.getAdapterPosition();
+        //this.view.setVisibility(View.INVISIBLE);
 
         if (swipedPos != pos)
             recoverQueue.add(swipedPos);
@@ -166,6 +164,7 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
             int pos = recoverQueue.poll();
             if (pos > -1) {
                 recyclerView.getAdapter().notifyItemChanged(pos);
+                //this.view.setVisibility(View.VISIBLE);
             }
         }
     }
@@ -205,7 +204,7 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
     }
 
     public static class UnderlayButton {
-        private String text;
+        private View view;
         private int imageResId;
         private int color;
         private int pos;
@@ -213,12 +212,13 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
         private Context context;
         private UnderlayButtonClickListener clickListener;
 
-        public UnderlayButton(Context context, String text, int imageResId, int color, UnderlayButtonClickListener clickListener){
+        public UnderlayButton(Context context, View view, int imageResId, int color, UnderlayButtonClickListener clickListener){
             this.context = context;
-            this.text = text;
+            this.view = view;
             this.imageResId = imageResId;
             this.color = color;
             this.clickListener = clickListener;
+            //view.setVisibility(View.INVISIBLE);
         }
 
         public boolean onClick(float x, float y) {

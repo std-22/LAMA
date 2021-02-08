@@ -36,13 +36,15 @@ public class Matrix extends AppCompatActivity {
         });
         recyclerView.setAdapter(adapter);
 
-        SwipeHelper swipeHelper = new SwipeHelper(this){
+        final View view = findViewById(R.id.accelerate); //fail R.id.recyc_background
+
+        SwipeHelper swipeHelper = new SwipeHelper(this, view){
 
             @Override
             public void instantiateUnderlayButton(RecyclerView.ViewHolder viewHolder, List<UnderlayButton> underlayButtons) {
                 underlayButtons.add(new SwipeHelper.UnderlayButton(
                         Matrix.this,
-                        "Delete",
+                        view,
                         R.drawable.ic_info,
                         Color.parseColor("#F9D19A"),
                         new SwipeHelper.UnderlayButtonClickListener() {
