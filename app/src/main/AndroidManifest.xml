@@ -39,6 +39,8 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".MatrixInput"
             android:screenOrientation="portrait"/>
+        <activity android:name=".MatrixResult"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

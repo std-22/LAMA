@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MatrixInput extends AppCompatActivity {
-    private static int selectedStringSize = 1;
+    private static int selectedRowSize = 1;
     private static int selectedColumnSize = 1;
     private static String nameOfFunction;
     private static int[][] editTextId = {
@@ -32,9 +32,15 @@ public class MatrixInput extends AppCompatActivity {
             functionName.setText(nameOfFunction);
         }
 
-        if (getIntent().hasExtra("selected_string_size")) {
-            String temp = getIntent().getExtras().get("selected_string_size").toString();
-            selectedStringSize = Integer.parseInt(temp);
+        //передача с последующего экрана название функции
+        if (getIntent().hasExtra("selected_next")) {
+            nameOfFunction = getIntent().getExtras().get("selected_next").toString();
+            functionName.setText(nameOfFunction);
+        }
+
+        if (getIntent().hasExtra("selected_row_size")) {
+            String temp = getIntent().getExtras().get("selected_row_size").toString();
+            selectedRowSize = Integer.parseInt(temp);
         }
 
         if (getIntent().hasExtra("selected_column_size")) {
@@ -42,24 +48,46 @@ public class MatrixInput extends AppCompatActivity {
             selectedColumnSize = Integer.parseInt(temp);
         }
 
-        for(int i = 0; i < selectedStringSize; i++){
+        for(int i = 0; i < selectedRowSize; i++){
             for(int j = 0; j < selectedColumnSize; j++){
                 EditText editText = findViewById(editTextId[i][j]);
                 editText.setVisibility(View.VISIBLE);
             }
         }
+
+
     }
-/*
-    public void onClickToInputMatrix(View view) {
-        Intent intent = new Intent(CategoryOperation.this, MenuNavDarkActivity.class);
-        intent.putExtra("selected_string_size", selectedStringSize);
-        intent.putExtra("selected_column_size", selectedColumnSize);
-        intent.putExtra("selected", NameOfFunction);
-        startActivity(intent);
-    }*/
+
     public void OnClickBackMatrix(View view) {
         Intent intent = new Intent(MatrixInput.this, CategoryOperation.class);
+        //intent.putExtra("selected_string_size", selectedRowSize);
+        //intent.putExtra("selected_column_size", selectedColumnSize);
+        intent.putExtra("selected_next", nameOfFunction);
         startActivity(intent);
     }
+
+    public void onClickToResult(View view) {
+        //в этот момент можно считать
+        //нужно вызвать метод getResult() в блоке try
+        int[][] field = new int[selectedRowSize][selectedColumnSize];
+        for(int i = 0; i < selectedRowSize; i++){
+            for(int j = 0; j < selectedColumnSize; j++){
+                EditText editText = findViewById(editTextId[i][j]);
+                field[i][j] = Integer.parseInt(editText.getText().toString());
+            }
+        }
+
+        String result = Result.getResult(nameOfFunction, field);
+
+        Intent intent = new Intent(MatrixInput.this, MatrixResult.class);
+        intent.putExtra("selected_row_size", selectedRowSize);
+        intent.putExtra("selected_column_size", selectedColumnSize);
+        intent.putExtra("selected", nameOfFunction);
+        intent.putExtra("result", result);
+
+        startActivity(intent);
+    }
+
+
 }
 

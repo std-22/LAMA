@@ -287,9 +287,16 @@
                 android:visibility="gone"/>
         </TableRow>
     </TableLayout>
-<!--
-    <ViewStub
-        android:id="@+id/layout_stub"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>-->
+
+    <Button
+        android:layout_width="286dp"
+        android:layout_height="42dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/express_button"
+        android:textAppearance="@style/Text"
+        android:id="@+id/to_input_matrix"
+        android:text="@string/count"
+        android:layout_marginTop="580dp"
+        android:onClick="onClickToResult"
+        tools:ignore="OnClick"/>
 </FrameLayout>

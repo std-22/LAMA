@@ -27,11 +27,9 @@ public class Matrix extends AppCompatActivity {
         final OperationAdapter adapter = new OperationAdapter(this, operations, new OperationAdapter.ClickListener() {
             @Override
             public void onPositionClick(int position) {
-                if (position == 0){
-                    Intent intent = new Intent(Matrix.this, CategoryOperation.class);
-                    intent.putExtra("selected", operations.get(position));
-                    startActivity(intent);
-                }
+                Intent intent = new Intent(Matrix.this, CategoryOperation.class);
+                intent.putExtra("selected", operations.get(position));
+                startActivity(intent);
             }
         });
         recyclerView.setAdapter(adapter);

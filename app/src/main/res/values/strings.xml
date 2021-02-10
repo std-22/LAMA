@@ -39,6 +39,7 @@
     <string name="achieve_8">Ламовед ур. 3</string>
     <string name="achieve_9">Ламовед ур. 4</string>
     <string name="next">Далее</string>
+    <string name="count">Вычислить</string>
     <string-array name="numbers">
         <item>1</item>
         <item>2</item>
