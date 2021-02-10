@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -69,16 +70,19 @@ public class CategoryOperation extends AppCompatActivity {
     private boolean checkSize(String nameOfFunction, String selectedRowSize, String selectedColumnSize) {
         switch (nameOfFunction) {
             case "Критерий Сильвестра":
-                if (!selectedRowSize.equals(selectedColumnSize)) {
-                    return false;
-                }
+                return selectedRowSize.equals(selectedColumnSize);
             default:
-                return false;
+                return true;
         }
     }
 
     public void onClickToInputMatrix(View view) {
-        //TODO Сделать CheckSize
+        if (!checkSize(nameOfFunction, selectedRowSize, selectedColumnSize)){
+            Toast toast = Toast.makeText(this, "wrong size", Toast.LENGTH_LONG);
+            toast.show();
+            return;
+        }
+
         Intent intent = new Intent(CategoryOperation.this, MatrixInput.class);
         intent.putExtra("selected_row_size", selectedRowSize);
         intent.putExtra("selected_column_size", selectedColumnSize);
