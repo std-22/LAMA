@@ -23,7 +23,7 @@
         android:textAppearance="@style/TextDark"
         android:textSize="20sp"
         android:layout_marginTop="80dp"
-        android:layout_marginStart="21dp"/>
+        android:layout_gravity="center_horizontal"/>
 
     <ImageView
         android:layout_width="30dp"

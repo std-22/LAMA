@@ -67,17 +67,8 @@ public class CategoryOperation extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private boolean checkSize(String nameOfFunction, String selectedRowSize, String selectedColumnSize) {
-        switch (nameOfFunction) {
-            case "Критерий Сильвестра":
-                return selectedRowSize.equals(selectedColumnSize);
-            default:
-                return true;
-        }
-    }
-
     public void onClickToInputMatrix(View view) {
-        if (!checkSize(nameOfFunction, selectedRowSize, selectedColumnSize)){
+        if (!CheckSize.checkSize(nameOfFunction, selectedRowSize, selectedColumnSize)){
             Toast toast = Toast.makeText(this, "wrong size", Toast.LENGTH_LONG);
             toast.show();
             return;

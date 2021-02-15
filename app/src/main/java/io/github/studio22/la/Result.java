@@ -2,6 +2,7 @@ package io.github.studio22.la;
 
 public class Result {
     private static String result = "";
+    private static String result_1 = "";
 
     public static String getResult(String nameOfFunction, int[][] field){
         switch (nameOfFunction){
@@ -19,7 +20,9 @@ public class Result {
                 } else {
                     result = "Alternating definite";
                 }
-                return result;
+                result_1 = result;
+                result = "";
+                return result_1;
             case "Транспонирование":
                 int[][] newField = new int[field[0].length][field.length];
                 for (int i = 0; i < field.length; i++) {
@@ -34,7 +37,9 @@ public class Result {
                     }
                     result += "\n";
                 }
-                return result;
+                result_1 = result;
+                result = "";
+                return result_1;
             default:
                 return "";
         }

@@ -40,11 +40,19 @@
     <string name="achieve_9">Ламовед ур. 4</string>
     <string name="next">Далее</string>
     <string name="count">Вычислить</string>
+    <string name="name_of_function">nameOfFunction</string>
+    <string name="scalar_mul_info">В линейной алгебре, скалярное умножение - это операция над двумя векторами, результатом которой является скаляр, то есть число, не зависящее от выбора системы координат. Для скалярного умножения матриц необходимо, чтобы число столбцов в первой матрице было равно числу строк во второй.</string>
+    <string name="back_to_menu">Вернуться в меню</string>
+    <string name="x">X</string>
+    <string name="raw">с\nт\nр\nо\nч\nк\nи</string>
+    <string name="column">с\nт\nо\nл\nб\nц\nы</string>
+    <string name="memory_matrix">Запомнить матрицу</string>
     <string-array name="numbers">
         <item>1</item>
         <item>2</item>
         <item>3</item>
         <item>4</item>
         <item>5</item>
+        <item>6</item>
     </string-array>
 </resources>

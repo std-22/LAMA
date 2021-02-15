@@ -33,9 +33,12 @@ public class MatrixResult extends AppCompatActivity {
 
     public void OnClickBackMatrix(View view) {
         Intent intent = new Intent(MatrixResult.this, MatrixInput.class);
-        //intent.putExtra("selected_string_size", selectedRowSize);
-        //intent.putExtra("selected_column_size", selectedColumnSize);
         intent.putExtra("selected_next", nameOfFunction);
+        startActivity(intent);
+    }
+
+    public void onClickToMenu(View view) {
+        Intent intent = new Intent(MatrixResult.this, MenuNavActivity.class);
         startActivity(intent);
     }
 }
