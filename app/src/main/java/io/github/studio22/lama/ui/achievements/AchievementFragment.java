@@ -1,4 +1,4 @@
-package io.github.studio22.la.ui.achievements;
+package io.github.studio22.lama.ui.achievements;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import io.github.studio22.la.R;
+import io.github.studio22.lama.R;
 
 public class AchievementFragment extends Fragment {
 

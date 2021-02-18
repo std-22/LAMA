@@ -1,4 +1,4 @@
-package io.github.studio22.la.ui.matrix;
+package io.github.studio22.lama.ui.app;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,13 +8,13 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import io.github.studio22.la.R;
+import io.github.studio22.lama.R;
 
-public class MatrixFragment extends Fragment {
+public class AboutProgramFragmentDark extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_matrix, container, false);
+        View root = inflater.inflate(R.layout.fragment_about_program_dark, container, false);
 
         return root;
     }

@@ -1,6 +1,5 @@
-package io.github.studio22.la;
+package io.github.studio22.lama;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;

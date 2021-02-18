@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/matrix_fragment"
-        android:name="io.github.studio22.la.ui.matrix.MatrixFragment"
+        android:name="io.github.studio22.lama.ui.matrix.MatrixFragment"
         android:label="@string/one_matrix"
         tools:layout="@layout/fragment_matrix" />
 
     <fragment
         android:id="@+id/app_fragment"
-        android:name="io.github.studio22.la.ui.app.AboutProgramFragment"
+        android:name="io.github.studio22.lama.ui.app.AboutProgramFragment"
         android:label="@string/About_program"
         tools:layout="@layout/fragment_about_program" />
 
     <fragment
         android:id="@+id/achievements_fragment"
-        android:name="io.github.studio22.la.ui.achievements.AchievementFragment"
+        android:name="io.github.studio22.lama.ui.achievements.AchievementFragment"
         android:label="@string/achievements"
         tools:layout="@layout/fragment_achiev" />
 </navigation>

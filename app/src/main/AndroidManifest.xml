@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="io.github.studio22.la" >
+    package="io.github.studio22.lama" >
 
     <application
         android:allowBackup="true"
@@ -10,17 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/CustomTheme" >
         <activity
-            android:name=".MenuNavActivity"
+            android:name="io.github.studio22.lama.MenuNavActivity"
             android:label="@string/title_activity_menu_nav"
             android:screenOrientation="portrait"/>
 
         <activity
-            android:name=".MenuNavDarkActivity"
+            android:name="io.github.studio22.lama.MenuNavDarkActivity"
             android:label="@string/title_activity_menu_nav_dark"
             android:screenOrientation="portrait"
             android:theme="@style/CustomThemeDark" />
 
-        <activity android:name=".MainActivity"
+        <activity android:name="io.github.studio22.lama.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,17 +29,17 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".MatrixMatrix"
+        <activity android:name="io.github.studio22.lama.MatrixMatrix"
             android:screenOrientation="portrait"/>
-        <activity android:name=".MatrixLyambda"
+        <activity android:name="io.github.studio22.lama.MatrixLyambda"
             android:screenOrientation="portrait"/>
-        <activity android:name=".Matrix"
+        <activity android:name="io.github.studio22.lama.Matrix"
             android:screenOrientation="portrait"/>
-        <activity android:name=".CategoryOperation"
+        <activity android:name="io.github.studio22.lama.CategoryOperation"
             android:screenOrientation="portrait"/>
-        <activity android:name=".MatrixInput"
+        <activity android:name="io.github.studio22.lama.MatrixInput"
             android:screenOrientation="portrait"/>
-        <activity android:name=".MatrixResult"
+        <activity android:name="io.github.studio22.lama.MatrixResult"
             android:screenOrientation="portrait"/>
     </application>
 

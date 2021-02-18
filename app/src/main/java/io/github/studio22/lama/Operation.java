@@ -1,4 +1,4 @@
-package io.github.studio22.la;
+package io.github.studio22.lama;
 
 import android.os.Parcel;
 import android.os.Parcelable;
