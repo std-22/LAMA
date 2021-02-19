@@ -5,6 +5,8 @@ public class CheckSize {
         switch (nameOfFunction) {
             case "Критерий Сильвестра":
                 return selectedRowSize.equals(selectedColumnSize);
+            case "Транспонирование":
+                return selectedColumnSize.equals(selectedRowSize);
             default:
                 return true;
         }

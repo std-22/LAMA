@@ -1,10 +1,12 @@
 package io.github.studio22.lama;
 
+import android.content.Intent;
+
 public class Result {
     private static String result = "";
     private static String result_1 = "";
 
-    public static String getResult(String nameOfFunction, int[][] field){
+    public static String getResult(String nameOfFunction, Double[][] field){
         switch (nameOfFunction){
             case "Критерий Сильвестра":
                 boolean firstMinor, secondMinor, thirdMinor;
@@ -24,22 +26,11 @@ public class Result {
                 result = "";
                 return result_1;
             case "Транспонирование":
-                int[][] newField = new int[field[0].length][field.length];
-                for (int i = 0; i < field.length; i++) {
-                    for (int j = 0; j < field[0].length; j++) {
-                        newField[j][i] = field[i][j];
-                    }
-                }
-                for (int i = 0; i < newField.length; i++) {
-                    for (int j = 0; j < newField[0].length; j++) {
-                        result += newField[i][j];
-                        result += " ";
-                    }
-                    result += "\n";
-                }
-                result_1 = result;
-                result = "";
-                return result_1;
+                return MatrixCalculation.transpose(field);
+
+            case "DET |A|":
+                Double det = MatrixCalculation.matrixDeterminant(field);
+                return String.valueOf(det);
             default:
                 return "";
         }
