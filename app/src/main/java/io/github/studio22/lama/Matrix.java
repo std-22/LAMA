@@ -8,8 +8,6 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.snackbar.Snackbar;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,30 +32,19 @@ public class Matrix extends AppCompatActivity {
         });
         recyclerView.setAdapter(adapter);
 
-        final View view = findViewById(R.id.accelerate); //fail R.id.recyc_background
-
-        SwipeHelper swipeHelper = new SwipeHelper(this, view){
+        SwipeHelper swipeHelper = new SwipeHelper(this){
 
             @Override
             public void instantiateUnderlayButton(RecyclerView.ViewHolder viewHolder, List<UnderlayButton> underlayButtons) {
                 underlayButtons.add(new SwipeHelper.UnderlayButton(
                         Matrix.this,
-                        view,
-                        R.drawable.ic_info,
                         Color.parseColor("#F9D19A"),
                         new SwipeHelper.UnderlayButtonClickListener() {
                             @Override
                             public void onClick(final int pos) {
-
-                                Snackbar snackbar = Snackbar.make(recyclerView, "Item was removed from the list.", Snackbar.LENGTH_LONG);
-                                snackbar.setAction("UNDO", new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View view) {
-                                        recyclerView.scrollToPosition(pos);
-                                    }
-                                });
-
-                                snackbar.show();
+                                Intent intent = new Intent(Matrix.this, MatrixInfo.class);
+                                intent.putExtra("selected", operations.get(pos));
+                                startActivity(intent);
                             }
                         }
                 ));

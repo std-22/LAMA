@@ -1,25 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/background">
 
+    <!--Header-->
+
     <TextView
+        android:id="@+id/function_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/name_of_function"
         android:textAppearance="@style/Text"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:textSize="20sp"
         android:textStyle="bold"/>
+
+    <ImageButton
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="33dp"
+        android:layout_marginStart="33dp"
+        android:scaleType="centerCrop"
+        android:background="@color/background"
+        android:src="@drawable/ic_backspace"
+        android:onClick="OnClickBackMatrix"
+        android:contentDescription="@string/backspace"/>
+
+    <!--Body-->
 
     <ImageView
         android:layout_width="368.26dp"
         android:layout_height="200dp"
         android:src="@drawable/scalar_m"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="80dp"
         android:layout_gravity="center_horizontal"/>
 
     <TextView
@@ -28,6 +44,6 @@
         android:text="@string/scalar_mul_info"
         android:textSize="20sp"
         android:textAppearance="@style/Text"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="300dp"
         android:layout_gravity="center_horizontal"/>
-</LinearLayout>
+</FrameLayout>

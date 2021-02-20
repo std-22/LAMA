@@ -35,6 +35,8 @@
             android:screenOrientation="portrait"/>
         <activity android:name="io.github.studio22.lama.Matrix"
             android:screenOrientation="portrait"/>
+        <activity android:name="io.github.studio22.lama.MatrixInfo"
+            android:screenOrientation="portrait"/>
         <activity android:name="io.github.studio22.lama.CategoryOperation"
             android:screenOrientation="portrait"/>
         <activity android:name="io.github.studio22.lama.MatrixInput"
