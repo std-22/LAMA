@@ -18,8 +18,12 @@
         android:layout_height="99dp"
         android:layout_gravity="center_horizontal"
         android:id="@+id/operation_view"
-        android:background="@color/active" />
-    
+        android:background="@color/active"
+        android:topRightRadius="10dp"
+        android:topLeftRadius="10dp"
+        />
+
+
     <TextView
         android:layout_width="300dp"
         android:layout_height="50dp"

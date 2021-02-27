@@ -70,11 +70,11 @@ public class MatrixInput extends AppCompatActivity {
     public void onClickToResult(View view) {
         //в этот момент можно считать
         //нужно вызвать метод getResult() в блоке try
-        int[][] field = new int[selectedRowSize][selectedColumnSize];
+        Double[][] field = new Double[selectedRowSize][selectedColumnSize];
         for(int i = 0; i < selectedRowSize; i++){
             for(int j = 0; j < selectedColumnSize; j++){
                 EditText editText = findViewById(editTextId[i][j]);
-                field[i][j] = Integer.parseInt(editText.getText().toString());
+                field[i][j] = Double.parseDouble(editText.getText().toString());
             }
         }
 
