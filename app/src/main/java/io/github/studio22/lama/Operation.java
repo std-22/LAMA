@@ -3,9 +3,11 @@ package io.github.studio22.lama;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
+
 public class Operation implements Parcelable {
 
-    private String name;
+    private final String name;
 
     public Operation(String name){
         this.name=name;
@@ -31,6 +33,7 @@ public class Operation implements Parcelable {
         return this.name;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "Operation{" +

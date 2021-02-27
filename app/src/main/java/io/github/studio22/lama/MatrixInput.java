@@ -12,7 +12,7 @@ public class MatrixInput extends AppCompatActivity {
     private static int selectedRowSize = 1;
     private static int selectedColumnSize = 1;
     private static String nameOfFunction;
-    private static int[][] editTextId = {
+    private static final int[][] editTextId = {
             {R.id.editTextNumberA1, R.id.editTextNumberA2, R.id.editTextNumberA3, R.id.editTextNumberA4, R.id.editTextNumberA5, R.id.editTextNumberA6},
             {R.id.editTextNumberB1, R.id.editTextNumberB2, R.id.editTextNumberB3, R.id.editTextNumberB4, R.id.editTextNumberB5, R.id.editTextNumberB6},
             {R.id.editTextNumberC1, R.id.editTextNumberC2, R.id.editTextNumberC3, R.id.editTextNumberC4, R.id.editTextNumberC5, R.id.editTextNumberC6},

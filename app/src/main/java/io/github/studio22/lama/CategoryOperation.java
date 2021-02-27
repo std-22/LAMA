@@ -43,9 +43,7 @@ public class CategoryOperation extends AppCompatActivity {
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-                return;
-            }
+            public void onNothingSelected(AdapterView<?> adapterView) {}
         });
 
         Spinner columnSpinner = findViewById(R.id.column_size);
@@ -56,9 +54,7 @@ public class CategoryOperation extends AppCompatActivity {
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-                return;
-            }
+            public void onNothingSelected(AdapterView<?> adapterView) {}
         });
     }
 

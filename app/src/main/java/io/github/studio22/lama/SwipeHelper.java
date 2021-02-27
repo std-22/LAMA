@@ -1,5 +1,6 @@
 package io.github.studio22.lama;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -12,6 +13,8 @@ import android.graphics.drawable.Drawable;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
+
+import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,25 +31,14 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
     public static final int BUTTON_WIDTH = 200;
     private RecyclerView recyclerView;
     private List<UnderlayButton> buttons;
-    private GestureDetector gestureDetector;
+    private final GestureDetector gestureDetector;
     private int swipedPos = -1;
     private float swipeThreshold = 0.5f;
-    private Map<Integer, List<UnderlayButton>> buttonsBuffer;
-    private Queue<Integer> recoverQueue;
-    private View view;
+    private final Map<Integer, List<UnderlayButton>> buttonsBuffer;
+    private final Queue<Integer> recoverQueue;
 
-    private GestureDetector.SimpleOnGestureListener gestureListener = new GestureDetector.SimpleOnGestureListener() {
-        @Override
-        public boolean onSingleTapConfirmed(MotionEvent e) {
-            for (UnderlayButton button : buttons) {
-                if (button.onClick(e.getX(), e.getY()))
-                    break;
-            }
-            return true;
-        }
-    };
-
-    private View.OnTouchListener onTouchListener = new View.OnTouchListener() {
+    private final View.OnTouchListener onTouchListener = new View.OnTouchListener() {
+        @SuppressLint("ClickableViewAccessibility")
         @Override
         public boolean onTouch(View view, MotionEvent e) {
             if (swipedPos < 0) return false;
@@ -70,10 +62,19 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
         }
     };
 
-    public SwipeHelper(Context context, View view) {
+    public SwipeHelper(Context context) {
         super(0, ItemTouchHelper.LEFT);
-        this.view = view;
         this.buttons = new ArrayList<>();
+        GestureDetector.SimpleOnGestureListener gestureListener = new GestureDetector.SimpleOnGestureListener() {
+            @Override
+            public boolean onSingleTapConfirmed(MotionEvent e) {
+                for (UnderlayButton button : buttons) {
+                    if (button.onClick(e.getX(), e.getY()))
+                        break;
+                }
+                return true;
+            }
+        };
         this.gestureDetector = new GestureDetector(context, gestureListener);
         buttonsBuffer = new HashMap<>();
         recoverQueue = new LinkedList<Integer>() {
@@ -89,14 +90,13 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
 
 
     @Override
-    public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+    public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
         return false;
     }
 
     @Override
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
         int pos = viewHolder.getAdapterPosition();
-        //this.view.setVisibility(View.INVISIBLE);
 
         if (swipedPos != pos)
             recoverQueue.add(swipedPos);
@@ -114,7 +114,7 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
     }
 
     @Override
-    public float getSwipeThreshold(RecyclerView.ViewHolder viewHolder) {
+    public float getSwipeThreshold(@NonNull RecyclerView.ViewHolder viewHolder) {
         return swipeThreshold;
     }
 
@@ -129,7 +129,7 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
     }
 
     @Override
-    public void onChildDraw(Canvas c, RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+    public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
         int pos = viewHolder.getAdapterPosition();
         float translationX = dX;
         View itemView = viewHolder.itemView;
@@ -163,7 +163,6 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
             int pos = recoverQueue.poll();
             if (pos > -1) {
                 recyclerView.getAdapter().notifyItemChanged(pos);
-                //this.view.setVisibility(View.VISIBLE);
             }
         }
     }
@@ -189,6 +188,7 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     public void attachToRecyclerView(RecyclerView recyclerView) {
         this.recyclerView = recyclerView;
         this.recyclerView.setOnTouchListener(onTouchListener);
@@ -203,21 +203,16 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
     }
 
     public static class UnderlayButton {
-        private View view;
-        private int imageResId;
-        private int color;
+        private final int color;
         private int pos;
         private RectF clickRegion;
-        private Context context;
-        private UnderlayButtonClickListener clickListener;
+        private final Context context;
+        private final UnderlayButtonClickListener clickListener;
 
-        public UnderlayButton(Context context, View view, int imageResId, int color, UnderlayButtonClickListener clickListener){
+        public UnderlayButton(Context context, int color, UnderlayButtonClickListener clickListener){
             this.context = context;
-            this.view = view;
-            this.imageResId = imageResId;
             this.color = color;
             this.clickListener = clickListener;
-            //view.setVisibility(View.INVISIBLE);
         }
 
         public boolean onClick(float x, float y) {

@@ -1,5 +1,6 @@
 package io.github.studio22.lama;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
@@ -94,7 +95,7 @@ public class MenuNavDarkActivity extends AppCompatActivity {
 
     private Boolean isIntentSafe(Intent intent){
         PackageManager packageManager = getPackageManager();
-        List<ResolveInfo> activities = packageManager.queryIntentActivities(intent, 0);
+        @SuppressLint("QueryPermissionsNeeded") List<ResolveInfo> activities = packageManager.queryIntentActivities(intent, 0);
         return activities.size() > 0;
     }
 }
