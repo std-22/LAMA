@@ -22,6 +22,10 @@ import androidx.appcompat.widget.Toolbar;
 
 import java.util.List;
 
+/**
+ * Класс реализовывает навигацию в приложении
+ */
+
 public class MenuNavActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
