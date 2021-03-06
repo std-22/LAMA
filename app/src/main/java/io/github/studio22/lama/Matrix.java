@@ -55,7 +55,7 @@ public class Matrix extends AppCompatActivity {
 
     private void setInitialData(){
         operations.add(new Operation ("DET |A|"));
-        operations.add(new Operation ("A ^ (-1)"));
+        operations.add(new Operation ("A¹"));
         operations.add(new Operation ("Транспонирование"));
         operations.add(new Operation ("Ранг матрицы"));
         operations.add(new Operation ("Решение системы уравнений"));

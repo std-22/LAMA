@@ -9,6 +9,10 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 
+/**
+ * Стартовый экран с автопреключение, реализованным через таймер
+ */
+
 public class MainActivity extends AppCompatActivity {
     private final Timer timer = new Timer();
 
