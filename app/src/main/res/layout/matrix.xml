@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    android:background="@color/background">
+    android:background="?attr/backgroundColor">
 
     <!-- Header -->
 
@@ -16,15 +16,15 @@
         android:layout_height="33dp"
         android:layout_marginStart="85dp"
         android:layout_marginTop="33dp"
-        android:background="@drawable/view" />
+        android:background="@drawable/view"/>
 
     <EditText
         android:layout_width="251dp"
         android:layout_height="40dp"
         android:hint="@string/search"
-        android:textColor="@color/for_text"
+        android:textColor="?attr/textViewColor"
         android:fontFamily="@font/comfortaa_light"
-        android:textColorHint="@color/for_text"
+        android:textColorHint="?attr/textViewColor"
         android:inputType="textNoSuggestions"
         android:layout_marginTop="27dp"
         android:background="@null"
@@ -37,7 +37,7 @@
         android:layout_height="33dp"
         android:layout_marginTop="33dp"
         android:layout_marginStart="124dp"
-        android:background="@color/separator" />
+        android:background="@color/separator"/>
 
     <ImageButton
         android:layout_width="25dp"
@@ -45,7 +45,7 @@
         android:layout_marginTop="37dp"
         android:layout_marginStart="94dp"
         android:scaleType="centerCrop"
-        android:background="@color/active"
+        android:background="?attr/viewColor"
         android:src="@drawable/ic_search"
         android:contentDescription="@string/search"/>
 
@@ -55,7 +55,7 @@
         android:layout_marginTop="33dp"
         android:layout_marginStart="33dp"
         android:scaleType="centerCrop"
-        android:background="@color/background"
+        android:background="?attr/backgroundColor"
         android:src="@drawable/ic_backspace"
         android:onClick="OnClickBackMatrix"
         android:contentDescription="@string/backspace"/>
@@ -68,5 +68,5 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/list_item" />
+        tools:listitem="@layout/list_item"/>
 </FrameLayout>

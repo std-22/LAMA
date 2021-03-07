@@ -48,6 +48,7 @@
     <string name="column">с\nт\nо\nл\nб\nц\nы</string>
     <string name="memory_matrix">Запомнить матрицу</string>
     <string name="wheel">Wheel</string>
+    <string name="description">description</string>
     <string-array name="numbers">
         <item>1</item>
         <item>2</item>

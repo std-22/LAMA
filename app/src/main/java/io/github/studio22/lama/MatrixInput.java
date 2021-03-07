@@ -21,8 +21,20 @@ public class MatrixInput extends AppCompatActivity {
             {R.id.editTextNumberF1, R.id.editTextNumberF2, R.id.editTextNumberF3, R.id.editTextNumberF4, R.id.editTextNumberF5, R.id.editTextNumberF6}
     };
 
+    SharedPreferences sharedPreferences;
+    Boolean state;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        sharedPreferences = new SharedPreferences(this);
+        state = sharedPreferences.loadNightModeState();
+
+        if (state){
+            setTheme(R.style.DarkAppTheme);
+        } else {
+            setTheme(R.style.AppTheme);
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.matrix_input);
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="?attr/backgroundColor"
     android:orientation="vertical"
     android:gravity="center"
     tools:context=".MainActivity">
@@ -13,6 +13,7 @@
         android:layout_width="562dp"
         android:layout_height="562dp"
         android:layout_marginTop="-50dp"
+        android:id="@+id/lama_image"
         app:srcCompat="@drawable/logo_new"
         android:contentDescription="@string/lama"
         tools:ignore="MissingConstraints"/>
@@ -23,13 +24,15 @@
         android:text="@string/lama"
         android:layout_marginTop="-40dp"
         android:textAlignment="center"
-        android:textSize="58.4sp"
+        android:textSize="58sp"
+        android:textColor="?attr/textViewColor"
         android:textAppearance="@style/Text"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/lin_al_amp"
+        android:textColor="?attr/textViewColor"
         android:textAppearance="@style/Text"
         android:textSize="44sp" />
 
@@ -37,6 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/math_anal"
+        android:textColor="?attr/textViewColor"
         android:textAppearance="@style/Text"
         android:textSize="44sp"/>
 

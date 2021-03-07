@@ -13,11 +13,29 @@ import java.util.List;
 
 public class Matrix extends AppCompatActivity {
     ArrayList<Operation> operations = new ArrayList<>();
+    SharedPreferences sharedPreferences;
+    Boolean state;
+    String color;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        sharedPreferences = new SharedPreferences(this);
+        state = sharedPreferences.loadNightModeState();
+
+        if (state){
+            setTheme(R.style.DarkAppTheme);
+        } else {
+            setTheme(R.style.AppTheme);
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.matrix);
+
+        if (state){
+            color = "#253040";
+        } else {
+            color = "#F9D19A";
+        }
 
         setInitialData();
         final RecyclerView recyclerView = findViewById(R.id.matrix_operations);
@@ -38,7 +56,7 @@ public class Matrix extends AppCompatActivity {
             public void instantiateUnderlayButton(RecyclerView.ViewHolder viewHolder, List<UnderlayButton> underlayButtons) {
                 underlayButtons.add(new SwipeHelper.UnderlayButton(
                         Matrix.this,
-                        Color.parseColor("#F9D19A"),
+                        Color.parseColor(color),
                         new SwipeHelper.UnderlayButtonClickListener() {
                             @Override
                             public void onClick(final int pos) {

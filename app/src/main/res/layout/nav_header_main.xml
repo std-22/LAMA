@@ -4,7 +4,7 @@
     android:layout_height="110dp"
     android:gravity="center"
     android:orientation="vertical"
-    android:background="@color/background"
+    android:background="?attr/backgroundColor"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="@string/lama"
-        android:textColor="@color/for_text"
+        android:textColor="?attr/textViewColor"
         android:fontFamily="@font/comfortaa_light"
         android:layout_marginTop="20dp"
         android:textSize="34sp"/>
@@ -23,11 +23,25 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="22dp"
+        android:id="@+id/night"
         android:src="@drawable/ic_moon"
         android:layout_marginStart="235dp"
         android:scaleType="centerCrop"
         android:onClick="onClickToDark"
-        android:background="@color/background"
+        android:background="?attr/backgroundColor"
         android:contentDescription="@string/dark_theme"/>
+<!--
+    <ImageButton
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="25dp"
+        android:id="@+id/day"
+        android:src="@drawable/ic_sun"
+        android:layout_marginStart="240dp"
+        android:scaleType="centerCrop"
+        android:onClick="onClickToLight"
+        android:background="?attr/backgroundColor"
+        android:visibility="gone"
+        android:contentDescription="@string/dark_theme"/>-->
 
 </FrameLayout>

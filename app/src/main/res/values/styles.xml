@@ -1,36 +1,46 @@
 <resources>
-    <style name="CustomTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="android:colorPrimaryDark">@color/bar_theme_color</item>
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-
-    <style name="CustomThemeDark" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="android:colorPrimaryDark">@color/background_dark</item>
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
 
     <style name="Text" parent="@android:style/TextAppearance.Medium">
-        <item name="android:textColor">@color/for_text</item>
-        <item name="android:fontFamily">@font/comfortaa_light</item>
-    </style>
-
-    <style name="TextDark" parent="@android:style/TextAppearance.Medium">
-        <item name="android:textColor">@color/background</item>
         <item name="android:fontFamily">@font/comfortaa_light</item>
     </style>
 
     <style name="NavigationText" parent="@android:style/TextAppearance.Medium">
-        <item name="android:textColor">@color/for_text</item>
+        <item name="android:textColor">?attr/textViewColor</item>
         <item name="android:textSize">16sp</item>
         <item name="android:fontFamily">@font/comfortaa_light</item>
     </style>
 
-    <style name="NavigationTextDark" parent="@android:style/TextAppearance.Medium">
-        <item name="android:textColor">@color/background</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:fontFamily">@font/comfortaa_light</item>
+    <!-- Light theme -->
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <item name="android:colorPrimaryDark">@color/bar_theme_color</item>
+        <item name="backgroundColor">@color/background</item>
+        <item name="textViewColor">@color/for_text</item>
+        <item name="viewColor">@color/active</item>
+        <item name="iconColor">@color/for_icon</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <!--<item name="android:windowActivityTransitions">true</item>
+        <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>-->
     </style>
+
+    <!-- Dark theme -->
+    <style name="DarkAppTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <item name="android:colorPrimaryDark">@color/background_dark</item>
+        <item name="backgroundColor">@color/background_dark</item>
+        <item name="textViewColor">@color/background</item>
+        <item name="viewColor">@color/active_dark</item>
+        <item name="iconColor">@color/background</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <!--<item name="android:windowActivityTransitions">true</item>
+        <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>-->
+    </style>
+
+    <!-- Animation -->
+<!--
+    <style name="WindowAnimationTransition">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+    </style>-->
 
 </resources>

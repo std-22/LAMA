@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background">
+    android:background="?attr/backgroundColor">
+
+    <!-- Header -->
 
     <ImageButton
         android:layout_width="30dp"
@@ -11,7 +13,7 @@
         android:layout_marginTop="33dp"
         android:layout_marginStart="33dp"
         android:scaleType="centerCrop"
-        android:background="@color/background"
+        android:background="?attr/backgroundColor"
         android:src="@drawable/ic_backspace"
         android:onClick="OnClickBackMatrix"
         android:contentDescription="@string/backspace"/>
@@ -24,9 +26,12 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
         android:textAppearance="@style/Text"
+        android:textColor="?attr/textViewColor"
         android:textSize="21sp"
         android:textStyle="bold"
         tools:ignore="MissingConstraints"/>
+
+    <!-- Body -->
 
     <TableLayout
         android:id="@+id/Matrix1"
@@ -48,7 +53,9 @@
                 android:textAlignment="center"
                 android:visibility="gone"
                 android:importantForAutofill="no"
-                tools:ignore="LabelFor" />
+                android:textColor="?attr/textViewColor"
+                android:backgroundTint="?attr/textViewColor"
+                tools:ignore="LabelFor"/>
 
             <EditText
                 android:id="@+id/editTextNumberA2"
@@ -59,6 +66,8 @@
                 android:textAlignment="center"
                 android:visibility="gone"
                 android:importantForAutofill="no"
+                android:textColor="?attr/textViewColor"
+                android:backgroundTint="?attr/textViewColor"
                 tools:ignore="LabelFor"/>
 
             <EditText
@@ -70,6 +79,8 @@
                 android:textAlignment="center"
                 android:visibility="gone"
                 android:importantForAutofill="no"
+                android:textColor="?attr/textViewColor"
+                android:backgroundTint="?attr/textViewColor"
                 tools:ignore="LabelFor"/>
 
             <EditText
@@ -81,6 +92,8 @@
                 android:textAlignment="center"
                 android:visibility="gone"
                 android:importantForAutofill="no"
+                android:textColor="?attr/textViewColor"
+                android:backgroundTint="?attr/textViewColor"
                 tools:ignore="LabelFor"/>
 
             <EditText
@@ -92,6 +105,8 @@
                 android:textAlignment="center"
                 android:visibility="gone"
                 android:importantForAutofill="no"
+                android:textColor="?attr/textViewColor"
+                android:backgroundTint="?attr/textViewColor"
                 tools:ignore="LabelFor"/>
 
             <EditText
@@ -103,6 +118,8 @@
                 android:textAlignment="center"
                 android:visibility="gone"
                 android:importantForAutofill="no"
+                android:textColor="?attr/textViewColor"
+                android:backgroundTint="?attr/textViewColor"
                 tools:ignore="LabelFor"/>
 
         </TableRow>
@@ -120,6 +137,8 @@
                 android:textAlignment="center"
                 android:visibility="gone"
                 android:importantForAutofill="no"
+                android:textColor="?attr/textViewColor"
+                android:backgroundTint="?attr/textViewColor"
                 tools:ignore="LabelFor"/>
 
             <EditText
@@ -131,6 +150,8 @@
                 android:textAlignment="center"
                 android:visibility="gone"
                 android:importantForAutofill="no"
+                android:textColor="?attr/textViewColor"
+                android:backgroundTint="?attr/textViewColor"
                 tools:ignore="LabelFor"/>
 
             <EditText
@@ -142,6 +163,8 @@
                 android:textAlignment="center"
                 android:visibility="gone"
                 android:importantForAutofill="no"
+                android:textColor="?attr/textViewColor"
+                android:backgroundTint="?attr/textViewColor"
                 tools:ignore="LabelFor"/>
 
             <EditText
@@ -153,6 +176,8 @@
                 android:textAlignment="center"
                 android:visibility="gone"
                 android:importantForAutofill="no"
+                android:textColor="?attr/textViewColor"
+                android:backgroundTint="?attr/textViewColor"
                 tools:ignore="LabelFor"/>
 
             <EditText
@@ -164,6 +189,8 @@
                 android:textAlignment="center"
                 android:visibility="gone"
                 android:importantForAutofill="no"
+                android:textColor="?attr/textViewColor"
+                android:backgroundTint="?attr/textViewColor"
                 tools:ignore="LabelFor"/>
 
             <EditText
@@ -175,6 +202,8 @@
                 android:textAlignment="center"
                 android:visibility="gone"
                 android:importantForAutofill="no"
+                android:textColor="?attr/textViewColor"
+                android:backgroundTint="?attr/textViewColor"
                 tools:ignore="LabelFor"/>
         </TableRow>
 
@@ -191,6 +220,8 @@
                 android:textAlignment="center"
                 android:visibility="gone"
                 android:importantForAutofill="no"
+                android:textColor="?attr/textViewColor"
+                android:backgroundTint="?attr/textViewColor"
                 tools:ignore="LabelFor"/>
 
             <EditText
@@ -202,6 +233,8 @@
                 android:textAlignment="center"
                 android:visibility="gone"
                 android:importantForAutofill="no"
+                android:textColor="?attr/textViewColor"
+                android:backgroundTint="?attr/textViewColor"
                 tools:ignore="LabelFor"/>
 
             <EditText
@@ -213,6 +246,8 @@
                 android:textAlignment="center"
                 android:visibility="gone"
                 android:importantForAutofill="no"
+                android:textColor="?attr/textViewColor"
+                android:backgroundTint="?attr/textViewColor"
                 tools:ignore="LabelFor"/>
 
             <EditText
@@ -224,6 +259,8 @@
                 android:textAlignment="center"
                 android:visibility="gone"
                 android:importantForAutofill="no"
+                android:textColor="?attr/textViewColor"
+                android:backgroundTint="?attr/textViewColor"
                 tools:ignore="LabelFor"/>
 
             <EditText
@@ -235,6 +272,8 @@
                 android:textAlignment="center"
                 android:visibility="gone"
                 android:importantForAutofill="no"
+                android:textColor="?attr/textViewColor"
+                android:backgroundTint="?attr/textViewColor"
                 tools:ignore="LabelFor"/>
 
             <EditText
@@ -246,6 +285,8 @@
                 android:textAlignment="center"
                 android:visibility="gone"
                 android:importantForAutofill="no"
+                android:textColor="?attr/textViewColor"
+                android:backgroundTint="?attr/textViewColor"
                 tools:ignore="LabelFor"/>
         </TableRow>
 
@@ -262,6 +303,8 @@
                 android:textAlignment="center"
                 android:visibility="gone"
                 android:importantForAutofill="no"
+                android:textColor="?attr/textViewColor"
+                android:backgroundTint="?attr/textViewColor"
                 tools:ignore="LabelFor"/>
 
             <EditText
@@ -273,6 +316,8 @@
                 android:textAlignment="center"
                 android:visibility="gone"
                 android:importantForAutofill="no"
+                android:textColor="?attr/textViewColor"
+                android:backgroundTint="?attr/textViewColor"
                 tools:ignore="LabelFor"/>
 
             <EditText
@@ -284,6 +329,8 @@
                 android:textAlignment="center"
                 android:visibility="gone"
                 android:importantForAutofill="no"
+                android:textColor="?attr/textViewColor"
+                android:backgroundTint="?attr/textViewColor"
                 tools:ignore="LabelFor"/>
 
             <EditText
@@ -295,6 +342,8 @@
                 android:textAlignment="center"
                 android:visibility="gone"
                 android:importantForAutofill="no"
+                android:textColor="?attr/textViewColor"
+                android:backgroundTint="?attr/textViewColor"
                 tools:ignore="LabelFor"/>
 
             <EditText
@@ -306,6 +355,8 @@
                 android:textAlignment="center"
                 android:visibility="gone"
                 android:importantForAutofill="no"
+                android:textColor="?attr/textViewColor"
+                android:backgroundTint="?attr/textViewColor"
                 tools:ignore="LabelFor"/>
 
             <EditText
@@ -317,6 +368,8 @@
                 android:textAlignment="center"
                 android:visibility="gone"
                 android:importantForAutofill="no"
+                android:textColor="?attr/textViewColor"
+                android:backgroundTint="?attr/textViewColor"
                 tools:ignore="LabelFor"/>
         </TableRow>
 
@@ -333,6 +386,8 @@
                 android:textAlignment="center"
                 android:visibility="gone"
                 android:importantForAutofill="no"
+                android:textColor="?attr/textViewColor"
+                android:backgroundTint="?attr/textViewColor"
                 tools:ignore="LabelFor"/>
 
             <EditText
@@ -344,6 +399,8 @@
                 android:textAlignment="center"
                 android:visibility="gone"
                 android:importantForAutofill="no"
+                android:textColor="?attr/textViewColor"
+                android:backgroundTint="?attr/textViewColor"
                 tools:ignore="LabelFor"/>
 
             <EditText
@@ -355,6 +412,8 @@
                 android:textAlignment="center"
                 android:visibility="gone"
                 android:importantForAutofill="no"
+                android:textColor="?attr/textViewColor"
+                android:backgroundTint="?attr/textViewColor"
                 tools:ignore="LabelFor"/>
 
             <EditText
@@ -366,6 +425,8 @@
                 android:textAlignment="center"
                 android:visibility="gone"
                 android:importantForAutofill="no"
+                android:textColor="?attr/textViewColor"
+                android:backgroundTint="?attr/textViewColor"
                 tools:ignore="LabelFor"/>
 
             <EditText
@@ -377,6 +438,8 @@
                 android:textAlignment="center"
                 android:visibility="gone"
                 android:importantForAutofill="no"
+                android:textColor="?attr/textViewColor"
+                android:backgroundTint="?attr/textViewColor"
                 tools:ignore="LabelFor"/>
 
             <EditText
@@ -388,6 +451,8 @@
                 android:textAlignment="center"
                 android:visibility="gone"
                 android:importantForAutofill="no"
+                android:textColor="?attr/textViewColor"
+                android:backgroundTint="?attr/textViewColor"
                 tools:ignore="LabelFor"/>
         </TableRow>
 
@@ -404,6 +469,8 @@
                 android:textAlignment="center"
                 android:visibility="gone"
                 android:importantForAutofill="no"
+                android:textColor="?attr/textViewColor"
+                android:backgroundTint="?attr/textViewColor"
                 tools:ignore="LabelFor"/>
 
             <EditText
@@ -415,6 +482,8 @@
                 android:textAlignment="center"
                 android:visibility="gone"
                 android:importantForAutofill="no"
+                android:textColor="?attr/textViewColor"
+                android:backgroundTint="?attr/textViewColor"
                 tools:ignore="LabelFor"/>
 
             <EditText
@@ -426,6 +495,8 @@
                 android:textAlignment="center"
                 android:visibility="gone"
                 android:importantForAutofill="no"
+                android:textColor="?attr/textViewColor"
+                android:backgroundTint="?attr/textViewColor"
                 tools:ignore="LabelFor"/>
 
             <EditText
@@ -437,6 +508,8 @@
                 android:textAlignment="center"
                 android:visibility="gone"
                 android:importantForAutofill="no"
+                android:textColor="?attr/textViewColor"
+                android:backgroundTint="?attr/textViewColor"
                 tools:ignore="LabelFor"/>
 
             <EditText
@@ -448,6 +521,8 @@
                 android:textAlignment="center"
                 android:visibility="gone"
                 android:importantForAutofill="no"
+                android:textColor="?attr/textViewColor"
+                android:backgroundTint="?attr/textViewColor"
                 tools:ignore="LabelFor"/>
 
             <EditText
@@ -459,6 +534,8 @@
                 android:textAlignment="center"
                 android:visibility="gone"
                 android:importantForAutofill="no"
+                android:textColor="?attr/textViewColor"
+                android:backgroundTint="?attr/textViewColor"
                 tools:ignore="LabelFor"/>
         </TableRow>
     </TableLayout>
@@ -469,6 +546,7 @@
         android:layout_gravity="center_horizontal"
         android:background="@drawable/express_button"
         android:textAppearance="@style/Text"
+        android:textColor="?attr/textViewColor"
         android:id="@+id/to_input_matrix"
         android:text="@string/count"
         android:layout_marginTop="580dp"

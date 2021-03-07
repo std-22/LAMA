@@ -11,8 +11,20 @@ public class MatrixResult extends AppCompatActivity {
     private static String nameOfFunction;
     private static String result;
 
+    SharedPreferences sharedPreferences;
+    Boolean state;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        sharedPreferences = new SharedPreferences(this);
+        state = sharedPreferences.loadNightModeState();
+
+        if (state){
+            setTheme(R.style.DarkAppTheme);
+        } else {
+            setTheme(R.style.AppTheme);
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.matrix_result);
 

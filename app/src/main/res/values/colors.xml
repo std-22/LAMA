@@ -11,4 +11,5 @@
     <color name="background_dark">#151e27</color>
     <color name="active_dark">#253040</color>
     <color name="bar_theme_color">#dddfe6</color>
+    <color name="for_icon">#606071</color>
 </resources>

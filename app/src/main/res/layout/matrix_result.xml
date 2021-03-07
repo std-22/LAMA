@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background">
+    android:background="?attr/backgroundColor">
 
     <ImageButton
         android:layout_width="30dp"
@@ -11,7 +11,7 @@
         android:layout_marginTop="33dp"
         android:layout_marginStart="33dp"
         android:scaleType="centerCrop"
-        android:background="@color/background"
+        android:background="?attr/backgroundColor"
         android:src="@drawable/ic_backspace"
         android:onClick="OnClickBackMatrix"
         android:contentDescription="@string/backspace"/>
@@ -24,6 +24,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="33dp"
         android:textAppearance="@style/Text"
+        android:textColor="?attr/textViewColor"
         android:textSize="20sp"
         android:textStyle="bold"
         tools:ignore="MissingConstraints"/>
@@ -33,6 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="250dp"
         android:layout_gravity="center_horizontal"
+        android:textColor="?attr/textViewColor"
         android:id="@+id/result"/>
 
     <!--CheckBox-->
@@ -42,6 +44,7 @@
         android:layout_height="wrap_content"
         android:text="@string/memory_matrix"
         android:textAppearance="@style/Text"
+        android:textColor="?attr/textViewColor"
         android:layout_marginTop="470dp"
         android:layout_marginStart="60dp"
         android:visibility="gone"/>
@@ -59,6 +62,7 @@
         android:layout_gravity="center_horizontal"
         android:background="@drawable/express_button"
         android:textAppearance="@style/Text"
+        android:textColor="?attr/textViewColor"
         android:id="@+id/to_input_matrix"
         android:text="@string/back_to_menu"
         android:layout_marginTop="580dp"
