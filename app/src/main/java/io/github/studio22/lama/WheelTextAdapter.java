@@ -2,6 +2,7 @@ package io.github.studio22.lama;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,8 +39,10 @@ public class WheelTextAdapter extends CursorWheelLayout.CycleWheelAdapter {
         textView.setVisibility(View.VISIBLE);
         textView.setTextSize(18);
         textView.setText(itemData.number);
+        //textView.setTextColor(Color.parseColor("#151e27"));
+
         if (textView.getLayoutParams() instanceof FrameLayout.LayoutParams)
-            ((FrameLayout.LayoutParams) ((FrameLayout.LayoutParams) textView.getLayoutParams())).gravity = gravity;
+            ((FrameLayout.LayoutParams) (textView.getLayoutParams())).gravity = gravity;
         return root;
     }
 

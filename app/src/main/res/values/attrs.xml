@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="dec_style">
+        <attr name="backgroundColor" format="color"/>
+        <attr name="textViewColor" format="color"/>
+        <attr name="viewColor" format="color"/>
+        <attr name="iconColor" format="color"/>
+    </declare-styleable>
+</resources>

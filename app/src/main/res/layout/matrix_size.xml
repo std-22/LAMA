@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background">
+    android:background="?attr/backgroundColor">
 
     <!--Field-->
 
@@ -29,7 +29,6 @@
         android:layout_marginTop="95dp"
         android:layout_marginStart="-250dp"
         app:wheelBackgroundColor="#00F9D19A"
-        app:wheelCursorColor="#3B3B45"
         app:wheelCursorHeight="0dp"
         app:wheelItemRadio="0.1"
         app:wheelItemRotateMode="none"/>
@@ -41,7 +40,6 @@
         android:layout_marginTop="95dp"
         android:layout_marginStart="210dp"
         app:wheelBackgroundColor="#00F9D19A"
-        app:wheelCursorColor="#3B3B45"
         app:wheelCursorHeight="0dp"
         app:wheelItemRadio="0.1"
         app:wheelItemRotateMode="none"/>
@@ -72,6 +70,7 @@
         android:layout_height="25dp"
         android:text="@string/x"
         android:textSize="22sp"
+        android:textColor="?attr/textViewColor"
         android:layout_marginTop="303dp"
         android:layout_gravity="center_horizontal"/>
 
@@ -80,6 +79,7 @@
         android:layout_height="wrap_content"
         android:text="@string/raw"
         android:textAppearance="@style/Text"
+        android:textColor="?attr/textViewColor"
         android:layout_marginTop="240dp"
         android:layout_marginStart="20dp"
         android:textAlignment="center"/>
@@ -89,6 +89,7 @@
         android:layout_height="wrap_content"
         android:text="@string/column"
         android:textAppearance="@style/Text"
+        android:textColor="?attr/textViewColor"
         android:layout_marginTop="240dp"
         android:layout_marginStart="370dp"
         android:textAlignment="center"/>
@@ -101,7 +102,7 @@
         android:layout_marginTop="33dp"
         android:layout_marginStart="33dp"
         android:scaleType="centerCrop"
-        android:background="@color/background"
+        android:background="?attr/backgroundColor"
         android:src="@drawable/ic_backspace"
         android:onClick="OnClickBackMatrix"
         android:contentDescription="@string/backspace"/>
@@ -114,6 +115,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
         android:textAppearance="@style/Text"
+        android:textColor="?attr/textViewColor"
         android:textSize="21sp"
         android:textStyle="bold"
         tools:ignore="MissingConstraints"/>
@@ -124,6 +126,7 @@
         android:layout_gravity="center_horizontal"
         android:background="@drawable/express_button"
         android:textAppearance="@style/Text"
+        android:textColor="?attr/textViewColor"
         android:id="@+id/to_input_matrix"
         android:text="@string/next"
         android:layout_marginTop="580dp"

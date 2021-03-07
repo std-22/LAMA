@@ -1,18 +1,11 @@
 package io.github.studio22.lama;
 
 import android.content.Intent;
-import android.graphics.Path;
-import android.graphics.PathMeasure;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Pair;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
@@ -24,14 +17,26 @@ public class CategoryOperation extends AppCompatActivity implements CursorWheelL
     private static String selectedRowSize;
     private static String selectedColumnSize;
     private static String nameOfFunction;
-    private String[] numbers = {"1", "2", "3", "4", "5", "6",
+    private final String[] numbers = {"1", "2", "3", "4", "5", "6",
                                 "1", "2", "3", "4", "5", "6"};
 
     CursorWheelLayout wheel_text_left, wheel_text_right;
     List<MenuItemData> textList_left;
     List<MenuItemData> textList_right;
 
+    SharedPreferences sharedPreferences;
+    Boolean state;
+
     public void onCreate(Bundle savedInstanceState) {
+        sharedPreferences = new SharedPreferences(this);
+        state = sharedPreferences.loadNightModeState();
+
+        if (state){
+            setTheme(R.style.DarkAppTheme);
+        } else {
+            setTheme(R.style.AppTheme);
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.matrix_size);
 
@@ -50,8 +55,8 @@ public class CategoryOperation extends AppCompatActivity implements CursorWheelL
             functionName.setText(nameOfFunction);
         }
 
-        wheel_text_left = (CursorWheelLayout)findViewById(R.id.wheel_text_left);
-        wheel_text_right = (CursorWheelLayout)findViewById(R.id.wheel_text_right);
+        wheel_text_left = findViewById(R.id.wheel_text_left);
+        wheel_text_right = findViewById(R.id.wheel_text_right);
         loadData();
 
         wheel_text_left.setOnMenuSelectedListener(this);
@@ -104,7 +109,6 @@ public class CategoryOperation extends AppCompatActivity implements CursorWheelL
 
 class MenuItemData {
     public String number;
-
     public MenuItemData(String number){
         this.number = number;
     }
