@@ -8,17 +8,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/CustomTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name="io.github.studio22.lama.MenuNavActivity"
             android:label="@string/title_activity_menu_nav"
             android:screenOrientation="portrait"/>
-
-        <activity
-            android:name="io.github.studio22.lama.MenuNavDarkActivity"
-            android:label="@string/title_activity_menu_nav_dark"
-            android:screenOrientation="portrait"
-            android:theme="@style/CustomThemeDark" />
 
         <activity android:name="io.github.studio22.lama.MainActivity"
             android:screenOrientation="portrait">
@@ -34,6 +28,8 @@
         <activity android:name="io.github.studio22.lama.MatrixLyambda"
             android:screenOrientation="portrait"/>
         <activity android:name="io.github.studio22.lama.Matrix"
+            android:screenOrientation="portrait"/>
+        <activity android:name="io.github.studio22.lama.MatrixInfo"
             android:screenOrientation="portrait"/>
         <activity android:name="io.github.studio22.lama.CategoryOperation"
             android:screenOrientation="portrait"/>

@@ -4,18 +4,41 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageView;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
 
+/**
+ * Стартовый экран с автопереключением, реализованным через таймер
+ */
+
 public class MainActivity extends AppCompatActivity {
-    private Timer timer = new Timer();
+    private final Timer timer = new Timer();
+    SharedPreferences sharedPreferences;
+    Boolean state;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        sharedPreferences = new SharedPreferences(this);
+        state = sharedPreferences.loadNightModeState();
+
+        if (state){
+            setTheme(R.style.DarkAppTheme);
+        } else {
+            setTheme(R.style.AppTheme);
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ImageView lama = findViewById(R.id.lama_image);
+        if(state){
+            lama.setImageResource(R.drawable.logo_new_dark);
+        } else {
+            lama.setImageResource(R.drawable.logo_new);
+        }
 
         timer.schedule(new TimerTask() {
             @Override

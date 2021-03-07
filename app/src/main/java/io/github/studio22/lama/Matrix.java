@@ -8,18 +8,34 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.snackbar.Snackbar;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Matrix extends AppCompatActivity {
     ArrayList<Operation> operations = new ArrayList<>();
+    SharedPreferences sharedPreferences;
+    Boolean state;
+    String color;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        sharedPreferences = new SharedPreferences(this);
+        state = sharedPreferences.loadNightModeState();
+
+        if (state){
+            setTheme(R.style.DarkAppTheme);
+        } else {
+            setTheme(R.style.AppTheme);
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.matrix);
+
+        if (state){
+            color = "#253040";
+        } else {
+            color = "#F9D19A";
+        }
 
         setInitialData();
         final RecyclerView recyclerView = findViewById(R.id.matrix_operations);
@@ -34,30 +50,19 @@ public class Matrix extends AppCompatActivity {
         });
         recyclerView.setAdapter(adapter);
 
-        final View view = findViewById(R.id.accelerate); //fail R.id.recyc_background
-
-        SwipeHelper swipeHelper = new SwipeHelper(this, view){
+        SwipeHelper swipeHelper = new SwipeHelper(this){
 
             @Override
             public void instantiateUnderlayButton(RecyclerView.ViewHolder viewHolder, List<UnderlayButton> underlayButtons) {
                 underlayButtons.add(new SwipeHelper.UnderlayButton(
                         Matrix.this,
-                        view,
-                        R.drawable.ic_info,
-                        Color.parseColor("#F9D19A"),
+                        Color.parseColor(color),
                         new SwipeHelper.UnderlayButtonClickListener() {
                             @Override
                             public void onClick(final int pos) {
-
-                                Snackbar snackbar = Snackbar.make(recyclerView, "Item was removed from the list.", Snackbar.LENGTH_LONG);
-                                snackbar.setAction("UNDO", new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View view) {
-                                        recyclerView.scrollToPosition(pos);
-                                    }
-                                });
-
-                                snackbar.show();
+                                Intent intent = new Intent(Matrix.this, MatrixInfo.class);
+                                intent.putExtra("selected", operations.get(pos));
+                                startActivity(intent);
                             }
                         }
                 ));
@@ -68,7 +73,7 @@ public class Matrix extends AppCompatActivity {
 
     private void setInitialData(){
         operations.add(new Operation ("DET |A|"));
-        operations.add(new Operation ("A ^ (-1)"));
+        operations.add(new Operation ("A¹"));
         operations.add(new Operation ("Транспонирование"));
         operations.add(new Operation ("Ранг матрицы"));
         operations.add(new Operation ("Решение системы уравнений"));

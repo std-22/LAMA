@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android" >
-    <item >
-        <shape android:shape="oval"  >
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="oval">
             <size
                 android:height="400dp"
-                android:width="400dp" />
-            <solid android:color="@color/active" />
+                android:width="400dp"/>
+            <solid android:color="?attr/viewColor"/>
         </shape>
     </item>
 </selector>

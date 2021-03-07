@@ -6,9 +6,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
+
+import static io.github.studio22.lama.R.drawable.list_item_view;
+import static io.github.studio22.lama.R.drawable.list_item_view_up;
 
 public class OperationAdapter extends RecyclerView.Adapter<OperationAdapter.ViewHolder>{
 
@@ -26,6 +30,7 @@ public class OperationAdapter extends RecyclerView.Adapter<OperationAdapter.View
         this.clickListener = clickListener;
     }
 
+    @NonNull
     @Override
     public OperationAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.list_item, parent, false);
@@ -36,6 +41,11 @@ public class OperationAdapter extends RecyclerView.Adapter<OperationAdapter.View
     public void onBindViewHolder(OperationAdapter.ViewHolder holder, int position) {
         Operation operation = operations.get(position);
         holder.title.setText(operation.getName());
+        if (position == 0){
+            holder.field.setBackgroundResource(list_item_view_up);
+        } else {
+            holder.field.setBackgroundResource(list_item_view);
+        }
     }
 
     @Override

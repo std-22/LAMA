@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="?attr/backgroundColor"
     tools:context=".ui.app.AboutProgramFragment">
 
     <TextView
@@ -12,6 +12,7 @@
         android:text="@string/About_program"
         android:layout_gravity="center_horizontal"
         android:textAppearance="@style/Text"
+        android:textColor="?attr/textViewColor"
         android:textSize="23sp"
         android:textStyle="bold"
         android:layout_marginTop="27dp"/>
@@ -22,6 +23,7 @@
         android:text="@string/app_description"
         android:textSize="20sp"
         android:textAppearance="@style/Text"
+        android:textColor="?attr/textViewColor"
         android:layout_marginTop="80dp"
         android:layout_gravity="center_horizontal"/>
 
@@ -31,7 +33,7 @@
         android:layout_marginTop="33dp"
         android:layout_marginStart="20dp"
         android:scaleType="centerCrop"
-        android:background="@color/background"
+        android:background="?attr/backgroundColor"
         android:src="@drawable/ic_nav"
         android:contentDescription="@string/navicon"/>
 
@@ -40,9 +42,9 @@
         android:layout_height="40dp"
         android:id="@+id/for_message"
         android:hint="@string/info_error"
-        android:textColor="@color/for_text"
+        android:textColor="?attr/textViewColor"
         android:fontFamily="@font/comfortaa_light"
-        android:textColorHint="@color/for_text"
+        android:textColorHint="?attr/textViewColor"
         android:inputType="textNoSuggestions"
         android:layout_marginTop="515dp"
         android:background="@null"
@@ -55,6 +57,7 @@
         android:layout_gravity="center_horizontal"
         android:background="@drawable/express_button"
         android:textAppearance="@style/Text"
+        android:textColor="?attr/textViewColor"
         android:id="@+id/send_button"
         android:text="@string/send"
         android:layout_marginTop="580dp"

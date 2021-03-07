@@ -1,5 +1,6 @@
 package io.github.studio22.lama;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
@@ -7,6 +8,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
@@ -21,14 +24,44 @@ import androidx.appcompat.widget.Toolbar;
 
 import java.util.List;
 
+/**
+ * Класс реализовывает навигацию в приложении
+ */
+
 public class MenuNavActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+    public static Boolean theme;
+    SharedPreferences sharedPreferences;
+    Boolean state;
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        sharedPreferences = new SharedPreferences(this);
+        state = sharedPreferences.loadNightModeState();
+        theme = state;
+
+        if (state){
+            setTheme(R.style.DarkAppTheme);
+        } else {
+            setTheme(R.style.AppTheme);
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_nav);
+
+        ImageView lama = findViewById(R.id.menu_lama_image);
+        //ImageButton night = findViewById(R.id.night);
+
+        if(state){
+            lama.setImageResource(R.drawable.logo_new_dark);
+            //night.setImageResource(R.drawable.ic_sun);
+        } else {
+            lama.setImageResource(R.drawable.logo_new);
+            //night.setImageResource(R.drawable.ic_moon);
+        }
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -39,10 +72,13 @@ public class MenuNavActivity extends AppCompatActivity {
                 R.id.matrix_fragment, R.id.app_fragment, R.id.achievements_fragment)
                 .setOpenableLayout(drawer)   //setDrawerLayout(drawer) deprecated
                 .build();
+
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
     }
+
+    /* navigation */
 
     @Override
     public boolean onSupportNavigateUp() {
@@ -51,7 +87,7 @@ public class MenuNavActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-    /* buttons */
+    /* choose of category */
 
     public void onClickMatrixMatrix(View view) {
         Intent intent = new Intent(MenuNavActivity.this, MatrixMatrix.class);
@@ -68,10 +104,23 @@ public class MenuNavActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /* changing theme */
+
     public void onClickToDark(View view) {
-        Intent intent = new Intent(MenuNavActivity.this, MenuNavDarkActivity.class);
+        sharedPreferences.setNightModeState(!state);
+
+        Intent intent = new Intent(getApplicationContext(), MenuNavActivity.class);
         startActivity(intent);
+        finish();
     }
+
+    /*public void onClickToLight(View view) {
+        sharedPreferences.setNightModeState(!state);
+
+        Intent intent = new Intent(getApplicationContext(), MenuNavActivity.class);
+        startActivity(intent);
+        finish();
+    }*/
 
     /* about program button */
 
@@ -96,7 +145,7 @@ public class MenuNavActivity extends AppCompatActivity {
 
     private Boolean isIntentSafe(Intent intent){
         PackageManager packageManager = getPackageManager();
-        List<ResolveInfo> activities = packageManager.queryIntentActivities(intent, 0);
+        @SuppressLint("QueryPermissionsNeeded") List<ResolveInfo> activities = packageManager.queryIntentActivities(intent, 0);
         return activities.size() > 0;
     }
 }
