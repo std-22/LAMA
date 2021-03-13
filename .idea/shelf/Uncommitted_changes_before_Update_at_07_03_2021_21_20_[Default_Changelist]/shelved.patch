@@ -1,0 +1,19 @@
+Index: app/src/main/java/io/github/studio22/lama/ui/app/AboutProgramFragment.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package io.github.studio22.lama.ui.app;\r\n\r\nimport android.os.Bundle;\r\nimport android.view.LayoutInflater;\r\nimport android.view.View;\r\nimport android.view.ViewGroup;\r\n\r\nimport androidx.annotation.NonNull;\r\nimport androidx.fragment.app.Fragment;\r\n\r\nimport io.github.studio22.lama.R;\r\n\r\npublic class AboutProgramFragment extends Fragment {\r\n\r\n    public View onCreateView(@NonNull LayoutInflater inflater,\r\n                             ViewGroup container, Bundle savedInstanceState) {\r\n        View root = inflater.inflate(R.layout.fragment_about_program, container, false);\r\n        return root;\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/io/github/studio22/lama/ui/app/AboutProgramFragment.java	(revision dd4d894b768ffb046507091a3103aeaf361635e5)
++++ app/src/main/java/io/github/studio22/lama/ui/app/AboutProgramFragment.java	(date 1615048665056)
+@@ -14,7 +14,6 @@
+ 
+     public View onCreateView(@NonNull LayoutInflater inflater,
+                              ViewGroup container, Bundle savedInstanceState) {
+-        View root = inflater.inflate(R.layout.fragment_about_program, container, false);
+-        return root;
++        return inflater.inflate(R.layout.fragment_about_program, container, false);
+     }
+ }
+\ No newline at end of file

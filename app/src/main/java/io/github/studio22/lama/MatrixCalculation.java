@@ -35,7 +35,7 @@ public class MatrixCalculation {
                 }
             }
 
-            result += matrix[0][i] * Math.pow (-1, (double) i) * matrixDeterminant (temporary);
+            result += matrix[0][i] * Math.pow (-1, i) * matrixDeterminant (temporary);
         }
         return result;
     }

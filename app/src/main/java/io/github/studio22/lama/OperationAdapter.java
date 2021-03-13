@@ -32,7 +32,7 @@ public class OperationAdapter extends RecyclerView.Adapter<OperationAdapter.View
 
     @NonNull
     @Override
-    public OperationAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public OperationAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.list_item, parent, false);
         return new ViewHolder(view, clickListener);
     }
