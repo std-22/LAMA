@@ -75,9 +75,9 @@ public class MatrixLyambda extends AppCompatActivity {
     private void setInitialData(){
         operations.add(new Operation ("Поэлементное A + n", nameOfClass));
         operations.add(new Operation ("Поэлементное A - n", nameOfClass));
-        operations.add(new Operation ("Поэлементное A * n", nameOfClass));
+        operations.add(new Operation ("Поэлементное A \u00D7 n", nameOfClass));
         operations.add(new Operation ("Поэлементное A / n", nameOfClass));
-        operations.add(new Operation ("Поэлементное A ^ n", nameOfClass));
+        operations.add(new Operation ("Поэлементное A\u207F", nameOfClass));
         operations.add(new Operation ("A ^ n", nameOfClass));
     }
 

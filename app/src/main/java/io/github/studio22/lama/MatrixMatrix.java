@@ -73,11 +73,11 @@ public class MatrixMatrix extends AppCompatActivity {
         }
 
         private void setInitialData(){
-            operations.add(new Operation ("A * B", nameOfClass));
-            operations.add(new Operation ("A * B ^ (-1)", nameOfClass));
+            operations.add(new Operation ("A \u00D7 B", nameOfClass));
+            operations.add(new Operation ("A \u00D7 B\u207B\u00B9", nameOfClass));
             operations.add(new Operation ("Поэлементное A + B", nameOfClass));
             operations.add(new Operation ("Поэлементное A - B", nameOfClass));
-            operations.add(new Operation ("Поэлементное A * B", nameOfClass));
+            operations.add(new Operation ("Поэлементное A \u00D7 B", nameOfClass));
             operations.add(new Operation ("Поэлементное A / B", nameOfClass));
     }
 
