@@ -8,11 +8,11 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MatrixResult extends AppCompatActivity {
-    private static String nameOfFunction;
     private static String result;
 
     SharedPreferences sharedPreferences;
     Boolean state;
+    Operation operation;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -30,9 +30,10 @@ public class MatrixResult extends AppCompatActivity {
 
         TextView functionName = findViewById(R.id.function_name);
 
-        if (getIntent().hasExtra("selected")) {
-            nameOfFunction = getIntent().getExtras().get("selected").toString();
-            functionName.setText(nameOfFunction);
+        //передача названия функции с предыдущего экрана
+        if(getIntent().hasExtra("selected")){
+            operation = getIntent().getParcelableExtra("selected");
+            functionName.setText(operation.getName());
         }
 
         TextView resultText = findViewById(R.id.result);
@@ -44,8 +45,34 @@ public class MatrixResult extends AppCompatActivity {
     }
 
     public void OnClickBackMatrix(View view) {
-        Intent intent = new Intent(MatrixResult.this, MatrixInput.class);
-        intent.putExtra("selected_next", nameOfFunction);
+        Intent intent;
+        if (getIntent().hasExtra("selected_row_size_matrix_B")) {
+            intent = new Intent(MatrixResult.this, MatrixInputB.class);
+            String temp = getIntent().getExtras().get("selected_row_size_matrix_B").toString();
+            int selectedRowSizeMatrixB = Integer.parseInt(temp);
+            intent.putExtra("selected_row_size", selectedRowSizeMatrixB);
+
+            if (getIntent().hasExtra("selected_column_size_matrix_B")) {
+                temp = getIntent().getExtras().get("selected_column_size_matrix_B").toString();
+                int selectedColumnSizeMatrixB = Integer.parseInt(temp);
+                intent.putExtra("selected_column_size", selectedColumnSizeMatrixB);
+            }
+        } else {
+            intent = new Intent(MatrixResult.this, MatrixInput.class);
+            //считывание размеров матрицы A
+            if (getIntent().hasExtra("selected_row_size")) {
+                String temp = getIntent().getExtras().get("selected_row_size").toString();
+                int selectedRowSize = Integer.parseInt(temp);
+                intent.putExtra("selected_row_size", selectedRowSize);
+            }
+
+            if (getIntent().hasExtra("selected_column_size")) {
+                String temp = getIntent().getExtras().get("selected_column_size").toString();
+                int selectedColumnSize = Integer.parseInt(temp);
+                intent.putExtra("selected_column_size", selectedColumnSize);
+            }
+        }
+        intent.putExtra("selected_next", operation);
         startActivity(intent);
     }
 

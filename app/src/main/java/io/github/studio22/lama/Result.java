@@ -1,7 +1,5 @@
 package io.github.studio22.lama;
 
-import android.content.Intent;
-
 public class Result {
     private static String result = "";
     private static String result_1 = "";

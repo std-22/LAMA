@@ -39,7 +39,12 @@ public class WheelTextAdapter extends CursorWheelLayout.CycleWheelAdapter {
         textView.setVisibility(View.VISIBLE);
         textView.setTextSize(18);
         textView.setText(itemData.number);
-        //textView.setTextColor(Color.parseColor("#151e27"));
+
+        if (MenuNavActivity.theme) {
+            textView.setTextColor(Color.parseColor("#ECEEF6"));
+        } else {
+            textView.setTextColor(Color.parseColor("#3B3B45"));
+        }
 
         if (textView.getLayoutParams() instanceof FrameLayout.LayoutParams)
             ((FrameLayout.LayoutParams) (textView.getLayoutParams())).gravity = gravity;

@@ -16,6 +16,7 @@ public class MatrixLyambda extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     Boolean state;
     String color;
+    String nameOfClass = this.getClass().getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +44,7 @@ public class MatrixLyambda extends AppCompatActivity {
         final OperationAdapter adapter = new OperationAdapter(this, operations, new OperationAdapter.ClickListener() {
             @Override
             public void onPositionClick(int position) {
-                Intent intent = new Intent(MatrixLyambda.this, CategoryOperation.class);
+                Intent intent = new Intent(MatrixLyambda.this, CategoryOperationMatrixA.class);
                 intent.putExtra("selected", operations.get(position));
                 startActivity(intent);
             }
@@ -72,12 +73,12 @@ public class MatrixLyambda extends AppCompatActivity {
     }
 
     private void setInitialData(){
-        operations.add(new Operation ("Поэлементное A + n"));
-        operations.add(new Operation ("Поэлементное A - n"));
-        operations.add(new Operation ("Поэлементное A * n"));
-        operations.add(new Operation ("Поэлементное A / n"));
-        operations.add(new Operation ("Поэлементное A ^ n"));
-        operations.add(new Operation ("A ^ n"));
+        operations.add(new Operation ("Поэлементное A + n", nameOfClass));
+        operations.add(new Operation ("Поэлементное A - n", nameOfClass));
+        operations.add(new Operation ("Поэлементное A * n", nameOfClass));
+        operations.add(new Operation ("Поэлементное A / n", nameOfClass));
+        operations.add(new Operation ("Поэлементное A ^ n", nameOfClass));
+        operations.add(new Operation ("A ^ n", nameOfClass));
     }
 
     public void OnClickBackMatrixLyambda(View view) {

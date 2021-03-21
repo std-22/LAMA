@@ -540,6 +540,29 @@
         </TableRow>
     </TableLayout>
 
+    <!-- Для ввода lyambda -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/enter_number"
+        android:visibility="gone"/>
+
+    <EditText
+        android:id="@+id/editTextNumber"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:ems="10"
+        android:inputType="numberSigned|number|numberDecimal"
+        android:textAlignment="center"
+        android:visibility="gone"
+        android:importantForAutofill="no"
+        android:textColor="?attr/textViewColor"
+        android:backgroundTint="?attr/textViewColor"
+        tools:ignore="LabelFor"/>
+
     <Button
         android:layout_width="286dp"
         android:layout_height="42dp"

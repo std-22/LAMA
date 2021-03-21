@@ -24,6 +24,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Queue;
 
 public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
@@ -150,7 +151,7 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
                     buffer = buttonsBuffer.get(pos);
                 }
 
-                translationX = dX * buffer.size() * 2 * BUTTON_WIDTH / itemView.getWidth();
+                translationX = dX * Objects.requireNonNull(buffer).size() * 2 * BUTTON_WIDTH / itemView.getWidth();
                 drawButtons(c, itemView, buffer, pos, translationX);
             }
         }
@@ -162,7 +163,7 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
         while (!recoverQueue.isEmpty()) {
             int pos = recoverQueue.poll();
             if (pos > -1) {
-                recyclerView.getAdapter().notifyItemChanged(pos);
+                Objects.requireNonNull(recyclerView.getAdapter()).notifyItemChanged(pos);
             }
         }
     }
@@ -236,7 +237,7 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
             c.drawCircle(rect.left + x, rect.top + y, 120, p);
             Drawable drawable = ContextCompat.getDrawable(context, R.drawable.ic_info);
             Bitmap bitmap = drawableToBitmap(drawable);
-            c.drawBitmap(bitmap, rect.left + x - 103, rect.top + y - 103, p);
+            c.drawBitmap(bitmap, rect.left + x - bitmap.getWidth() / 2f, rect.bottom - (rect.height() + bitmap.getHeight()) / 2, p);
 
             clickRegion = rect;
             this.pos = pos;

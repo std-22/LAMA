@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MatrixInfo extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     Boolean state;
+    Operation operation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,15 +38,27 @@ public class MatrixInfo extends AppCompatActivity {
 
         //передача с предыдущего экрана название функции
         if(getIntent().hasExtra("selected")){
-            Operation operation = getIntent().getParcelableExtra("selected");
+            operation = getIntent().getParcelableExtra("selected");
             functionName.setText(operation.getName());
         }
     }
 
-    //возврат настроен только на matrix, а нужно на место вызова
     public void OnClickBackMatrix(View view) {
-        Intent intent = new Intent(MatrixInfo.this, Matrix.class);
-        startActivity(intent);
+        Intent intent;
+        switch(operation.getNameOfClass()){
+            case "Matrix":
+                intent = new Intent(MatrixInfo.this, Matrix.class);
+                startActivity(intent);
+                break;
+            case "MatrixMatrix":
+                intent = new Intent(MatrixInfo.this, MatrixMatrix.class);
+                startActivity(intent);
+                break;
+            case "MatrixLyambda":
+                intent = new Intent(MatrixInfo.this, MatrixLyambda.class);
+                startActivity(intent);
+                break;
+        }
     }
 }
 
