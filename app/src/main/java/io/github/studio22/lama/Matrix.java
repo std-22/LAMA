@@ -16,6 +16,7 @@ public class Matrix extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     Boolean state;
     String color;
+    String nameOfClass = this.getClass().getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +44,7 @@ public class Matrix extends AppCompatActivity {
         final OperationAdapter adapter = new OperationAdapter(this, operations, new OperationAdapter.ClickListener() {
             @Override
             public void onPositionClick(int position) {
-                Intent intent = new Intent(Matrix.this, CategoryOperation.class);
+                Intent intent = new Intent(Matrix.this, CategoryOperationMatrixA.class);
                 intent.putExtra("selected", operations.get(position));
                 startActivity(intent);
             }
@@ -72,16 +73,16 @@ public class Matrix extends AppCompatActivity {
     }
 
     private void setInitialData(){
-        operations.add(new Operation ("DET |A|"));
-        operations.add(new Operation ("A¹"));
-        operations.add(new Operation ("Транспонирование"));
-        operations.add(new Operation ("Ранг матрицы"));
-        operations.add(new Operation ("Решение системы уравнений"));
-        operations.add(new Operation ("Критерий Сильвестра"));
-        operations.add(new Operation ("Поиск собственных значений"));
-        operations.add(new Operation ("Поиск собственных векторов"));
-        operations.add(new Operation ("Приведение к треугольному виду"));
-        operations.add(new Operation ("Приведение к диагональному виду"));
+        operations.add(new Operation ("DET |A|", nameOfClass));
+        operations.add(new Operation ("A\u1428¹", nameOfClass));
+        operations.add(new Operation ("Транспонирование", nameOfClass));
+        operations.add(new Operation ("Ранг матрицы", nameOfClass));
+        operations.add(new Operation ("Решение системы уравнений", nameOfClass));
+        operations.add(new Operation ("Критерий Сильвестра", nameOfClass));
+        operations.add(new Operation ("Поиск собственных значений", nameOfClass));
+        operations.add(new Operation ("Поиск собственных векторов", nameOfClass));
+        operations.add(new Operation ("Приведение к треугольному виду", nameOfClass));
+        operations.add(new Operation ("Приведение к диагональному виду", nameOfClass));
     }
 
     public void OnClickBackMatrix(View view) {

@@ -3,13 +3,12 @@ package io.github.studio22.lama;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MatrixInput extends AppCompatActivity {
+public class MatrixInputB extends AppCompatActivity {
     private static int selectedRowSize = 1;
     private static int selectedColumnSize = 1;
     private static int selectedRowSizeMatrixB = 1;
@@ -66,70 +65,56 @@ public class MatrixInput extends AppCompatActivity {
             selectedColumnSize = Integer.parseInt(temp);
         }
 
-        for(int i = 0; i < selectedRowSize; i++){
-            for(int j = 0; j < selectedColumnSize; j++){
+        //считывание размеров матрицы B
+        if (getIntent().hasExtra("selected_row_size_matrix_B")) {
+            String temp = getIntent().getExtras().get("selected_row_size_matrix_B").toString();
+            selectedRowSizeMatrixB = Integer.parseInt(temp);
+        }
+
+        if (getIntent().hasExtra("selected_column_size_matrix_B")) {
+            String temp = getIntent().getExtras().get("selected_column_size_matrix_B").toString();
+            selectedColumnSizeMatrixB = Integer.parseInt(temp);
+        }
+
+        for(int i = 0; i < selectedRowSizeMatrixB; i++){
+            for(int j = 0; j < selectedColumnSizeMatrixB; j++){
                 EditText editText = findViewById(editTextId[i][j]);
                 editText.setVisibility(View.VISIBLE);
             }
         }
-
-        //текст кнопки
-        Button button = findViewById(R.id.to_input_matrix);
-        if (getIntent().hasExtra("selected_row_size_matrix_B")) {
-            button.setText(R.string.next);
-        }
     }
 
     public void OnClickBackMatrix(View view) {
-        Intent intent;
-        if (getIntent().hasExtra("selected_row_size_matrix_B")) {
-            intent = new Intent(MatrixInput.this, CategoryOperationMatrixB.class);
-            intent.putExtra("selected_row_size", selectedRowSize);
-            intent.putExtra("selected_column_size", selectedColumnSize);
-        } else {
-            intent = new Intent(MatrixInput.this, CategoryOperationMatrixA.class);
-        }
+        Intent intent = new Intent(MatrixInputB.this, MatrixInput.class);
+        intent.putExtra("selected_row_size", selectedRowSizeMatrixB);
+        intent.putExtra("selected_column_size", selectedColumnSizeMatrixB);
+        intent.putExtra("selected_row_size", selectedRowSize);
+        intent.putExtra("selected_column_size", selectedColumnSize);
         intent.putExtra("selected_next", operation);
         startActivity(intent);
     }
 
     public void onClickToResult(View view) {
-        Intent intent;
-        String result;
-        //считывание размеров матрицы B
-        if (getIntent().hasExtra("selected_row_size_matrix_B")) {
-            //нет сохранения матрицы А
-            String temp = getIntent().getExtras().get("selected_row_size_matrix_B").toString();
-            selectedRowSizeMatrixB = Integer.parseInt(temp);
-
-            if (getIntent().hasExtra("selected_column_size_matrix_B")) {
-                temp = getIntent().getExtras().get("selected_column_size_matrix_B").toString();
-                selectedColumnSizeMatrixB = Integer.parseInt(temp);
+        //в этот момент можно считать
+        //нужно вызвать метод getResult() в блоке try
+        Double[][] field = new Double[selectedRowSizeMatrixB][selectedColumnSizeMatrixB];
+        for(int i = 0; i < selectedRowSizeMatrixB; i++){
+            for(int j = 0; j < selectedColumnSizeMatrixB; j++){
+                EditText editText = findViewById(editTextId[i][j]);
+                field[i][j] = Double.parseDouble(editText.getText().toString());
             }
-
-            intent = new Intent(MatrixInput.this, MatrixInputB.class);
-            intent.putExtra("selected_row_size_matrix_B", selectedRowSizeMatrixB);
-            intent.putExtra("selected_column_size_matrix_B", selectedColumnSizeMatrixB);
-        } else {
-            //в этот момент можно считать
-            //нужно вызвать метод getResult() в блоке try
-            Double[][] field = new Double[selectedRowSize][selectedColumnSize];
-            for(int i = 0; i < selectedRowSize; i++){
-                for(int j = 0; j < selectedColumnSize; j++){
-                    EditText editText = findViewById(editTextId[i][j]);
-                    field[i][j] = Double.parseDouble(editText.getText().toString());
-                }
-            }
-
-            result = Result.getResult(operation.getName(), field);
-            intent = new Intent(MatrixInput.this, MatrixResult.class);
-            intent.putExtra("result", result);
         }
+
+        String result = Result.getResult(operation.getName(), field);
+
+        Intent intent = new Intent(MatrixInputB.this, MatrixResult.class);
+        intent.putExtra("selected_row_size", selectedRowSizeMatrixB);
+        intent.putExtra("selected_column_size", selectedColumnSizeMatrixB);
         intent.putExtra("selected_row_size", selectedRowSize);
         intent.putExtra("selected_column_size", selectedColumnSize);
         intent.putExtra("selected", operation);
+        intent.putExtra("result", result);
 
         startActivity(intent);
     }
 }
-

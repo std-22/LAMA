@@ -16,6 +16,7 @@ public class MatrixMatrix extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     Boolean state;
     String color;
+    String nameOfClass = this.getClass().getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +44,7 @@ public class MatrixMatrix extends AppCompatActivity {
         final OperationAdapter adapter = new OperationAdapter(this, operations, new OperationAdapter.ClickListener() {
                 @Override
                 public void onPositionClick(int position) {
-                    Intent intent = new Intent(MatrixMatrix.this, CategoryOperation.class);
+                    Intent intent = new Intent(MatrixMatrix.this, CategoryOperationMatrixA.class);
                     intent.putExtra("selected", operations.get(position));
                     startActivity(intent);
                 }
@@ -72,12 +73,12 @@ public class MatrixMatrix extends AppCompatActivity {
         }
 
         private void setInitialData(){
-            operations.add(new Operation ("A * B"));
-            operations.add(new Operation ("A * B ^ (-1)"));
-            operations.add(new Operation ("Поэлементное A + B"));
-            operations.add(new Operation ("Поэлементное A - B"));
-            operations.add(new Operation ("Поэлементное A * B"));
-            operations.add(new Operation ("Поэлементное A / B"));
+            operations.add(new Operation ("A * B", nameOfClass));
+            operations.add(new Operation ("A * B ^ (-1)", nameOfClass));
+            operations.add(new Operation ("Поэлементное A + B", nameOfClass));
+            operations.add(new Operation ("Поэлементное A - B", nameOfClass));
+            operations.add(new Operation ("Поэлементное A * B", nameOfClass));
+            operations.add(new Operation ("Поэлементное A / B", nameOfClass));
     }
 
     public void OnClickBackMatrixMatrix(View view) {

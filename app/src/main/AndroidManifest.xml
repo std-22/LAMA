@@ -31,9 +31,13 @@
             android:screenOrientation="portrait"/>
         <activity android:name="io.github.studio22.lama.MatrixInfo"
             android:screenOrientation="portrait"/>
-        <activity android:name="io.github.studio22.lama.CategoryOperation"
+        <activity android:name="io.github.studio22.lama.CategoryOperationMatrixA"
+            android:screenOrientation="portrait"/>
+        <activity android:name="io.github.studio22.lama.CategoryOperationMatrixB"
             android:screenOrientation="portrait"/>
         <activity android:name="io.github.studio22.lama.MatrixInput"
+            android:screenOrientation="portrait"/>
+        <activity android:name="io.github.studio22.lama.MatrixInputB"
             android:screenOrientation="portrait"/>
         <activity android:name="io.github.studio22.lama.MatrixResult"
             android:screenOrientation="portrait"/>
