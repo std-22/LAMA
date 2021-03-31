@@ -64,4 +64,13 @@ public class MatrixCalculation {
 
         return transposed.toString();
     }
+
+    /**
+     * @param matrix матрица типа Double[][]
+     * @return обратная матрица
+     */
+    public static Double[][] inverse(Double[][] matrix) {
+        Double[][] inversed = new Double[matrix.length][matrix[0].length];
+        return inversed;
+    }
 }

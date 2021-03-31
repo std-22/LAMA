@@ -11,6 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Класс, отвечающий за работу раздела Матрица-Число
+ */
 public class MatrixLyambda extends AppCompatActivity {
     ArrayList<Operation> operations = new ArrayList<>();
     SharedPreferences sharedPreferences;
@@ -78,7 +81,7 @@ public class MatrixLyambda extends AppCompatActivity {
         operations.add(new Operation ("Поэлементное A \u00D7 n", nameOfClass));
         operations.add(new Operation ("Поэлементное A / n", nameOfClass));
         operations.add(new Operation ("Поэлементное A\u207F", nameOfClass));
-        operations.add(new Operation ("A ^ n", nameOfClass));
+        operations.add(new Operation ("A\u207F", nameOfClass));
     }
 
     public void OnClickBackMatrixLyambda(View view) {
