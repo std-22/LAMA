@@ -14,6 +14,9 @@ import java.util.List;
 import static io.github.studio22.lama.R.drawable.list_item_view;
 import static io.github.studio22.lama.R.drawable.list_item_view_up;
 
+/**
+ * Адаптер списка операций для RecyclerView
+ */
 public class OperationAdapter extends RecyclerView.Adapter<OperationAdapter.ViewHolder>{
 
     interface ClickListener{

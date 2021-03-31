@@ -11,6 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Класс, отвечающий за работу раздела Матрица
+ */
 public class Matrix extends AppCompatActivity {
     ArrayList<Operation> operations = new ArrayList<>();
     SharedPreferences sharedPreferences;

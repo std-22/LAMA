@@ -13,6 +13,9 @@ import java.util.List;
 
 import github.hellocsl.cursorwheel.CursorWheelLayout;
 
+/**
+ * Класс, отвечающий за работу выбора размерности матрицы
+ */
 public class WheelTextAdapter extends CursorWheelLayout.CycleWheelAdapter {
 
     private final List<MenuItemData> menuItems;
