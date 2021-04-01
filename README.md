@@ -31,8 +31,9 @@ LAMA - это android приложение для выполнения мате�
 ## Используемые языки программирования и технологии
 
 - ![Java](https://img.shields.io/badge/-Java-red?style=for-the-badge&logo=java)
-- ![Intellij-IDEA](https://img.shields.io/badge/-Intellij_IDEA-gray?style=for-the-badge&logo=intellij-idea)
 - ![Android-Studio](https://img.shields.io/badge/-Android_Studio-white?style=for-the-badge&logo=android-studio)
+- ![Figma](https://img.shields.io/badge/-Figma-white?style=for-the-badge&logo=figma)
+- ![Github](https://img.shields.io/badge/-Github-black?style=for-the-badge&logo=github)
 
 ## Установка приложения
 Вам необходимо скачать файл по ссылке (https://github.com/std-22/LAMA/releases/download/1.0/app-debug.apk) и установить приложение на свое устройство.
