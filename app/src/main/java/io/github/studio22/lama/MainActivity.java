@@ -11,6 +11,8 @@ import java.util.TimerTask;
 
 
 /**
+ * @author Melikbekyan Ashot & Tolokonov Ilya
+ * @version 1.0
  * Стартовый экран с автопереключением, реализованным через таймер
  */
 
