@@ -12,7 +12,7 @@ public class Result {
      * @param field матрица
      * @return результат вычислления
      */
-    public static String getResult(String nameOfFunction, Double[][] field){
+    public static String getResult(String nameOfFunction, double[][] field){
         switch (nameOfFunction){
             case "Критерий Сильвестра":
                 boolean firstMinor, secondMinor, thirdMinor;
@@ -71,7 +71,7 @@ public class Result {
      * @param matrixB вторая матрица
      * @return результат вычисления
      */
-    public static String getResult(String nameOfFunction, Double[][] matrixA, Double[][] matrixB) {
+    public static String getResult(String nameOfFunction, double[][] matrixA, double[][] matrixB) {
         switch (nameOfFunction) {
             case "A \u00D7 B":
                 return MatrixMatrixCalculation.multiplyMatrices(matrixA, matrixB);

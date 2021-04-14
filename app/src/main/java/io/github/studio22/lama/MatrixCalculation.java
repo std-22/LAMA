@@ -8,9 +8,9 @@ public class MatrixCalculation {
      * @param matrix матрица типа Double[][]
      * @return определитель матрицы
      */
-    public static Double matrixDeterminant (Double[][] matrix) {
-        Double[][] temporary;
-        Double result = 0.0;
+    public static Double matrixDeterminant (double[][] matrix) {
+        double[][] temporary;
+        double result = 0.0;
 
         if (matrix.length == 1) {
             result = matrix[0][0];
@@ -23,7 +23,7 @@ public class MatrixCalculation {
         }
 
         for (int i = 0; i < matrix[0].length; i++) {
-            temporary = new Double[matrix.length - 1][matrix[0].length - 1];
+            temporary = new double[matrix.length - 1][matrix[0].length - 1];
 
             for (int j = 1; j < matrix.length; j++) {
                 for (int k = 0; k < matrix[0].length; k++) {
@@ -44,7 +44,7 @@ public class MatrixCalculation {
      * @param matrix матрица типа Double[][]
      * @return транспонировання матрица типа String
      */
-    public static String transpose(Double[][] matrix) {
+    public static String transpose(double[][] matrix) {
         StringBuilder transposed = new StringBuilder();
         double[][] newField = new double[matrix[0].length][matrix.length];
 
@@ -69,8 +69,8 @@ public class MatrixCalculation {
      * @param matrix матрица типа Double[][]
      * @return обратная матрица
      */
-    public static Double[][] inverse(Double[][] matrix) {
-        Double[][] inversed = new Double[matrix.length][matrix[0].length];
+    public static double[][] inverse(double[][] matrix) {
+        double[][] inversed = new double[matrix.length][matrix[0].length];
         return inversed;
     }
 }
