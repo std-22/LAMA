@@ -36,6 +36,16 @@
         <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>-->
     </style>
 
+    <style name="result_view_cell">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">?attr/textViewColor</item>
+        <item name="android:visibility">gone</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:textSize">14pt</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
     <!-- Animation -->
 <!--
     <style name="WindowAnimationTransition">

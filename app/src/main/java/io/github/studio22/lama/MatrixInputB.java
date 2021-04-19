@@ -105,9 +105,7 @@ public class MatrixInputB extends AppCompatActivity {
             }
         }
         double[][] matrixA = (double[][]) getIntent().getExtras().get("matrix_a");
-        //double temp = matrixA[0][0];
-        //String result = String.valueOf(matrixA);
-        String result = Result.getResult(operation.getName(), matrixA, matrixB);
+        double[][] result = Result.getResult(operation.getName(), matrixA, matrixB);
 
         Intent intent = new Intent(MatrixInputB.this, MatrixResult.class);
         intent.putExtra("selected_row_size", selectedRowSizeMatrixB);
