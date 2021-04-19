@@ -4,39 +4,21 @@ package io.github.studio22.lama;
  * Класс получения результата вычислений
  */
 public class Result {
-    private static String result = "";
-    private static String result_1 = "";
-
     /**
      * @param nameOfFunction название функции
-     * @param field матрица
+     * @param matrix матрица
      * @return результат вычислления
      */
-    public static String getResult(String nameOfFunction, Double[][] field){
+    public static double[][] getResult(String nameOfFunction, double[][] matrix){
         switch (nameOfFunction){
             case "Критерий Сильвестра":
-                boolean firstMinor, secondMinor, thirdMinor;
-                firstMinor = field[0][0] > 0;
-                secondMinor = (field[0][0]*field[1][1] - field[0][1]*field[1][0]) > 0;
-                thirdMinor = (field[0][0]*(field[1][1]*field[2][2]-field[1][2]*field[2][1]) -
-                              field[0][1]*(field[1][0]*field[2][2]-field[1][2]*field[2][0]) +
-                              field[0][2]*(field[1][0]*field[2][1]-field[1][1]*field[2][0])) > 0;
-                if (firstMinor && secondMinor && thirdMinor) {
-                    result = "Positive definite";
-                } else if (!firstMinor && secondMinor && !thirdMinor) {
-                    result = "Negative definite";
-                } else {
-                    result = "Alternating definite";
-                }
-                result_1 = result;
-                result = "";
-                return result_1;
+                return MatrixCalculation.criterionSilvester(matrix);
             case "Транспонирование":
-                return MatrixCalculation.transpose(field);
+                return MatrixCalculation.transpose(matrix);
             case "DET |A|":
-                return String.valueOf(MatrixCalculation.matrixDeterminant(field));
+                return MatrixCalculation.determinant(matrix);
             default:
-                return "Something get wrong";
+                return matrix;
         }
     }
 
@@ -71,7 +53,7 @@ public class Result {
      * @param matrixB вторая матрица
      * @return результат вычисления
      */
-    public static String getResult(String nameOfFunction, Double[][] matrixA, Double[][] matrixB) {
+    public static double[][] getResult(String nameOfFunction, double[][] matrixA, double[][] matrixB) {
         switch (nameOfFunction) {
             case "A \u00D7 B":
                 return MatrixMatrixCalculation.multiplyMatrices(matrixA, matrixB);
@@ -87,7 +69,7 @@ public class Result {
             case "Поэлементное A / B":
                 return MatrixMatrixCalculation.divideByElem(matrixA, matrixB);
             default:
-                return "Something get wrong";
+                return matrixA;
         }
     }
 }

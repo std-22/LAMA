@@ -97,15 +97,15 @@ public class MatrixInputB extends AppCompatActivity {
     public void onClickToResult(View view) {
         //в этот момент можно считать
         //нужно вызвать метод getResult() в блоке try
-        Double[][] field = new Double[selectedRowSizeMatrixB][selectedColumnSizeMatrixB];
+        double[][] matrixB = new double[selectedRowSizeMatrixB][selectedColumnSizeMatrixB];
         for(int i = 0; i < selectedRowSizeMatrixB; i++){
             for(int j = 0; j < selectedColumnSizeMatrixB; j++){
                 EditText editText = findViewById(editTextId[i][j]);
-                field[i][j] = Double.parseDouble(editText.getText().toString());
+                matrixB[i][j] = Double.parseDouble(editText.getText().toString());
             }
         }
-
-        String result = Result.getResult(operation.getName(), field);
+        double[][] matrixA = (double[][]) getIntent().getExtras().get("matrix_a");
+        double[][] result = Result.getResult(operation.getName(), matrixA, matrixB);
 
         Intent intent = new Intent(MatrixInputB.this, MatrixResult.class);
         intent.putExtra("selected_row_size", selectedRowSizeMatrixB);
