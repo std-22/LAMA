@@ -76,9 +76,9 @@ public class Matrix extends AppCompatActivity {
     }
 
     private void setInitialData(){
-        operations.add(new Operation ("DET |A|", nameOfClass));
-        operations.add(new Operation ("A\u1428¹", nameOfClass));
-        operations.add(new Operation ("Транспонирование", nameOfClass));
+        operations.add(new Operation("DET |A|", nameOfClass));
+        operations.add(new Operation("A\u1428\u00B9", nameOfClass));
+        operations.add(new Operation("Транспонирование", nameOfClass));
         operations.add(new Operation ("Ранг матрицы", nameOfClass));
         operations.add(new Operation ("Решение системы уравнений", nameOfClass));
         operations.add(new Operation ("Критерий Сильвестра", nameOfClass));
