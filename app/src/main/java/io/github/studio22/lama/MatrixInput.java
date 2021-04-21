@@ -95,7 +95,6 @@ public class MatrixInput extends AppCompatActivity {
 
     public void onClickToResult(View view) {
         Intent intent;
-        double[][] result;
         double[][] matrixA;
         //считывание размеров матрицы B
         if (getIntent().hasExtra("selected_row_size_matrix_B")) {
@@ -121,7 +120,6 @@ public class MatrixInput extends AppCompatActivity {
             intent.putExtra("selected_column_size_matrix_B", selectedColumnSizeMatrixB);
         } else {
             //в этот момент можно считать
-            //нужно вызвать метод getResult() в блоке try
             matrixA = new double[selectedRowSizeA][selectedColumnSizeA];
             for(int i = 0; i < selectedRowSizeA; i++){
                 for(int j = 0; j < selectedColumnSizeA; j++){
@@ -129,8 +127,6 @@ public class MatrixInput extends AppCompatActivity {
                     matrixA[i][j] = Double.parseDouble(editText.getText().toString());
                 }
             }
-
-            result = Result.getResult(operation.getName(), matrixA);
             intent = new Intent(MatrixInput.this, MatrixResult.class);
             intent.putExtra("matrix_a", matrixA);
         }

@@ -95,8 +95,6 @@ public class MatrixInputB extends AppCompatActivity {
     }
 
     public void onClickToResult(View view) {
-        //в этот момент можно считать
-        //нужно вызвать метод getResult() в блоке try
         double[][] matrixB = new double[selectedRowSizeMatrixB][selectedColumnSizeMatrixB];
         for(int i = 0; i < selectedRowSizeMatrixB; i++){
             for(int j = 0; j < selectedColumnSizeMatrixB; j++){
@@ -105,7 +103,6 @@ public class MatrixInputB extends AppCompatActivity {
             }
         }
         double[][] matrixA = (double[][]) getIntent().getExtras().get("matrix_a");
-        double[][] result = Result.getResult(operation.getName(), matrixA, matrixB);
 
         Intent intent = new Intent(MatrixInputB.this, MatrixResult.class);
         intent.putExtra("selected_row_size", selectedRowSizeMatrixB);
@@ -113,7 +110,8 @@ public class MatrixInputB extends AppCompatActivity {
         intent.putExtra("selected_row_size", selectedRowSize);
         intent.putExtra("selected_column_size", selectedColumnSize);
         intent.putExtra("selected", operation);
-        intent.putExtra("result", result);
+        intent.putExtra("matrix_a", matrixA);
+        intent.putExtra("matrix_b", matrixB);
 
         startActivity(intent);
     }

@@ -10,8 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.text.DecimalFormat;
 
 public class MatrixResult extends AppCompatActivity {
-    private static String result;
-
     SharedPreferences sharedPreferences;
     Boolean state;
     Operation operation;
@@ -42,13 +40,35 @@ public class MatrixResult extends AppCompatActivity {
         TextView functionName = findViewById(R.id.function_name);
 
         //передача названия функции с предыдущего экрана
-        if(getIntent().hasExtra("selected")){
+        if (getIntent().hasExtra("selected")) {
             operation = getIntent().getParcelableExtra("selected");
             functionName.setText(operation.getName());
         }
 
-        if (getIntent().hasExtra("result")) {
-            double[][] result = (double[][]) getIntent().getExtras().get("result");
+        if (getIntent().hasExtra("matrix_a") & !getIntent().hasExtra("matrix_b")) {
+            double[][] matrixA = (double[][]) getIntent().getExtras().get("matrix_a");
+            TextView textView;
+            switch (operation.getName()) {
+                case "DET |A|":
+                    double result = Result.getResult(operation.getName(), matrixA)[0][0];
+                    textView = findViewById(resultTextViewID[0][0]);
+                    textView.setVisibility(View.VISIBLE);
+                    textView.setText(String.valueOf(result));
+                case "Транспонирование":
+                    double[][] transposed = Result.getResult(operation.getName(), matrixA);
+                    for (int i = 0; i < transposed.length; i++) {
+                        for (int j = 0; j < transposed[0].length; j++) {
+                            textView = findViewById(resultTextViewID[i][j]);
+                            textView.setVisibility(View.VISIBLE);
+                            DecimalFormat df = new DecimalFormat("#.###");
+                            textView.setText(df.format(transposed[i][j]));
+                        }
+                    }
+            }
+        } else if (getIntent().hasExtra("matrix_a") & getIntent().hasExtra("matrix_b")) {
+            double[][] matrixA = (double[][]) getIntent().getExtras().get("matrix_a");
+            double[][] matrixB = (double[][]) getIntent().getExtras().get("matrix_b");
+            double[][] result = Result.getResult(operation.getName(), matrixA, matrixB);
             for (int i = 0; i < result.length; i++) {
                 for (int j = 0; j < result[0].length; j++) {
                     TextView textView = findViewById(resultTextViewID[i][j]);
