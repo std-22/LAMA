@@ -113,7 +113,13 @@ public class CategoryOperationMatrixA extends AppCompatActivity implements Curso
 
         Intent intent;
         if ("MatrixMatrix".equals(operation.getNameOfClass())) {
-            intent = new Intent(CategoryOperationMatrixA.this, CategoryOperationMatrixB.class);
+            if (operation.getName().equals("A + B")){
+                intent = new Intent(CategoryOperationMatrixA.this, MatrixInput.class);
+                intent.putExtra("selected_row_size_matrix_B", selectedRowSize);
+                intent.putExtra("selected_column_size_matrix_B", selectedColumnSize);
+            } else {
+                intent = new Intent(CategoryOperationMatrixA.this, CategoryOperationMatrixB.class);
+            }
         } else {
             intent = new Intent(CategoryOperationMatrixA.this, MatrixInput.class);
         }
