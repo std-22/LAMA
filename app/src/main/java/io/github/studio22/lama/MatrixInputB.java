@@ -2,9 +2,11 @@ package io.github.studio22.lama;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -75,13 +77,22 @@ public class MatrixInputB extends AppCompatActivity {
             String temp = getIntent().getExtras().get("selected_column_size_matrix_B").toString();
             selectedColumnSizeMatrixB = Integer.parseInt(temp);
         }
-
-        for(int i = 0; i < selectedRowSizeMatrixB; i++){
-            for(int j = 0; j < selectedColumnSizeMatrixB; j++){
-                EditText editText = findViewById(editTextId[i][j]);
-                editText.setVisibility(View.VISIBLE);
+        try {
+            for (int i = 0; i < selectedRowSizeMatrixB; i++) {
+                for (int j = 0; j < selectedColumnSizeMatrixB; j++) {
+                    EditText editText = findViewById(editTextId[i][j]);
+                    editText.setVisibility(View.VISIBLE);
+                }
             }
+        } catch (Exception ignored) {
+            Toast toast = Toast.makeText(getApplicationContext(),
+                    "Пропущены значения",
+                    Toast.LENGTH_LONG);
+            toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL,
+                    0, 0);
+            toast.show();
         }
+
     }
 
     public void OnClickBackMatrix(View view) {
@@ -95,24 +106,31 @@ public class MatrixInputB extends AppCompatActivity {
     }
 
     public void onClickToResult(View view) {
-        double[][] matrixB = new double[selectedRowSizeMatrixB][selectedColumnSizeMatrixB];
-        for(int i = 0; i < selectedRowSizeMatrixB; i++){
-            for(int j = 0; j < selectedColumnSizeMatrixB; j++){
-                EditText editText = findViewById(editTextId[i][j]);
-                matrixB[i][j] = Double.parseDouble(editText.getText().toString());
+        try {
+            double[][] matrixB = new double[selectedRowSizeMatrixB][selectedColumnSizeMatrixB];
+            for (int i = 0; i < selectedRowSizeMatrixB; i++) {
+                for (int j = 0; j < selectedColumnSizeMatrixB; j++) {
+                    EditText editText = findViewById(editTextId[i][j]);
+                    matrixB[i][j] = Double.parseDouble(editText.getText().toString());
+                }
             }
+            double[][] matrixA = (double[][]) getIntent().getExtras().get("matrix_a");
+            Intent intent = new Intent(MatrixInputB.this, MatrixResult.class);
+            intent.putExtra("selected_row_size", selectedRowSizeMatrixB);
+            intent.putExtra("selected_column_size", selectedColumnSizeMatrixB);
+            intent.putExtra("selected_row_size", selectedRowSize);
+            intent.putExtra("selected_column_size", selectedColumnSize);
+            intent.putExtra("selected", operation);
+            intent.putExtra("matrix_a", matrixA);
+            intent.putExtra("matrix_b", matrixB);
+            startActivity(intent);
+        } catch (Exception ignored) {
+            Toast toast = Toast.makeText(getApplicationContext(),
+                    "Пропущены значения",
+                    Toast.LENGTH_LONG);
+            toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL,
+                    0, 0);
+            toast.show();
         }
-        double[][] matrixA = (double[][]) getIntent().getExtras().get("matrix_a");
-
-        Intent intent = new Intent(MatrixInputB.this, MatrixResult.class);
-        intent.putExtra("selected_row_size", selectedRowSizeMatrixB);
-        intent.putExtra("selected_column_size", selectedColumnSizeMatrixB);
-        intent.putExtra("selected_row_size", selectedRowSize);
-        intent.putExtra("selected_column_size", selectedColumnSize);
-        intent.putExtra("selected", operation);
-        intent.putExtra("matrix_a", matrixA);
-        intent.putExtra("matrix_b", matrixB);
-
-        startActivity(intent);
     }
 }

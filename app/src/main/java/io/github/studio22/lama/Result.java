@@ -17,6 +17,8 @@ public class Result {
                 return MatrixCalculation.transpose(matrix);
             case "DET |A|":
                 return MatrixCalculation.determinant(matrix);
+            case "A\u1428\u00B9":
+                return MatrixCalculation.inverse(matrix);
             default:
                 return matrix;
         }

@@ -45,6 +45,7 @@ public class MatrixResult extends AppCompatActivity {
             functionName.setText(operation.getName());
         }
 
+        // Матрица
         if (getIntent().hasExtra("matrix_a") & !getIntent().hasExtra("matrix_b")) {
             double[][] matrixA = (double[][]) getIntent().getExtras().get("matrix_a");
             TextView textView;
@@ -54,18 +55,35 @@ public class MatrixResult extends AppCompatActivity {
                     textView = findViewById(resultTextViewID[0][0]);
                     textView.setVisibility(View.VISIBLE);
                     textView.setText(String.valueOf(result));
+                    break;
                 case "Транспонирование":
-                    double[][] transposed = Result.getResult(operation.getName(), matrixA);
-                    for (int i = 0; i < transposed.length; i++) {
-                        for (int j = 0; j < transposed[0].length; j++) {
+                case "A\u1428\u00B9":
+                    double[][] resultMatrix = Result.getResult(operation.getName(), matrixA);
+                    for (int i = 0; i < resultMatrix.length; i++) {
+                        for (int j = 0; j < resultMatrix[0].length; j++) {
                             textView = findViewById(resultTextViewID[i][j]);
                             textView.setVisibility(View.VISIBLE);
                             DecimalFormat df = new DecimalFormat("#.###");
-                            textView.setText(df.format(transposed[i][j]));
+                            textView.setText(df.format(resultMatrix[i][j]));
                         }
                     }
+                    break;
+                case "Критерий Сильвестра":
+                    int resultSilvester = (int) Result.getResult(operation.getName(), matrixA)[0][0];
+                    textView = findViewById(resultTextViewID[0][0]);
+                    textView.setVisibility(View.VISIBLE);
+                    if (resultSilvester == 1) {
+                        textView.setText("Положительная определенность");
+                    } else if (resultSilvester == 0) {
+                        textView.setText("Знакопеременная определенность");
+                    } else {
+                        textView.setText("Отрицательная определенность");
+                    }
+                    break;
             }
-        } else if (getIntent().hasExtra("matrix_a") & getIntent().hasExtra("matrix_b")) {
+        }
+        // Матрица-Матрица
+        else if (getIntent().hasExtra("matrix_a") & getIntent().hasExtra("matrix_b")) {
             double[][] matrixA = (double[][]) getIntent().getExtras().get("matrix_a");
             double[][] matrixB = (double[][]) getIntent().getExtras().get("matrix_b");
             double[][] result = Result.getResult(operation.getName(), matrixA, matrixB);
