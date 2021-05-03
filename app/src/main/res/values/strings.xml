@@ -50,6 +50,8 @@
     <string name="wheel">Wheel</string>
     <string name="description">description</string>
     <string name="enter_number">Введите число</string>
+    <string name="by_studio_22">Made by Studio 22</string>
+    <string name="logo">logo</string>
     <string-array name="numbers">
         <item>1</item>
         <item>2</item>

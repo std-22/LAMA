@@ -42,8 +42,9 @@
         <item name="android:textColor">?attr/textViewColor</item>
         <item name="android:visibility">gone</item>
         <item name="android:padding">5dp</item>
-        <item name="android:textSize">14pt</item>
+        <item name="android:textSize">28sp</item>
         <item name="android:textAlignment">center</item>
+        <item name="android:fontFamily">@font/comfortaa_light</item>
     </style>
 
     <!-- Animation -->
