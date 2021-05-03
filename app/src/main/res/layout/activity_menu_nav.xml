@@ -35,7 +35,7 @@
                 android:id="@+id/menu_lama_image"
                 android:layout_marginTop="180dp"
                 android:src="@drawable/logo_new"
-                android:contentDescription="@string/lama"/>
+                android:contentDescription="@string/lama" />
         </LinearLayout>
     </com.google.android.material.navigation.NavigationView>
 </androidx.drawerlayout.widget.DrawerLayout>

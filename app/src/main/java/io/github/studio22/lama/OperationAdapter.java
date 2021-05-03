@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import static io.github.studio22.lama.R.drawable.list_item_view;
+import static io.github.studio22.lama.R.drawable.list_item_view_down;
 import static io.github.studio22.lama.R.drawable.list_item_view_up;
 
 /**
@@ -46,6 +47,10 @@ public class OperationAdapter extends RecyclerView.Adapter<OperationAdapter.View
         holder.title.setText(operation.getName());
         if (position == 0){
             holder.field.setBackgroundResource(list_item_view_up);
+        } else if (position == operations.size()-1){
+            holder.field.setBackgroundResource(list_item_view_down);
+            holder.line.setVisibility(View.GONE);
+            holder.bottom.setVisibility(View.VISIBLE);
         } else {
             holder.field.setBackgroundResource(list_item_view);
         }
@@ -59,6 +64,8 @@ public class OperationAdapter extends RecyclerView.Adapter<OperationAdapter.View
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         final TextView title;
         final View field;
+        final View line;
+        final View bottom;
         ClickListener clickListener;
 
         ViewHolder(View view, ClickListener clickListener){
@@ -66,6 +73,8 @@ public class OperationAdapter extends RecyclerView.Adapter<OperationAdapter.View
 
             title = view.findViewById(R.id.operation_name);
             field = view.findViewById(R.id.operation_view);
+            line  = view.findViewById(R.id.line);
+            bottom = view.findViewById(R.id.bottom_space);
             this.clickListener = clickListener;
             view.setOnClickListener(this);
         }
