@@ -29,7 +29,7 @@ import java.util.Queue;
 
 public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
 
-    public static final int BUTTON_WIDTH = 200;
+    public static final int BUTTON_WIDTH = 150;
     private RecyclerView recyclerView;
     private List<UnderlayButton> buttons;
     private final GestureDetector gestureDetector;
@@ -97,7 +97,7 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
 
     @Override
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
-        int pos = viewHolder.getAdapterPosition();
+        int pos = viewHolder.getBindingAdapterPosition();
 
         if (swipedPos != pos)
             recoverQueue.add(swipedPos);
@@ -131,7 +131,7 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
 
     @Override
     public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
-        int pos = viewHolder.getAdapterPosition();
+        int pos = viewHolder.getBindingAdapterPosition();
         float translationX = dX;
         View itemView = viewHolder.itemView;
 
@@ -234,7 +234,7 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
             float cWidth = rect.width();
             float x = cWidth / 2f - r.width() / 2f - r.left;
             float y = cHeight / 2f + r.height() / 2f - r.bottom;
-            c.drawCircle(rect.left + x, rect.top + y, 120, p);
+            c.drawCircle(rect.left + x, rect.top + y, rect.width()/6, p);
             Drawable drawable = ContextCompat.getDrawable(context, R.drawable.ic_info);
             Bitmap bitmap = drawableToBitmap(drawable);
             c.drawBitmap(bitmap, rect.left + x - bitmap.getWidth() / 2f, rect.bottom - (rect.height() + bitmap.getHeight()) / 2, p);
