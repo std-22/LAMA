@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.matrix.MatrixFragment"
     android:background="?attr/backgroundColor"
     android:orientation="vertical">
@@ -10,50 +11,67 @@
     <!-- Images -->
 
     <ImageView
+        android:id="@+id/two_matrix_image"
         android:layout_width="370dp"
         android:layout_height="200dp"
-        android:layout_marginTop="60dp"
-        android:id="@+id/two_matrix_image"
+        android:layout_gravity="center_horizontal"
         android:contentDescription="@string/two_matrix"
         android:src="@drawable/two_matrix"
-        android:layout_gravity="center_horizontal"
-        tools:ignore="MissingConstraints"/>
-
-    <ImageView
-        android:layout_width="370dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="265dp"
-        android:id="@+id/lyambda_matrix_image"
-        android:contentDescription="@string/lyambda_matrix"
-        android:src="@drawable/lyambda_matrix"
-        android:layout_gravity="center_horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view"
+        app:layout_constraintBottom_toTopOf="@+id/line_1"
         tools:ignore="MissingConstraints" />
 
     <ImageView
+        android:id="@+id/lyambda_matrix_image"
         android:layout_width="370dp"
         android:layout_height="200dp"
-        android:layout_marginTop="470dp"
+        android:layout_gravity="center_horizontal"
+        android:contentDescription="@string/lyambda_matrix"
+        android:src="@drawable/lyambda_matrix"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/line_1"
+        app:layout_constraintBottom_toTopOf="@+id/line_2"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
         android:id="@+id/matrix_image"
+        android:layout_width="370dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="24dp"
         android:contentDescription="@string/one_matrix"
         android:src="@drawable/one_matrix"
-        android:layout_gravity="center_horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/line_2"
         tools:ignore="MissingConstraints" />
 
     <!-- Separators -->
 
     <View
         android:id="@+id/line_1"
-        android:layout_marginTop="265dp"
         android:layout_width="fill_parent"
         android:layout_height="2dp"
-        android:background="@color/separator" />
+        android:background="@color/separator"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/two_matrix_image"
+        app:layout_constraintBottom_toTopOf="@+id/lyambda_matrix_image"/>
 
     <View
         android:id="@+id/line_2"
-        android:layout_marginTop="470dp"
         android:layout_width="fill_parent"
         android:layout_height="2dp"
-        android:background="@color/separator" />
+        android:background="@color/separator"
+        app:layout_constraintTop_toBottomOf="@+id/lyambda_matrix_image"
+        app:layout_constraintBottom_toTopOf="@+id/matrix_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <!-- Buttons -->
 
@@ -61,89 +79,124 @@
         android:id="@+id/two_matrix"
         android:layout_width="200dp"
         android:layout_height="30dp"
-        android:layout_marginTop="205dp"
-        android:fontFamily="@font/comfortaa_light"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="85dp"
         android:background="@drawable/menu_button"
+        android:fontFamily="@font/comfortaa_light"
         android:onClick="onClickMatrixMatrix"
         android:text="@string/list_op_two_matrix"
         android:textColor="?attr/textViewColor"
-        android:layout_gravity="center_horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/two_matrix_image"
+        app:layout_constraintStart_toStartOf="@+id/two_matrix_image"
+        app:layout_constraintTop_toTopOf="@+id/two_matrix_image"
         tools:ignore="MissingConstraints,OnClick" />
 
     <Button
         android:id="@+id/lyambda_matrix"
         android:layout_width="200dp"
         android:layout_height="30dp"
-        android:layout_marginTop="410dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="85dp"
         android:background="@drawable/menu_button"
+        android:fontFamily="@font/comfortaa_light"
         android:onClick="onClickMatrixLyambda"
         android:text="@string/list_op_lyam_matrix"
-        android:fontFamily="@font/comfortaa_light"
         android:textColor="?attr/textViewColor"
-        android:layout_gravity="center_horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/lyambda_matrix_image"
+        app:layout_constraintStart_toStartOf="@+id/lyambda_matrix_image"
+        app:layout_constraintTop_toTopOf="@+id/lyambda_matrix_image"
         tools:ignore="MissingConstraints,OnClick" />
 
     <Button
         android:id="@+id/one_matrix"
         android:layout_width="200dp"
         android:layout_height="30dp"
-        android:layout_marginTop="615dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="85dp"
         android:background="@drawable/menu_button"
+        android:fontFamily="@font/comfortaa_light"
         android:onClick="onClickMatrix"
         android:text="@string/list_op_matrix"
-        android:fontFamily="@font/comfortaa_light"
         android:textColor="?attr/textViewColor"
-        android:layout_gravity="center_horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/matrix_image"
+        app:layout_constraintStart_toStartOf="@+id/matrix_image"
+        app:layout_constraintTop_toTopOf="@+id/matrix_image"
         tools:ignore="MissingConstraints,OnClick" />
 
     <!-- Header -->
 
     <View
+        android:id="@+id/view"
         android:layout_width="293dp"
         android:layout_height="33dp"
-        android:layout_marginStart="70dp"
         android:layout_marginTop="33dp"
-        android:background="@drawable/view" />
+        android:background="@drawable/view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.70"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
+        android:id="@+id/editText"
         android:layout_width="251dp"
         android:layout_height="40dp"
-        android:hint="@string/search"
-        android:textColor="?attr/textViewColor"
-        android:fontFamily="@font/comfortaa_light"
-        android:textColorHint="?attr/textViewColor"
-        android:inputType="textNoSuggestions"
-        android:layout_marginTop="27dp"
+        android:layout_marginStart="8dp"
+        android:autofillHints="function"
         android:background="@null"
-        android:layout_marginStart="115dp"
-        android:autofillHints="function"/>
+        android:fontFamily="@font/comfortaa_light"
+        android:hint="@string/search"
+        android:inputType="textNoSuggestions"
+        android:textColor="?attr/textViewColor"
+        android:textColorHint="?attr/textViewColor"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="@+id/view"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imageButton2"
+        app:layout_constraintTop_toTopOf="@+id/view"
+        app:layout_constraintVertical_bias="1.0" />
 
     <View
         android:id="@+id/line_3"
         android:layout_width="2dp"
         android:layout_height="33dp"
-        android:layout_marginTop="33dp"
-        android:layout_marginStart="109dp"
-        android:background="@color/separator" />
+        android:layout_marginStart="4dp"
+        android:background="@color/separator"
+        app:layout_constraintEnd_toStartOf="@+id/editText"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imageButton2"
+        app:layout_constraintTop_toTopOf="@+id/view" />
 
     <ImageButton
+        android:id="@+id/imageButton2"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_marginTop="37dp"
-        android:layout_marginStart="79dp"
-        android:scaleType="centerCrop"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="3dp"
         android:background="?attr/viewColor"
+        android:contentDescription="@string/search"
+        android:scaleType="centerCrop"
         android:src="@drawable/ic_search"
-        android:contentDescription="@string/search"/>
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintStart_toStartOf="@+id/view"
+        app:layout_constraintTop_toTopOf="@+id/view" />
 
     <ImageView
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginTop="33dp"
-        android:layout_marginStart="20dp"
-        android:scaleType="centerCrop"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="30dp"
         android:background="?attr/backgroundColor"
+        android:contentDescription="@string/navicon"
+        android:scaleType="centerCrop"
         android:src="@drawable/ic_nav"
-        android:contentDescription="@string/navicon"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
