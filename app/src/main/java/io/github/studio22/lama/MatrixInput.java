@@ -16,6 +16,7 @@ public class MatrixInput extends AppCompatActivity {
     private static int selectedColumnSizeA = 1;
     private static int selectedRowSizeMatrixB = 1;
     private static int selectedColumnSizeMatrixB = 1;
+    private EditText editText_lyambda = null;
     private static final int[][] editTextId = {
             {R.id.editTextNumberA1, R.id.editTextNumberA2, R.id.editTextNumberA3, R.id.editTextNumberA4, R.id.editTextNumberA5, R.id.editTextNumberA6},
             {R.id.editTextNumberB1, R.id.editTextNumberB2, R.id.editTextNumberB3, R.id.editTextNumberB4, R.id.editTextNumberB5, R.id.editTextNumberB6},
@@ -79,6 +80,15 @@ public class MatrixInput extends AppCompatActivity {
         Button button = findViewById(R.id.to_input_matrix);
         if (getIntent().hasExtra("selected_row_size_matrix_B")) {
             button.setText(R.string.next);
+        }
+
+        //Отображение полей для ввода числа в классе матрица-число
+        if (   operation.getName().equals("Поэлементное A + n")  || operation.getName().equals("Поэлементное A - n")
+            || operation.getName().equals("Поэлементное A \u00D7 n")  || operation.getName().equals("Поэлементное A / n")
+            || operation.getName().equals("Поэлементное A\u207F")  || operation.getName().equals("A\u207F")){
+            findViewById(R.id.number_input).setVisibility(View.VISIBLE);
+            editText_lyambda = findViewById(R.id.editTextNumber);
+            editText_lyambda.setVisibility(View.VISIBLE);
         }
     }
 
@@ -149,6 +159,9 @@ public class MatrixInput extends AppCompatActivity {
                 intent.putExtra("selected_row_size", selectedRowSizeA);
                 intent.putExtra("selected_column_size", selectedColumnSizeA);
                 intent.putExtra("selected", operation);
+                if (editText_lyambda != null){
+                    intent.putExtra("lyambda", Double.parseDouble(editText_lyambda.getText().toString()));
+                }
                 startActivity(intent);
             } catch (Exception ignored) {
                 Toast toast = Toast.makeText(getApplicationContext(),
