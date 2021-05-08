@@ -7,5 +7,5 @@
     tools:ignore="VectorRaster">
   <path
       android:pathData="M512,51.566L460.434,0L256,204.434L51.566,0L0,51.566L204.434,256L0,460.434L51.566,512L256,307.566L460.434,512L512,460.434L307.566,256L512,51.566Z"
-      android:fillColor="#606071"/>
+      android:fillColor="?attr/textViewColor"/>
 </vector>
