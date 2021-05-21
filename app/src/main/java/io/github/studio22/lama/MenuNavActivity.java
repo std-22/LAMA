@@ -93,8 +93,8 @@ public class MenuNavActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void onClickMatrixLyambda(View view) {
-        Intent intent = new Intent(MenuNavActivity.this, MatrixLyambda.class);
+    public void onClickMatrixLambda(View view) {
+        Intent intent = new Intent(MenuNavActivity.this, MatrixLambda.class);
         startActivity(intent);
     }
 
@@ -124,18 +124,15 @@ public class MenuNavActivity extends AppCompatActivity {
     /* about program button */
 
     public void onClickSendEmail(View view) {
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mail to", "studio-22-5600@pages.plusgoogle.com", null));
-                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Разработчикам");
-                emailIntent.putExtra(Intent.EXTRA_TEXT, ((EditText) findViewById(R.id.for_message)).getText().toString());
+        view.setOnClickListener(view1 -> {
+            Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mail to", "studio-22-5600@pages.plusgoogle.com", null));
+            emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Разработчикам");
+            emailIntent.putExtra(Intent.EXTRA_TEXT, ((EditText) findViewById(R.id.for_message)).getText().toString());
 
-                if (isIntentSafe(emailIntent)){
-                    startActivity(emailIntent);
-                } else {
-                    Toast.makeText(getApplicationContext(), "no app for dial on your device", Toast.LENGTH_SHORT).show();
-                }
+            if (isIntentSafe(emailIntent)){
+                startActivity(emailIntent);
+            } else {
+                Toast.makeText(getApplicationContext(), "no app for dial on your device", Toast.LENGTH_SHORT).show();
             }
         });
     }

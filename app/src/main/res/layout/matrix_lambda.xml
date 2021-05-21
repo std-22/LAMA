@@ -57,7 +57,7 @@ android:background="?attr/backgroundColor">
     android:scaleType="centerCrop"
     android:background="?attr/backgroundColor"
     android:src="@drawable/ic_backspace"
-    android:onClick="OnClickBackMatrixLyambda"
+    android:onClick="OnClickBackMatrixLambda"
     android:contentDescription="@string/backspace"/>
 
 <!-- Body -->

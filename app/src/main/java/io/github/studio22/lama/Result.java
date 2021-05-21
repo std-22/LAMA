@@ -33,17 +33,17 @@ public class Result {
     public static String getResult(String nameOfFunction, Double[][] matrix, Double number) {
         switch (nameOfFunction) {
             case "Поэлементное A + n":
-                return MatrixLyambdaCalculation.addNumber(matrix, number);
+                return MatrixLambdaCalculation.addNumber(matrix, number);
             case "Поэлементное A - n":
-                return MatrixLyambdaCalculation.subtractNumber(matrix, number);
+                return MatrixLambdaCalculation.subtractNumber(matrix, number);
             case "Поэлементное A \u00D7 n":
-                return MatrixLyambdaCalculation.multiplyOnNumber(matrix, number);
+                return MatrixLambdaCalculation.multiplyOnNumber(matrix, number);
             case "Поэлементное A / n":
-                return MatrixLyambdaCalculation.divideOnNumber(matrix, number);
+                return MatrixLambdaCalculation.divideOnNumber(matrix, number);
             case "Поэлементное A\u207F":
-                return MatrixLyambdaCalculation.powerElemByNumber(matrix, number);
+                return MatrixLambdaCalculation.powerElemByNumber(matrix, number);
             case "A\u207F":
-                return MatrixLyambdaCalculation.powerMatrixByNumber(matrix, number.intValue());
+                return MatrixLambdaCalculation.powerMatrixByNumber(matrix, number.intValue());
             default:
                 return "Something get wrong";
         }

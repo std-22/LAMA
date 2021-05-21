@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Класс, отвечающий за работу раздела Матрица-Число
  */
-public class MatrixLyambda extends AppCompatActivity {
+public class MatrixLambda extends AppCompatActivity {
     ArrayList<Operation> operations = new ArrayList<>();
     SharedPreferences sharedPreferences;
     Boolean state;
@@ -33,7 +33,7 @@ public class MatrixLyambda extends AppCompatActivity {
         }
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.matrix_lyambda);
+        setContentView(R.layout.matrix_lambda);
 
         if (state){
             color = "#253040";
@@ -47,7 +47,7 @@ public class MatrixLyambda extends AppCompatActivity {
         final OperationAdapter adapter = new OperationAdapter(this, operations, new OperationAdapter.ClickListener() {
             @Override
             public void onPositionClick(int position) {
-                Intent intent = new Intent(MatrixLyambda.this, CategoryOperationMatrixA.class);
+                Intent intent = new Intent(MatrixLambda.this, CategoryOperationMatrixA.class);
                 intent.putExtra("selected", operations.get(position));
                 startActivity(intent);
             }
@@ -59,12 +59,12 @@ public class MatrixLyambda extends AppCompatActivity {
             @Override
             public void instantiateUnderlayButton(RecyclerView.ViewHolder viewHolder, List<UnderlayButton> underlayButtons) {
                 underlayButtons.add(new SwipeHelper.UnderlayButton(
-                        MatrixLyambda.this,
+                        MatrixLambda.this,
                         Color.parseColor(color),
                         new SwipeHelper.UnderlayButtonClickListener() {
                             @Override
                             public void onClick(final int pos) {
-                                Intent intent = new Intent(MatrixLyambda.this, MatrixInfo.class);
+                                Intent intent = new Intent(MatrixLambda.this, MatrixInfo.class);
                                 intent.putExtra("selected", operations.get(pos));
                                 startActivity(intent);
                             }
@@ -84,8 +84,8 @@ public class MatrixLyambda extends AppCompatActivity {
         operations.add(new Operation ("A\u207F", nameOfClass));
     }
 
-    public void OnClickBackMatrixLyambda(View view) {
-        Intent intent = new Intent(MatrixLyambda.this, MenuNavActivity.class);
+    public void OnClickBackMatrixLambda(View view) {
+        Intent intent = new Intent(MatrixLambda.this, MenuNavActivity.class);
         startActivity(intent);
     }
 }

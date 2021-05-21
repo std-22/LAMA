@@ -97,8 +97,8 @@ public class CategoryOperationMatrixA extends AppCompatActivity implements Curso
                 intent = new Intent(CategoryOperationMatrixA.this, MatrixMatrix.class);
                 startActivity(intent);
                 break;
-            case "MatrixLyambda":
-                intent = new Intent(CategoryOperationMatrixA.this, MatrixLyambda.class);
+            case "MatrixLambda":
+                intent = new Intent(CategoryOperationMatrixA.this, MatrixLambda.class);
                 startActivity(intent);
                 break;
         }

@@ -43,7 +43,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="33dp"
         android:background="?attr/backgroundColor"
-        android:contentDescription="@string/navicon"
+        android:contentDescription="@string/nav_icon"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_nav"
         app:layout_constraintStart_toStartOf="parent"
