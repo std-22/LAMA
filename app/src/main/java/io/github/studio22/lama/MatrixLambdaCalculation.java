@@ -3,7 +3,7 @@ package io.github.studio22.lama;
 /**
  * Класс для совершения операций над матрцей и числом
  */
-public class MatrixLyambdaCalculation {
+public class MatrixLambdaCalculation {
     /**
      * @param matrix матрица
      * @param number число

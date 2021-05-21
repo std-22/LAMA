@@ -81,7 +81,7 @@ public class OperationAdapter extends RecyclerView.Adapter<OperationAdapter.View
 
         @Override
         public void onClick(View view) {
-            clickListener.onPositionClick(getAdapterPosition());
+            clickListener.onPositionClick(getBindingAdapterPosition());
         }
     }
 }

@@ -24,12 +24,12 @@
         tools:ignore="MissingConstraints" />
 
     <ImageView
-        android:id="@+id/lyambda_matrix_image"
+        android:id="@+id/lambda_matrix_image"
         android:layout_width="370dp"
         android:layout_height="200dp"
         android:layout_gravity="center_horizontal"
-        android:contentDescription="@string/lyambda_matrix"
-        android:src="@drawable/lyambda_matrix"
+        android:contentDescription="@string/lambda_matrix"
+        android:src="@drawable/lambda_matrix"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/line_1"
@@ -61,14 +61,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/two_matrix_image"
-        app:layout_constraintBottom_toTopOf="@+id/lyambda_matrix_image"/>
+        app:layout_constraintBottom_toTopOf="@+id/lambda_matrix_image"/>
 
     <View
         android:id="@+id/line_2"
         android:layout_width="fill_parent"
         android:layout_height="2dp"
         android:background="@color/separator"
-        app:layout_constraintTop_toBottomOf="@+id/lyambda_matrix_image"
+        app:layout_constraintTop_toBottomOf="@+id/lambda_matrix_image"
         app:layout_constraintBottom_toTopOf="@+id/matrix_image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
@@ -94,7 +94,7 @@
         tools:ignore="MissingConstraints,OnClick" />
 
     <Button
-        android:id="@+id/lyambda_matrix"
+        android:id="@+id/lambda_matrix"
         android:layout_width="200dp"
         android:layout_height="30dp"
         android:layout_gravity="center_horizontal"
@@ -103,12 +103,12 @@
         android:layout_marginEnd="85dp"
         android:background="@drawable/menu_button"
         android:fontFamily="@font/comfortaa_light"
-        android:onClick="onClickMatrixLyambda"
-        android:text="@string/list_op_lyam_matrix"
+        android:onClick="onClickMatrixLambda"
+        android:text="@string/list_op_lam_matrix"
         android:textColor="?attr/textViewColor"
-        app:layout_constraintEnd_toEndOf="@+id/lyambda_matrix_image"
-        app:layout_constraintStart_toStartOf="@+id/lyambda_matrix_image"
-        app:layout_constraintTop_toTopOf="@+id/lyambda_matrix_image"
+        app:layout_constraintEnd_toEndOf="@+id/lambda_matrix_image"
+        app:layout_constraintStart_toStartOf="@+id/lambda_matrix_image"
+        app:layout_constraintTop_toTopOf="@+id/lambda_matrix_image"
         tools:ignore="MissingConstraints,OnClick" />
 
     <Button
@@ -193,7 +193,7 @@
         android:layout_marginStart="33dp"
         android:layout_marginTop="30dp"
         android:background="?attr/backgroundColor"
-        android:contentDescription="@string/navicon"
+        android:contentDescription="@string/nav_icon"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_nav"
         app:layout_constraintStart_toStartOf="parent"

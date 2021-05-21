@@ -54,8 +54,8 @@ public class MatrixInfo extends AppCompatActivity {
                 intent = new Intent(MatrixInfo.this, MatrixMatrix.class);
                 startActivity(intent);
                 break;
-            case "MatrixLyambda":
-                intent = new Intent(MatrixInfo.this, MatrixLyambda.class);
+            case "MatrixLambda":
+                intent = new Intent(MatrixInfo.this, MatrixLambda.class);
                 startActivity(intent);
                 break;
         }

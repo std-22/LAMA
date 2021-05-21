@@ -27,7 +27,7 @@
         android:scaleType="centerCrop"
         android:background="?attr/backgroundColor"
         android:src="@drawable/ic_nav"
-        android:contentDescription="@string/navicon"/>
+        android:contentDescription="@string/nav_icon"/>
 
     <!-- Body -->
 
