@@ -7,7 +7,7 @@ public class MatrixLambdaCalculation {
     /**
      * @param matrix матрица
      * @param number число
-     * @return  результат поэлементого суммирования числа и матрицы
+     * @return результат поэлементого суммирования числа и матрицы
      */
     public static double[][] addNumber(double[][] matrix, Double number) {
         double[][] result = new double[matrix.length][matrix[0].length];
@@ -37,6 +37,7 @@ public class MatrixLambdaCalculation {
 
         return result;
     }
+
     /**
      * @param matrix матрица
      * @param number число
@@ -53,6 +54,7 @@ public class MatrixLambdaCalculation {
 
         return result;
     }
+
     /**
      * @param matrix матрица
      * @param number число
@@ -69,6 +71,7 @@ public class MatrixLambdaCalculation {
 
         return result;
     }
+
     /**
      * @param matrix матрица
      * @param number число
@@ -85,6 +88,7 @@ public class MatrixLambdaCalculation {
 
         return result;
     }
+
     /**
      * @param matrix матрица
      * @param lambda число
