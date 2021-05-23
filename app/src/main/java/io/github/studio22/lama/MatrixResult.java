@@ -46,7 +46,9 @@ public class MatrixResult extends AppCompatActivity {
         }
 
         // Матрица
-        if (getIntent().hasExtra("matrix_a") & !getIntent().hasExtra("matrix_b")) {
+        if (getIntent().hasExtra("matrix_a") &
+                !getIntent().hasExtra("matrix_b") &
+                !getIntent().hasExtra("lambda")) {
             double[][] matrixA = (double[][]) getIntent().getExtras().get("matrix_a");
             TextView textView;
             switch (operation.getName()) {
@@ -87,6 +89,20 @@ public class MatrixResult extends AppCompatActivity {
             double[][] matrixA = (double[][]) getIntent().getExtras().get("matrix_a");
             double[][] matrixB = (double[][]) getIntent().getExtras().get("matrix_b");
             double[][] result = Result.getResult(operation.getName(), matrixA, matrixB);
+            for (int i = 0; i < result.length; i++) {
+                for (int j = 0; j < result[0].length; j++) {
+                    TextView textView = findViewById(resultTextViewID[i][j]);
+                    textView.setVisibility(View.VISIBLE);
+                    DecimalFormat df = new DecimalFormat("#.###");
+                    textView.setText(df.format(result[i][j]));
+                }
+            }
+        }
+        // Матрица-Число
+        else {
+            double[][] matrixA = (double[][]) getIntent().getExtras().get("matrix_a");
+            double lambda = (double) getIntent().getExtras().get("lambda");
+            double[][] result = Result.getResult(operation.getName(), matrixA, lambda);
             for (int i = 0; i < result.length; i++) {
                 for (int j = 0; j < result[0].length; j++) {
                     TextView textView = findViewById(resultTextViewID[i][j]);

@@ -30,7 +30,7 @@ public class Result {
      * @param number число
      * @return результат вычисления
      */
-    public static String getResult(String nameOfFunction, Double[][] matrix, Double number) {
+    public static double[][] getResult(String nameOfFunction, double[][] matrix, Double number) {
         switch (nameOfFunction) {
             case "Поэлементное A + n":
                 return MatrixLambdaCalculation.addNumber(matrix, number);
@@ -45,7 +45,7 @@ public class Result {
             case "A\u207F":
                 return MatrixLambdaCalculation.powerMatrixByNumber(matrix, number.intValue());
             default:
-                return "Something get wrong";
+                return matrix;
         }
     }
 
