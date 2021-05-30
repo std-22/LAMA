@@ -36,13 +36,13 @@
         android:textSize="17sp"
         tools:text="@tools:sample/full_names"/>
 
-    <View
+    <!--<View
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_marginTop="100dp"
         android:layout_gravity="center_horizontal"
         android:id="@+id/bottom_space"
         android:background="?attr/backgroundColor"
-        android:visibility="gone"/>
+        android:visibility="gone"/>-->
 
 </FrameLayout>
