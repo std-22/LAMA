@@ -19,6 +19,10 @@ public class Result {
                 return MatrixCalculation.determinant(matrix);
             case "A\u1428\u00B9":
                 return MatrixCalculation.inverse(matrix);
+            case "Поиск собственных значений":
+                return MatrixCalculation.eigenValue(matrix);
+            case "Поиск собственных векторов":
+                return MatrixCalculation.eigenVector(matrix);
             default:
                 return matrix;
         }

@@ -59,7 +59,6 @@ public class MatrixResult extends AppCompatActivity {
                     textView.setText(String.valueOf(result));
                     break;
                 case "Транспонирование":
-                case "A\u1428\u00B9":
                     double[][] resultMatrix = Result.getResult(operation.getName(), matrixA);
                     for (int i = 0; i < resultMatrix.length; i++) {
                         for (int j = 0; j < resultMatrix[0].length; j++) {
@@ -68,6 +67,23 @@ public class MatrixResult extends AppCompatActivity {
                             DecimalFormat df = new DecimalFormat("#.###");
                             textView.setText(df.format(resultMatrix[i][j]));
                         }
+                    }
+                    break;
+                case "A\u1428\u00B9":
+                    double[][] resultMatrixInv = Result.getResult(operation.getName(), matrixA);
+                    if (MatrixCalculation.determinantCalc(resultMatrixInv) != 0) {
+                        for (int i = 0; i < resultMatrixInv.length; i++) {
+                            for (int j = 0; j < resultMatrixInv[0].length; j++) {
+                                textView = findViewById(resultTextViewID[i][j]);
+                                textView.setVisibility(View.VISIBLE);
+                                DecimalFormat df = new DecimalFormat("#.###");
+                                textView.setText(df.format(resultMatrixInv[i][j]));
+                            }
+                        }
+                    } else {
+                        textView = findViewById(resultTextViewID[0][0]);
+                        textView.setVisibility(View.VISIBLE);
+                        textView.setText("Матрица вырожденная");
                     }
                     break;
                 case "Критерий Сильвестра":
@@ -80,6 +96,36 @@ public class MatrixResult extends AppCompatActivity {
                         textView.setText("Знакопеременная определенность");
                     } else {
                         textView.setText("Отрицательная определенность");
+                    }
+                    break;
+                case "Поиск собственных значений":
+                    double[][] resultEigen = Result.getResult(operation.getName(), matrixA);
+                    if (matrixA.length == 2 & matrixA[0].length == 2) {
+                        TextView lambda1TextView = findViewById(resultTextViewID[0][0]);
+                        TextView lambda2TextView = findViewById(resultTextViewID[0][1]);
+                        lambda1TextView.setVisibility(View.VISIBLE);
+                        lambda2TextView.setVisibility(View.VISIBLE);
+                        DecimalFormat df = new DecimalFormat("#.###");
+                        lambda1TextView.setText(String.format("λ₁ = %s", df.format(resultEigen[0][0])));
+                        lambda2TextView.setText(String.format("λ₂ = %s", df.format(resultEigen[1][0])));
+                    } else {
+                        textView = findViewById(resultTextViewID[0][0]);
+                        textView.setText("В процессе разработки");
+                    }
+                    break;
+                case "Поиск собственных векторов":
+                    double[][] resultEigenVector = Result.getResult(operation.getName(), matrixA);
+                    if (matrixA.length == 2 & matrixA[0].length == 2) {
+                        TextView vector1TextView = findViewById(resultTextViewID[0][0]);
+                        TextView vector2TextView = findViewById(resultTextViewID[0][1]);
+                        vector1TextView.setVisibility(View.VISIBLE);
+                        vector2TextView.setVisibility(View.VISIBLE);
+                        DecimalFormat df = new DecimalFormat("#.###");
+                        vector1TextView.setText(String.format("x₁ = %sy", df.format(resultEigenVector[0][0])));
+                        vector2TextView.setText(String.format("x₂ = %sy", df.format(resultEigenVector[1][0])));
+                    } else {
+                        textView = findViewById(resultTextViewID[0][0]);
+                        textView.setText("В процессе разработки");
                     }
                     break;
             }
