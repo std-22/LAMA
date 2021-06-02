@@ -50,7 +50,6 @@ public class OperationAdapter extends RecyclerView.Adapter<OperationAdapter.View
         } else if (position == operations.size()-1){
             holder.field.setBackgroundResource(list_item_view_down);
             holder.line.setVisibility(View.GONE);
-            holder.bottom.setVisibility(View.VISIBLE);
         } else {
             holder.field.setBackgroundResource(list_item_view);
         }
@@ -65,7 +64,6 @@ public class OperationAdapter extends RecyclerView.Adapter<OperationAdapter.View
         final TextView title;
         final View field;
         final View line;
-        final View bottom;
         ClickListener clickListener;
 
         ViewHolder(View view, ClickListener clickListener){
@@ -74,7 +72,6 @@ public class OperationAdapter extends RecyclerView.Adapter<OperationAdapter.View
             title = view.findViewById(R.id.operation_name);
             field = view.findViewById(R.id.operation_view);
             line  = view.findViewById(R.id.line);
-            bottom = view.findViewById(R.id.bottom_space);
             this.clickListener = clickListener;
             view.setOnClickListener(this);
         }
