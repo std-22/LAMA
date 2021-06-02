@@ -113,7 +113,7 @@ public class CategoryOperationMatrixB extends AppCompatActivity implements Curso
                 selectedRowSize, selectedColumnSize,
                 selectedRowSizeMatrixB, selectedColumnSizeMatrixB)){
             Toast toast = Toast.makeText(getApplicationContext(),
-                    "Не выполняется условие A\u2098\u2099 \u00D7 B\u2099\u2096",
+                    "В матрице B должно быть " + selectedColumnSize + " строк",
                     Toast.LENGTH_LONG);
             toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL,
                     0, 0);

@@ -69,6 +69,7 @@ public class MatrixCalculation {
      * @return определитель матрцы типа double
      */
     public static double determinantCalc(double[][] matrix) {
+
         if (matrix.length == 1)
             return matrix[0][0];
         if (matrix.length == 2)

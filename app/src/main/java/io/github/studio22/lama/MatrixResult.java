@@ -28,7 +28,7 @@ public class MatrixResult extends AppCompatActivity {
         sharedPreferences = new SharedPreferences(this);
         state = sharedPreferences.loadNightModeState();
 
-        if (state){
+        if (state) {
             setTheme(R.style.DarkAppTheme);
         } else {
             setTheme(R.style.AppTheme);
@@ -71,7 +71,8 @@ public class MatrixResult extends AppCompatActivity {
                     break;
                 case "A\u1428\u00B9":
                     double[][] resultMatrixInv = Result.getResult(operation.getName(), matrixA);
-                    if (MatrixCalculation.determinantCalc(resultMatrixInv) != 0) {
+                    if (MatrixCalculation.determinantCalc(resultMatrixInv) != 0
+                            & !Double.isNaN(MatrixCalculation.determinantCalc(resultMatrixInv))) {
                         for (int i = 0; i < resultMatrixInv.length; i++) {
                             for (int j = 0; j < resultMatrixInv[0].length; j++) {
                                 textView = findViewById(resultTextViewID[i][j]);
@@ -121,13 +122,20 @@ public class MatrixResult extends AppCompatActivity {
                         vector1TextView.setVisibility(View.VISIBLE);
                         vector2TextView.setVisibility(View.VISIBLE);
                         DecimalFormat df = new DecimalFormat("#.###");
-                        vector1TextView.setText(String.format("x₁ = %sy", df.format(resultEigenVector[0][0])));
-                        vector2TextView.setText(String.format("x₂ = %sy", df.format(resultEigenVector[1][0])));
+                        vector1TextView.setText(String.format("x₁ = %sy",
+                                df.format(resultEigenVector[0][0])));
+                        vector2TextView.setText(String.format("x₂ = %sy",
+                                df.format(resultEigenVector[1][0])));
                     } else {
                         textView = findViewById(resultTextViewID[0][0]);
+                        textView.setVisibility(View.VISIBLE);
                         textView.setText("В процессе разработки");
                     }
                     break;
+                default:
+                    TextView defaultTextView = findViewById(resultTextViewID[0][0]);
+                    defaultTextView.setVisibility(View.VISIBLE);
+                    defaultTextView.setText("В процессе разработки");
             }
         }
         // Матрица-Матрица
