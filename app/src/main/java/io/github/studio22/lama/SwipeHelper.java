@@ -174,7 +174,7 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
         float dButtonWidth = (-1) * dX / buffer.size();
 
         for (UnderlayButton button : buffer) {
-            float left = right - dButtonWidth - 140f;
+            float left = right - dButtonWidth - 240f;
             button.onDraw(
                     c,
                     new RectF(
@@ -233,12 +233,12 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
             Rect r = new Rect();
             float cHeight = rect.height();
             float cWidth = rect.width();
-            float x = cWidth / 2f - r.width() / 2f - r.left;
+            float x = cWidth / 1.7f + r.width() / 2f - r.left;
             float y = cHeight / 2f + r.height() / 2f - r.bottom;
             c.drawCircle(rect.left + x, rect.top + y, rect.width()/6, p);
-            Drawable drawable = ContextCompat.getDrawable(context, R.drawable.ic_info);
+            Drawable drawable = ContextCompat.getDrawable(context, R.drawable.ic_q);
             Bitmap bitmap = drawableToBitmap(drawable);
-            c.drawBitmap(bitmap, rect.left + x - bitmap.getWidth() / 2f, rect.bottom - (rect.height() + bitmap.getHeight()) / 2, p);
+            c.drawBitmap(bitmap, rect.left + x - bitmap.getWidth() / 2f, rect.bottom - (rect.height() + bitmap.getHeight()) / 2f, p);
 
             clickRegion = rect;
             this.pos = pos;

@@ -2,6 +2,7 @@ package io.github.studio22.lama;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -108,8 +109,14 @@ public class CategoryOperationMatrixB extends AppCompatActivity implements Curso
     }
 
     public void onClickToInputMatrix(View view) {
-        if (!CheckSize.checkSize(operation.getName(), selectedRowSizeMatrixB, selectedColumnSizeMatrixB)){
-            Toast toast = Toast.makeText(this, "wrong size", Toast.LENGTH_LONG);
+        if (!CheckSize.checkSize(operation.getName(),
+                selectedRowSize, selectedColumnSize,
+                selectedRowSizeMatrixB, selectedColumnSizeMatrixB)){
+            Toast toast = Toast.makeText(getApplicationContext(),
+                    "В матрице B должно быть " + selectedColumnSize + " строк",
+                    Toast.LENGTH_LONG);
+            toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL,
+                    0, 0);
             toast.show();
             return;
         }

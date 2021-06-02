@@ -19,6 +19,10 @@ public class Result {
                 return MatrixCalculation.determinant(matrix);
             case "A\u1428\u00B9":
                 return MatrixCalculation.inverse(matrix);
+            case "Поиск собственных значений":
+                return MatrixCalculation.eigenValue(matrix);
+            case "Поиск собственных векторов":
+                return MatrixCalculation.eigenVector(matrix);
             default:
                 return matrix;
         }
@@ -30,7 +34,7 @@ public class Result {
      * @param number число
      * @return результат вычисления
      */
-    public static String getResult(String nameOfFunction, Double[][] matrix, Double number) {
+    public static double[][] getResult(String nameOfFunction, double[][] matrix, Double number) {
         switch (nameOfFunction) {
             case "Поэлементное A + n":
                 return MatrixLambdaCalculation.addNumber(matrix, number);
@@ -45,7 +49,7 @@ public class Result {
             case "A\u207F":
                 return MatrixLambdaCalculation.powerMatrixByNumber(matrix, number.intValue());
             default:
-                return "Something get wrong";
+                return matrix;
         }
     }
 

@@ -68,7 +68,8 @@ public class MatrixCalculation {
      * @param matrix матрица
      * @return определитель матрцы типа double
      */
-    private static double determinantCalc(double[][] matrix) {
+    public static double determinantCalc(double[][] matrix) {
+
         if (matrix.length == 1)
             return matrix[0][0];
         if (matrix.length == 2)
@@ -132,5 +133,44 @@ public class MatrixCalculation {
         }
 
         return result;
+    }
+
+    public static double[][] eigenValue(double[][] matrix) {
+        if (matrix.length == 2 & matrix[0].length == 2) {
+            //TODO выяснить, почему ответы получаются с обратным знаком
+            double D = Math.pow(matrix[0][0] + matrix[1][1], 2) -
+                    4 * (matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]);
+            if (D > 0) {
+                double lambda1 = (-(matrix[0][0] + matrix[1][1]) + Math.sqrt(D)) / 2;
+                double lambda2 = (-(matrix[0][0] + matrix[1][1]) - Math.sqrt(D)) / 2;
+                double[][] result = new double[2][1];
+                // добавяем минусы, чтобы получить правильные ответы
+                result[0][0] = -lambda1;
+                result[1][0] = -lambda2;
+                return result;
+            } else {
+                return matrix;
+            }
+        } else {
+            return matrix;
+        }
+    }
+
+    public static double[][] eigenVector(double[][] matrix) {
+        if (matrix.length == 2 & matrix[0].length == 2) {
+            //TODO выяснить, почему ответы получаются с обратным знаком
+            double[][] result = new double[2][1];
+            double[][] eigenValue = eigenValue(matrix);
+            double lambda1 = eigenValue[0][0];
+            double lambda2 = eigenValue[1][0];
+            double vector1Rate = -(matrix[0][0] - lambda1) / matrix[1][0]; // коэффициент первого вектора x = k1*y
+            double vector2Rate = -(matrix[0][0] - lambda2) / matrix[1][0]; // коэффициент второго вектора x = k2*y
+            // добавяем минусы, чтобы получить правильные ответы
+            result[0][0] = -vector1Rate;
+            result[1][0] = -vector2Rate;
+            return result;
+        } else {
+            return matrix;
+        }
     }
 }
