@@ -2,6 +2,7 @@ package io.github.studio22.lama;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -38,6 +39,7 @@ public class OperationAdapter extends RecyclerView.Adapter<OperationAdapter.View
     @Override
     public OperationAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.list_item, parent, false);
+        //view.onTouchEvent(inflater.getContext());
         return new ViewHolder(view, clickListener);
     }
 

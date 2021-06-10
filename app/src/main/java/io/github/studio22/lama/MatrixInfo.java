@@ -2,6 +2,7 @@ package io.github.studio22.lama;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,6 +13,7 @@ public class MatrixInfo extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     Boolean state;
     Operation operation;
+    float x1, y1, x2, y2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +45,25 @@ public class MatrixInfo extends AppCompatActivity {
         }
     }
 
-    public void OnClickBackMatrix(View view) {
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                x1 = event.getX();
+                y1 = event.getY();
+                break;
+            case MotionEvent.ACTION_UP:
+                x2 = event.getX();
+                y2 = event.getY();
+                if (x1<x2){
+                    onSwipeBack();
+                }
+                break;
+        }
+        return false;
+    }
+
+    public void onSwipeBack() {
         Intent intent;
         switch(operation.getNameOfClass()){
             case "Matrix":

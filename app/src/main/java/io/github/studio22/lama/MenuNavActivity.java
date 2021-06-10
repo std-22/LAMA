@@ -51,14 +51,11 @@ public class MenuNavActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu_nav);
 
         ImageView lama = findViewById(R.id.menu_lama_image);
-        //ImageButton night = findViewById(R.id.night);
 
         if(state){
             lama.setImageResource(R.drawable.logo_new_dark);
-            //night.setImageResource(R.drawable.ic_sun);
         } else {
             lama.setImageResource(R.drawable.logo_new);
-            //night.setImageResource(R.drawable.ic_moon);
         }
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -68,7 +65,7 @@ public class MenuNavActivity extends AppCompatActivity {
         NavigationView navigationView = findViewById(R.id.nav_view);
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.matrix_fragment, R.id.app_fragment, R.id.achievements_fragment)
+                R.id.matrix_fragment, R.id.app_fragment, R.id.function_research_fragment)
                 .setOpenableLayout(drawer)   //setDrawerLayout(drawer) deprecated
                 .build();
 
@@ -107,19 +104,10 @@ public class MenuNavActivity extends AppCompatActivity {
 
     public void onClickToDark(View view) {
         sharedPreferences.setNightModeState(!state);
-
         Intent intent = new Intent(getApplicationContext(), MenuNavActivity.class);
         startActivity(intent);
         finish();
     }
-
-    /*public void onClickToLight(View view) {
-        sharedPreferences.setNightModeState(!state);
-
-        Intent intent = new Intent(getApplicationContext(), MenuNavActivity.class);
-        startActivity(intent);
-        finish();
-    }*/
 
     /* about program button */
 

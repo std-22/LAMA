@@ -9,63 +9,12 @@
     android:gravity="center_horizontal"
     android:background="?attr/backgroundColor">
 
-    <!-- Header -->
-
-    <View
-        android:layout_width="290dp"
-        android:layout_height="33dp"
-        android:layout_marginStart="85dp"
-        android:layout_marginTop="33dp"
-        android:background="@drawable/view"/>
-
-    <EditText
-        android:layout_width="251dp"
-        android:layout_height="40dp"
-        android:hint="@string/search"
-        android:textColor="?attr/textViewColor"
-        android:fontFamily="@font/comfortaa_light"
-        android:textColorHint="?attr/textViewColor"
-        android:inputType="textNoSuggestions"
-        android:layout_marginTop="27dp"
-        android:background="@null"
-        android:layout_marginStart="130dp"
-        android:autofillHints="function"/>
-
-    <View
-        android:id="@+id/line_3"
-        android:layout_width="2dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="33dp"
-        android:layout_marginStart="124dp"
-        android:background="@color/separator"/>
-
-    <ImageButton
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="37dp"
-        android:layout_marginStart="94dp"
-        android:scaleType="centerCrop"
-        android:background="?attr/viewColor"
-        android:src="@drawable/ic_search"
-        android:contentDescription="@string/search"/>
-
-    <ImageButton
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="33dp"
-        android:layout_marginStart="33dp"
-        android:scaleType="centerCrop"
-        android:background="?attr/backgroundColor"
-        android:src="@drawable/ic_backspace"
-        android:onClick="OnClickBackMatrix"
-        android:contentDescription="@string/backspace"/>
-
     <!-- Body -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/matrix_operations"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="30dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:layout_marginBottom="10dp"
         tools:listitem="@layout/list_item"/>
