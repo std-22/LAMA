@@ -3,6 +3,7 @@ package io.github.studio22.lama;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -27,6 +28,7 @@ public class MatrixInputB extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     Boolean state;
     Operation operation;
+    float x1, y1, x2, y2;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -92,10 +94,27 @@ public class MatrixInputB extends AppCompatActivity {
                     0, 0);
             toast.show();
         }
-
     }
 
-    public void OnClickBackMatrix(View view) {
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                x1 = event.getX();
+                y1 = event.getY();
+                break;
+            case MotionEvent.ACTION_UP:
+                x2 = event.getX();
+                y2 = event.getY();
+                if (x1<x2){
+                    onSwipeBack();
+                }
+                break;
+        }
+        return false;
+    }
+
+    public void onSwipeBack() {
         Intent intent = new Intent(MatrixInputB.this, MatrixInput.class);
         intent.putExtra("selected_row_size", selectedRowSizeMatrixB);
         intent.putExtra("selected_column_size", selectedColumnSizeMatrixB);

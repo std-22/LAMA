@@ -23,20 +23,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="33dp"
-        android:layout_marginTop="30dp"
-        android:background="?attr/backgroundColor"
-        android:contentDescription="@string/backspace"
-        android:onClick="OnClickBackMatrix"
-        android:scaleType="centerCrop"
-        android:src="@drawable/ic_backspace"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <!--Body-->
 
     <ImageView

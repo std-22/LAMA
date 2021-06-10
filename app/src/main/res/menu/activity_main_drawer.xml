@@ -5,14 +5,16 @@
             android:id="@+id/matrix_fragment"
             android:title="@string/matrix_operations"/>
     </group>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/function_research_fragment"
+            android:title="@string/fun_res"/>
+    </group>
+
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/app_fragment"
             android:title="@string/About_program"/>
-    </group>
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/achievements_fragment"
-            android:title="@string/achievements"/>
     </group>
 </menu>

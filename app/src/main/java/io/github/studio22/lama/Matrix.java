@@ -3,8 +3,10 @@ package io.github.studio22.lama;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,6 +22,7 @@ public class Matrix extends AppCompatActivity {
     Boolean state;
     String color;
     String nameOfClass = this.getClass().getSimpleName();
+    float x1, y1, x2, y2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +46,35 @@ public class Matrix extends AppCompatActivity {
 
         setInitialData();
         final RecyclerView recyclerView = findViewById(R.id.matrix_operations);
+        recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+            @Override
+            public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+                switch (e.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        x1 = e.getX();
+                        y1 = e.getY();
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        x2 = e.getX();
+                        y2 = e.getY();
+                        if (x1<x2){
+                            Intent intent = new Intent(Matrix.this, MenuNavActivity.class);
+                            startActivity(intent);
+                        }
+                        break;
+                }
+                return false;
+            }
+
+            @Override
+            public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+            }
+        });
 
         final OperationAdapter adapter = new OperationAdapter(this, operations, new OperationAdapter.ClickListener() {
             @Override
@@ -86,10 +118,5 @@ public class Matrix extends AppCompatActivity {
         operations.add(new Operation ("Поиск собственных векторов", nameOfClass));
         operations.add(new Operation ("Приведение к треугольному виду", nameOfClass));
         operations.add(new Operation ("Приведение к диагональному виду", nameOfClass));
-    }
-
-    public void OnClickBackMatrix(View view) {
-        Intent intent = new Intent(Matrix.this, MenuNavActivity.class);
-        startActivity(intent);
     }
 }

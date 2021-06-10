@@ -2,17 +2,21 @@ package io.github.studio22.lama;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.DecimalFormat;
+import java.util.Arrays;
 
 public class MatrixResult extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     Boolean state;
     Operation operation;
+    float x1, y1, x2, y2;
 
     private static final int[][] resultTextViewID = {
             {R.id.resultA1, R.id.resultA2, R.id.resultA3, R.id.resultA4, R.id.resultA5, R.id.resultA6},
@@ -70,9 +74,11 @@ public class MatrixResult extends AppCompatActivity {
                     }
                     break;
                 case "A\u1428\u00B9":
+                    Log.d("Matrix", Arrays.deepToString(matrixA));
+                    Log.d("Size", String.valueOf(matrixA[0].length));
                     double[][] resultMatrixInv = Result.getResult(operation.getName(), matrixA);
                     if (MatrixCalculation.determinantCalc(resultMatrixInv) != 0
-                            & !Double.isNaN(MatrixCalculation.determinantCalc(resultMatrixInv))) {
+                            || !Double.isNaN(MatrixCalculation.determinantCalc(resultMatrixInv))) {
                         for (int i = 0; i < resultMatrixInv.length; i++) {
                             for (int j = 0; j < resultMatrixInv[0].length; j++) {
                                 textView = findViewById(resultTextViewID[i][j]);
@@ -168,7 +174,25 @@ public class MatrixResult extends AppCompatActivity {
         }
     }
 
-    public void OnClickBackMatrix(View view) {
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                x1 = event.getX();
+                y1 = event.getY();
+                break;
+            case MotionEvent.ACTION_UP:
+                x2 = event.getX();
+                y2 = event.getY();
+                if (x1<x2){
+                    onSwipeBack();
+                }
+                break;
+        }
+        return false;
+    }
+
+    public void onSwipeBack() {
         Intent intent;
         if (getIntent().hasExtra("selected_row_size_matrix_B")) {
             intent = new Intent(MatrixResult.this, MatrixInputB.class);

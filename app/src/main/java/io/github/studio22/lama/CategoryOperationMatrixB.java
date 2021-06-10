@@ -3,6 +3,7 @@ package io.github.studio22.lama;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +30,7 @@ public class CategoryOperationMatrixB extends AppCompatActivity implements Curso
 
     SharedPreferences sharedPreferences;
     Boolean state;
+    float x1, y1, x2, y2;
 
     public void onCreate(Bundle savedInstanceState) {
         sharedPreferences = new SharedPreferences(this);
@@ -74,6 +76,24 @@ public class CategoryOperationMatrixB extends AppCompatActivity implements Curso
         wheel_text_right.setOnMenuSelectedListener(this);
     }
 
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                x1 = event.getX();
+                y1 = event.getY();
+                break;
+            case MotionEvent.ACTION_UP:
+                x2 = event.getX();
+                y2 = event.getY();
+                if (x1<x2){
+                    onSwipeBack();
+                }
+                break;
+        }
+        return false;
+    }
+
     private void loadData(){
         textList_left = new ArrayList<>();
         textList_right = new ArrayList<>();
@@ -102,7 +122,7 @@ public class CategoryOperationMatrixB extends AppCompatActivity implements Curso
         }
     }
 
-    public void OnClickBackMatrix(View view) {
+    public void onSwipeBack() {
         Intent intent = new Intent(CategoryOperationMatrixB.this, CategoryOperationMatrixA.class);
         intent.putExtra("selected_next", operation);
         startActivity(intent);
