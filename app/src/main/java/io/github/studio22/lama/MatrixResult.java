@@ -2,7 +2,6 @@ package io.github.studio22.lama;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
@@ -10,7 +9,6 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.DecimalFormat;
-import java.util.Arrays;
 
 public class MatrixResult extends AppCompatActivity {
     SharedPreferences sharedPreferences;
@@ -74,8 +72,6 @@ public class MatrixResult extends AppCompatActivity {
                     }
                     break;
                 case "A\u1428\u00B9":
-                    Log.d("Matrix", Arrays.deepToString(matrixA));
-                    Log.d("Size", String.valueOf(matrixA[0].length));
                     double[][] resultMatrixInv = Result.getResult(operation.getName(), matrixA);
                     if (MatrixCalculation.determinantCalc(resultMatrixInv) != 0
                             || !Double.isNaN(MatrixCalculation.determinantCalc(resultMatrixInv))) {
