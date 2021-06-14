@@ -88,16 +88,19 @@ public class MenuNavActivity extends AppCompatActivity {
     public void onClickMatrixMatrix(View view) {
         Intent intent = new Intent(MenuNavActivity.this, MatrixMatrix.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
     public void onClickMatrixLambda(View view) {
         Intent intent = new Intent(MenuNavActivity.this, MatrixLambda.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
     public void onClickMatrix(View view) {
         Intent intent = new Intent(MenuNavActivity.this, Matrix.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
     /* changing theme */

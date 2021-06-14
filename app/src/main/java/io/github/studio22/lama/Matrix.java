@@ -57,9 +57,10 @@ public class Matrix extends AppCompatActivity {
                     case MotionEvent.ACTION_UP:
                         x2 = e.getX();
                         y2 = e.getY();
-                        if (x1<x2){
+                        if (x1<x2 && Math.toDegrees(Math.atan((x2-x1)/Math.abs(y2-y1))) > 30.0){
                             Intent intent = new Intent(Matrix.this, MenuNavActivity.class);
                             startActivity(intent);
+                            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                         }
                         break;
                 }
@@ -82,6 +83,7 @@ public class Matrix extends AppCompatActivity {
                 Intent intent = new Intent(Matrix.this, CategoryOperationMatrixA.class);
                 intent.putExtra("selected", operations.get(position));
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
         recyclerView.setAdapter(adapter);
@@ -99,6 +101,7 @@ public class Matrix extends AppCompatActivity {
                                 Intent intent = new Intent(Matrix.this, MatrixInfo.class);
                                 intent.putExtra("selected", operations.get(pos));
                                 startActivity(intent);
+                                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                             }
                         }
                 ));
@@ -118,5 +121,11 @@ public class Matrix extends AppCompatActivity {
         operations.add(new Operation ("Поиск собственных векторов", nameOfClass));
         operations.add(new Operation ("Приведение к треугольному виду", nameOfClass));
         operations.add(new Operation ("Приведение к диагональному виду", nameOfClass));
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

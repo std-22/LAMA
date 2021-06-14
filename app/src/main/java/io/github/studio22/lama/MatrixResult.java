@@ -184,7 +184,7 @@ public class MatrixResult extends AppCompatActivity {
             case MotionEvent.ACTION_UP:
                 x2 = event.getX();
                 y2 = event.getY();
-                if (x1<x2){
+                if (x1<x2 && Math.toDegrees(Math.atan((x2-x1)/Math.abs(y2-y1))) > 30.0){
                     onSwipeBack();
                 }
                 break;
@@ -222,10 +222,18 @@ public class MatrixResult extends AppCompatActivity {
         }
         intent.putExtra("selected_next", operation);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 
     public void onClickToMenu(View view) {
         Intent intent = new Intent(MatrixResult.this, MenuNavActivity.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }
