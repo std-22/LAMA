@@ -55,7 +55,7 @@ public class MatrixInfo extends AppCompatActivity {
             case MotionEvent.ACTION_UP:
                 x2 = event.getX();
                 y2 = event.getY();
-                if (x1<x2){
+                if (x1<x2 && Math.toDegrees(Math.atan((x2-x1)/Math.abs(y2-y1))) > 30.0){
                     onSwipeBack();
                 }
                 break;
@@ -69,16 +69,25 @@ public class MatrixInfo extends AppCompatActivity {
             case "Matrix":
                 intent = new Intent(MatrixInfo.this, Matrix.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
             case "MatrixMatrix":
                 intent = new Intent(MatrixInfo.this, MatrixMatrix.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
             case "MatrixLambda":
                 intent = new Intent(MatrixInfo.this, MatrixLambda.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
         }
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }
 

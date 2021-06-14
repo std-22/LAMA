@@ -86,7 +86,7 @@ public class CategoryOperationMatrixB extends AppCompatActivity implements Curso
             case MotionEvent.ACTION_UP:
                 x2 = event.getX();
                 y2 = event.getY();
-                if (x1<x2){
+                if (x1<x2 && Math.toDegrees(Math.atan((x2-x1)/Math.abs(y2-y1))) > 30.0){
                     onSwipeBack();
                 }
                 break;
@@ -126,6 +126,7 @@ public class CategoryOperationMatrixB extends AppCompatActivity implements Curso
         Intent intent = new Intent(CategoryOperationMatrixB.this, CategoryOperationMatrixA.class);
         intent.putExtra("selected_next", operation);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 
     public void onClickToInputMatrix(View view) {
@@ -148,5 +149,12 @@ public class CategoryOperationMatrixB extends AppCompatActivity implements Curso
         intent.putExtra("selected_column_size", selectedColumnSize);
         intent.putExtra("selected", operation);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }
