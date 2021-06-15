@@ -2,7 +2,6 @@ package io.github.studio22.lama;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
@@ -10,7 +9,6 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.DecimalFormat;
-import java.util.Arrays;
 
 public class MatrixResult extends AppCompatActivity {
     SharedPreferences sharedPreferences;
@@ -74,8 +72,6 @@ public class MatrixResult extends AppCompatActivity {
                     }
                     break;
                 case "A\u1428\u00B9":
-                    Log.d("Matrix", Arrays.deepToString(matrixA));
-                    Log.d("Size", String.valueOf(matrixA[0].length));
                     double[][] resultMatrixInv = Result.getResult(operation.getName(), matrixA);
                     if (MatrixCalculation.determinantCalc(resultMatrixInv) != 0
                             || !Double.isNaN(MatrixCalculation.determinantCalc(resultMatrixInv))) {
@@ -184,7 +180,7 @@ public class MatrixResult extends AppCompatActivity {
             case MotionEvent.ACTION_UP:
                 x2 = event.getX();
                 y2 = event.getY();
-                if (x1<x2){
+                if (x1<x2 && Math.toDegrees(Math.atan((x2-x1)/Math.abs(y2-y1))) > 30.0){
                     onSwipeBack();
                 }
                 break;
@@ -222,10 +218,18 @@ public class MatrixResult extends AppCompatActivity {
         }
         intent.putExtra("selected_next", operation);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 
     public void onClickToMenu(View view) {
         Intent intent = new Intent(MatrixResult.this, MenuNavActivity.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

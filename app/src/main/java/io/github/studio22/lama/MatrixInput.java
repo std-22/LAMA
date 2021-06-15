@@ -104,7 +104,7 @@ public class MatrixInput extends AppCompatActivity {
             case MotionEvent.ACTION_UP:
                 x2 = event.getX();
                 y2 = event.getY();
-                if (x1<x2){
+                if (x1<x2 && Math.toDegrees(Math.atan((x2-x1)/Math.abs(y2-y1))) > 30.0){
                     onSwipeBack();
                 }
                 break;
@@ -123,6 +123,7 @@ public class MatrixInput extends AppCompatActivity {
         }
         intent.putExtra("selected_next", operation);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 
     public void onClickToResult(View view) {
@@ -156,6 +157,7 @@ public class MatrixInput extends AppCompatActivity {
                 intent.putExtra("selected_column_size", selectedColumnSizeA);
                 intent.putExtra("selected", operation);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             } catch (Exception ignored) {
                 Toast toast = Toast.makeText(getApplicationContext(),
                         "Пропущены значения",
@@ -183,6 +185,7 @@ public class MatrixInput extends AppCompatActivity {
                     intent.putExtra("lambda", Double.parseDouble(editText_lambda.getText().toString()));
                 }
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             } catch (Exception ignored) {
                 Toast toast = Toast.makeText(getApplicationContext(),
                         "Пропущены значения",
@@ -192,5 +195,11 @@ public class MatrixInput extends AppCompatActivity {
                 toast.show();
             }
         }
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

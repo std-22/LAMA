@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="Text" parent="@android:style/TextAppearance.Medium">
         <item name="android:fontFamily">@font/comfortaa_light</item>
@@ -11,7 +11,8 @@
     </style>
 
     <!-- Light theme -->
-    <style name="AppTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
         <item name="android:colorPrimaryDark">@color/bar_theme_color</item>
         <item name="backgroundColor">@color/background</item>
         <item name="textViewColor">@color/for_text</item>
@@ -19,12 +20,11 @@
         <item name="iconColor">@color/for_icon</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <!--<item name="android:windowActivityTransitions">true</item>
-        <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>-->
     </style>
 
     <!-- Dark theme -->
     <style name="DarkAppTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
         <item name="android:colorPrimaryDark">@color/background_dark</item>
         <item name="backgroundColor">@color/background_dark</item>
         <item name="textViewColor">@color/background</item>
@@ -32,8 +32,6 @@
         <item name="iconColor">@color/background</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <!--<item name="android:windowActivityTransitions">true</item>
-        <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>-->
     </style>
 
     <style name="result_view_cell">
@@ -46,12 +44,5 @@
         <item name="android:textAlignment">center</item>
         <item name="android:fontFamily">@font/comfortaa_light</item>
     </style>
-
-    <!-- Animation -->
-<!--
-    <style name="WindowAnimationTransition">
-        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
-        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
-    </style>-->
 
 </resources>

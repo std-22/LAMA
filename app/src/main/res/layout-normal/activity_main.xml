@@ -13,12 +13,13 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:text="@string/by_studio_22"
         android:textAlignment="center"
         android:textAppearance="@style/Text"
         android:textColor="?attr/textViewColor"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/lama_image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -27,8 +28,9 @@
         android:id="@+id/lama_image"
         android:layout_width="362dp"
         android:layout_height="362dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="70dp"
         android:contentDescription="@string/lama"
+        app:layout_constraintBottom_toTopOf="@+id/lin_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,43 +38,46 @@
         app:srcCompat="@drawable/logo_new"
         tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/textView4"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/lama"
-        android:textAlignment="center"
-        android:textAppearance="@style/Text"
-        android:textColor="?attr/textViewColor"
-        android:textSize="40sp"
+        android:orientation="vertical"
+        android:id="@+id/lin_text"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lama_image" />
+        app:layout_constraintTop_toBottomOf="@+id/lama_image">
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/lin_al_amp"
-        android:textAppearance="@style/Text"
-        android:textColor="?attr/textViewColor"
-        android:textSize="28sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        <TextView
+            android:id="@+id/lama"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lama"
+            android:layout_gravity="center_horizontal"
+            android:textAlignment="center"
+            android:textAppearance="@style/Text"
+            android:textColor="?attr/textViewColor"
+            android:textSize="40sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
-        android:text="@string/math_anal"
-        android:textAppearance="@style/Text"
-        android:textColor="?attr/textViewColor"
-        android:textSize="28sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        <TextView
+            android:id="@+id/alg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lin_al_amp"
+            android:textAppearance="@style/Text"
+            android:textColor="?attr/textViewColor"
+            android:textSize="28sp"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/math"
+            android:text="@string/math_anal"
+            android:textAppearance="@style/Text"
+            android:textColor="?attr/textViewColor"
+            android:textSize="28sp"
+            android:layout_gravity="center_horizontal" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
