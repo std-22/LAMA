@@ -1,35 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="?attr/backgroundColor">
 
-    <!-- Header -->
-
-    <ImageButton
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="33dp"
-        android:layout_marginStart="33dp"
-        android:scaleType="centerCrop"
-        android:background="?attr/backgroundColor"
-        android:src="@drawable/ic_backspace"
-        android:onClick="OnClickBackMatrix"
-        android:contentDescription="@string/backspace"/>
+    <!--Header-->
 
     <TextView
         android:id="@+id/function_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="27dp"
         android:text="@string/name_of_function"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp"
         android:textAppearance="@style/Text"
         android:textColor="?attr/textViewColor"
         android:textSize="21sp"
         android:textStyle="bold"
-        tools:ignore="MissingConstraints"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- Body -->
 
@@ -37,8 +28,10 @@
         android:id="@+id/Matrix1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="150dp">
+        android:layout_marginTop="80dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/function_name">
 
         <TableRow
             android:layout_width="match_parent"
@@ -48,79 +41,79 @@
                 android:id="@+id/editTextNumberA1"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
+                android:importantForAutofill="no"
                 android:inputType="numberSigned|number|numberDecimal"
                 android:textAlignment="center"
-                android:visibility="gone"
-                android:importantForAutofill="no"
                 android:textColor="?attr/textViewColor"
-                android:backgroundTint="?attr/textViewColor"
-                tools:ignore="LabelFor"/>
+                android:visibility="gone"
+                tools:ignore="LabelFor" />
 
             <EditText
                 android:id="@+id/editTextNumberA2"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
+                android:importantForAutofill="no"
                 android:inputType="numberSigned|number|numberDecimal"
                 android:textAlignment="center"
-                android:visibility="gone"
-                android:importantForAutofill="no"
                 android:textColor="?attr/textViewColor"
-                android:backgroundTint="?attr/textViewColor"
-                tools:ignore="LabelFor"/>
+                android:visibility="gone"
+                tools:ignore="LabelFor" />
 
             <EditText
                 android:id="@+id/editTextNumberA3"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
+                android:importantForAutofill="no"
                 android:inputType="numberSigned|number|numberDecimal"
                 android:textAlignment="center"
-                android:visibility="gone"
-                android:importantForAutofill="no"
                 android:textColor="?attr/textViewColor"
-                android:backgroundTint="?attr/textViewColor"
-                tools:ignore="LabelFor"/>
+                android:visibility="gone"
+                tools:ignore="LabelFor" />
 
             <EditText
                 android:id="@+id/editTextNumberA4"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
+                android:importantForAutofill="no"
                 android:inputType="numberSigned|number|numberDecimal"
                 android:textAlignment="center"
-                android:visibility="gone"
-                android:importantForAutofill="no"
                 android:textColor="?attr/textViewColor"
-                android:backgroundTint="?attr/textViewColor"
-                tools:ignore="LabelFor"/>
+                android:visibility="gone"
+                tools:ignore="LabelFor" />
 
             <EditText
                 android:id="@+id/editTextNumberA5"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
+                android:importantForAutofill="no"
                 android:inputType="numberSigned|number|numberDecimal"
                 android:textAlignment="center"
-                android:visibility="gone"
-                android:importantForAutofill="no"
                 android:textColor="?attr/textViewColor"
-                android:backgroundTint="?attr/textViewColor"
-                tools:ignore="LabelFor"/>
+                android:visibility="gone"
+                tools:ignore="LabelFor" />
 
             <EditText
                 android:id="@+id/editTextNumberA6"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
+                android:importantForAutofill="no"
                 android:inputType="numberSigned|number|numberDecimal"
                 android:textAlignment="center"
-                android:visibility="gone"
-                android:importantForAutofill="no"
                 android:textColor="?attr/textViewColor"
-                android:backgroundTint="?attr/textViewColor"
-                tools:ignore="LabelFor"/>
+                android:visibility="gone"
+                tools:ignore="LabelFor" />
 
         </TableRow>
 
@@ -132,79 +125,79 @@
                 android:id="@+id/editTextNumberB1"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
+                android:importantForAutofill="no"
                 android:inputType="numberSigned|number|numberDecimal"
                 android:textAlignment="center"
-                android:visibility="gone"
-                android:importantForAutofill="no"
                 android:textColor="?attr/textViewColor"
-                android:backgroundTint="?attr/textViewColor"
-                tools:ignore="LabelFor"/>
+                android:visibility="gone"
+                tools:ignore="LabelFor" />
 
             <EditText
                 android:id="@+id/editTextNumberB2"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
+                android:importantForAutofill="no"
                 android:inputType="numberSigned|number|numberDecimal"
                 android:textAlignment="center"
-                android:visibility="gone"
-                android:importantForAutofill="no"
                 android:textColor="?attr/textViewColor"
-                android:backgroundTint="?attr/textViewColor"
-                tools:ignore="LabelFor"/>
+                android:visibility="gone"
+                tools:ignore="LabelFor" />
 
             <EditText
                 android:id="@+id/editTextNumberB3"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
+                android:importantForAutofill="no"
                 android:inputType="numberSigned|number|numberDecimal"
                 android:textAlignment="center"
-                android:visibility="gone"
-                android:importantForAutofill="no"
                 android:textColor="?attr/textViewColor"
-                android:backgroundTint="?attr/textViewColor"
-                tools:ignore="LabelFor"/>
+                android:visibility="gone"
+                tools:ignore="LabelFor" />
 
             <EditText
                 android:id="@+id/editTextNumberB4"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
+                android:importantForAutofill="no"
                 android:inputType="numberSigned|number|numberDecimal"
                 android:textAlignment="center"
-                android:visibility="gone"
-                android:importantForAutofill="no"
                 android:textColor="?attr/textViewColor"
-                android:backgroundTint="?attr/textViewColor"
-                tools:ignore="LabelFor"/>
+                android:visibility="gone"
+                tools:ignore="LabelFor" />
 
             <EditText
                 android:id="@+id/editTextNumberB5"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
+                android:importantForAutofill="no"
                 android:inputType="numberSigned|number|numberDecimal"
                 android:textAlignment="center"
-                android:visibility="gone"
-                android:importantForAutofill="no"
                 android:textColor="?attr/textViewColor"
-                android:backgroundTint="?attr/textViewColor"
-                tools:ignore="LabelFor"/>
+                android:visibility="gone"
+                tools:ignore="LabelFor" />
 
             <EditText
                 android:id="@+id/editTextNumberB6"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
+                android:importantForAutofill="no"
                 android:inputType="numberSigned|number|numberDecimal"
                 android:textAlignment="center"
-                android:visibility="gone"
-                android:importantForAutofill="no"
                 android:textColor="?attr/textViewColor"
-                android:backgroundTint="?attr/textViewColor"
-                tools:ignore="LabelFor"/>
+                android:visibility="gone"
+                tools:ignore="LabelFor" />
         </TableRow>
 
         <TableRow
@@ -215,79 +208,79 @@
                 android:id="@+id/editTextNumberC1"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
+                android:importantForAutofill="no"
                 android:inputType="numberSigned|number|numberDecimal"
                 android:textAlignment="center"
-                android:visibility="gone"
-                android:importantForAutofill="no"
                 android:textColor="?attr/textViewColor"
-                android:backgroundTint="?attr/textViewColor"
-                tools:ignore="LabelFor"/>
+                android:visibility="gone"
+                tools:ignore="LabelFor" />
 
             <EditText
                 android:id="@+id/editTextNumberC2"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
+                android:importantForAutofill="no"
                 android:inputType="numberSigned|number|numberDecimal"
                 android:textAlignment="center"
-                android:visibility="gone"
-                android:importantForAutofill="no"
                 android:textColor="?attr/textViewColor"
-                android:backgroundTint="?attr/textViewColor"
-                tools:ignore="LabelFor"/>
+                android:visibility="gone"
+                tools:ignore="LabelFor" />
 
             <EditText
                 android:id="@+id/editTextNumberC3"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
+                android:importantForAutofill="no"
                 android:inputType="numberSigned|number|numberDecimal"
                 android:textAlignment="center"
-                android:visibility="gone"
-                android:importantForAutofill="no"
                 android:textColor="?attr/textViewColor"
-                android:backgroundTint="?attr/textViewColor"
-                tools:ignore="LabelFor"/>
+                android:visibility="gone"
+                tools:ignore="LabelFor" />
 
             <EditText
                 android:id="@+id/editTextNumberC4"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
+                android:importantForAutofill="no"
                 android:inputType="numberSigned|number|numberDecimal"
                 android:textAlignment="center"
-                android:visibility="gone"
-                android:importantForAutofill="no"
                 android:textColor="?attr/textViewColor"
-                android:backgroundTint="?attr/textViewColor"
-                tools:ignore="LabelFor"/>
+                android:visibility="gone"
+                tools:ignore="LabelFor" />
 
             <EditText
                 android:id="@+id/editTextNumberC5"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
+                android:importantForAutofill="no"
                 android:inputType="numberSigned|number|numberDecimal"
                 android:textAlignment="center"
-                android:visibility="gone"
-                android:importantForAutofill="no"
                 android:textColor="?attr/textViewColor"
-                android:backgroundTint="?attr/textViewColor"
-                tools:ignore="LabelFor"/>
+                android:visibility="gone"
+                tools:ignore="LabelFor" />
 
             <EditText
                 android:id="@+id/editTextNumberC6"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
+                android:importantForAutofill="no"
                 android:inputType="numberSigned|number|numberDecimal"
                 android:textAlignment="center"
-                android:visibility="gone"
-                android:importantForAutofill="no"
                 android:textColor="?attr/textViewColor"
-                android:backgroundTint="?attr/textViewColor"
-                tools:ignore="LabelFor"/>
+                android:visibility="gone"
+                tools:ignore="LabelFor" />
         </TableRow>
 
         <TableRow
@@ -298,79 +291,79 @@
                 android:id="@+id/editTextNumberD1"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
+                android:importantForAutofill="no"
                 android:inputType="numberSigned|number|numberDecimal"
                 android:textAlignment="center"
-                android:visibility="gone"
-                android:importantForAutofill="no"
                 android:textColor="?attr/textViewColor"
-                android:backgroundTint="?attr/textViewColor"
-                tools:ignore="LabelFor"/>
+                android:visibility="gone"
+                tools:ignore="LabelFor" />
 
             <EditText
                 android:id="@+id/editTextNumberD2"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
+                android:importantForAutofill="no"
                 android:inputType="numberSigned|number|numberDecimal"
                 android:textAlignment="center"
-                android:visibility="gone"
-                android:importantForAutofill="no"
                 android:textColor="?attr/textViewColor"
-                android:backgroundTint="?attr/textViewColor"
-                tools:ignore="LabelFor"/>
+                android:visibility="gone"
+                tools:ignore="LabelFor" />
 
             <EditText
                 android:id="@+id/editTextNumberD3"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
+                android:importantForAutofill="no"
                 android:inputType="numberSigned|number|numberDecimal"
                 android:textAlignment="center"
-                android:visibility="gone"
-                android:importantForAutofill="no"
                 android:textColor="?attr/textViewColor"
-                android:backgroundTint="?attr/textViewColor"
-                tools:ignore="LabelFor"/>
+                android:visibility="gone"
+                tools:ignore="LabelFor" />
 
             <EditText
                 android:id="@+id/editTextNumberD4"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
+                android:importantForAutofill="no"
                 android:inputType="numberSigned|number|numberDecimal"
                 android:textAlignment="center"
-                android:visibility="gone"
-                android:importantForAutofill="no"
                 android:textColor="?attr/textViewColor"
-                android:backgroundTint="?attr/textViewColor"
-                tools:ignore="LabelFor"/>
+                android:visibility="gone"
+                tools:ignore="LabelFor" />
 
             <EditText
                 android:id="@+id/editTextNumberD5"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
+                android:importantForAutofill="no"
                 android:inputType="numberSigned|number|numberDecimal"
                 android:textAlignment="center"
-                android:visibility="gone"
-                android:importantForAutofill="no"
                 android:textColor="?attr/textViewColor"
-                android:backgroundTint="?attr/textViewColor"
-                tools:ignore="LabelFor"/>
+                android:visibility="gone"
+                tools:ignore="LabelFor" />
 
             <EditText
                 android:id="@+id/editTextNumberD6"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
+                android:importantForAutofill="no"
                 android:inputType="numberSigned|number|numberDecimal"
                 android:textAlignment="center"
-                android:visibility="gone"
-                android:importantForAutofill="no"
                 android:textColor="?attr/textViewColor"
-                android:backgroundTint="?attr/textViewColor"
-                tools:ignore="LabelFor"/>
+                android:visibility="gone"
+                tools:ignore="LabelFor" />
         </TableRow>
 
         <TableRow
@@ -381,79 +374,79 @@
                 android:id="@+id/editTextNumberE1"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
+                android:importantForAutofill="no"
                 android:inputType="numberSigned|number|numberDecimal"
                 android:textAlignment="center"
-                android:visibility="gone"
-                android:importantForAutofill="no"
                 android:textColor="?attr/textViewColor"
-                android:backgroundTint="?attr/textViewColor"
-                tools:ignore="LabelFor"/>
+                android:visibility="gone"
+                tools:ignore="LabelFor" />
 
             <EditText
                 android:id="@+id/editTextNumberE2"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
+                android:importantForAutofill="no"
                 android:inputType="numberSigned|number|numberDecimal"
                 android:textAlignment="center"
-                android:visibility="gone"
-                android:importantForAutofill="no"
                 android:textColor="?attr/textViewColor"
-                android:backgroundTint="?attr/textViewColor"
-                tools:ignore="LabelFor"/>
+                android:visibility="gone"
+                tools:ignore="LabelFor" />
 
             <EditText
                 android:id="@+id/editTextNumberE3"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
+                android:importantForAutofill="no"
                 android:inputType="numberSigned|number|numberDecimal"
                 android:textAlignment="center"
-                android:visibility="gone"
-                android:importantForAutofill="no"
                 android:textColor="?attr/textViewColor"
-                android:backgroundTint="?attr/textViewColor"
-                tools:ignore="LabelFor"/>
+                android:visibility="gone"
+                tools:ignore="LabelFor" />
 
             <EditText
                 android:id="@+id/editTextNumberE4"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
+                android:importantForAutofill="no"
                 android:inputType="numberSigned|number|numberDecimal"
                 android:textAlignment="center"
-                android:visibility="gone"
-                android:importantForAutofill="no"
                 android:textColor="?attr/textViewColor"
-                android:backgroundTint="?attr/textViewColor"
-                tools:ignore="LabelFor"/>
+                android:visibility="gone"
+                tools:ignore="LabelFor" />
 
             <EditText
                 android:id="@+id/editTextNumberE5"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
+                android:importantForAutofill="no"
                 android:inputType="numberSigned|number|numberDecimal"
                 android:textAlignment="center"
-                android:visibility="gone"
-                android:importantForAutofill="no"
                 android:textColor="?attr/textViewColor"
-                android:backgroundTint="?attr/textViewColor"
-                tools:ignore="LabelFor"/>
+                android:visibility="gone"
+                tools:ignore="LabelFor" />
 
             <EditText
                 android:id="@+id/editTextNumberE6"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
+                android:importantForAutofill="no"
                 android:inputType="numberSigned|number|numberDecimal"
                 android:textAlignment="center"
-                android:visibility="gone"
-                android:importantForAutofill="no"
                 android:textColor="?attr/textViewColor"
-                android:backgroundTint="?attr/textViewColor"
-                tools:ignore="LabelFor"/>
+                android:visibility="gone"
+                tools:ignore="LabelFor" />
         </TableRow>
 
         <TableRow
@@ -464,92 +457,129 @@
                 android:id="@+id/editTextNumberF1"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
+                android:importantForAutofill="no"
                 android:inputType="numberSigned|number|numberDecimal"
                 android:textAlignment="center"
-                android:visibility="gone"
-                android:importantForAutofill="no"
                 android:textColor="?attr/textViewColor"
-                android:backgroundTint="?attr/textViewColor"
-                tools:ignore="LabelFor"/>
+                android:visibility="gone"
+                tools:ignore="LabelFor" />
 
             <EditText
                 android:id="@+id/editTextNumberF2"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
+                android:importantForAutofill="no"
                 android:inputType="numberSigned|number|numberDecimal"
                 android:textAlignment="center"
-                android:visibility="gone"
-                android:importantForAutofill="no"
                 android:textColor="?attr/textViewColor"
-                android:backgroundTint="?attr/textViewColor"
-                tools:ignore="LabelFor"/>
+                android:visibility="gone"
+                tools:ignore="LabelFor" />
 
             <EditText
                 android:id="@+id/editTextNumberF3"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
+                android:importantForAutofill="no"
                 android:inputType="numberSigned|number|numberDecimal"
                 android:textAlignment="center"
-                android:visibility="gone"
-                android:importantForAutofill="no"
                 android:textColor="?attr/textViewColor"
-                android:backgroundTint="?attr/textViewColor"
-                tools:ignore="LabelFor"/>
+                android:visibility="gone"
+                tools:ignore="LabelFor" />
 
             <EditText
                 android:id="@+id/editTextNumberF4"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
+                android:importantForAutofill="no"
                 android:inputType="numberSigned|number|numberDecimal"
                 android:textAlignment="center"
-                android:visibility="gone"
-                android:importantForAutofill="no"
                 android:textColor="?attr/textViewColor"
-                android:backgroundTint="?attr/textViewColor"
-                tools:ignore="LabelFor"/>
+                android:visibility="gone"
+                tools:ignore="LabelFor" />
 
             <EditText
                 android:id="@+id/editTextNumberF5"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
+                android:importantForAutofill="no"
                 android:inputType="numberSigned|number|numberDecimal"
                 android:textAlignment="center"
-                android:visibility="gone"
-                android:importantForAutofill="no"
                 android:textColor="?attr/textViewColor"
-                android:backgroundTint="?attr/textViewColor"
-                tools:ignore="LabelFor"/>
+                android:visibility="gone"
+                tools:ignore="LabelFor" />
 
             <EditText
                 android:id="@+id/editTextNumberF6"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
+                android:importantForAutofill="no"
                 android:inputType="numberSigned|number|numberDecimal"
                 android:textAlignment="center"
-                android:visibility="gone"
-                android:importantForAutofill="no"
                 android:textColor="?attr/textViewColor"
-                android:backgroundTint="?attr/textViewColor"
-                tools:ignore="LabelFor"/>
+                android:visibility="gone"
+                tools:ignore="LabelFor" />
         </TableRow>
     </TableLayout>
 
+    <!--Для ввода числа-->
+
+    <TextView
+        android:id="@+id/number_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/enter_number"
+        android:layout_marginTop="50dp"
+        style="@style/Text"
+        android:textColor="?attr/textViewColor"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@+id/Matrix1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextNumber"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:inputType="numberSigned|number|numberDecimal"
+        android:textAlignment="center"
+        android:visibility="gone"
+        android:importantForAutofill="no"
+        android:textColor="?attr/textViewColor"
+        android:backgroundTint="?attr/textViewColor"
+        tools:ignore="LabelFor"
+        app:layout_constraintTop_toBottomOf="@+id/number_input"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!--Button-->
+
     <Button
+        android:id="@+id/to_input_matrix"
         android:layout_width="286dp"
         android:layout_height="42dp"
-        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="44dp"
         android:background="@drawable/express_button"
+        android:onClick="onClickToResult"
+        android:text="@string/count"
         android:textAppearance="@style/Text"
         android:textColor="?attr/textViewColor"
-        android:id="@+id/to_input_matrix"
-        android:text="@string/count"
-        android:layout_marginTop="580dp"
-        android:onClick="onClickToResult"
-        tools:ignore="OnClick"/>
-</FrameLayout>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="OnClick" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

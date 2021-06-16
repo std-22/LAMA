@@ -1,4 +1,4 @@
-package io.github.studio22.lama.ui.achievements;
+package io.github.studio22.lama.ui.fun_res;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,10 +10,10 @@ import androidx.fragment.app.Fragment;
 
 import io.github.studio22.lama.R;
 
-public class AchievementFragment extends Fragment {
+public class FunctionResearchFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_achiev, container, false);
+        return inflater.inflate(R.layout.fragment_function_res, container, false);
     }
 }

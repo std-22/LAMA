@@ -24,11 +24,12 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Queue;
 
 public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
 
-    public static final int BUTTON_WIDTH = 200;
+    public static final int BUTTON_WIDTH = 150;
     private RecyclerView recyclerView;
     private List<UnderlayButton> buttons;
     private final GestureDetector gestureDetector;
@@ -45,6 +46,7 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
             Point point = new Point((int) e.getRawX(), (int) e.getRawY());
 
             RecyclerView.ViewHolder swipedViewHolder = recyclerView.findViewHolderForAdapterPosition(swipedPos);
+            assert swipedViewHolder != null;
             View swipedItem = swipedViewHolder.itemView;
             Rect rect = new Rect();
             swipedItem.getGlobalVisibleRect(rect);
@@ -96,7 +98,7 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
 
     @Override
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
-        int pos = viewHolder.getAdapterPosition();
+        int pos = viewHolder.getBindingAdapterPosition();
 
         if (swipedPos != pos)
             recoverQueue.add(swipedPos);
@@ -130,7 +132,7 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
 
     @Override
     public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
-        int pos = viewHolder.getAdapterPosition();
+        int pos = viewHolder.getBindingAdapterPosition();
         float translationX = dX;
         View itemView = viewHolder.itemView;
 
@@ -150,7 +152,7 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
                     buffer = buttonsBuffer.get(pos);
                 }
 
-                translationX = dX * buffer.size() * 2 * BUTTON_WIDTH / itemView.getWidth();
+                translationX = dX * Objects.requireNonNull(buffer).size() * 2 * BUTTON_WIDTH / itemView.getWidth();
                 drawButtons(c, itemView, buffer, pos, translationX);
             }
         }
@@ -162,7 +164,7 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
         while (!recoverQueue.isEmpty()) {
             int pos = recoverQueue.poll();
             if (pos > -1) {
-                recyclerView.getAdapter().notifyItemChanged(pos);
+                Objects.requireNonNull(recyclerView.getAdapter()).notifyItemChanged(pos);
             }
         }
     }
@@ -172,7 +174,7 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
         float dButtonWidth = (-1) * dX / buffer.size();
 
         for (UnderlayButton button : buffer) {
-            float left = right - dButtonWidth - 140f;
+            float left = right - dButtonWidth - 240f;
             button.onDraw(
                     c,
                     new RectF(
@@ -231,12 +233,12 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
             Rect r = new Rect();
             float cHeight = rect.height();
             float cWidth = rect.width();
-            float x = cWidth / 2f - r.width() / 2f - r.left;
+            float x = cWidth / 1.7f + r.width() / 2f - r.left;
             float y = cHeight / 2f + r.height() / 2f - r.bottom;
-            c.drawCircle(rect.left + x, rect.top + y, 120, p);
-            Drawable drawable = ContextCompat.getDrawable(context, R.drawable.ic_info);
+            c.drawCircle(rect.left + x, rect.top + y, rect.width()/6, p);
+            Drawable drawable = ContextCompat.getDrawable(context, R.drawable.ic_q);
             Bitmap bitmap = drawableToBitmap(drawable);
-            c.drawBitmap(bitmap, rect.left + x - 103, rect.top + y - 103, p);
+            c.drawBitmap(bitmap, rect.left + x - bitmap.getWidth() / 2f, rect.bottom - (rect.height() + bitmap.getHeight()) / 2f, p);
 
             clickRegion = rect;
             this.pos = pos;

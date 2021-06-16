@@ -12,14 +12,14 @@
         tools:layout="@layout/fragment_matrix"/>
 
     <fragment
+        android:id="@+id/function_research_fragment"
+        android:name="io.github.studio22.lama.ui.fun_res.FunctionResearchFragment"
+        android:label="Исследование функций"
+        tools:layout="@layout/fragment_function_res"/>
+
+    <fragment
         android:id="@+id/app_fragment"
         android:name="io.github.studio22.lama.ui.app.AboutProgramFragment"
         android:label="@string/About_program"
         tools:layout="@layout/fragment_about_program"/>
-
-    <fragment
-        android:id="@+id/achievements_fragment"
-        android:name="io.github.studio22.lama.ui.achievements.AchievementFragment"
-        android:label="@string/achievements"
-        tools:layout="@layout/fragment_achiev"/>
 </navigation>

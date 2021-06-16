@@ -30,18 +30,5 @@
         android:onClick="onClickToDark"
         android:background="?attr/backgroundColor"
         android:contentDescription="@string/dark_theme"/>
-<!--
-    <ImageButton
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="25dp"
-        android:id="@+id/day"
-        android:src="@drawable/ic_sun"
-        android:layout_marginStart="240dp"
-        android:scaleType="centerCrop"
-        android:onClick="onClickToLight"
-        android:background="?attr/backgroundColor"
-        android:visibility="gone"
-        android:contentDescription="@string/dark_theme"/>-->
 
 </FrameLayout>

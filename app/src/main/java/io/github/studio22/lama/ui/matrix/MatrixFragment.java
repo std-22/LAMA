@@ -19,16 +19,16 @@ public class MatrixFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_matrix, container, false);
 
         ImageView two_matrix = root.findViewById(R.id.two_matrix_image);
-        ImageView lyambda_matrix = root.findViewById(R.id.lyambda_matrix_image);
+        ImageView lambda_matrix = root.findViewById(R.id.lambda_matrix_image);
         ImageView matrix = root.findViewById(R.id.matrix_image);
 
         if (MenuNavActivity.theme){
             two_matrix.setImageResource(R.drawable.two_matrix_dark);
-            lyambda_matrix.setImageResource(R.drawable.lyambda_matrix_dark);
+            lambda_matrix.setImageResource(R.drawable.lambda_matrix_dark);
             matrix.setImageResource(R.drawable.one_matrix_dark);
         } else {
             two_matrix.setImageResource(R.drawable.two_matrix);
-            lyambda_matrix.setImageResource(R.drawable.lyambda_matrix);
+            lambda_matrix.setImageResource(R.drawable.lambda_matrix);
             matrix.setImageResource(R.drawable.one_matrix);
         }
 

@@ -8,19 +8,18 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.google.android.material.navigation.NavigationView;
-
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.List;
 
@@ -42,7 +41,7 @@ public class MenuNavActivity extends AppCompatActivity {
         state = sharedPreferences.loadNightModeState();
         theme = state;
 
-        if (state){
+        if (state) {
             setTheme(R.style.DarkAppTheme);
         } else {
             setTheme(R.style.AppTheme);
@@ -52,14 +51,11 @@ public class MenuNavActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu_nav);
 
         ImageView lama = findViewById(R.id.menu_lama_image);
-        //ImageButton night = findViewById(R.id.night);
 
-        if(state){
+        if (state) {
             lama.setImageResource(R.drawable.logo_new_dark);
-            //night.setImageResource(R.drawable.ic_sun);
         } else {
             lama.setImageResource(R.drawable.logo_new);
-            //night.setImageResource(R.drawable.ic_moon);
         }
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -69,13 +65,14 @@ public class MenuNavActivity extends AppCompatActivity {
         NavigationView navigationView = findViewById(R.id.nav_view);
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.matrix_fragment, R.id.app_fragment, R.id.achievements_fragment)
+                R.id.matrix_fragment, R.id.app_fragment, R.id.function_research_fragment)
                 .setOpenableLayout(drawer)   //setDrawerLayout(drawer) deprecated
                 .build();
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
     }
 
     /* navigation */
@@ -92,58 +89,50 @@ public class MenuNavActivity extends AppCompatActivity {
     public void onClickMatrixMatrix(View view) {
         Intent intent = new Intent(MenuNavActivity.this, MatrixMatrix.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
-    public void onClickMatrixLyambda(View view) {
-        Intent intent = new Intent(MenuNavActivity.this, MatrixLyambda.class);
+    public void onClickMatrixLambda(View view) {
+        Intent intent = new Intent(MenuNavActivity.this, MatrixLambda.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
     public void onClickMatrix(View view) {
         Intent intent = new Intent(MenuNavActivity.this, Matrix.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
     /* changing theme */
 
     public void onClickToDark(View view) {
         sharedPreferences.setNightModeState(!state);
-
         Intent intent = new Intent(getApplicationContext(), MenuNavActivity.class);
         startActivity(intent);
         finish();
     }
-
-    /*public void onClickToLight(View view) {
-        sharedPreferences.setNightModeState(!state);
-
-        Intent intent = new Intent(getApplicationContext(), MenuNavActivity.class);
-        startActivity(intent);
-        finish();
-    }*/
 
     /* about program button */
 
     public void onClickSendEmail(View view) {
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mail to", "studio-22-5600@pages.plusgoogle.com", null));
-                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Разработчикам");
-                emailIntent.putExtra(Intent.EXTRA_TEXT, ((EditText) findViewById(R.id.for_message)).getText().toString());
-
-                if (isIntentSafe(emailIntent)){
-                    startActivity(emailIntent);
-                } else {
-                    Toast.makeText(getApplicationContext(), "no app for dial on your device", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+        Intent emailIntent = new Intent(Intent.ACTION_VIEW,
+                Uri.parse("mailto:" + "melikbekyan.ashot@yandex.ru"));
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Lama");
+        EditText messageET = findViewById(R.id.for_message);
+        emailIntent.putExtra(Intent.EXTRA_TEXT, messageET.getText().toString());
+        try {
+            startActivity(Intent.createChooser(emailIntent, "Отправить письмо через"));
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(getApplicationContext(),
+                    "Приложение почты не обранужено",
+                    Toast.LENGTH_SHORT).show();
+        }
     }
 
     /* check safety of opening app */
 
-    private Boolean isIntentSafe(Intent intent){
+    private Boolean isIntentSafe(Intent intent) {
         PackageManager packageManager = getPackageManager();
         @SuppressLint("QueryPermissionsNeeded") List<ResolveInfo> activities = packageManager.queryIntentActivities(intent, 0);
         return activities.size() > 0;

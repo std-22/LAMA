@@ -8,13 +8,16 @@ import androidx.annotation.NonNull;
 public class Operation implements Parcelable {
 
     private final String name;
+    private final String nameOfClass;
 
-    public Operation(String name){
-        this.name=name;
+    public Operation(String name, String nameOfClass){
+        this.name = name;
+        this.nameOfClass = nameOfClass;
     }
 
     protected Operation(Parcel in) {
-        name = in.readString();
+        this.name = in.readString();
+        this.nameOfClass = in.readString();
     }
 
     public static final Creator<Operation> CREATOR = new Creator<Operation>() {
@@ -30,8 +33,10 @@ public class Operation implements Parcelable {
     };
 
     public String getName() {
-        return this.name;
+        return name;
     }
+
+    public String getNameOfClass() { return nameOfClass; }
 
     @NonNull
     @Override
@@ -49,5 +54,6 @@ public class Operation implements Parcelable {
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(name);
+        parcel.writeString(nameOfClass);
     }
 }

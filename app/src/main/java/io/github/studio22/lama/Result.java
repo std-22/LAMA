@@ -1,38 +1,81 @@
 package io.github.studio22.lama;
 
-import android.content.Intent;
-
+/**
+ * Класс получения результата вычислений
+ */
 public class Result {
-    private static String result = "";
-    private static String result_1 = "";
-
-    public static String getResult(String nameOfFunction, Double[][] field){
+    /**
+     * @param nameOfFunction название функции
+     * @param matrix матрица
+     * @return результат вычислления
+     */
+    public static double[][] getResult(String nameOfFunction, double[][] matrix){
         switch (nameOfFunction){
             case "Критерий Сильвестра":
-                boolean firstMinor, secondMinor, thirdMinor;
-                firstMinor = field[0][0] > 0;
-                secondMinor = (field[0][0]*field[1][1] - field[0][1]*field[1][0]) > 0;
-                thirdMinor = (field[0][0]*(field[1][1]*field[2][2]-field[1][2]*field[2][1]) -
-                              field[0][1]*(field[1][0]*field[2][2]-field[1][2]*field[2][0]) +
-                              field[0][2]*(field[1][0]*field[2][1]-field[1][1]*field[2][0])) > 0;
-                if (firstMinor && secondMinor && thirdMinor) {
-                    result = "Positive definite";
-                } else if (!firstMinor && secondMinor && !thirdMinor) {
-                    result = "Negative definite";
-                } else {
-                    result = "Alternating definite";
-                }
-                result_1 = result;
-                result = "";
-                return result_1;
+                return MatrixCalculation.criterionSilvester(matrix);
             case "Транспонирование":
-                return MatrixCalculation.transpose(field);
-
+                return MatrixCalculation.transpose(matrix);
             case "DET |A|":
-                Double det = MatrixCalculation.matrixDeterminant(field);
-                return String.valueOf(det);
+                return MatrixCalculation.determinant(matrix);
+            case "A\u1428\u00B9":
+                return MatrixCalculation.inverse(matrix);
+            case "Поиск собственных значений":
+                return MatrixCalculation.eigenValue(matrix);
+            case "Поиск собственных векторов":
+                return MatrixCalculation.eigenVector(matrix);
             default:
-                return "";
+                return matrix;
+        }
+    }
+
+    /**
+     * @param nameOfFunction название функции
+     * @param matrix матрица
+     * @param number число
+     * @return результат вычисления
+     */
+    public static double[][] getResult(String nameOfFunction, double[][] matrix, Double number) {
+        switch (nameOfFunction) {
+            case "Поэлементное A + n":
+                return MatrixLambdaCalculation.addNumber(matrix, number);
+            case "Поэлементное A - n":
+                return MatrixLambdaCalculation.subtractNumber(matrix, number);
+            case "Поэлементное A \u00D7 n":
+                return MatrixLambdaCalculation.multiplyOnNumber(matrix, number);
+            case "Поэлементное A / n":
+                return MatrixLambdaCalculation.divideOnNumber(matrix, number);
+            case "Поэлементное A\u207F":
+                return MatrixLambdaCalculation.powerElemByNumber(matrix, number);
+            case "A\u207F":
+                return MatrixLambdaCalculation.powerMatrixByNumber(matrix, number.intValue());
+            default:
+                return matrix;
+        }
+    }
+
+    /**
+     * @param nameOfFunction название функции
+     * @param matrixA первая матрица
+     * @param matrixB вторая матрица
+     * @return результат вычисления
+     */
+    public static double[][] getResult(String nameOfFunction, double[][] matrixA, double[][] matrixB) {
+        switch (nameOfFunction) {
+            case "A \u00D7 B":
+                return MatrixMatrixCalculation.multiplyMatrices(matrixA, matrixB);
+            case "A \u00D7 B\u207B\u00B9":
+                return MatrixMatrixCalculation.multiplyMatrices(matrixA,
+                        MatrixCalculation.inverse(matrixB));
+            case "A + B":
+                return MatrixMatrixCalculation.sum(matrixA, matrixB);
+            case "A - B":
+                return MatrixMatrixCalculation.subtract(matrixA, matrixB);
+            case "Поэлементное A \u00D7 B":
+                return MatrixMatrixCalculation.multiplyByElem(matrixA, matrixB);
+            case "Поэлементное A / B":
+                return MatrixMatrixCalculation.divideByElem(matrixA, matrixB);
+            default:
+                return matrixA;
         }
     }
 }

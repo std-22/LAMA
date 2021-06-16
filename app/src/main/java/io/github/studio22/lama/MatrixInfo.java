@@ -2,6 +2,7 @@ package io.github.studio22.lama;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -11,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MatrixInfo extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     Boolean state;
+    Operation operation;
+    float x1, y1, x2, y2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,15 +40,54 @@ public class MatrixInfo extends AppCompatActivity {
 
         //передача с предыдущего экрана название функции
         if(getIntent().hasExtra("selected")){
-            Operation operation = getIntent().getParcelableExtra("selected");
+            operation = getIntent().getParcelableExtra("selected");
             functionName.setText(operation.getName());
         }
     }
 
-    //возврат настроен только на matrix, а нужно на место вызова
-    public void OnClickBackMatrix(View view) {
-        Intent intent = new Intent(MatrixInfo.this, Matrix.class);
-        startActivity(intent);
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                x1 = event.getX();
+                y1 = event.getY();
+                break;
+            case MotionEvent.ACTION_UP:
+                x2 = event.getX();
+                y2 = event.getY();
+                if (x1<x2 && Math.toDegrees(Math.atan((x2-x1)/Math.abs(y2-y1))) > 30.0){
+                    onSwipeBack();
+                }
+                break;
+        }
+        return false;
+    }
+
+    public void onSwipeBack() {
+        Intent intent;
+        switch(operation.getNameOfClass()){
+            case "Matrix":
+                intent = new Intent(MatrixInfo.this, Matrix.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                break;
+            case "MatrixMatrix":
+                intent = new Intent(MatrixInfo.this, MatrixMatrix.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                break;
+            case "MatrixLambda":
+                intent = new Intent(MatrixInfo.this, MatrixLambda.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                break;
+        }
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }
 
