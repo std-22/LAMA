@@ -3,6 +3,7 @@ package io.github.studio22.lama;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -30,6 +31,7 @@ public class MatrixInput extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     Boolean state;
     Operation operation;
+    int temp_i;
     float x1, y1, x2, y2;
 
     @Override
@@ -72,6 +74,7 @@ public class MatrixInput extends AppCompatActivity {
         }
 
         for (int i = 0; i < selectedRowSizeA; i++) {
+            temp_i = i;
             for (int j = 0; j < selectedColumnSizeA; j++) {
                 EditText editText = findViewById(editTextId[i][j]);
                 editText.setVisibility(View.VISIBLE);
