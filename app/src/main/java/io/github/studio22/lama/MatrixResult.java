@@ -72,9 +72,8 @@ public class MatrixResult extends AppCompatActivity {
                     }
                     break;
                 case "A\u1428\u00B9":
-                    double[][] resultMatrixInv = Result.getResult(operation.getName(), matrixA);
-                    if (MatrixCalculation.determinantCalc(resultMatrixInv) != 0
-                            || !Double.isNaN(MatrixCalculation.determinantCalc(resultMatrixInv))) {
+                    if (MatrixCalculation.determinantCalc(matrixA) != 0) {
+                        double[][] resultMatrixInv = Result.getResult(operation.getName(), matrixA);
                         for (int i = 0; i < resultMatrixInv.length; i++) {
                             for (int j = 0; j < resultMatrixInv[0].length; j++) {
                                 textView = findViewById(resultTextViewID[i][j]);
