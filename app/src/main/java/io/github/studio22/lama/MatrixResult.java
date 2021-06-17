@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +17,7 @@ public class MatrixResult extends AppCompatActivity {
     Boolean state;
     Operation operation;
     float x1, y1, x2, y2;
+    double[][] resultMatrix;
 
     private static final int[][] resultTextViewID = {
             {R.id.resultA1, R.id.resultA2, R.id.resultA3, R.id.resultA4, R.id.resultA5, R.id.resultA6},
@@ -55,13 +58,14 @@ public class MatrixResult extends AppCompatActivity {
             TextView textView;
             switch (operation.getName()) {
                 case "DET |A|":
-                    double result = Result.getResult(operation.getName(), matrixA)[0][0];
+                    resultMatrix = new double[1][1];
+                    resultMatrix[0][0] = Result.getResult(operation.getName(), matrixA)[0][0];
                     textView = findViewById(resultTextViewID[0][0]);
                     textView.setVisibility(View.VISIBLE);
-                    textView.setText(String.valueOf(result));
+                    textView.setText(String.valueOf(resultMatrix[0][0]));
                     break;
                 case "Транспонирование":
-                    double[][] resultMatrix = Result.getResult(operation.getName(), matrixA);
+                    resultMatrix = Result.getResult(operation.getName(), matrixA);
                     for (int i = 0; i < resultMatrix.length; i++) {
                         for (int j = 0; j < resultMatrix[0].length; j++) {
                             textView = findViewById(resultTextViewID[i][j]);
@@ -72,14 +76,14 @@ public class MatrixResult extends AppCompatActivity {
                     }
                     break;
                 case "A\u1428\u00B9":
+                    resultMatrix = Result.getResult(operation.getName(), matrixA);
                     if (MatrixCalculation.determinantCalc(matrixA) != 0) {
-                        double[][] resultMatrixInv = Result.getResult(operation.getName(), matrixA);
-                        for (int i = 0; i < resultMatrixInv.length; i++) {
-                            for (int j = 0; j < resultMatrixInv[0].length; j++) {
+                        for (int i = 0; i < resultMatrix.length; i++) {
+                            for (int j = 0; j < resultMatrix[0].length; j++) {
                                 textView = findViewById(resultTextViewID[i][j]);
                                 textView.setVisibility(View.VISIBLE);
                                 DecimalFormat df = new DecimalFormat("#.###");
-                                textView.setText(df.format(resultMatrixInv[i][j]));
+                                textView.setText(df.format(resultMatrix[i][j]));
                             }
                         }
                     } else {
@@ -143,13 +147,13 @@ public class MatrixResult extends AppCompatActivity {
         else if (getIntent().hasExtra("matrix_a") & getIntent().hasExtra("matrix_b")) {
             double[][] matrixA = (double[][]) getIntent().getExtras().get("matrix_a");
             double[][] matrixB = (double[][]) getIntent().getExtras().get("matrix_b");
-            double[][] result = Result.getResult(operation.getName(), matrixA, matrixB);
-            for (int i = 0; i < result.length; i++) {
-                for (int j = 0; j < result[0].length; j++) {
+            resultMatrix = Result.getResult(operation.getName(), matrixA, matrixB);
+            for (int i = 0; i < resultMatrix.length; i++) {
+                for (int j = 0; j < resultMatrix[0].length; j++) {
                     TextView textView = findViewById(resultTextViewID[i][j]);
                     textView.setVisibility(View.VISIBLE);
                     DecimalFormat df = new DecimalFormat("#.###");
-                    textView.setText(df.format(result[i][j]));
+                    textView.setText(df.format(resultMatrix[i][j]));
                 }
             }
         }
@@ -157,15 +161,30 @@ public class MatrixResult extends AppCompatActivity {
         else {
             double[][] matrixA = (double[][]) getIntent().getExtras().get("matrix_a");
             double lambda = (double) getIntent().getExtras().get("lambda");
-            double[][] result = Result.getResult(operation.getName(), matrixA, lambda);
-            for (int i = 0; i < result.length; i++) {
-                for (int j = 0; j < result[0].length; j++) {
+            resultMatrix = Result.getResult(operation.getName(), matrixA, lambda);
+            for (int i = 0; i < resultMatrix.length; i++) {
+                for (int j = 0; j < resultMatrix[0].length; j++) {
                     TextView textView = findViewById(resultTextViewID[i][j]);
                     textView.setVisibility(View.VISIBLE);
                     DecimalFormat df = new DecimalFormat("#.###");
-                    textView.setText(df.format(result[i][j]));
+                    textView.setText(df.format(resultMatrix[i][j]));
                 }
             }
+        }
+
+        if (resultMatrix != null && resultMatrix.length != 1 && resultMatrix[0].length!=1){
+            findViewById(R.id.rem_matrix).setVisibility(View.VISIBLE);
+            CheckBox checkBox = findViewById(R.id.checkBox);
+            checkBox.setVisibility(View.VISIBLE);
+            checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if(isChecked) {
+                        //TODO()
+                        //будем кидать матрицу в историю
+                    }
+                }
+            });
         }
     }
 

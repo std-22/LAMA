@@ -54,6 +54,8 @@
     <string name="logo">logo</string>
     <string name="fun_res">Исследование функций</string>
     <string name="in_dev">В разработке</string>
+    <string name="history">История</string>
+    <string name="choice">Выберите</string>
     <string-array name="numbers">
         <item>1</item>
         <item>2</item>

@@ -169,6 +169,7 @@
     <!--CheckBox-->
 
     <TextView
+        android:id="@+id/rem_matrix"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -185,10 +186,11 @@
         android:id="@+id/checkBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="60dp"
-        android:layout_marginBottom="70dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="67dp"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/rem_matrix"
         app:layout_constraintBottom_toTopOf="@+id/to_input_matrix"/>
 
     <!--Button-->

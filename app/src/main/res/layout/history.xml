@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="?attr/backgroundColor">
 
     <!--Header-->
 
     <TextView
-        android:id="@+id/function_name"
+        android:id="@+id/history"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="27dp"
-        android:text="@string/name_of_function"
+        android:text="@string/history"
         android:textAppearance="@style/Text"
         android:textColor="?attr/textViewColor"
         android:textSize="20sp"
@@ -23,29 +23,17 @@
 
     <!--Body-->
 
-    <ImageView
-        android:id="@+id/scalar"
-        android:layout_width="368.26dp"
-        android:layout_height="200dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="24dp"
-        android:contentDescription="@string/description"
-        android:src="@drawable/scalar_m"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.372"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/function_name" />
-
     <TextView
-        android:layout_width="371dp"
-        android:layout_height="415dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="25dp"
-        android:text="@string/scalar_mul_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/choice"
+        android:layout_marginTop="15dp"
         android:textAppearance="@style/Text"
         android:textColor="?attr/textViewColor"
-        android:textSize="20sp"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scalar" />
+        app:layout_constraintTop_toBottomOf="@+id/history"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
