@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -159,6 +160,20 @@ public class CategoryOperationMatrixA extends AppCompatActivity implements Curso
         intent.putExtra("selected", operation);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+    }
+
+    public void onClickExtraMenu(View view) {
+        ImageButton clock = findViewById(R.id.clock);
+        clock.setVisibility(View.VISIBLE);
+        clock.setOnClickListener(view1 -> {
+            Intent intent = new Intent(CategoryOperationMatrixA.this, History.class);
+            intent.putExtra("selected", operation);
+            intent.putExtra("prev_class", "A");
+            startActivity(intent);
+        });
+
+        //ImageButton photo = findViewById(R.id.photo);
+        //photo.setVisibility(View.VISIBLE);
     }
 
     @Override
