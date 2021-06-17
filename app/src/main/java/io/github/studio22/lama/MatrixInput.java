@@ -6,6 +6,7 @@ import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -31,7 +32,6 @@ public class MatrixInput extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     Boolean state;
     Operation operation;
-    int temp_i;
     float x1, y1, x2, y2;
 
     @Override
@@ -73,13 +73,15 @@ public class MatrixInput extends AppCompatActivity {
             selectedColumnSizeA = Integer.parseInt(temp);
         }
 
+        EditText editText = null;
         for (int i = 0; i < selectedRowSizeA; i++) {
-            temp_i = i;
             for (int j = 0; j < selectedColumnSizeA; j++) {
-                EditText editText = findViewById(editTextId[i][j]);
+                editText = findViewById(editTextId[i][j]);
                 editText.setVisibility(View.VISIBLE);
             }
         }
+
+        editText.setImeOptions(EditorInfo.IME_NULL);
 
         //текст кнопки
         Button button = findViewById(R.id.to_input_matrix);
