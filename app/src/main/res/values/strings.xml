@@ -56,6 +56,7 @@
     <string name="in_dev">В разработке</string>
     <string name="history">История</string>
     <string name="choice">Выберите</string>
+    <string name="e">e</string>
     <string-array name="numbers">
         <item>1</item>
         <item>2</item>
