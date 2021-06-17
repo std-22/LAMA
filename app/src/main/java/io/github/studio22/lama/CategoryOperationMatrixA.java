@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +31,7 @@ public class CategoryOperationMatrixA extends AppCompatActivity implements Curso
 
     SharedPreferences sharedPreferences;
     Boolean state;
+    Boolean buttonState = false;
     float x1, y1, x2, y2;
 
     public void onCreate(Bundle savedInstanceState) {
@@ -163,17 +166,31 @@ public class CategoryOperationMatrixA extends AppCompatActivity implements Curso
     }
 
     public void onClickExtraMenu(View view) {
+        ImageButton vision = findViewById(R.id.vision);
         ImageButton clock = findViewById(R.id.clock);
-        clock.setVisibility(View.VISIBLE);
-        clock.setOnClickListener(view1 -> {
-            Intent intent = new Intent(CategoryOperationMatrixA.this, History.class);
-            intent.putExtra("selected", operation);
-            intent.putExtra("prev_class", "A");
-            startActivity(intent);
-        });
-
         //ImageButton photo = findViewById(R.id.photo);
-        //photo.setVisibility(View.VISIBLE);
+
+        if (buttonState) {
+            buttonState = !buttonState;
+            vision.setImageResource(R.drawable.ic_visibility);
+            Animation anim = AnimationUtils.loadAnimation(this, R.anim.disappearance);
+            clock.startAnimation(anim);
+            clock.setVisibility(View.GONE);
+            //photo.setVisibility(View.GONE);
+        } else {
+            buttonState = !buttonState;
+            vision.setImageResource(R.drawable.ic_visibility_off);
+            clock.setVisibility(View.VISIBLE);
+            Animation anim = AnimationUtils.loadAnimation(this, R.anim.appearance);
+            clock.startAnimation(anim);
+            clock.setOnClickListener(view1 -> {
+                Intent intent = new Intent(CategoryOperationMatrixA.this, History.class);
+                intent.putExtra("selected", operation);
+                intent.putExtra("prev_class", "A");
+                startActivity(intent);
+            });
+            //photo.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override

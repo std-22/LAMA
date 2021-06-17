@@ -4,8 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +21,8 @@ public class MatrixResult extends AppCompatActivity {
     Operation operation;
     float x1, y1, x2, y2;
     double[][] resultMatrix;
+    enum Output {E, P5, P1}
+    Output output = Output.E;
 
     private static final int[][] resultTextViewID = {
             {R.id.resultA1, R.id.resultA2, R.id.resultA3, R.id.resultA4, R.id.resultA5, R.id.resultA6},
@@ -243,6 +248,24 @@ public class MatrixResult extends AppCompatActivity {
         Intent intent = new Intent(MatrixResult.this, MenuNavActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+    }
+
+    public void onClickIB(View view) {
+        ImageButton ib = findViewById(R.id.ib);
+        switch (output){
+            case E:
+                output = Output.P5;
+                ib.setImageResource(R.drawable.ic_p5);
+                break;
+            case P5:
+                output = Output.P1;
+                ib.setImageResource(R.drawable.ic_p1);
+                break;
+            case P1:
+                output = Output.E;
+                ib.setImageResource(R.drawable.ic_e);
+                break;
+        }
     }
 
     @Override
