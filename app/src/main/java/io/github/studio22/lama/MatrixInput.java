@@ -118,14 +118,7 @@ public class MatrixInput extends AppCompatActivity {
     }
 
     public void onSwipeBack() {
-        Intent intent;
-        if (getIntent().hasExtra("selected_row_size_matrix_B")) {
-            intent = new Intent(MatrixInput.this, CategoryOperationMatrixB.class);
-            intent.putExtra("selected_row_size", selectedRowSizeA);
-            intent.putExtra("selected_column_size", selectedColumnSizeA);
-        } else {
-            intent = new Intent(MatrixInput.this, CategoryOperationMatrixA.class);
-        }
+        Intent intent = new Intent(MatrixInput.this, CategoryOperationMatrixA.class);
         intent.putExtra("selected_next", operation);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
@@ -136,7 +129,6 @@ public class MatrixInput extends AppCompatActivity {
         double[][] matrixA;
         //считывание размеров матрицы B
         if (getIntent().hasExtra("selected_row_size_matrix_B")) {
-            //нет сохранения матрицы А
             String temp = getIntent().getExtras().get("selected_row_size_matrix_B").toString();
             selectedRowSizeMatrixB = Integer.parseInt(temp);
 
@@ -145,34 +137,60 @@ public class MatrixInput extends AppCompatActivity {
                 selectedColumnSizeMatrixB = Integer.parseInt(temp);
             }
 
-            matrixA = new double[selectedRowSizeA][selectedColumnSizeA];
+            if (selectedColumnSizeMatrixB == 0 || selectedRowSizeMatrixB == 0){
+                matrixA = new double[selectedRowSizeA][selectedColumnSizeA];
 
-            try {
-                for (int i = 0; i < selectedRowSizeA; i++) {
-                    for (int j = 0; j < selectedColumnSizeA; j++) {
-                        EditText editText = findViewById(editTextId[i][j]);
-                        matrixA[i][j] = Double.parseDouble(editText.getText().toString());
+                try {
+                    for (int i = 0; i < selectedRowSizeA; i++) {
+                        for (int j = 0; j < selectedColumnSizeA; j++) {
+                            EditText editText = findViewById(editTextId[i][j]);
+                            matrixA[i][j] = Double.parseDouble(editText.getText().toString());
+                        }
                     }
+                    intent = new Intent(MatrixInput.this, CategoryOperationMatrixB.class);
+                    intent.putExtra("matrix_a", matrixA);
+                    intent.putExtra("selected_row_size", selectedRowSizeA);
+                    intent.putExtra("selected_column_size", selectedColumnSizeA);
+                    intent.putExtra("selected", operation);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                } catch (Exception ignored) {
+                    Toast toast = Toast.makeText(getApplicationContext(),
+                            "Пропущены значения",
+                            Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL,
+                            0, 0);
+                    toast.show();
                 }
-                intent = new Intent(MatrixInput.this, MatrixInputB.class);
-                intent.putExtra("selected_row_size_matrix_B", selectedRowSizeMatrixB);
-                intent.putExtra("selected_column_size_matrix_B", selectedColumnSizeMatrixB);
-                intent.putExtra("matrix_a", matrixA);
-                intent.putExtra("selected_row_size", selectedRowSizeA);
-                intent.putExtra("selected_column_size", selectedColumnSizeA);
-                intent.putExtra("selected", operation);
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-            } catch (Exception ignored) {
-                Toast toast = Toast.makeText(getApplicationContext(),
-                        "Пропущены значения",
-                        Toast.LENGTH_LONG);
-                toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL,
-                        0, 0);
-                toast.show();
+            } else {
+                matrixA = new double[selectedRowSizeA][selectedColumnSizeA];
+
+                try {
+                    for (int i = 0; i < selectedRowSizeA; i++) {
+                        for (int j = 0; j < selectedColumnSizeA; j++) {
+                            EditText editText = findViewById(editTextId[i][j]);
+                            matrixA[i][j] = Double.parseDouble(editText.getText().toString());
+                        }
+                    }
+                    intent = new Intent(MatrixInput.this, MatrixInputB.class);
+                    intent.putExtra("selected_row_size_matrix_B", selectedRowSizeMatrixB);
+                    intent.putExtra("selected_column_size_matrix_B", selectedColumnSizeMatrixB);
+                    intent.putExtra("matrix_a", matrixA);
+                    intent.putExtra("selected_row_size", selectedRowSizeA);
+                    intent.putExtra("selected_column_size", selectedColumnSizeA);
+                    intent.putExtra("selected", operation);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                } catch (Exception ignored) {
+                    Toast toast = Toast.makeText(getApplicationContext(),
+                            "Пропущены значения",
+                            Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL,
+                            0, 0);
+                    toast.show();
+                }
             }
         } else {
-            //в этот момент можно считать
             matrixA = new double[selectedRowSizeA][selectedColumnSizeA];
             try {
                 for (int i = 0; i < selectedRowSizeA; i++) {

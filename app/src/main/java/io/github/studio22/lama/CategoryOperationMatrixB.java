@@ -127,8 +127,12 @@ public class CategoryOperationMatrixB extends AppCompatActivity implements Curso
     }
 
     public void onSwipeBack() {
-        Intent intent = new Intent(CategoryOperationMatrixB.this, CategoryOperationMatrixA.class);
+        Intent intent = new Intent(CategoryOperationMatrixB.this, MatrixInput.class);
         intent.putExtra("selected_next", operation);
+        intent.putExtra("selected_row_size", selectedRowSize);
+        intent.putExtra("selected_column_size", selectedColumnSize);
+        intent.putExtra("selected_row_size_matrix_B", 0);
+        intent.putExtra("selected_column_size_matrix_B", 0);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
@@ -146,12 +150,14 @@ public class CategoryOperationMatrixB extends AppCompatActivity implements Curso
             return;
         }
 
-        Intent intent = new Intent(CategoryOperationMatrixB.this, MatrixInput.class);
+        Intent intent = new Intent(CategoryOperationMatrixB.this, MatrixInputB.class);
         intent.putExtra("selected_row_size_matrix_B", selectedRowSizeMatrixB);
         intent.putExtra("selected_column_size_matrix_B", selectedColumnSizeMatrixB);
         intent.putExtra("selected_row_size", selectedRowSize);
         intent.putExtra("selected_column_size", selectedColumnSize);
         intent.putExtra("selected", operation);
+        double[][] matrixA = (double[][]) getIntent().getExtras().get("matrix_a");
+        intent.putExtra("matrix_a", matrixA);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }

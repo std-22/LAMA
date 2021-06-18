@@ -80,6 +80,7 @@ public class MatrixInputB extends AppCompatActivity {
             String temp = getIntent().getExtras().get("selected_column_size_matrix_B").toString();
             selectedColumnSizeMatrixB = Integer.parseInt(temp);
         }
+
         try {
             for (int i = 0; i < selectedRowSizeMatrixB; i++) {
                 for (int j = 0; j < selectedColumnSizeMatrixB; j++) {
@@ -116,9 +117,18 @@ public class MatrixInputB extends AppCompatActivity {
     }
 
     public void onSwipeBack() {
-        Intent intent = new Intent(MatrixInputB.this, MatrixInput.class);
-        intent.putExtra("selected_row_size", selectedRowSizeMatrixB);
-        intent.putExtra("selected_column_size", selectedColumnSizeMatrixB);
+        Intent intent;
+        if (operation.getName().equals("A + B") |
+                operation.getName().equals("A - B") |
+                operation.getName().equals("Поэлементное A \u00D7 B") |
+                operation.getName().equals("Поэлементное A / B")) {
+            intent = new Intent(MatrixInputB.this, MatrixInput.class);
+            intent.putExtra("selected_row_size_matrix_B", selectedRowSizeMatrixB);
+        } else {
+            intent = new Intent(MatrixInputB.this, CategoryOperationMatrixB.class);
+            double[][] matrixA = (double[][]) getIntent().getExtras().get("matrix_a");
+            intent.putExtra("matrix_a", matrixA);
+        }
         intent.putExtra("selected_row_size", selectedRowSize);
         intent.putExtra("selected_column_size", selectedColumnSize);
         intent.putExtra("selected_next", operation);
@@ -137,8 +147,8 @@ public class MatrixInputB extends AppCompatActivity {
             }
             double[][] matrixA = (double[][]) getIntent().getExtras().get("matrix_a");
             Intent intent = new Intent(MatrixInputB.this, MatrixResult.class);
-            intent.putExtra("selected_row_size", selectedRowSizeMatrixB);
-            intent.putExtra("selected_column_size", selectedColumnSizeMatrixB);
+            intent.putExtra("selected_row_size_matrix_B", selectedRowSizeMatrixB);
+            intent.putExtra("selected_column_size_matrix_B", selectedColumnSizeMatrixB);
             intent.putExtra("selected_row_size", selectedRowSize);
             intent.putExtra("selected_column_size", selectedColumnSize);
             intent.putExtra("selected", operation);

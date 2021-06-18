@@ -224,6 +224,20 @@ public class MatrixResult extends AppCompatActivity {
                 int selectedColumnSizeMatrixB = Integer.parseInt(temp);
                 intent.putExtra("selected_column_size", selectedColumnSizeMatrixB);
             }
+
+            if (getIntent().hasExtra("selected_row_size")) {
+                temp = getIntent().getExtras().get("selected_row_size").toString();
+                int selectedRowSize = Integer.parseInt(temp);
+                intent.putExtra("selected_row_size", selectedRowSize);
+            }
+
+            if (getIntent().hasExtra("selected_column_size")) {
+                temp = getIntent().getExtras().get("selected_column_size").toString();
+                int selectedColumnSize = Integer.parseInt(temp);
+                intent.putExtra("selected_column_size", selectedColumnSize);
+            }
+            double[][] matrixA = (double[][]) getIntent().getExtras().get("matrix_a");
+            intent.putExtra("matrix_a", matrixA);
         } else {
             intent = new Intent(MatrixResult.this, MatrixInput.class);
             //считывание размеров матрицы A
