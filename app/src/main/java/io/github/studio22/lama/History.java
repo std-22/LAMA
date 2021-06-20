@@ -5,8 +5,15 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class History extends AppCompatActivity {
+    ArrayList<Matrices> matrices = new ArrayList<>();
     SharedPreferences sharedPreferences;
     Boolean state;
     Operation operation;
@@ -44,6 +51,35 @@ public class History extends AppCompatActivity {
         //передача с последующего экрана название функции
         if (getIntent().hasExtra("prev_class_next")) {
             prev_class = getIntent().getStringExtra("prev_class_next");
+        }
+
+        setInitialData();
+        final RecyclerView recyclerView = findViewById(R.id.matrices);
+        final CardAdapter adapter = new CardAdapter(this, matrices);
+        recyclerView.setAdapter(adapter);
+    }
+
+    private void setInitialData() {
+        File history = new File(Matrices.internalStorageDir, "history.txt");
+
+        try{
+            Scanner scanner = new Scanner(history);
+            while(scanner.hasNext()){
+                String[] elements = scanner.nextLine().split(" ");
+                int row = Integer.parseInt(elements[1]);
+                int col = Integer.parseInt(elements[2]);
+                int k = 3;
+                double[][] resultMatrix = new double[row][col];
+                for(int i = 0; i < row; i++){
+                    for(int j = 0; j < col; j++){
+                        resultMatrix[i][j] = Double.parseDouble(elements[k]);
+                        k++;
+                    }
+                }
+                matrices.add(new Matrices(resultMatrix));
+            }
+        }catch(FileNotFoundException e){
+            System.out.println(e.getClass());
         }
     }
 

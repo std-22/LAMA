@@ -73,15 +73,12 @@ public class MatrixMatrix extends AppCompatActivity {
             }
         });
 
-        final OperationAdapter adapter = new OperationAdapter(this, operations, new OperationAdapter.ClickListener() {
-                @Override
-                public void onPositionClick(int position) {
-                    Intent intent = new Intent(MatrixMatrix.this, CategoryOperationMatrixA.class);
-                    intent.putExtra("selected", operations.get(position));
-                    startActivity(intent);
-                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                }
-            });
+        final OperationAdapter adapter = new OperationAdapter(this, operations, position -> {
+            Intent intent = new Intent(MatrixMatrix.this, CategoryOperationMatrixA.class);
+            intent.putExtra("selected", operations.get(position));
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        });
         recyclerView.setAdapter(adapter);
 
         SwipeHelper swipeHelper = new SwipeHelper(this){
@@ -91,16 +88,13 @@ public class MatrixMatrix extends AppCompatActivity {
                 underlayButtons.add(new SwipeHelper.UnderlayButton(
                         MatrixMatrix.this,
                             Color.parseColor(color),
-                            new SwipeHelper.UnderlayButtonClickListener() {
-                                @Override
-                                public void onClick(final int pos) {
-                                    Intent intent = new Intent(MatrixMatrix.this, MatrixInfo.class);
-                                    intent.putExtra("selected", operations.get(pos));
-                                    startActivity(intent);
-                                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                                }
-                            }
-                    ));
+                        pos -> {
+                            Intent intent = new Intent(MatrixMatrix.this, MatrixInfo.class);
+                            intent.putExtra("selected", operations.get(pos));
+                            startActivity(intent);
+                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                        }
+                ));
                 }
             };
             swipeHelper.attachToRecyclerView(recyclerView);

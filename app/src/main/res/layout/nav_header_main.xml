@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         android:text="@string/lama"
         android:textColor="?attr/textViewColor"
-        android:fontFamily="@font/comfortaa_light"
+        android:fontFamily="@font/main_font_light"
         android:layout_marginTop="20dp"
         android:textSize="34sp"/>
 

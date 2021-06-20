@@ -13,6 +13,11 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.StandardOpenOption;
 import java.text.DecimalFormat;
 
 public class MatrixResult extends AppCompatActivity {
@@ -21,6 +26,7 @@ public class MatrixResult extends AppCompatActivity {
     Operation operation;
     float x1, y1, x2, y2;
     double[][] resultMatrix;
+    FileOutputStream fos;
     enum Output {E, P5, P1}
     Output output = Output.E;
 
@@ -177,16 +183,36 @@ public class MatrixResult extends AppCompatActivity {
             }
         }
 
-        if (resultMatrix != null && resultMatrix.length != 1 && resultMatrix[0].length!=1){
-            findViewById(R.id.rem_matrix).setVisibility(View.VISIBLE);
+        if (resultMatrix != null && (resultMatrix.length != 1 || resultMatrix[0].length!=1)){
+            TextView rem_matrix = findViewById(R.id.rem_matrix);
+            rem_matrix.setVisibility(View.VISIBLE);
             CheckBox checkBox = findViewById(R.id.checkBox);
             checkBox.setVisibility(View.VISIBLE);
             checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if(isChecked) {
-                        //TODO()
-                        //будем кидать матрицу в историю
+                        checkBox.setVisibility(View.GONE);
+                        rem_matrix.setText("Скопировано");
+                        File history = new File(Matrices.internalStorageDir, "history.txt");
+
+                        try {
+                            fos = new FileOutputStream(history, true); //++
+                            Matrices.code ++;
+                            String matrix = Matrices.code + " " + resultMatrix.length + " " + resultMatrix[0].length + " ";
+                            for (int i = 0; i < resultMatrix.length; i++) {
+                                for (int j = 0; j < resultMatrix[0].length; j++) {
+                                    DecimalFormat df = new DecimalFormat("#.###");
+                                    matrix += df.format(resultMatrix[i][j]);
+                                    matrix += " ";
+                                }
+                            }
+                            matrix += "\n"; //++
+                            fos.write(matrix.getBytes());
+                            fos.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
             });
