@@ -1,6 +1,8 @@
 package io.github.studio22.lama;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +12,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * Адаптер матриц в истории для RecyclerView
@@ -61,16 +71,68 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
             }
         }
 
-        //обработка кнопки удаления - не реализовано удаление и обновление экрана
+        //обработка кнопки удаления - не реализовано удаление из файла
         holder.ib_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                holder.field.setVisibility(View.GONE);
-                holder.ib_next.setVisibility(View.GONE);
-                holder.subtitle.setVisibility(View.GONE);
-                holder.ib_delete.setVisibility(View.GONE);
+                matrices.remove(position);
+                removeRecord(position+1);
+                notifyDataSetChanged();
             }
         });
+
+        //обработка кнопки далее - не реализован переход
+        holder.ib_next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Intent intent = new Intent();
+                matrices.remove(position);
+            }
+        });
+    }
+
+    private void removeRecord(int position) {
+        File source = new File(Matrices.internalStorageDir, "history.txt");
+        File newFile = new File(Matrices.internalStorageDir,  "history2.txt");
+        String currentLine, code;
+        try {
+            Scanner scanner = new Scanner(source);
+            FileOutputStream fos = new FileOutputStream(newFile, true);
+            int i = 1;
+
+            while (scanner.hasNext()) {
+                currentLine = scanner.nextLine();
+                Log.d("source", currentLine);
+                Log.d("position", String.valueOf(position));
+                String[] elements = currentLine.split(" ");
+                if (i != position){
+                    currentLine += "\n";
+                    fos.write(currentLine.getBytes());
+                }
+                i++;
+            }
+            fos.close();
+
+            fos = new FileOutputStream(source, false);
+            fos.write("".getBytes());
+            fos.close();
+
+            fos = new FileOutputStream(source, true);
+            scanner = new Scanner(newFile);
+            while (scanner.hasNext()) {
+                currentLine = scanner.nextLine();
+                currentLine += "\n";
+                Log.d("newFile", currentLine);
+                fos.write(currentLine.getBytes());
+            }
+            fos.close();
+
+            fos = new FileOutputStream(newFile, false);
+            fos.write("".getBytes());
+            fos.close();
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

@@ -3,6 +3,7 @@ package io.github.studio22.lama;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
@@ -82,6 +83,13 @@ public class History extends AppCompatActivity {
             System.out.println(e.getClass());
         }
     }
+/*
+    CardAdapter.ViewHolder.OnClickListener onClickListener = new CardAdapter.ViewHolder() {
+        @Override
+        public void onClick(CardAdapter.ViewHolder view) {
+            matrices.remove(view.getAbsoluteAdapterPosition());
+        }
+    }*/
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
