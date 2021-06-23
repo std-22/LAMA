@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.matrix.MatrixFragment"
+    android:background="?attr/backgroundColor"
+    android:orientation="vertical">
+
+    <!-- Images -->
+
+    <ImageView
+        android:layout_marginTop="0dp"
+        android:id="@+id/two_matrix_image"
+        android:layout_width="120dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center_horizontal"
+        android:contentDescription="@string/two_matrix"
+        android:src="@drawable/two_matrix"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/lambda_matrix_image"
+        android:layout_marginTop="55dp"
+        android:layout_width="120dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center_horizontal"
+        android:contentDescription="@string/lambda_matrix"
+        android:src="@drawable/lambda_matrix"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/matrix_image"
+        android:layout_marginTop="120dp"
+        android:layout_width="120dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="5dp"
+        android:layout_gravity="center_horizontal"
+        android:contentDescription="@string/one_matrix"
+        android:src="@drawable/one_matrix"
+        tools:ignore="MissingConstraints" />
+
+    <!-- Buttons -->
+
+    <Button
+        android:id="@+id/two_matrix"
+        android:layout_width="80dp"
+        android:layout_height="12dp"
+        android:layout_marginTop="45dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/menu_button"
+        android:fontFamily="@font/main_font_light"
+        android:onClick="onClickMatrixMatrix"
+        android:text="@string/list_op_two_matrix"
+        android:textSize="5sp"
+        android:textColor="?attr/textViewColor"
+        tools:ignore="MissingConstraints,OnClick,SmallSp" />
+
+    <Button
+        android:id="@+id/lambda_matrix"
+        android:layout_width="80dp"
+        android:layout_height="12dp"
+        android:layout_marginTop="105dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/menu_button"
+        android:fontFamily="@font/main_font_light"
+        android:onClick="onClickMatrixLambda"
+        android:text="@string/list_op_lam_matrix"
+        android:textSize="5sp"
+        android:textColor="?attr/textViewColor"
+        tools:ignore="MissingConstraints,OnClick,SmallSp" />
+
+    <!-- Header -->
+
+    <Button
+        android:id="@+id/one_matrix"
+        android:layout_width="80dp"
+        android:layout_height="12dp"
+        android:layout_marginTop="165dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/menu_button"
+        android:fontFamily="@font/main_font_light"
+        android:onClick="onClickMatrix"
+        android:text="@string/list_op_matrix"
+        android:textColor="?attr/textViewColor"
+        android:textSize="5sp"
+        tools:ignore="MissingConstraints,OnClick,SmallSp" />
+
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="15dp"
+        android:background="?attr/backgroundColor"
+        android:contentDescription="@string/nav_icon"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_nav" />
+
+</FrameLayout>

@@ -12,13 +12,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Scanner;
@@ -30,6 +25,7 @@ import java.util.Scanner;
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
     private final LayoutInflater inflater;
     private final List<Matrices> matrices;
+    Context context;
     private static final int[][] resultTextViewID = {
             {R.id.resultA1, R.id.resultA2, R.id.resultA3, R.id.resultA4, R.id.resultA5, R.id.resultA6},
             {R.id.resultB1, R.id.resultB2, R.id.resultB3, R.id.resultB4, R.id.resultB5, R.id.resultB6},
@@ -40,6 +36,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
     };
 
     CardAdapter(Context context, List<Matrices> matrices) {
+        this.context = context;
         this.matrices = matrices;
         this.inflater = LayoutInflater.from(context);
     }
@@ -55,7 +52,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull CardAdapter.ViewHolder holder, int position) {
         double[][] matrix = matrices.get(position).getMatrix();
-        int fontSize = 0;
+        int fontSize;
         if (matrix.length >= 4 || matrix[0].length >= 4){
             fontSize = 22;
         } else {
@@ -85,8 +82,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
         holder.ib_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Intent intent = new Intent();
-                matrices.remove(position);
+                //Intent intent = new Intent(context, );
             }
         });
     }
@@ -94,7 +90,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
     private void removeRecord(int position) {
         File source = new File(Matrices.internalStorageDir, "history.txt");
         File newFile = new File(Matrices.internalStorageDir,  "history2.txt");
-        String currentLine, code;
+        String currentLine;
         try {
             Scanner scanner = new Scanner(source);
             FileOutputStream fos = new FileOutputStream(newFile, true);
@@ -102,9 +98,11 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
 
             while (scanner.hasNext()) {
                 currentLine = scanner.nextLine();
+
+                //отладка
                 Log.d("source", currentLine);
                 Log.d("position", String.valueOf(position));
-                String[] elements = currentLine.split(" ");
+
                 if (i != position){
                     currentLine += "\n";
                     fos.write(currentLine.getBytes());
@@ -122,6 +120,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
             while (scanner.hasNext()) {
                 currentLine = scanner.nextLine();
                 currentLine += "\n";
+                //отладка
                 Log.d("newFile", currentLine);
                 fos.write(currentLine.getBytes());
             }

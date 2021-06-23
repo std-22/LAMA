@@ -3,8 +3,8 @@ package io.github.studio22.lama;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,6 +19,8 @@ public class History extends AppCompatActivity {
     Boolean state;
     Operation operation;
     String prev_class;
+    double[][] matrixA;
+    Boolean classFlag = false;
     float x1, y1, x2, y2;
 
     public void onCreate(Bundle savedInstanceState) {
@@ -54,10 +56,49 @@ public class History extends AppCompatActivity {
             prev_class = getIntent().getStringExtra("prev_class_next");
         }
 
+        //для матрицы b
+        if (getIntent().hasExtra("matrix_a")) {
+            classFlag = true;
+            matrixA = (double[][]) getIntent().getExtras().get("matrix_a");
+        }
+
         setInitialData();
         final RecyclerView recyclerView = findViewById(R.id.matrices);
         final CardAdapter adapter = new CardAdapter(this, matrices);
         recyclerView.setAdapter(adapter);
+        recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+            @Override
+            public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+                switch (e.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        x1 = e.getX();
+                        y1 = e.getY();
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        x2 = e.getX();
+                        y2 = e.getY();
+                        if (x1<x2 && Math.toDegrees(Math.atan((x2-x1)/Math.abs(y2-y1))) > 30.0){
+                            Intent intent;
+                            if (prev_class.equals("A")){
+                                intent = new Intent(History.this, CategoryOperationMatrixA.class);
+                            } else {
+                                intent = new Intent(History.this, CategoryOperationMatrixB.class);
+                            }
+                            intent.putExtra("selected_next", operation);
+                            startActivity(intent);
+                            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                        }
+                        break;
+                }
+                return false;
+            }
+
+            @Override
+            public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {}
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {}
+        });
     }
 
     private void setInitialData() {
@@ -67,9 +108,9 @@ public class History extends AppCompatActivity {
             Scanner scanner = new Scanner(history);
             while(scanner.hasNext()){
                 String[] elements = scanner.nextLine().split(" ");
-                int row = Integer.parseInt(elements[1]);
-                int col = Integer.parseInt(elements[2]);
-                int k = 3;
+                int row = Integer.parseInt(elements[0]);
+                int col = Integer.parseInt(elements[1]);
+                int k = 2;
                 double[][] resultMatrix = new double[row][col];
                 for(int i = 0; i < row; i++){
                     for(int j = 0; j < col; j++){
@@ -83,13 +124,6 @@ public class History extends AppCompatActivity {
             System.out.println(e.getClass());
         }
     }
-/*
-    CardAdapter.ViewHolder.OnClickListener onClickListener = new CardAdapter.ViewHolder() {
-        @Override
-        public void onClick(CardAdapter.ViewHolder view) {
-            matrices.remove(view.getAbsoluteAdapterPosition());
-        }
-    }*/
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {

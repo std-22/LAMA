@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <View
+        android:id="@+id/view_field"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <ImageButton
+        android:id="@+id/ib_next"
+        android:layout_width="30dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/next_button"
+        android:src="@drawable/ic_keyboard_arrow_right"
+        android:contentDescription="@string/next"
+        app:layout_constraintTop_toTopOf="@+id/view_field"
+        app:layout_constraintBottom_toTopOf="@+id/view_info"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageButton
+        android:id="@+id/ib_delete"
+        android:layout_width="30dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="40dp"
+        android:background="@drawable/next_button"
+        android:src="@drawable/ic_x_delete"
+        android:contentDescription="@string/next"
+        app:layout_constraintTop_toTopOf="@+id/view_field"
+        app:layout_constraintBottom_toTopOf="@+id/view_info"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!--Field-->
+
+    <TableLayout
+        android:id="@+id/field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/view_field"
+        app:layout_constraintBottom_toTopOf="@+id/view_info"
+        app:layout_constraintEnd_toEndOf="@+id/view_field"
+        app:layout_constraintStart_toStartOf="@+id/view_field">
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                style="@style/result_view_cell"
+                android:id="@+id/resultA1" />
+            <TextView
+                style="@style/result_view_cell"
+                android:id="@+id/resultA2" />
+            <TextView
+                style="@style/result_view_cell"
+                android:id="@+id/resultA3" />
+            <TextView
+                style="@style/result_view_cell"
+                android:id="@+id/resultA4" />
+            <TextView
+                style="@style/result_view_cell"
+                android:id="@+id/resultA5" />
+            <TextView
+                style="@style/result_view_cell"
+                android:id="@+id/resultA6" />
+        </TableRow>
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                style="@style/result_view_cell"
+                android:id="@+id/resultB1" />
+            <TextView
+                style="@style/result_view_cell"
+                android:id="@+id/resultB2" />
+            <TextView
+                style="@style/result_view_cell"
+                android:id="@+id/resultB3" />
+            <TextView
+                style="@style/result_view_cell"
+                android:id="@+id/resultB4" />
+            <TextView
+                style="@style/result_view_cell"
+                android:id="@+id/resultB5" />
+            <TextView
+                style="@style/result_view_cell"
+                android:id="@+id/resultB6" />
+        </TableRow>
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                style="@style/result_view_cell"
+                android:id="@+id/resultC1" />
+            <TextView
+                style="@style/result_view_cell"
+                android:id="@+id/resultC2" />
+            <TextView
+                style="@style/result_view_cell"
+                android:id="@+id/resultC3" />
+            <TextView
+                style="@style/result_view_cell"
+                android:id="@+id/resultC4" />
+            <TextView
+                style="@style/result_view_cell"
+                android:id="@+id/resultC5" />
+            <TextView
+                style="@style/result_view_cell"
+                android:id="@+id/resultC6" />
+        </TableRow>
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                style="@style/result_view_cell"
+                android:id="@+id/resultD1" />
+            <TextView
+                style="@style/result_view_cell"
+                android:id="@+id/resultD2" />
+            <TextView
+                style="@style/result_view_cell"
+                android:id="@+id/resultD3" />
+            <TextView
+                style="@style/result_view_cell"
+                android:id="@+id/resultD4" />
+            <TextView
+                style="@style/result_view_cell"
+                android:id="@+id/resultD5" />
+            <TextView
+                style="@style/result_view_cell"
+                android:id="@+id/resultD6" />
+        </TableRow>
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                style="@style/result_view_cell"
+                android:id="@+id/resultE1" />
+            <TextView
+                style="@style/result_view_cell"
+                android:id="@+id/resultE2" />
+            <TextView
+                style="@style/result_view_cell"
+                android:id="@+id/resultE3" />
+            <TextView
+                style="@style/result_view_cell"
+                android:id="@+id/resultE4" />
+            <TextView
+                style="@style/result_view_cell"
+                android:id="@+id/resultE5" />
+            <TextView
+                style="@style/result_view_cell"
+                android:id="@+id/resultE6" />
+        </TableRow>
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                style="@style/result_view_cell"
+                android:id="@+id/resultF1" />
+            <TextView
+                style="@style/result_view_cell"
+                android:id="@+id/resultF2" />
+            <TextView
+                style="@style/result_view_cell"
+                android:id="@+id/resultF3" />
+            <TextView
+                style="@style/result_view_cell"
+                android:id="@+id/resultF4" />
+            <TextView
+                style="@style/result_view_cell"
+                android:id="@+id/resultF5" />
+            <TextView
+                style="@style/result_view_cell"
+                android:id="@+id/resultF6" />
+        </TableRow>
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/view_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@+id/field"
+        app:layout_constraintBottom_toBottomOf="@+id/view_field"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="?attr/textViewColor"
+        android:fontFamily="@font/main_font_light"
+        android:textSize="17sp"
+        tools:text="@tools:sample/full_names"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

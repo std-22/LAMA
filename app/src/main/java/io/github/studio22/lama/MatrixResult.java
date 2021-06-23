@@ -7,17 +7,14 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.file.StandardOpenOption;
 import java.text.DecimalFormat;
 
 public class MatrixResult extends AppCompatActivity {
@@ -188,31 +185,31 @@ public class MatrixResult extends AppCompatActivity {
             rem_matrix.setVisibility(View.VISIBLE);
             CheckBox checkBox = findViewById(R.id.checkBox);
             checkBox.setVisibility(View.VISIBLE);
-            checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if(isChecked) {
-                        checkBox.setVisibility(View.GONE);
-                        rem_matrix.setText("Скопировано");
-                        File history = new File(Matrices.internalStorageDir, "history.txt");
+            checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                if(isChecked) {
+                    checkBox.setVisibility(View.GONE);
+                    Animation anim = AnimationUtils.loadAnimation(this, R.anim.disappearance);
+                    rem_matrix.startAnimation(anim);
+                    rem_matrix.setText("Скопировано");
+                    anim = AnimationUtils.loadAnimation(this, R.anim.appearance);
+                    rem_matrix.startAnimation(anim);
+                    File history = new File(Matrices.internalStorageDir, "history.txt");
 
-                        try {
-                            fos = new FileOutputStream(history, true); //++
-                            Matrices.code ++;
-                            String matrix = Matrices.code + " " + resultMatrix.length + " " + resultMatrix[0].length + " ";
-                            for (int i = 0; i < resultMatrix.length; i++) {
-                                for (int j = 0; j < resultMatrix[0].length; j++) {
-                                    DecimalFormat df = new DecimalFormat("#.###");
-                                    matrix += df.format(resultMatrix[i][j]);
-                                    matrix += " ";
-                                }
+                    try {
+                        fos = new FileOutputStream(history, true);
+                        String matrix = resultMatrix.length + " " + resultMatrix[0].length + " ";
+                        for (double[] doubles : resultMatrix) {
+                            for (int j = 0; j < resultMatrix[0].length; j++) {
+                                DecimalFormat df = new DecimalFormat("#.###");
+                                matrix += df.format(doubles[j]);
+                                matrix += " ";
                             }
-                            matrix += "\n"; //++
-                            fos.write(matrix.getBytes());
-                            fos.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
                         }
+                        matrix += "\n";
+                        fos.write(matrix.getBytes());
+                        fos.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
                 }
             });
