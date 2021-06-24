@@ -152,7 +152,7 @@ public class MatrixResult extends AppCompatActivity {
             }
         }
         // Матрица-Матрица
-        else if (getIntent().hasExtra("matrix_a") & getIntent().hasExtra("matrix_b")) {
+        else if (getIntent().hasExtra("matrix_a") && getIntent().hasExtra("matrix_b")) {
             double[][] matrixA = (double[][]) getIntent().getExtras().get("matrix_a");
             double[][] matrixB = (double[][]) getIntent().getExtras().get("matrix_b");
             resultMatrix = Result.getResult(operation.getName(), matrixA, matrixB);
@@ -236,44 +236,19 @@ public class MatrixResult extends AppCompatActivity {
 
     public void onSwipeBack() {
         Intent intent;
-        if (getIntent().hasExtra("selected_row_size_matrix_B")) {
+        if ("MatrixMatrix".equals(operation.getNameOfClass())) {
             intent = new Intent(MatrixResult.this, MatrixInputB.class);
-            String temp = getIntent().getExtras().get("selected_row_size_matrix_B").toString();
-            int selectedRowSizeMatrixB = Integer.parseInt(temp);
-            intent.putExtra("selected_row_size", selectedRowSizeMatrixB);
-
-            if (getIntent().hasExtra("selected_column_size_matrix_B")) {
-                temp = getIntent().getExtras().get("selected_column_size_matrix_B").toString();
-                int selectedColumnSizeMatrixB = Integer.parseInt(temp);
-                intent.putExtra("selected_column_size", selectedColumnSizeMatrixB);
-            }
-
-            if (getIntent().hasExtra("selected_row_size")) {
-                temp = getIntent().getExtras().get("selected_row_size").toString();
-                int selectedRowSize = Integer.parseInt(temp);
-                intent.putExtra("selected_row_size", selectedRowSize);
-            }
-
-            if (getIntent().hasExtra("selected_column_size")) {
-                temp = getIntent().getExtras().get("selected_column_size").toString();
-                int selectedColumnSize = Integer.parseInt(temp);
-                intent.putExtra("selected_column_size", selectedColumnSize);
-            }
+            double[][] matrixB = (double[][]) getIntent().getExtras().get("matrix_b");
+            intent.putExtra("matrix_b", matrixB);
             double[][] matrixA = (double[][]) getIntent().getExtras().get("matrix_a");
             intent.putExtra("matrix_a", matrixA);
         } else {
             intent = new Intent(MatrixResult.this, MatrixInput.class);
-            //считывание размеров матрицы A
-            if (getIntent().hasExtra("selected_row_size")) {
-                String temp = getIntent().getExtras().get("selected_row_size").toString();
-                int selectedRowSize = Integer.parseInt(temp);
-                intent.putExtra("selected_row_size", selectedRowSize);
-            }
-
-            if (getIntent().hasExtra("selected_column_size")) {
-                String temp = getIntent().getExtras().get("selected_column_size").toString();
-                int selectedColumnSize = Integer.parseInt(temp);
-                intent.putExtra("selected_column_size", selectedColumnSize);
+            double[][] matrixA = (double[][]) getIntent().getExtras().get("matrix_a");
+            intent.putExtra("matrix_a", matrixA);
+            if (getIntent().hasExtra("lambda")){
+                double lambda = (double) getIntent().getExtras().get("lambda");
+                intent.putExtra("lambda", lambda);
             }
         }
         intent.putExtra("selected_next", operation);

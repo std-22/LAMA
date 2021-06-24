@@ -19,8 +19,8 @@ import java.util.List;
 import github.hellocsl.cursorwheel.CursorWheelLayout;
 
 public class CategoryOperationMatrixA extends AppCompatActivity implements CursorWheelLayout.OnMenuSelectedListener {
-    private static String selectedRowSize;
-    private static String selectedColumnSize;
+    private String selectedRowSize;
+    private String selectedColumnSize;
     private final String[] numbers = {"1", "2", "3", "4", "5", "6",
             "1", "2", "3", "4", "5", "6"};
 
@@ -143,23 +143,7 @@ public class CategoryOperationMatrixA extends AppCompatActivity implements Curso
             return;
         }
 
-        Intent intent;
-        if ("MatrixMatrix".equals(operation.getNameOfClass())) {
-            if (operation.getName().equals("A + B") |
-                    operation.getName().equals("A - B") |
-                    operation.getName().equals("Поэлементное A \u00D7 B") |
-                    operation.getName().equals("Поэлементное A / B")) {
-                intent = new Intent(CategoryOperationMatrixA.this, MatrixInput.class);
-                intent.putExtra("selected_row_size_matrix_B", selectedRowSize);
-                intent.putExtra("selected_column_size_matrix_B", selectedColumnSize);
-            } else {
-                intent = new Intent(CategoryOperationMatrixA.this, MatrixInput.class);
-                intent.putExtra("selected_row_size_matrix_B", 0);
-                intent.putExtra("selected_column_size_matrix_B", 0);
-            }
-        } else {
-            intent = new Intent(CategoryOperationMatrixA.this, MatrixInput.class);
-        }
+        Intent intent = new Intent(CategoryOperationMatrixA.this, MatrixInput.class);
 
         intent.putExtra("selected_row_size", selectedRowSize);
         intent.putExtra("selected_column_size", selectedColumnSize);
@@ -189,7 +173,6 @@ public class CategoryOperationMatrixA extends AppCompatActivity implements Curso
             clock.setOnClickListener(view1 -> {
                 Intent intent = new Intent(CategoryOperationMatrixA.this, History.class);
                 intent.putExtra("selected", operation);
-                intent.putExtra("prev_class", "A");
                 startActivity(intent);
             });
             //photo.setVisibility(View.VISIBLE);

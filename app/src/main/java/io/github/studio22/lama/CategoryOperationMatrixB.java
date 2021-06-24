@@ -19,10 +19,11 @@ import java.util.List;
 import github.hellocsl.cursorwheel.CursorWheelLayout;
 
 public class CategoryOperationMatrixB extends AppCompatActivity implements CursorWheelLayout.OnMenuSelectedListener{
-    private static String selectedRowSize;
-    private static String selectedColumnSize;
-    private static String selectedRowSizeMatrixB;
-    private static String selectedColumnSizeMatrixB;
+    private String selectedRowSize;
+    private String selectedColumnSize;
+    private String selectedRowSizeMatrixB;
+    private String selectedColumnSizeMatrixB;
+    double[][] matrixA;
     private final String[] numbers = {"1", "2", "3", "4", "5", "6",
             "1", "2", "3", "4", "5", "6"};
 
@@ -63,14 +64,14 @@ public class CategoryOperationMatrixB extends AppCompatActivity implements Curso
             functionName.setText(operation.getName());
         }
 
-        //извлечение размеров матрицы А
-        if (getIntent().hasExtra("selected_row_size")) {
-            selectedRowSize = getIntent().getExtras().get("selected_row_size").toString();
+        //извлечение матрицы А
+        if (getIntent().hasExtra("matrix_a")) {
+            matrixA = (double[][]) getIntent().getExtras().get("matrix_a");
         }
 
-        if (getIntent().hasExtra("selected_column_size")) {
-            selectedColumnSize = getIntent().getExtras().get("selected_column_size").toString();
-        }
+        //извлечение размерности матрицы А
+        selectedRowSize = String.valueOf(matrixA.length);
+        selectedColumnSize = String.valueOf(matrixA[0].length);
 
         wheel_text_left = findViewById(R.id.wheel_text_left);
         wheel_text_right = findViewById(R.id.wheel_text_right);
@@ -115,24 +116,17 @@ public class CategoryOperationMatrixB extends AppCompatActivity implements Curso
     @Override
     public void onItemSelected(CursorWheelLayout parent, View view, int pos) {
         if (parent.getId() == R.id.wheel_text_left){
-            if(getIntent().hasExtra("selected_row_size")){
-                selectedRowSizeMatrixB = textList_left.get(pos).number;
-            }
+            selectedRowSizeMatrixB = textList_left.get(pos).number;
         }
         if (parent.getId() == R.id.wheel_text_right){
-            if(getIntent().hasExtra("selected_column_size")){
-                selectedColumnSizeMatrixB = textList_right.get(pos).number;
-            }
+            selectedColumnSizeMatrixB = textList_right.get(pos).number;
         }
     }
 
     public void onSwipeBack() {
         Intent intent = new Intent(CategoryOperationMatrixB.this, MatrixInput.class);
         intent.putExtra("selected_next", operation);
-        intent.putExtra("selected_row_size", selectedRowSize);
-        intent.putExtra("selected_column_size", selectedColumnSize);
-        intent.putExtra("selected_row_size_matrix_B", 0);
-        intent.putExtra("selected_column_size_matrix_B", 0);
+        intent.putExtra("matrix_a", matrixA);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
@@ -153,8 +147,6 @@ public class CategoryOperationMatrixB extends AppCompatActivity implements Curso
         Intent intent = new Intent(CategoryOperationMatrixB.this, MatrixInputB.class);
         intent.putExtra("selected_row_size_matrix_B", selectedRowSizeMatrixB);
         intent.putExtra("selected_column_size_matrix_B", selectedColumnSizeMatrixB);
-        intent.putExtra("selected_row_size", selectedRowSize);
-        intent.putExtra("selected_column_size", selectedColumnSize);
         intent.putExtra("selected", operation);
         double[][] matrixA = (double[][]) getIntent().getExtras().get("matrix_a");
         intent.putExtra("matrix_a", matrixA);
@@ -183,8 +175,10 @@ public class CategoryOperationMatrixB extends AppCompatActivity implements Curso
             clock.setOnClickListener(view1 -> {
                 Intent intent = new Intent(CategoryOperationMatrixB.this, History.class);
                 intent.putExtra("selected", operation);
-                intent.putExtra("prev_class", "B");
+                double[][] matrixA = (double[][]) getIntent().getExtras().get("matrix_a");
+                intent.putExtra("matrix_a", matrixA);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             });
             //photo.setVisibility(View.VISIBLE);
         }

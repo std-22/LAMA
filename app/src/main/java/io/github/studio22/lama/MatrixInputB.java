@@ -12,10 +12,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MatrixInputB extends AppCompatActivity {
-    private static int selectedRowSize = 1;
-    private static int selectedColumnSize = 1;
-    private static int selectedRowSizeMatrixB = 1;
-    private static int selectedColumnSizeMatrixB = 1;
+    private int selectedRowSizeMatrixB = 1;
+    private int selectedColumnSizeMatrixB = 1;
+    double[][] matrixA;
+    double[][] matrixB;
     private static final int[][] editTextId = {
             {R.id.editTextNumberA1, R.id.editTextNumberA2, R.id.editTextNumberA3, R.id.editTextNumberA4, R.id.editTextNumberA5, R.id.editTextNumberA6},
             {R.id.editTextNumberB1, R.id.editTextNumberB2, R.id.editTextNumberB3, R.id.editTextNumberB4, R.id.editTextNumberB5, R.id.editTextNumberB6},
@@ -58,15 +58,9 @@ public class MatrixInputB extends AppCompatActivity {
             functionName.setText(operation.getName());
         }
 
-        //считывание размеров матрицы A
-        if (getIntent().hasExtra("selected_row_size")) {
-            String temp = getIntent().getExtras().get("selected_row_size").toString();
-            selectedRowSize = Integer.parseInt(temp);
-        }
-
-        if (getIntent().hasExtra("selected_column_size")) {
-            String temp = getIntent().getExtras().get("selected_column_size").toString();
-            selectedColumnSize = Integer.parseInt(temp);
+        //извлечение матрицы А
+        if (getIntent().hasExtra("matrix_a")) {
+            matrixA = (double[][]) getIntent().getExtras().get("matrix_a");
         }
 
         //считывание размеров матрицы B
@@ -80,20 +74,32 @@ public class MatrixInputB extends AppCompatActivity {
             selectedColumnSizeMatrixB = Integer.parseInt(temp);
         }
 
-        try {
-            for (int i = 0; i < selectedRowSizeMatrixB; i++) {
-                for (int j = 0; j < selectedColumnSizeMatrixB; j++) {
+        //считывание матрицы B с последующего экрана
+        if (getIntent().hasExtra("matrix_b")) {
+            matrixB = (double[][]) getIntent().getExtras().get("matrix_b");
+            for (int i = 0; i < matrixB.length; i++) {
+                for (int j = 0; j < matrixB[0].length; j++) {
                     EditText editText = findViewById(editTextId[i][j]);
                     editText.setVisibility(View.VISIBLE);
+                    editText.setText(String.valueOf(matrixB[i][j]));
                 }
             }
-        } catch (Exception ignored) {
-            Toast toast = Toast.makeText(getApplicationContext(),
-                    "Пропущены значения",
-                    Toast.LENGTH_LONG);
-            toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL,
-                    0, 0);
-            toast.show();
+        } else {
+            try {
+                for (int i = 0; i < selectedRowSizeMatrixB; i++) {
+                    for (int j = 0; j < selectedColumnSizeMatrixB; j++) {
+                        EditText editText = findViewById(editTextId[i][j]);
+                        editText.setVisibility(View.VISIBLE);
+                    }
+                }
+            } catch (Exception ignored) {
+                Toast toast = Toast.makeText(getApplicationContext(),
+                        "Пропущены значения",
+                        Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL,
+                        0, 0);
+                toast.show();
+            }
         }
     }
 
@@ -116,20 +122,8 @@ public class MatrixInputB extends AppCompatActivity {
     }
 
     public void onSwipeBack() {
-        Intent intent;
-        if (operation.getName().equals("A + B") |
-                operation.getName().equals("A - B") |
-                operation.getName().equals("Поэлементное A \u00D7 B") |
-                operation.getName().equals("Поэлементное A / B")) {
-            intent = new Intent(MatrixInputB.this, MatrixInput.class);
-            intent.putExtra("selected_row_size_matrix_B", selectedRowSizeMatrixB);
-        } else {
-            intent = new Intent(MatrixInputB.this, CategoryOperationMatrixB.class);
-            double[][] matrixA = (double[][]) getIntent().getExtras().get("matrix_a");
-            intent.putExtra("matrix_a", matrixA);
-        }
-        intent.putExtra("selected_row_size", selectedRowSize);
-        intent.putExtra("selected_column_size", selectedColumnSize);
+        Intent intent = new Intent(MatrixInputB.this, CategoryOperationMatrixB.class);
+        intent.putExtra("matrix_a", matrixA);
         intent.putExtra("selected_next", operation);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
@@ -144,12 +138,7 @@ public class MatrixInputB extends AppCompatActivity {
                     matrixB[i][j] = Double.parseDouble(editText.getText().toString());
                 }
             }
-            double[][] matrixA = (double[][]) getIntent().getExtras().get("matrix_a");
             Intent intent = new Intent(MatrixInputB.this, MatrixResult.class);
-            intent.putExtra("selected_row_size_matrix_B", selectedRowSizeMatrixB);
-            intent.putExtra("selected_column_size_matrix_B", selectedColumnSizeMatrixB);
-            intent.putExtra("selected_row_size", selectedRowSize);
-            intent.putExtra("selected_column_size", selectedColumnSize);
             intent.putExtra("selected", operation);
             intent.putExtra("matrix_a", matrixA);
             intent.putExtra("matrix_b", matrixB);

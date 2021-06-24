@@ -18,9 +18,7 @@ public class History extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     Boolean state;
     Operation operation;
-    String prev_class;
     double[][] matrixA;
-    Boolean classFlag = false;
     float x1, y1, x2, y2;
 
     public void onCreate(Bundle savedInstanceState) {
@@ -46,25 +44,19 @@ public class History extends AppCompatActivity {
             operation = getIntent().getParcelableExtra("selected_next");
         }
 
-        //передача с предыдущего экрана название функции
-        if (getIntent().hasExtra("prev_class")) {
-            prev_class = getIntent().getStringExtra("prev_class");
-        }
-
-        //передача с последующего экрана название функции
-        if (getIntent().hasExtra("prev_class_next")) {
-            prev_class = getIntent().getStringExtra("prev_class_next");
-        }
-
-        //для матрицы b
+        //извлечение матрицы А
         if (getIntent().hasExtra("matrix_a")) {
-            classFlag = true;
             matrixA = (double[][]) getIntent().getExtras().get("matrix_a");
         }
 
         setInitialData();
         final RecyclerView recyclerView = findViewById(R.id.matrices);
-        final CardAdapter adapter = new CardAdapter(this, matrices);
+        final CardAdapter adapter;
+        if (matrixA != null){
+            adapter = new CardAdapter(this, matrices, operation, matrixA);
+        } else {
+            adapter = new CardAdapter(this, matrices, operation);
+        }
         recyclerView.setAdapter(adapter);
         recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
@@ -79,7 +71,7 @@ public class History extends AppCompatActivity {
                         y2 = e.getY();
                         if (x1<x2 && Math.toDegrees(Math.atan((x2-x1)/Math.abs(y2-y1))) > 30.0){
                             Intent intent;
-                            if (prev_class.equals("A")){
+                            if (matrixA == null){
                                 intent = new Intent(History.this, CategoryOperationMatrixA.class);
                             } else {
                                 intent = new Intent(History.this, CategoryOperationMatrixB.class);
@@ -137,7 +129,7 @@ public class History extends AppCompatActivity {
                 y2 = event.getY();
                 if (x1<x2 && Math.toDegrees(Math.atan((x2-x1)/Math.abs(y2-y1))) > 30.0){
                     Intent intent;
-                    if (prev_class.equals("A")) {
+                    if (matrixA == null) {
                         intent = new Intent(History.this, CategoryOperationMatrixA.class);
                     } else {
                         intent = new Intent(History.this, CategoryOperationMatrixB.class);

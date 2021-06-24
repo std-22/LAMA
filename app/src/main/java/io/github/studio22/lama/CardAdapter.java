@@ -1,8 +1,8 @@
 package io.github.studio22.lama;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +25,12 @@ import java.util.Scanner;
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
     private final LayoutInflater inflater;
     private final List<Matrices> matrices;
+    //private String selectedRowSize;
+    //private String selectedColumnSize;
+    Operation operation;
     Context context;
+    double[][] matrixA;
+    double[][] matrix;
     private static final int[][] resultTextViewID = {
             {R.id.resultA1, R.id.resultA2, R.id.resultA3, R.id.resultA4, R.id.resultA5, R.id.resultA6},
             {R.id.resultB1, R.id.resultB2, R.id.resultB3, R.id.resultB4, R.id.resultB5, R.id.resultB6},
@@ -35,10 +40,21 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
             {R.id.resultF1, R.id.resultF2, R.id.resultF3, R.id.resultF4, R.id.resultF5, R.id.resultF6},
     };
 
-    CardAdapter(Context context, List<Matrices> matrices) {
+    CardAdapter(Context context, List<Matrices> matrices, Operation operation) {
         this.context = context;
         this.matrices = matrices;
         this.inflater = LayoutInflater.from(context);
+        this.operation = operation;
+    }
+
+    CardAdapter(Context context, List<Matrices> matrices, Operation operation, double[][] matrixA) {
+        this.context = context;
+        this.matrices = matrices;
+        this.inflater = LayoutInflater.from(context);
+        this.matrixA = matrixA;
+        //this.selectedRowSize = String.valueOf(matrixA.length - 1);
+        //this.selectedColumnSize = String.valueOf(matrixA[0].length - 1);
+        this.operation = operation;
     }
 
 
@@ -51,7 +67,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull CardAdapter.ViewHolder holder, int position) {
-        double[][] matrix = matrices.get(position).getMatrix();
+        matrix = matrices.get(position).getMatrix();
         int fontSize;
         if (matrix.length >= 4 || matrix[0].length >= 4){
             fontSize = 22;
@@ -68,21 +84,57 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
             }
         }
 
-        //обработка кнопки удаления - не реализовано удаление из файла
-        holder.ib_delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                matrices.remove(position);
-                removeRecord(position+1);
-                notifyDataSetChanged();
-            }
+        //обработка кнопки удаления
+        holder.ib_delete.setOnClickListener(view -> {
+            matrices.remove(position);
+            removeRecord(position+1);
+            notifyDataSetChanged();
         });
 
-        //обработка кнопки далее - не реализован переход
-        holder.ib_next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //Intent intent = new Intent(context, );
+        //обработка кнопки далее
+        holder.ib_next.setOnClickListener(view -> {
+            matrix = matrices.get(position).getMatrix();
+            Intent intent;
+            Activity activity = (Activity) context;
+            if (matrixA != null) {
+                //нужна проверка на размерность матриц для вычисления
+                //String selectedRowSizeMatrixB = String.valueOf(matrix.length - 1);
+                //String selectedColumnSizeMatrixB = String.valueOf(matrix[0].length - 1);
+
+                intent = new Intent(context, MatrixResult.class);
+                intent.putExtra("matrix_a", matrixA);
+                intent.putExtra("selected", operation);
+                intent.putExtra("matrix_b", matrix);
+
+                context.startActivity(intent);
+                activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            } else {
+                switch (operation.getNameOfClass()) {
+                    case "Matrix":
+                        intent = new Intent(context, MatrixResult.class);
+                        intent.putExtra("matrix_a", matrix);
+                        intent.putExtra("selected", operation);
+
+                        context.startActivity(intent);
+                        activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                        break;
+                    case "MatrixMatrix":
+                        intent = new Intent(context, CategoryOperationMatrixB.class);
+                        intent.putExtra("matrix_a", matrix);
+                        intent.putExtra("selected", operation);
+
+                        context.startActivity(intent);
+                        activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                        break;
+                    case "MatrixLambda":
+                        intent = new Intent(context, MatrixInput.class);
+                        intent.putExtra("matrix_a", matrix);
+                        intent.putExtra("selected", operation);
+
+                        context.startActivity(intent);
+                        activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                        break;
+                }
             }
         });
     }
@@ -98,10 +150,6 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
 
             while (scanner.hasNext()) {
                 currentLine = scanner.nextLine();
-
-                //отладка
-                Log.d("source", currentLine);
-                Log.d("position", String.valueOf(position));
 
                 if (i != position){
                     currentLine += "\n";
@@ -120,8 +168,6 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
             while (scanner.hasNext()) {
                 currentLine = scanner.nextLine();
                 currentLine += "\n";
-                //отладка
-                Log.d("newFile", currentLine);
                 fos.write(currentLine.getBytes());
             }
             fos.close();
