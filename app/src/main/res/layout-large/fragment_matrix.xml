@@ -91,7 +91,7 @@
         app:layout_constraintEnd_toEndOf="@+id/two_matrix_image"
         app:layout_constraintStart_toStartOf="@+id/two_matrix_image"
         app:layout_constraintTop_toTopOf="@+id/two_matrix_image"
-        tools:ignore="MissingConstraints,OnClick" />
+        tools:ignore="MissingConstraints,OnClick,UsingOnClickInXml" />
 
     <Button
         android:id="@+id/lambda_matrix"
@@ -109,7 +109,7 @@
         app:layout_constraintEnd_toEndOf="@+id/lambda_matrix_image"
         app:layout_constraintStart_toStartOf="@+id/lambda_matrix_image"
         app:layout_constraintTop_toTopOf="@+id/lambda_matrix_image"
-        tools:ignore="MissingConstraints,OnClick" />
+        tools:ignore="MissingConstraints,OnClick,UsingOnClickInXml" />
 
     <Button
         android:id="@+id/one_matrix"
@@ -127,7 +127,7 @@
         app:layout_constraintEnd_toEndOf="@+id/matrix_image"
         app:layout_constraintStart_toStartOf="@+id/matrix_image"
         app:layout_constraintTop_toTopOf="@+id/matrix_image"
-        tools:ignore="MissingConstraints,OnClick" />
+        tools:ignore="MissingConstraints,OnClick,UsingOnClickInXml" />
 
     <!-- Header -->
 

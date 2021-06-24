@@ -12,8 +12,8 @@
 
     <ImageView
         android:id="@+id/two_matrix_image"
-        android:layout_width="370dp"
-        android:layout_height="200dp"
+        android:layout_width="700dp"
+        android:layout_height="400dp"
         android:layout_gravity="center_horizontal"
         android:contentDescription="@string/two_matrix"
         android:src="@drawable/two_matrix"
@@ -25,8 +25,8 @@
 
     <ImageView
         android:id="@+id/lambda_matrix_image"
-        android:layout_width="370dp"
-        android:layout_height="200dp"
+        android:layout_width="700dp"
+        android:layout_height="400dp"
         android:layout_gravity="center_horizontal"
         android:contentDescription="@string/lambda_matrix"
         android:src="@drawable/lambda_matrix"
@@ -38,8 +38,8 @@
 
     <ImageView
         android:id="@+id/matrix_image"
-        android:layout_width="370dp"
-        android:layout_height="200dp"
+        android:layout_width="700dp"
+        android:layout_height="400dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="24dp"
         android:contentDescription="@string/one_matrix"
@@ -77,11 +77,11 @@
 
     <Button
         android:id="@+id/two_matrix"
-        android:layout_width="230dp"
-        android:layout_height="30dp"
+        android:layout_width="350dp"
+        android:layout_height="60dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginStart="85dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="300dp"
         android:layout_marginEnd="85dp"
         android:background="@drawable/menu_button"
         android:fontFamily="@font/main_font_light"
@@ -95,11 +95,11 @@
 
     <Button
         android:id="@+id/lambda_matrix"
-        android:layout_width="230dp"
-        android:layout_height="30dp"
+        android:layout_width="350dp"
+        android:layout_height="60dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginStart="85dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="300dp"
         android:layout_marginEnd="85dp"
         android:background="@drawable/menu_button"
         android:fontFamily="@font/main_font_light"
@@ -113,11 +113,11 @@
 
     <Button
         android:id="@+id/one_matrix"
-        android:layout_width="230dp"
-        android:layout_height="30dp"
+        android:layout_width="350dp"
+        android:layout_height="60dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginStart="85dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="300dp"
         android:layout_marginEnd="85dp"
         android:background="@drawable/menu_button"
         android:fontFamily="@font/main_font_light"
@@ -132,10 +132,10 @@
     <!-- Header -->
 
     <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="33dp"
-        android:layout_marginTop="30dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
         android:background="?attr/backgroundColor"
         android:contentDescription="@string/nav_icon"
         android:scaleType="centerCrop"

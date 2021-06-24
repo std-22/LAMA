@@ -54,7 +54,7 @@
         android:text="@string/list_op_two_matrix"
         android:textSize="5sp"
         android:textColor="?attr/textViewColor"
-        tools:ignore="MissingConstraints,OnClick,SmallSp" />
+        tools:ignore="MissingConstraints,OnClick,SmallSp,UsingOnClickInXml" />
 
     <Button
         android:id="@+id/lambda_matrix"
@@ -68,7 +68,7 @@
         android:text="@string/list_op_lam_matrix"
         android:textSize="5sp"
         android:textColor="?attr/textViewColor"
-        tools:ignore="MissingConstraints,OnClick,SmallSp" />
+        tools:ignore="MissingConstraints,OnClick,SmallSp,UsingOnClickInXml" />
 
     <!-- Header -->
 
@@ -84,7 +84,7 @@
         android:text="@string/list_op_matrix"
         android:textColor="?attr/textViewColor"
         android:textSize="5sp"
-        tools:ignore="MissingConstraints,OnClick,SmallSp" />
+        tools:ignore="MissingConstraints,OnClick,SmallSp,UsingOnClickInXml" />
 
     <ImageView
         android:layout_width="15dp"

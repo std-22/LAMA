@@ -18,7 +18,7 @@
         android:textColor="?attr/textViewColor"
         android:fontFamily="@font/main_font_light"
         android:layout_marginTop="10dp"
-        android:textSize="44sp"/>
+        android:textSize="50sp"/>
 
     <ImageButton
         android:layout_width="60dp"
@@ -26,7 +26,7 @@
         android:layout_marginTop="22dp"
         android:id="@+id/night"
         android:src="@drawable/ic_moon"
-        android:layout_marginStart="395dp"
+        android:layout_marginStart="700dp"
         android:scaleType="centerCrop"
         android:onClick="onClickToDark"
         android:background="?attr/backgroundColor"

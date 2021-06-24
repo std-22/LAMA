@@ -10,14 +10,14 @@
 
     <TextView
         android:id="@+id/function_name"
-        android:layout_width="250dp"
+        android:layout_width="680dp"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:layout_marginTop="27dp"
+        android:layout_marginTop="44dp"
         android:text="@string/name_of_function"
         android:textAppearance="@style/Text"
         android:textColor="?attr/textViewColor"
-        android:textSize="21sp"
+        android:textSize="38sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,7 +40,7 @@
 
             <EditText
                 android:id="@+id/editTextNumberA1"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
@@ -55,7 +55,7 @@
 
             <EditText
                 android:id="@+id/editTextNumberA2"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
@@ -70,7 +70,7 @@
 
             <EditText
                 android:id="@+id/editTextNumberA3"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
@@ -85,7 +85,7 @@
 
             <EditText
                 android:id="@+id/editTextNumberA4"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
@@ -100,7 +100,7 @@
 
             <EditText
                 android:id="@+id/editTextNumberA5"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
@@ -115,7 +115,7 @@
 
             <EditText
                 android:id="@+id/editTextNumberA6"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
@@ -136,7 +136,7 @@
 
             <EditText
                 android:id="@+id/editTextNumberB1"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
@@ -151,7 +151,7 @@
 
             <EditText
                 android:id="@+id/editTextNumberB2"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
@@ -166,7 +166,7 @@
 
             <EditText
                 android:id="@+id/editTextNumberB3"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
@@ -181,7 +181,7 @@
 
             <EditText
                 android:id="@+id/editTextNumberB4"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
@@ -196,7 +196,7 @@
 
             <EditText
                 android:id="@+id/editTextNumberB5"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
@@ -211,7 +211,7 @@
 
             <EditText
                 android:id="@+id/editTextNumberB6"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
@@ -231,7 +231,7 @@
 
             <EditText
                 android:id="@+id/editTextNumberC1"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
@@ -246,7 +246,7 @@
 
             <EditText
                 android:id="@+id/editTextNumberC2"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
@@ -261,7 +261,7 @@
 
             <EditText
                 android:id="@+id/editTextNumberC3"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
@@ -276,7 +276,7 @@
 
             <EditText
                 android:id="@+id/editTextNumberC4"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
@@ -291,7 +291,7 @@
 
             <EditText
                 android:id="@+id/editTextNumberC5"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
@@ -306,7 +306,7 @@
 
             <EditText
                 android:id="@+id/editTextNumberC6"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
@@ -326,7 +326,7 @@
 
             <EditText
                 android:id="@+id/editTextNumberD1"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
@@ -341,7 +341,7 @@
 
             <EditText
                 android:id="@+id/editTextNumberD2"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
@@ -356,7 +356,7 @@
 
             <EditText
                 android:id="@+id/editTextNumberD3"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
@@ -371,7 +371,7 @@
 
             <EditText
                 android:id="@+id/editTextNumberD4"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
@@ -386,7 +386,7 @@
 
             <EditText
                 android:id="@+id/editTextNumberD5"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
@@ -401,7 +401,7 @@
 
             <EditText
                 android:id="@+id/editTextNumberD6"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
@@ -421,7 +421,7 @@
 
             <EditText
                 android:id="@+id/editTextNumberE1"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
@@ -436,7 +436,7 @@
 
             <EditText
                 android:id="@+id/editTextNumberE2"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
@@ -451,7 +451,7 @@
 
             <EditText
                 android:id="@+id/editTextNumberE3"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
@@ -466,7 +466,7 @@
 
             <EditText
                 android:id="@+id/editTextNumberE4"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
@@ -481,7 +481,7 @@
 
             <EditText
                 android:id="@+id/editTextNumberE5"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
@@ -496,7 +496,7 @@
 
             <EditText
                 android:id="@+id/editTextNumberE6"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
@@ -516,7 +516,7 @@
 
             <EditText
                 android:id="@+id/editTextNumberF1"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
@@ -531,7 +531,7 @@
 
             <EditText
                 android:id="@+id/editTextNumberF2"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
@@ -546,7 +546,7 @@
 
             <EditText
                 android:id="@+id/editTextNumberF3"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
@@ -561,7 +561,7 @@
 
             <EditText
                 android:id="@+id/editTextNumberF4"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
@@ -576,7 +576,7 @@
 
             <EditText
                 android:id="@+id/editTextNumberF5"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
@@ -591,7 +591,7 @@
 
             <EditText
                 android:id="@+id/editTextNumberF6"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?attr/textViewColor"
                 android:ems="10"
@@ -621,7 +621,7 @@
 
     <EditText
         android:id="@+id/editTextNumber"
-        android:layout_width="60dp"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:ems="10"
@@ -640,9 +640,9 @@
 
     <Button
         android:id="@+id/to_input_matrix"
-        android:layout_width="286dp"
-        android:layout_height="42dp"
-        android:layout_marginBottom="44dp"
+        android:layout_width="506dp"
+        android:layout_height="72dp"
+        android:layout_marginBottom="104dp"
         android:background="@drawable/express_button"
         android:onClick="onClickToResult"
         android:text="@string/count"
