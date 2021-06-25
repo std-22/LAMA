@@ -17,16 +17,15 @@
         android:text="@string/lama"
         android:textColor="?attr/textViewColor"
         android:fontFamily="@font/main_font_light"
-        android:layout_marginTop="20dp"
-        android:textSize="34sp"/>
+        android:textSize="24sp"/>
 
     <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="22dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="8dp"
         android:id="@+id/night"
         android:src="@drawable/ic_moon"
-        android:layout_marginStart="235dp"
+        android:layout_marginStart="85dp"
         android:scaleType="centerCrop"
         android:onClick="onClickToDark"
         android:background="?attr/backgroundColor"

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent">
+
+    <View
+        android:id="@+id/line"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="141dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="49dp"
+        android:visibility="visible"
+        android:background="@color/divider"/>
+
+    <View
+        android:layout_width="141dp"
+        android:layout_height="49dp"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/operation_view"
+        android:background="?attr/viewColor"
+        android:topRightRadius="10dp"
+        android:topLeftRadius="10dp"/>
+
+
+    <TextView
+        android:layout_width="130dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="14dp"
+        android:textColor="?attr/textViewColor"
+        android:fontFamily="@font/main_font_light"
+        android:layout_gravity="center_horizontal"
+        android:textAlignment="center"
+        android:id="@+id/operation_name"
+        android:textSize="10sp"
+        tools:text="@tools:sample/full_names"
+        tools:ignore="SmallSp" />
+
+</FrameLayout>
