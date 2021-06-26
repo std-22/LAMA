@@ -1,11 +1,17 @@
 package io.github.studio22.lama;
 
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -23,6 +29,8 @@ public class MatrixResult extends AppCompatActivity {
     Operation operation;
     float x1, y1, x2, y2;
     double[][] resultMatrix;
+    Boolean tip = false;
+    Dialog dialog;
     FileOutputStream fos;
     enum Output {E, P5, P1}
     Output output = Output.E;
@@ -38,6 +46,7 @@ public class MatrixResult extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        android.content.SharedPreferences mSettings = getSharedPreferences("lama_settings", Context.MODE_PRIVATE);
         sharedPreferences = new SharedPreferences(this);
         state = sharedPreferences.loadNightModeState();
 
@@ -49,6 +58,25 @@ public class MatrixResult extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.matrix_result);
+
+        tip = mSettings.getBoolean("tip_instruction", false);
+
+        if (!tip) {
+            dialog = new Dialog(this);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); //удаление заголовка по умолчанию
+            dialog.setContentView(R.layout.dialog_window_of_output);
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT)); //установка фона
+            dialog.setCancelable(false); //не даем закрыть окно кнопками навигации
+            CheckBox tipCheckBox = dialog.findViewById(R.id.tip_checkBox);
+            tipCheckBox.setOnCheckedChangeListener((compoundButton, isChecked) -> {
+                android.content.SharedPreferences.Editor editor = mSettings.edit();
+                editor.putBoolean("tip_instruction", isChecked);
+                editor.apply();
+            });
+            Button tipButton = dialog.findViewById(R.id.tip_button_instruction);
+            tipButton.setOnClickListener(view -> dialog.dismiss());
+            dialog.show();
+        }
 
         TextView functionName = findViewById(R.id.function_name);
 

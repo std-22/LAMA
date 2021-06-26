@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="110dp"
     android:gravity="center"
@@ -29,6 +30,7 @@
         android:scaleType="centerCrop"
         android:onClick="onClickToDark"
         android:background="?attr/backgroundColor"
-        android:contentDescription="@string/dark_theme"/>
+        android:contentDescription="@string/dark_theme"
+        tools:ignore="UsingOnClickInXml" />
 
 </FrameLayout>

@@ -57,6 +57,11 @@
     <string name="history">История</string>
     <string name="choice">Выберите</string>
     <string name="e">e</string>
+    <string name="tip">Подсказка</string>
+    <string name="tip_text">Для получения более подробной информации о функции необходимо сделать свайп влево в области её кнопки.</string>
+    <string name="not_show">Больше не показывать</string>
+    <string name="tip_button_text">Понятно</string>
+    <string name="instruction">В верхнем правом углу находится переключатель формата вывода. Можно выбрать десятичное, экспоненциальное или дробное представление результата.</string>
     <string-array name="numbers">
         <item>1</item>
         <item>2</item>
