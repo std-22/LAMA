@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="ScrollViewCount"
+    android:background="?attr/backgroundColor"
+    tools:context=".ui.app.AboutProgramFragment">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/About_program"
+        android:textAppearance="@style/Text"
+        android:textColor="?attr/textViewColor"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        tools:ignore="SmallSp" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="?attr/backgroundColor"
+            android:contentDescription="@string/nav_icon"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_nav" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:paddingStart="30dp"
+        android:paddingEnd="25dp"
+        android:text="@string/app_description"
+        android:textAppearance="@style/Text"
+        android:textColor="?attr/textViewColor"
+        android:textSize="10sp"
+        tools:ignore="SmallSp" />
+
+    <EditText
+        android:id="@+id/for_message"
+        android:layout_width="140dp"
+        android:layout_height="25dp"
+        android:autofillHints="function"
+        android:background="@drawable/edit_text_border"
+        android:fontFamily="@font/main_font_light"
+        android:hint="@string/info_error"
+        android:layout_gravity="center_horizontal"
+        android:paddingStart="12dp"
+        android:inputType="textNoSuggestions"
+        android:textColor="?attr/textViewColor"
+        android:textColorHint="?attr/textViewColor"
+        tools:ignore="RtlSymmetry" />
+
+    <Button
+        android:id="@+id/send_button"
+        android:layout_width="86dp"
+        android:layout_height="22dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/express_button"
+        android:onClick="onClickSendEmail"
+        android:text="@string/send"
+        android:textAppearance="@style/Text"
+        android:textColor="?attr/textViewColor"
+        tools:ignore="OnClick,UsingOnClickInXml" />
+</ScrollView>

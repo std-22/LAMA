@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,8 +19,8 @@ import java.util.List;
 import github.hellocsl.cursorwheel.CursorWheelLayout;
 
 public class CategoryOperationMatrixA extends AppCompatActivity implements CursorWheelLayout.OnMenuSelectedListener {
-    private static String selectedRowSize;
-    private static String selectedColumnSize;
+    private String selectedRowSize;
+    private String selectedColumnSize;
     private final String[] numbers = {"1", "2", "3", "4", "5", "6",
             "1", "2", "3", "4", "5", "6"};
 
@@ -28,6 +31,7 @@ public class CategoryOperationMatrixA extends AppCompatActivity implements Curso
 
     SharedPreferences sharedPreferences;
     Boolean state;
+    Boolean buttonState = false;
     float x1, y1, x2, y2;
 
     public void onCreate(Bundle savedInstanceState) {
@@ -139,26 +143,40 @@ public class CategoryOperationMatrixA extends AppCompatActivity implements Curso
             return;
         }
 
-        Intent intent;
-        if ("MatrixMatrix".equals(operation.getNameOfClass())) {
-            if (operation.getName().equals("A + B") |
-                    operation.getName().equals("A - B") |
-                    operation.getName().equals("Поэлементное A \u00D7 B") |
-                    operation.getName().equals("Поэлементное A / B")) {
-                intent = new Intent(CategoryOperationMatrixA.this, MatrixInput.class);
-                intent.putExtra("selected_row_size_matrix_B", selectedRowSize);
-                intent.putExtra("selected_column_size_matrix_B", selectedColumnSize);
-            } else {
-                intent = new Intent(CategoryOperationMatrixA.this, CategoryOperationMatrixB.class);
-            }
-        } else {
-            intent = new Intent(CategoryOperationMatrixA.this, MatrixInput.class);
-        }
+        Intent intent = new Intent(CategoryOperationMatrixA.this, MatrixInput.class);
+
         intent.putExtra("selected_row_size", selectedRowSize);
         intent.putExtra("selected_column_size", selectedColumnSize);
         intent.putExtra("selected", operation);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+    }
+
+    public void onClickExtraMenu(View view) {
+        ImageButton vision = findViewById(R.id.vision);
+        ImageButton clock = findViewById(R.id.clock);
+        //ImageButton photo = findViewById(R.id.photo);
+
+        if (buttonState) {
+            buttonState = !buttonState;
+            vision.setImageResource(R.drawable.ic_visibility);
+            Animation anim = AnimationUtils.loadAnimation(this, R.anim.disappearance);
+            clock.startAnimation(anim);
+            clock.setVisibility(View.GONE);
+            //photo.setVisibility(View.GONE);
+        } else {
+            buttonState = !buttonState;
+            vision.setImageResource(R.drawable.ic_visibility_off);
+            clock.setVisibility(View.VISIBLE);
+            Animation anim = AnimationUtils.loadAnimation(this, R.anim.appearance);
+            clock.startAnimation(anim);
+            clock.setOnClickListener(view1 -> {
+                Intent intent = new Intent(CategoryOperationMatrixA.this, History.class);
+                intent.putExtra("selected", operation);
+                startActivity(intent);
+            });
+            //photo.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override

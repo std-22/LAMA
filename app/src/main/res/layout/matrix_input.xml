@@ -10,8 +10,9 @@
 
     <TextView
         android:id="@+id/function_name"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
+        android:textAlignment="center"
         android:layout_marginTop="27dp"
         android:text="@string/name_of_function"
         android:textAppearance="@style/Text"
@@ -48,7 +49,9 @@
                 android:textAlignment="center"
                 android:textColor="?attr/textViewColor"
                 android:visibility="gone"
-                tools:ignore="LabelFor" />
+                tools:ignore="LabelFor"
+                android:imeOptions="actionNext"
+                android:nextFocusRight="@+id/editTextNumberA2" />
 
             <EditText
                 android:id="@+id/editTextNumberA2"
@@ -61,7 +64,9 @@
                 android:textAlignment="center"
                 android:textColor="?attr/textViewColor"
                 android:visibility="gone"
-                tools:ignore="LabelFor" />
+                tools:ignore="LabelFor"
+                android:imeOptions="actionNext"
+                android:nextFocusRight="@+id/editTextNumberA3" />
 
             <EditText
                 android:id="@+id/editTextNumberA3"
@@ -74,7 +79,9 @@
                 android:textAlignment="center"
                 android:textColor="?attr/textViewColor"
                 android:visibility="gone"
-                tools:ignore="LabelFor" />
+                tools:ignore="LabelFor"
+                android:imeOptions="actionNext"
+                android:nextFocusRight="@+id/editTextNumberA4" />
 
             <EditText
                 android:id="@+id/editTextNumberA4"
@@ -87,7 +94,9 @@
                 android:textAlignment="center"
                 android:textColor="?attr/textViewColor"
                 android:visibility="gone"
-                tools:ignore="LabelFor" />
+                tools:ignore="LabelFor"
+                android:imeOptions="actionNext"
+                android:nextFocusRight="@+id/editTextNumberA5" />
 
             <EditText
                 android:id="@+id/editTextNumberA5"
@@ -100,7 +109,9 @@
                 android:textAlignment="center"
                 android:textColor="?attr/textViewColor"
                 android:visibility="gone"
-                tools:ignore="LabelFor" />
+                tools:ignore="LabelFor"
+                android:imeOptions="actionNext"
+                android:nextFocusRight="@+id/editTextNumberA6" />
 
             <EditText
                 android:id="@+id/editTextNumberA6"
@@ -113,7 +124,9 @@
                 android:textAlignment="center"
                 android:textColor="?attr/textViewColor"
                 android:visibility="gone"
-                tools:ignore="LabelFor" />
+                tools:ignore="LabelFor"
+                android:imeOptions="actionNext"
+                android:nextFocusRight="@+id/editTextNumberB1" />
 
         </TableRow>
 
@@ -132,7 +145,9 @@
                 android:textAlignment="center"
                 android:textColor="?attr/textViewColor"
                 android:visibility="gone"
-                tools:ignore="LabelFor" />
+                tools:ignore="LabelFor"
+                android:imeOptions="actionNext"
+                android:nextFocusRight="@+id/editTextNumberB2" />
 
             <EditText
                 android:id="@+id/editTextNumberB2"
@@ -145,7 +160,9 @@
                 android:textAlignment="center"
                 android:textColor="?attr/textViewColor"
                 android:visibility="gone"
-                tools:ignore="LabelFor" />
+                tools:ignore="LabelFor"
+                android:imeOptions="actionNext"
+                android:nextFocusRight="@+id/editTextNumberB3" />
 
             <EditText
                 android:id="@+id/editTextNumberB3"
@@ -158,7 +175,9 @@
                 android:textAlignment="center"
                 android:textColor="?attr/textViewColor"
                 android:visibility="gone"
-                tools:ignore="LabelFor" />
+                tools:ignore="LabelFor"
+                android:imeOptions="actionNext"
+                android:nextFocusRight="@+id/editTextNumberB4" />
 
             <EditText
                 android:id="@+id/editTextNumberB4"
@@ -171,7 +190,9 @@
                 android:textAlignment="center"
                 android:textColor="?attr/textViewColor"
                 android:visibility="gone"
-                tools:ignore="LabelFor" />
+                tools:ignore="LabelFor"
+                android:imeOptions="actionNext"
+                android:nextFocusRight="@+id/editTextNumberB5" />
 
             <EditText
                 android:id="@+id/editTextNumberB5"
@@ -184,7 +205,9 @@
                 android:textAlignment="center"
                 android:textColor="?attr/textViewColor"
                 android:visibility="gone"
-                tools:ignore="LabelFor" />
+                tools:ignore="LabelFor"
+                android:imeOptions="actionNext"
+                android:nextFocusRight="@+id/editTextNumberB6" />
 
             <EditText
                 android:id="@+id/editTextNumberB6"
@@ -197,7 +220,9 @@
                 android:textAlignment="center"
                 android:textColor="?attr/textViewColor"
                 android:visibility="gone"
-                tools:ignore="LabelFor" />
+                tools:ignore="LabelFor"
+                android:imeOptions="actionNext"
+                android:nextFocusRight="@+id/editTextNumberC1" />
         </TableRow>
 
         <TableRow
@@ -215,7 +240,9 @@
                 android:textAlignment="center"
                 android:textColor="?attr/textViewColor"
                 android:visibility="gone"
-                tools:ignore="LabelFor" />
+                tools:ignore="LabelFor"
+                android:imeOptions="actionNext"
+                android:nextFocusRight="@+id/editTextNumberC2" />
 
             <EditText
                 android:id="@+id/editTextNumberC2"
@@ -228,7 +255,9 @@
                 android:textAlignment="center"
                 android:textColor="?attr/textViewColor"
                 android:visibility="gone"
-                tools:ignore="LabelFor" />
+                tools:ignore="LabelFor"
+                android:imeOptions="actionNext"
+                android:nextFocusRight="@+id/editTextNumberC3" />
 
             <EditText
                 android:id="@+id/editTextNumberC3"
@@ -241,7 +270,9 @@
                 android:textAlignment="center"
                 android:textColor="?attr/textViewColor"
                 android:visibility="gone"
-                tools:ignore="LabelFor" />
+                tools:ignore="LabelFor"
+                android:imeOptions="actionNext"
+                android:nextFocusRight="@+id/editTextNumberC4"/>
 
             <EditText
                 android:id="@+id/editTextNumberC4"
@@ -254,7 +285,9 @@
                 android:textAlignment="center"
                 android:textColor="?attr/textViewColor"
                 android:visibility="gone"
-                tools:ignore="LabelFor" />
+                tools:ignore="LabelFor"
+                android:imeOptions="actionNext"
+                android:nextFocusRight="@+id/editTextNumberC5" />
 
             <EditText
                 android:id="@+id/editTextNumberC5"
@@ -267,7 +300,9 @@
                 android:textAlignment="center"
                 android:textColor="?attr/textViewColor"
                 android:visibility="gone"
-                tools:ignore="LabelFor" />
+                tools:ignore="LabelFor"
+                android:imeOptions="actionNext"
+                android:nextFocusRight="@+id/editTextNumberC6" />
 
             <EditText
                 android:id="@+id/editTextNumberC6"
@@ -280,7 +315,9 @@
                 android:textAlignment="center"
                 android:textColor="?attr/textViewColor"
                 android:visibility="gone"
-                tools:ignore="LabelFor" />
+                tools:ignore="LabelFor"
+                android:imeOptions="actionNext"
+                android:nextFocusRight="@+id/editTextNumberD1" />
         </TableRow>
 
         <TableRow
@@ -298,7 +335,9 @@
                 android:textAlignment="center"
                 android:textColor="?attr/textViewColor"
                 android:visibility="gone"
-                tools:ignore="LabelFor" />
+                tools:ignore="LabelFor"
+                android:imeOptions="actionNext"
+                android:nextFocusRight="@+id/editTextNumberD2" />
 
             <EditText
                 android:id="@+id/editTextNumberD2"
@@ -311,7 +350,9 @@
                 android:textAlignment="center"
                 android:textColor="?attr/textViewColor"
                 android:visibility="gone"
-                tools:ignore="LabelFor" />
+                tools:ignore="LabelFor"
+                android:imeOptions="actionNext"
+                android:nextFocusRight="@+id/editTextNumberD3" />
 
             <EditText
                 android:id="@+id/editTextNumberD3"
@@ -324,7 +365,9 @@
                 android:textAlignment="center"
                 android:textColor="?attr/textViewColor"
                 android:visibility="gone"
-                tools:ignore="LabelFor" />
+                tools:ignore="LabelFor"
+                android:imeOptions="actionNext"
+                android:nextFocusRight="@+id/editTextNumberD4" />
 
             <EditText
                 android:id="@+id/editTextNumberD4"
@@ -337,7 +380,9 @@
                 android:textAlignment="center"
                 android:textColor="?attr/textViewColor"
                 android:visibility="gone"
-                tools:ignore="LabelFor" />
+                tools:ignore="LabelFor"
+                android:imeOptions="actionNext"
+                android:nextFocusRight="@+id/editTextNumberD5" />
 
             <EditText
                 android:id="@+id/editTextNumberD5"
@@ -350,7 +395,9 @@
                 android:textAlignment="center"
                 android:textColor="?attr/textViewColor"
                 android:visibility="gone"
-                tools:ignore="LabelFor" />
+                tools:ignore="LabelFor"
+                android:imeOptions="actionNext"
+                android:nextFocusRight="@+id/editTextNumberD6" />
 
             <EditText
                 android:id="@+id/editTextNumberD6"
@@ -363,7 +410,9 @@
                 android:textAlignment="center"
                 android:textColor="?attr/textViewColor"
                 android:visibility="gone"
-                tools:ignore="LabelFor" />
+                tools:ignore="LabelFor"
+                android:imeOptions="actionNext"
+                android:nextFocusRight="@+id/editTextNumberE1" />
         </TableRow>
 
         <TableRow
@@ -381,7 +430,9 @@
                 android:textAlignment="center"
                 android:textColor="?attr/textViewColor"
                 android:visibility="gone"
-                tools:ignore="LabelFor" />
+                tools:ignore="LabelFor"
+                android:imeOptions="actionNext"
+                android:nextFocusRight="@+id/editTextNumberE2" />
 
             <EditText
                 android:id="@+id/editTextNumberE2"
@@ -394,7 +445,9 @@
                 android:textAlignment="center"
                 android:textColor="?attr/textViewColor"
                 android:visibility="gone"
-                tools:ignore="LabelFor" />
+                tools:ignore="LabelFor"
+                android:imeOptions="actionNext"
+                android:nextFocusRight="@+id/editTextNumberE3" />
 
             <EditText
                 android:id="@+id/editTextNumberE3"
@@ -407,7 +460,9 @@
                 android:textAlignment="center"
                 android:textColor="?attr/textViewColor"
                 android:visibility="gone"
-                tools:ignore="LabelFor" />
+                tools:ignore="LabelFor"
+                android:imeOptions="actionNext"
+                android:nextFocusRight="@+id/editTextNumberE4" />
 
             <EditText
                 android:id="@+id/editTextNumberE4"
@@ -420,7 +475,9 @@
                 android:textAlignment="center"
                 android:textColor="?attr/textViewColor"
                 android:visibility="gone"
-                tools:ignore="LabelFor" />
+                tools:ignore="LabelFor"
+                android:imeOptions="actionNext"
+                android:nextFocusRight="@+id/editTextNumberE5" />
 
             <EditText
                 android:id="@+id/editTextNumberE5"
@@ -433,7 +490,9 @@
                 android:textAlignment="center"
                 android:textColor="?attr/textViewColor"
                 android:visibility="gone"
-                tools:ignore="LabelFor" />
+                tools:ignore="LabelFor"
+                android:imeOptions="actionNext"
+                android:nextFocusRight="@+id/editTextNumberE6" />
 
             <EditText
                 android:id="@+id/editTextNumberE6"
@@ -446,7 +505,9 @@
                 android:textAlignment="center"
                 android:textColor="?attr/textViewColor"
                 android:visibility="gone"
-                tools:ignore="LabelFor" />
+                tools:ignore="LabelFor"
+                android:imeOptions="actionNext"
+                android:nextFocusRight="@+id/editTextNumberF1" />
         </TableRow>
 
         <TableRow
@@ -464,7 +525,9 @@
                 android:textAlignment="center"
                 android:textColor="?attr/textViewColor"
                 android:visibility="gone"
-                tools:ignore="LabelFor" />
+                tools:ignore="LabelFor"
+                android:imeOptions="actionNext"
+                android:nextFocusRight="@+id/editTextNumberF2" />
 
             <EditText
                 android:id="@+id/editTextNumberF2"
@@ -477,7 +540,9 @@
                 android:textAlignment="center"
                 android:textColor="?attr/textViewColor"
                 android:visibility="gone"
-                tools:ignore="LabelFor" />
+                tools:ignore="LabelFor"
+                android:imeOptions="actionNext"
+                android:nextFocusRight="@+id/editTextNumberF3" />
 
             <EditText
                 android:id="@+id/editTextNumberF3"
@@ -490,7 +555,9 @@
                 android:textAlignment="center"
                 android:textColor="?attr/textViewColor"
                 android:visibility="gone"
-                tools:ignore="LabelFor" />
+                tools:ignore="LabelFor"
+                android:imeOptions="actionNext"
+                android:nextFocusRight="@+id/editTextNumberF4" />
 
             <EditText
                 android:id="@+id/editTextNumberF4"
@@ -503,7 +570,9 @@
                 android:textAlignment="center"
                 android:textColor="?attr/textViewColor"
                 android:visibility="gone"
-                tools:ignore="LabelFor" />
+                tools:ignore="LabelFor"
+                android:imeOptions="actionNext"
+                android:nextFocusRight="@+id/editTextNumberF5" />
 
             <EditText
                 android:id="@+id/editTextNumberF5"
@@ -516,7 +585,9 @@
                 android:textAlignment="center"
                 android:textColor="?attr/textViewColor"
                 android:visibility="gone"
-                tools:ignore="LabelFor" />
+                tools:ignore="LabelFor"
+                android:imeOptions="actionNext"
+                android:nextFocusRight="@+id/editTextNumberF6" />
 
             <EditText
                 android:id="@+id/editTextNumberF6"
@@ -563,7 +634,7 @@
         tools:ignore="LabelFor"
         app:layout_constraintTop_toBottomOf="@+id/number_input"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <!--Button-->
 

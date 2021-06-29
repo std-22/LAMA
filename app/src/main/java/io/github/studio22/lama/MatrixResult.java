@@ -1,13 +1,26 @@
 package io.github.studio22.lama;
 
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.DecimalFormat;
 
 public class MatrixResult extends AppCompatActivity {
@@ -15,6 +28,12 @@ public class MatrixResult extends AppCompatActivity {
     Boolean state;
     Operation operation;
     float x1, y1, x2, y2;
+    double[][] resultMatrix;
+    Boolean tip = false;
+    Dialog dialog;
+    FileOutputStream fos;
+    enum Output {E, P5, P1}
+    Output output = Output.E;
 
     private static final int[][] resultTextViewID = {
             {R.id.resultA1, R.id.resultA2, R.id.resultA3, R.id.resultA4, R.id.resultA5, R.id.resultA6},
@@ -27,6 +46,7 @@ public class MatrixResult extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        android.content.SharedPreferences mSettings = getSharedPreferences("lama_settings", Context.MODE_PRIVATE);
         sharedPreferences = new SharedPreferences(this);
         state = sharedPreferences.loadNightModeState();
 
@@ -38,6 +58,25 @@ public class MatrixResult extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.matrix_result);
+
+        tip = mSettings.getBoolean("tip_instruction", false);
+
+        if (!tip) {
+            dialog = new Dialog(this);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); //удаление заголовка по умолчанию
+            dialog.setContentView(R.layout.dialog_window_of_output);
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT)); //установка фона
+            dialog.setCancelable(false); //не даем закрыть окно кнопками навигации
+            CheckBox tipCheckBox = dialog.findViewById(R.id.tip_checkBox);
+            tipCheckBox.setOnCheckedChangeListener((compoundButton, isChecked) -> {
+                android.content.SharedPreferences.Editor editor = mSettings.edit();
+                editor.putBoolean("tip_instruction", isChecked);
+                editor.apply();
+            });
+            Button tipButton = dialog.findViewById(R.id.tip_button_instruction);
+            tipButton.setOnClickListener(view -> dialog.dismiss());
+            dialog.show();
+        }
 
         TextView functionName = findViewById(R.id.function_name);
 
@@ -55,13 +94,14 @@ public class MatrixResult extends AppCompatActivity {
             TextView textView;
             switch (operation.getName()) {
                 case "DET |A|":
-                    double result = Result.getResult(operation.getName(), matrixA)[0][0];
+                    resultMatrix = new double[1][1];
+                    resultMatrix[0][0] = Result.getResult(operation.getName(), matrixA)[0][0];
                     textView = findViewById(resultTextViewID[0][0]);
                     textView.setVisibility(View.VISIBLE);
-                    textView.setText(String.valueOf(result));
+                    textView.setText(String.valueOf(resultMatrix[0][0]));
                     break;
                 case "Транспонирование":
-                    double[][] resultMatrix = Result.getResult(operation.getName(), matrixA);
+                    resultMatrix = Result.getResult(operation.getName(), matrixA);
                     for (int i = 0; i < resultMatrix.length; i++) {
                         for (int j = 0; j < resultMatrix[0].length; j++) {
                             textView = findViewById(resultTextViewID[i][j]);
@@ -72,15 +112,14 @@ public class MatrixResult extends AppCompatActivity {
                     }
                     break;
                 case "A\u1428\u00B9":
-                    double[][] resultMatrixInv = Result.getResult(operation.getName(), matrixA);
-                    if (MatrixCalculation.determinantCalc(resultMatrixInv) != 0
-                            || !Double.isNaN(MatrixCalculation.determinantCalc(resultMatrixInv))) {
-                        for (int i = 0; i < resultMatrixInv.length; i++) {
-                            for (int j = 0; j < resultMatrixInv[0].length; j++) {
+                    resultMatrix = Result.getResult(operation.getName(), matrixA);
+                    if (MatrixCalculation.determinantCalc(matrixA) != 0) {
+                        for (int i = 0; i < resultMatrix.length; i++) {
+                            for (int j = 0; j < resultMatrix[0].length; j++) {
                                 textView = findViewById(resultTextViewID[i][j]);
                                 textView.setVisibility(View.VISIBLE);
                                 DecimalFormat df = new DecimalFormat("#.###");
-                                textView.setText(df.format(resultMatrixInv[i][j]));
+                                textView.setText(df.format(resultMatrix[i][j]));
                             }
                         }
                     } else {
@@ -141,16 +180,16 @@ public class MatrixResult extends AppCompatActivity {
             }
         }
         // Матрица-Матрица
-        else if (getIntent().hasExtra("matrix_a") & getIntent().hasExtra("matrix_b")) {
+        else if (getIntent().hasExtra("matrix_a") && getIntent().hasExtra("matrix_b")) {
             double[][] matrixA = (double[][]) getIntent().getExtras().get("matrix_a");
             double[][] matrixB = (double[][]) getIntent().getExtras().get("matrix_b");
-            double[][] result = Result.getResult(operation.getName(), matrixA, matrixB);
-            for (int i = 0; i < result.length; i++) {
-                for (int j = 0; j < result[0].length; j++) {
+            resultMatrix = Result.getResult(operation.getName(), matrixA, matrixB);
+            for (int i = 0; i < resultMatrix.length; i++) {
+                for (int j = 0; j < resultMatrix[0].length; j++) {
                     TextView textView = findViewById(resultTextViewID[i][j]);
                     textView.setVisibility(View.VISIBLE);
                     DecimalFormat df = new DecimalFormat("#.###");
-                    textView.setText(df.format(result[i][j]));
+                    textView.setText(df.format(resultMatrix[i][j]));
                 }
             }
         }
@@ -158,15 +197,50 @@ public class MatrixResult extends AppCompatActivity {
         else {
             double[][] matrixA = (double[][]) getIntent().getExtras().get("matrix_a");
             double lambda = (double) getIntent().getExtras().get("lambda");
-            double[][] result = Result.getResult(operation.getName(), matrixA, lambda);
-            for (int i = 0; i < result.length; i++) {
-                for (int j = 0; j < result[0].length; j++) {
+            resultMatrix = Result.getResult(operation.getName(), matrixA, lambda);
+            for (int i = 0; i < resultMatrix.length; i++) {
+                for (int j = 0; j < resultMatrix[0].length; j++) {
                     TextView textView = findViewById(resultTextViewID[i][j]);
                     textView.setVisibility(View.VISIBLE);
                     DecimalFormat df = new DecimalFormat("#.###");
-                    textView.setText(df.format(result[i][j]));
+                    textView.setText(df.format(resultMatrix[i][j]));
                 }
             }
+        }
+
+        if (resultMatrix != null && (resultMatrix.length != 1 || resultMatrix[0].length!=1)){
+            TextView rem_matrix = findViewById(R.id.rem_matrix);
+            rem_matrix.setVisibility(View.VISIBLE);
+            CheckBox checkBox = findViewById(R.id.checkBox);
+            checkBox.setVisibility(View.VISIBLE);
+            checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                if(isChecked) {
+                    checkBox.setVisibility(View.GONE);
+                    Animation anim = AnimationUtils.loadAnimation(this, R.anim.disappearance);
+                    rem_matrix.startAnimation(anim);
+                    rem_matrix.setText("Скопировано");
+                    anim = AnimationUtils.loadAnimation(this, R.anim.appearance);
+                    rem_matrix.startAnimation(anim);
+                    File history = new File(Matrices.internalStorageDir, "history.txt");
+
+                    try {
+                        fos = new FileOutputStream(history, true);
+                        String matrix = resultMatrix.length + " " + resultMatrix[0].length + " ";
+                        for (double[] doubles : resultMatrix) {
+                            for (int j = 0; j < resultMatrix[0].length; j++) {
+                                DecimalFormat df = new DecimalFormat("#.###");
+                                matrix += df.format(doubles[j]);
+                                matrix += " ";
+                            }
+                        }
+                        matrix += "\n";
+                        fos.write(matrix.getBytes());
+                        fos.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
         }
     }
 
@@ -190,30 +264,19 @@ public class MatrixResult extends AppCompatActivity {
 
     public void onSwipeBack() {
         Intent intent;
-        if (getIntent().hasExtra("selected_row_size_matrix_B")) {
+        if ("MatrixMatrix".equals(operation.getNameOfClass())) {
             intent = new Intent(MatrixResult.this, MatrixInputB.class);
-            String temp = getIntent().getExtras().get("selected_row_size_matrix_B").toString();
-            int selectedRowSizeMatrixB = Integer.parseInt(temp);
-            intent.putExtra("selected_row_size", selectedRowSizeMatrixB);
-
-            if (getIntent().hasExtra("selected_column_size_matrix_B")) {
-                temp = getIntent().getExtras().get("selected_column_size_matrix_B").toString();
-                int selectedColumnSizeMatrixB = Integer.parseInt(temp);
-                intent.putExtra("selected_column_size", selectedColumnSizeMatrixB);
-            }
+            double[][] matrixB = (double[][]) getIntent().getExtras().get("matrix_b");
+            intent.putExtra("matrix_b", matrixB);
+            double[][] matrixA = (double[][]) getIntent().getExtras().get("matrix_a");
+            intent.putExtra("matrix_a", matrixA);
         } else {
             intent = new Intent(MatrixResult.this, MatrixInput.class);
-            //считывание размеров матрицы A
-            if (getIntent().hasExtra("selected_row_size")) {
-                String temp = getIntent().getExtras().get("selected_row_size").toString();
-                int selectedRowSize = Integer.parseInt(temp);
-                intent.putExtra("selected_row_size", selectedRowSize);
-            }
-
-            if (getIntent().hasExtra("selected_column_size")) {
-                String temp = getIntent().getExtras().get("selected_column_size").toString();
-                int selectedColumnSize = Integer.parseInt(temp);
-                intent.putExtra("selected_column_size", selectedColumnSize);
+            double[][] matrixA = (double[][]) getIntent().getExtras().get("matrix_a");
+            intent.putExtra("matrix_a", matrixA);
+            if (getIntent().hasExtra("lambda")){
+                double lambda = (double) getIntent().getExtras().get("lambda");
+                intent.putExtra("lambda", lambda);
             }
         }
         intent.putExtra("selected_next", operation);
@@ -225,6 +288,24 @@ public class MatrixResult extends AppCompatActivity {
         Intent intent = new Intent(MatrixResult.this, MenuNavActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+    }
+
+    public void onClickIB(View view) {
+        ImageButton ib = findViewById(R.id.ib);
+        switch (output){
+            case E:
+                output = Output.P5;
+                ib.setImageResource(R.drawable.ic_p5);
+                break;
+            case P5:
+                output = Output.P1;
+                ib.setImageResource(R.drawable.ic_p1);
+                break;
+            case P1:
+                output = Output.E;
+                ib.setImageResource(R.drawable.ic_e);
+                break;
+        }
     }
 
     @Override

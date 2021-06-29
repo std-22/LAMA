@@ -44,6 +44,8 @@
             android:screenOrientation="portrait"/>
         <activity android:name="io.github.studio22.lama.MatrixResult"
             android:screenOrientation="portrait"/>
+        <activity android:name="io.github.studio22.lama.History"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
