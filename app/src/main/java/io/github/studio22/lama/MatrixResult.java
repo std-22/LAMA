@@ -92,22 +92,35 @@ public class MatrixResult extends AppCompatActivity {
                 !getIntent().hasExtra("lambda")) {
             double[][] matrixA = (double[][]) getIntent().getExtras().get("matrix_a");
             TextView textView;
+            int temp;
             switch (operation.getName()) {
                 case "DET |A|":
+                case "Ранг матрицы":
                     resultMatrix = new double[1][1];
                     resultMatrix[0][0] = Result.getResult(operation.getName(), matrixA)[0][0];
                     textView = findViewById(resultTextViewID[0][0]);
                     textView.setVisibility(View.VISIBLE);
-                    textView.setText(String.valueOf(resultMatrix[0][0]));
+                    temp = (int) resultMatrix[0][0];
+                    if ((double) temp == resultMatrix[0][0]){
+                        textView.setText(String.valueOf(temp));
+                    } else {
+                        textView.setText(String.valueOf(resultMatrix[0][0]));
+                    }
                     break;
                 case "Транспонирование":
+                case "Решение системы уравнений":
                     resultMatrix = Result.getResult(operation.getName(), matrixA);
                     for (int i = 0; i < resultMatrix.length; i++) {
                         for (int j = 0; j < resultMatrix[0].length; j++) {
                             textView = findViewById(resultTextViewID[i][j]);
                             textView.setVisibility(View.VISIBLE);
-                            DecimalFormat df = new DecimalFormat("#.###");
-                            textView.setText(df.format(resultMatrix[i][j]));
+                            temp = (int) resultMatrix[i][j];
+                            if ((double) temp == resultMatrix[i][j]){
+                                textView.setText(String.valueOf(temp));
+                            } else {
+                                DecimalFormat df = new DecimalFormat("#.###");
+                                textView.setText(df.format(resultMatrix[i][j]));
+                            }
                         }
                     }
                     break;
@@ -118,8 +131,13 @@ public class MatrixResult extends AppCompatActivity {
                             for (int j = 0; j < resultMatrix[0].length; j++) {
                                 textView = findViewById(resultTextViewID[i][j]);
                                 textView.setVisibility(View.VISIBLE);
-                                DecimalFormat df = new DecimalFormat("#.###");
-                                textView.setText(df.format(resultMatrix[i][j]));
+                                temp = (int) resultMatrix[i][j];
+                                if ((double) temp == resultMatrix[i][j]){
+                                    textView.setText(String.valueOf(temp));
+                                } else {
+                                    DecimalFormat df = new DecimalFormat("#.###");
+                                    textView.setText(df.format(resultMatrix[i][j]));
+                                }
                             }
                         }
                     } else {
@@ -173,6 +191,22 @@ public class MatrixResult extends AppCompatActivity {
                         textView.setText("В процессе разработки");
                     }
                     break;
+                case "Приведение к треугольному виду":
+                    resultMatrix = Result.getResult(operation.getName(), matrixA);
+                    for (int i = 0; i < resultMatrix.length; i++) {
+                        for (int j = 0; j < resultMatrix[0].length - 1; j++) {
+                            textView = findViewById(resultTextViewID[i][j]);
+                            textView.setVisibility(View.VISIBLE);
+                            temp = (int) resultMatrix[i][j];
+                            if ((double) temp == resultMatrix[i][j]){
+                                textView.setText(String.valueOf(temp));
+                            } else {
+                                DecimalFormat df = new DecimalFormat("#.###");
+                                textView.setText(df.format(resultMatrix[i][j]));
+                            }
+                        }
+                    }
+                    break;
                 default:
                     TextView defaultTextView = findViewById(resultTextViewID[0][0]);
                     defaultTextView.setVisibility(View.VISIBLE);
@@ -188,8 +222,13 @@ public class MatrixResult extends AppCompatActivity {
                 for (int j = 0; j < resultMatrix[0].length; j++) {
                     TextView textView = findViewById(resultTextViewID[i][j]);
                     textView.setVisibility(View.VISIBLE);
-                    DecimalFormat df = new DecimalFormat("#.###");
-                    textView.setText(df.format(resultMatrix[i][j]));
+                    int temp = (int) resultMatrix[i][j];
+                    if ((double) temp == resultMatrix[i][j]){
+                        textView.setText(String.valueOf(temp));
+                    } else {
+                        DecimalFormat df = new DecimalFormat("#.###");
+                        textView.setText(df.format(resultMatrix[i][j]));
+                    }
                 }
             }
         }
@@ -202,8 +241,13 @@ public class MatrixResult extends AppCompatActivity {
                 for (int j = 0; j < resultMatrix[0].length; j++) {
                     TextView textView = findViewById(resultTextViewID[i][j]);
                     textView.setVisibility(View.VISIBLE);
-                    DecimalFormat df = new DecimalFormat("#.###");
-                    textView.setText(df.format(resultMatrix[i][j]));
+                    int temp = (int) resultMatrix[i][j];
+                    if ((double) temp == resultMatrix[i][j]){
+                        textView.setText(String.valueOf(temp));
+                    } else {
+                        DecimalFormat df = new DecimalFormat("#.###");
+                        textView.setText(df.format(resultMatrix[i][j]));
+                    }
                 }
             }
         }
@@ -228,8 +272,13 @@ public class MatrixResult extends AppCompatActivity {
                         String matrix = resultMatrix.length + " " + resultMatrix[0].length + " ";
                         for (double[] doubles : resultMatrix) {
                             for (int j = 0; j < resultMatrix[0].length; j++) {
-                                DecimalFormat df = new DecimalFormat("#.###");
-                                matrix += df.format(doubles[j]);
+                                int temp = (int) doubles[j];
+                                if ((double) temp == doubles[j]){
+                                    matrix += doubles[j];
+                                } else {
+                                    DecimalFormat df = new DecimalFormat("#.###");
+                                    matrix += df.format(doubles[j]);
+                                }
                                 matrix += " ";
                             }
                         }

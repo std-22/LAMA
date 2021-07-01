@@ -84,7 +84,12 @@ public class MatrixInput extends AppCompatActivity {
                 for (int j = 0; j < matrixA[0].length; j++) {
                     EditText editText = findViewById(editTextId[i][j]);
                     editText.setVisibility(View.VISIBLE);
-                    editText.setText(String.valueOf(matrixA[i][j]));
+                    int temp = (int) matrixA[i][j];
+                    if ((double) temp == matrixA[i][j]){
+                        editText.setText(String.valueOf(temp));
+                    } else {
+                        editText.setText(String.valueOf(matrixA[i][j]));
+                    }
                 }
             }
         } else if (getIntent().hasExtra("matrix_a") && "Matrix".equals(operation.getNameOfClass())) {
@@ -93,7 +98,12 @@ public class MatrixInput extends AppCompatActivity {
                 for (int j = 0; j < matrixA[0].length; j++) {
                     EditText editText = findViewById(editTextId[i][j]);
                     editText.setVisibility(View.VISIBLE);
-                    editText.setText(String.valueOf(matrixA[i][j]));
+                    int temp = (int) matrixA[i][j];
+                    if ((double) temp == matrixA[i][j]){
+                        editText.setText(String.valueOf(temp));
+                    } else {
+                        editText.setText(String.valueOf(matrixA[i][j]));
+                    }
                 }
             }
         } else if (getIntent().hasExtra("matrix_a") && "MatrixLambda".equals(operation.getNameOfClass())) {
@@ -102,7 +112,12 @@ public class MatrixInput extends AppCompatActivity {
                 for (int j = 0; j < matrixA[0].length; j++) {
                     EditText editText = findViewById(editTextId[i][j]);
                     editText.setVisibility(View.VISIBLE);
-                    editText.setText(String.valueOf(matrixA[i][j]));
+                    int temp = (int) matrixA[i][j];
+                    if ((double) temp == matrixA[i][j]){
+                        editText.setText(String.valueOf(temp));
+                    } else {
+                        editText.setText(String.valueOf(matrixA[i][j]));
+                    }
                 }
             }
             if (getIntent().hasExtra("lambda")){
@@ -110,7 +125,12 @@ public class MatrixInput extends AppCompatActivity {
                 findViewById(R.id.number_input).setVisibility(View.VISIBLE);
                 editText_lambda = findViewById(R.id.editTextNumber);
                 editText_lambda.setVisibility(View.VISIBLE);
-                editText_lambda.setText(String.valueOf(lambda));
+                int temp = (int) lambda;
+                if ((double) temp == lambda){
+                    editText_lambda.setText(String.valueOf(temp));
+                } else {
+                    editText_lambda.setText(String.valueOf(lambda));
+                }
             } else {
                 findViewById(R.id.number_input).setVisibility(View.VISIBLE);
                 editText_lambda = findViewById(R.id.editTextNumber);

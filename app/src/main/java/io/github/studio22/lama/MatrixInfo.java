@@ -28,11 +28,11 @@ public class MatrixInfo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.info);
 
-        ImageView image = findViewById(R.id.scalar);
+        ImageView image_1 = findViewById(R.id.info_1);
         if(state){
-            image.setImageResource(R.drawable.scalar_m_dark);
+            image_1.setImageResource(R.drawable.merge1);
         } else {
-            image.setImageResource(R.drawable.scalar_m);
+            image_1.setImageResource(R.drawable.merge1);
         }
 
         TextView functionName = findViewById(R.id.function_name);

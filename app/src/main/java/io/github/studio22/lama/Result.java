@@ -23,6 +23,12 @@ public class Result {
                 return MatrixCalculation.eigenValue(matrix);
             case "Поиск собственных векторов":
                 return MatrixCalculation.eigenVector(matrix);
+            case "Приведение к треугольному виду":
+                return MatrixCalculation.triangleView(matrix);
+            case "Ранг матрицы":
+                return MatrixCalculation.rang(matrix);
+            case "Решение системы уравнений":
+                return MatrixCalculation.system(matrix);
             default:
                 return matrix;
         }

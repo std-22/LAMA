@@ -81,7 +81,12 @@ public class MatrixInputB extends AppCompatActivity {
                 for (int j = 0; j < matrixB[0].length; j++) {
                     EditText editText = findViewById(editTextId[i][j]);
                     editText.setVisibility(View.VISIBLE);
-                    editText.setText(String.valueOf(matrixB[i][j]));
+                    int temp = (int) matrixB[i][j];
+                    if ((double) temp == matrixB[i][j]){
+                        editText.setText(String.valueOf(temp));
+                    } else {
+                        editText.setText(String.valueOf(matrixB[i][j]));
+                    }
                 }
             }
         } else {
