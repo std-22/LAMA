@@ -1,6 +1,6 @@
-# Lama
+<img src="https://github.com/std-22/LAMA/blob/master/media/logo_new_dark.png" align="right" width="280" height="280" />
 
-<img src="https://github.com/std-22/LAMA/blob/master/media/logo_new_dark.png" align="right" width="140" height="140" />
+# Lama
 
 ## Что такое Lama?
 LAMA - это android приложение для выполнения математических операций над матрицами.
