@@ -45,10 +45,10 @@ public class MatrixInfo extends AppCompatActivity {
                 infoImage = findViewById(R.id.info_image);
                 if(state){
                     infoImage.setVisibility(View.VISIBLE);
-                    infoImage.setImageResource(R.drawable.merge1);
+                    infoImage.setImageResource(R.drawable.diagw);
                 } else {
                     infoImage.setVisibility(View.VISIBLE);
-                    infoImage.setImageResource(R.drawable.merge1);
+                    infoImage.setImageResource(R.drawable.diag);
                 }
                 break;
             case "Ранг матрицы":

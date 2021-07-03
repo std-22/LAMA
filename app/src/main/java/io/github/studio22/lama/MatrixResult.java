@@ -223,10 +223,17 @@ public class MatrixResult extends AppCompatActivity {
     }
 
     public void print(String pattern){
+        int fontSize;
+        if (resultMatrix.length >= 4 || resultMatrix[0].length >= 4){
+            fontSize = 22;
+        } else {
+            fontSize = 28;
+        }
         for (int i = 0; i < resultMatrix.length; i++) {
             for (int j = 0; j < resultMatrix[0].length; j++) {
                 TextView textView = findViewById(resultTextViewID[i][j]);
                 textView.setVisibility(View.VISIBLE);
+                textView.setTextSize(fontSize);
                 int temp = (int) resultMatrix[i][j];
                 if ((double) temp == resultMatrix[i][j]){
                     textView.setText(String.valueOf(temp));
@@ -291,10 +298,17 @@ public class MatrixResult extends AppCompatActivity {
                 output = Output.P5;
                 ib.setImageResource(R.drawable.ic_p5);
                 if (resultMatrix != null){
+                    int fontSize;
+                    if (resultMatrix.length >= 4 || resultMatrix[0].length >= 4){
+                        fontSize = 22;
+                    } else {
+                        fontSize = 28;
+                    }
                     for (int i = 0; i < resultMatrix.length; i++) {
                         for (int j = 0; j < resultMatrix[0].length; j++) {
                             TextView textView = findViewById(resultTextViewID[i][j]);
                             textView.setVisibility(View.VISIBLE);
+                            textView.setTextSize(fontSize);
                             int temp = (int) resultMatrix[i][j];
                             if ((double) temp == resultMatrix[i][j]){
                                 textView.setText(String.valueOf(temp));
