@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 
+import java.io.File;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -34,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Matrices.internalStorageDir = getFilesDir();
 
         ImageView lama = findViewById(R.id.lama_image);
         if(state){

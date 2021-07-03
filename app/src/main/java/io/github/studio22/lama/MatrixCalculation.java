@@ -6,7 +6,122 @@ package io.github.studio22.lama;
 public class MatrixCalculation {
     /**
      * @param matrix матрица типа Double[][]
-     * @return транспонировання матрица типа String
+     * @return ранг матрицы
+     */
+    public static double[][] system(double[][] matrix){
+        double[][] newMatrix = new double[matrix.length][matrix[0].length];
+        double[][] temp = new double[matrix.length][matrix[0].length];
+        for (int i = 0; i < matrix.length; i++)
+            System.arraycopy(matrix[i], 0, newMatrix[i], 0, matrix[0].length);
+
+        //Прямой ход
+        for (int k = 0; k < matrix.length; k++) //k-номер строки
+        {
+            for (int i = 0; i < matrix[0].length; i++) //i-номер столбца
+                newMatrix[k][i] = newMatrix[k][i] / matrix[k][k]; //Деление k-строки на первый член !=0 для преобразования его в единицу
+            for (int i = k + 1; i < matrix.length; i++) //i-номер следующей строки после k
+            {
+                double K = newMatrix[i][k] / newMatrix[k][k]; //Коэффициент
+                for (int j = 0; j < matrix[0].length; j++) //j-номер столбца следующей строки после k
+                    newMatrix[i][j] = newMatrix[i][j] - newMatrix[k][j] * K; //Зануление элементов матрицы ниже первого члена, преобразованного в единицу
+            }
+            for (int i = 0; i < matrix.length; i++) //Обновление, внесение изменений в начальную матрицу
+                System.arraycopy(newMatrix[i], 0, temp[i], 0, temp.length);
+        }
+
+        //Обратный ход
+        for (int k = temp.length - 1; k > -1; k--) //k-номер строки
+        {
+            for (int i = temp.length; i > -1; i--) //i-номер столбца
+                newMatrix[k][i] = newMatrix[k][i] / temp[k][k];
+            for (int i = k - 1; i > -1; i--) //i-номер следующей строки после k
+            {
+                double K = newMatrix[i][k] / newMatrix[k][k];
+                for (int j = temp.length; j > -1; j--) //j-номер столбца следующей строки после k
+                    newMatrix[i][j] = newMatrix[i][j] - newMatrix[k][j] * K;
+            }
+        }
+
+        //Отделяем ответы
+        double[][] answer = new double[1][matrix.length];
+        for (int i = 0; i < matrix.length; i++) {
+            answer[0][i] = newMatrix[i][matrix.length];
+        }
+
+        return answer;
+    }
+
+    /**
+     * @param matrix матрица типа Double[][]
+     * @return ранг матрицы
+     */
+    public static double[][] rang(double[][] matrix){
+        double[][] result = new double[matrix.length][matrix[0].length + 1];
+        double[][] rang = new double[1][1];
+
+        for (int i = 0; i < matrix.length; i++)
+            System.arraycopy(matrix[i], 0, result[i], 0, matrix[0].length);
+
+        //Прямой обход
+        for (int k = 0; k < matrix.length; k++) //k-номер строки
+        {
+            for (int i = k + 1; i < matrix.length; i++) //i-номер следующей строки после k
+            {
+                if (result[k][k] != 0) {
+                    double K = result[i][k] / result[k][k]; //Коэффициент
+                    for (int j = 0; j < matrix[0].length; j++) //j-номер столбца следующей строки после k
+                        result[i][j] = result[i][j] - result[k][j] * K; //Зануление элементов матрицы ниже первого члена, преобразованного в единицу
+                } else {
+                    rang[0][0] = 0;
+                    return rang;
+                }
+            }
+        }
+
+        rang[0][0] = result.length;
+        for (double[] doubles : result) {
+            for (int j = 0; j < result[0].length - 1; j++) {
+                if (doubles[j] != 0) {
+                    break;
+                }
+                if (j == result[0].length - 2) {
+                    rang[0][0]--;
+                }
+            }
+        }
+
+        return rang;
+    }
+
+    /**
+     * @param matrix матрица типа Double[][]
+     * @return приведенная к треугольному виду матрицы
+     */
+    public static double[][] triangleView(double[][] matrix){
+        double[][] result = new double[matrix.length][matrix[0].length + 1];
+
+        for (int i = 0; i < matrix.length; i++)
+            System.arraycopy(matrix[i], 0, result[i], 0, matrix[0].length);
+
+        //Прямой обход
+        for (int k = 0; k < matrix.length; k++) //k-номер строки
+        {
+            for (int i = k + 1; i < matrix.length; i++) //i-номер следующей строки после k
+            {
+                if (result[k][k] != 0) {
+                    double K = result[i][k] / result[k][k]; //Коэффициент
+                    for (int j = 0; j < matrix[0].length; j++) //j-номер столбца следующей строки после k
+                        result[i][j] = result[i][j] - result[k][j] * K; //Зануление элементов матрицы ниже первого члена, преобразованного в единицу
+                }
+            }
+        }
+
+        return result;
+    }
+
+    /**
+     * @param matrix матрица типа Double[][]
+     * @return транспонированная матрица типа String
      */
     public static double[][] transpose(double[][] matrix) {
         double[][] result = new double[matrix[0].length][matrix.length];
@@ -69,7 +184,6 @@ public class MatrixCalculation {
      * @return определитель матрцы типа double
      */
     public static double determinantCalc(double[][] matrix) {
-
         if (matrix.length == 1)
             return matrix[0][0];
         if (matrix.length == 2)

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.matrix.MatrixFragment"
+    android:background="?attr/backgroundColor"
+    android:orientation="vertical">
+
+    <!-- Images -->
+
+    <ImageView
+        android:id="@+id/two_matrix_image"
+        android:layout_width="370dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center_horizontal"
+        android:contentDescription="@string/two_matrix"
+        android:src="@drawable/two_matrix"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/line_1"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/lambda_matrix_image"
+        android:layout_width="370dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center_horizontal"
+        android:contentDescription="@string/lambda_matrix"
+        android:src="@drawable/lambda_matrix"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/line_1"
+        app:layout_constraintBottom_toTopOf="@+id/line_2"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/matrix_image"
+        android:layout_width="370dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="24dp"
+        android:contentDescription="@string/one_matrix"
+        android:src="@drawable/one_matrix"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/line_2"
+        tools:ignore="MissingConstraints" />
+
+    <!-- Separators -->
+
+    <View
+        android:id="@+id/line_1"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="@color/separator"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/two_matrix_image"
+        app:layout_constraintBottom_toTopOf="@+id/lambda_matrix_image"/>
+
+    <View
+        android:id="@+id/line_2"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="@color/separator"
+        app:layout_constraintTop_toBottomOf="@+id/lambda_matrix_image"
+        app:layout_constraintBottom_toTopOf="@+id/matrix_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <!-- Buttons -->
+
+    <Button
+        android:id="@+id/two_matrix"
+        android:layout_width="230dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="85dp"
+        android:background="@drawable/menu_button"
+        android:fontFamily="@font/main_font_light"
+        android:onClick="onClickMatrixMatrix"
+        android:text="@string/list_op_two_matrix"
+        android:textColor="?attr/textViewColor"
+        app:layout_constraintEnd_toEndOf="@+id/two_matrix_image"
+        app:layout_constraintStart_toStartOf="@+id/two_matrix_image"
+        app:layout_constraintTop_toTopOf="@+id/two_matrix_image"
+        tools:ignore="MissingConstraints,OnClick,UsingOnClickInXml" />
+
+    <Button
+        android:id="@+id/lambda_matrix"
+        android:layout_width="230dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="85dp"
+        android:background="@drawable/menu_button"
+        android:fontFamily="@font/main_font_light"
+        android:onClick="onClickMatrixLambda"
+        android:text="@string/list_op_lam_matrix"
+        android:textColor="?attr/textViewColor"
+        app:layout_constraintEnd_toEndOf="@+id/lambda_matrix_image"
+        app:layout_constraintStart_toStartOf="@+id/lambda_matrix_image"
+        app:layout_constraintTop_toTopOf="@+id/lambda_matrix_image"
+        tools:ignore="MissingConstraints,OnClick,UsingOnClickInXml" />
+
+    <Button
+        android:id="@+id/one_matrix"
+        android:layout_width="230dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="85dp"
+        android:background="@drawable/menu_button"
+        android:fontFamily="@font/main_font_light"
+        android:onClick="onClickMatrix"
+        android:text="@string/list_op_matrix"
+        android:textColor="?attr/textViewColor"
+        app:layout_constraintEnd_toEndOf="@+id/matrix_image"
+        app:layout_constraintStart_toStartOf="@+id/matrix_image"
+        app:layout_constraintTop_toTopOf="@+id/matrix_image"
+        tools:ignore="MissingConstraints,OnClick,UsingOnClickInXml" />
+
+    <!-- Header -->
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="30dp"
+        android:background="?attr/backgroundColor"
+        android:contentDescription="@string/nav_icon"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_nav"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

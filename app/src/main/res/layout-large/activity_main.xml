@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,39 +9,75 @@
     android:gravity="center"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:layout_width="562dp"
-        android:layout_height="562dp"
-        android:layout_marginTop="50dp"
-        android:id="@+id/lama_image"
-        app:srcCompat="@drawable/logo_new"
-        android:contentDescription="@string/lama"
-        tools:ignore="MissingConstraints"/>
-
     <TextView
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/lama"
+        android:layout_marginTop="10dp"
+        android:text="@string/by_studio_22"
         android:textAlignment="center"
-        android:textSize="58sp"
-        android:layout_marginTop="-50dp"
+        android:textAppearance="@style/Text"
         android:textColor="?attr/textViewColor"
-        android:textAppearance="@style/Text"/>
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/lama_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <ImageView
+        android:id="@+id/lama_image"
+        android:layout_width="500dp"
+        android:layout_height="500dp"
+        android:layout_marginTop="70dp"
+        android:contentDescription="@string/lama"
+        app:layout_constraintBottom_toTopOf="@+id/lin_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:srcCompat="@drawable/logo_new"
+        tools:ignore="MissingConstraints" />
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/lin_al_amp"
-        android:textColor="?attr/textViewColor"
-        android:textAppearance="@style/Text"
-        android:textSize="35sp" />
+        android:orientation="vertical"
+        android:id="@+id/lin_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lama_image">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/math_anal"
-        android:textColor="?attr/textViewColor"
-        android:textAppearance="@style/Text"
-        android:textSize="35sp"/>
+        <TextView
+            android:id="@+id/lama"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lama"
+            android:layout_gravity="center_horizontal"
+            android:textAlignment="center"
+            android:textAppearance="@style/Text"
+            android:textColor="?attr/textViewColor"
+            android:textSize="80sp" />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/alg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lin_al_amp"
+            android:textAppearance="@style/Text"
+            android:textColor="?attr/textViewColor"
+            android:textSize="48sp"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/math"
+            android:text="@string/math_anal"
+            android:textAppearance="@style/Text"
+            android:textColor="?attr/textViewColor"
+            android:textSize="48sp"
+            android:layout_gravity="center_horizontal" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

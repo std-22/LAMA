@@ -84,14 +84,14 @@
         android:layout_marginTop="150dp"
         android:layout_marginEnd="85dp"
         android:background="@drawable/menu_button"
-        android:fontFamily="@font/comfortaa_light"
+        android:fontFamily="@font/main_font_light"
         android:onClick="onClickMatrixMatrix"
         android:text="@string/list_op_two_matrix"
         android:textColor="?attr/textViewColor"
         app:layout_constraintEnd_toEndOf="@+id/two_matrix_image"
         app:layout_constraintStart_toStartOf="@+id/two_matrix_image"
         app:layout_constraintTop_toTopOf="@+id/two_matrix_image"
-        tools:ignore="MissingConstraints,OnClick" />
+        tools:ignore="MissingConstraints,OnClick,UsingOnClickInXml" />
 
     <Button
         android:id="@+id/lambda_matrix"
@@ -102,14 +102,14 @@
         android:layout_marginTop="150dp"
         android:layout_marginEnd="85dp"
         android:background="@drawable/menu_button"
-        android:fontFamily="@font/comfortaa_light"
+        android:fontFamily="@font/main_font_light"
         android:onClick="onClickMatrixLambda"
         android:text="@string/list_op_lam_matrix"
         android:textColor="?attr/textViewColor"
         app:layout_constraintEnd_toEndOf="@+id/lambda_matrix_image"
         app:layout_constraintStart_toStartOf="@+id/lambda_matrix_image"
         app:layout_constraintTop_toTopOf="@+id/lambda_matrix_image"
-        tools:ignore="MissingConstraints,OnClick" />
+        tools:ignore="MissingConstraints,OnClick,UsingOnClickInXml" />
 
     <Button
         android:id="@+id/one_matrix"
@@ -120,14 +120,14 @@
         android:layout_marginTop="150dp"
         android:layout_marginEnd="85dp"
         android:background="@drawable/menu_button"
-        android:fontFamily="@font/comfortaa_light"
+        android:fontFamily="@font/main_font_light"
         android:onClick="onClickMatrix"
         android:text="@string/list_op_matrix"
         android:textColor="?attr/textViewColor"
         app:layout_constraintEnd_toEndOf="@+id/matrix_image"
         app:layout_constraintStart_toStartOf="@+id/matrix_image"
         app:layout_constraintTop_toTopOf="@+id/matrix_image"
-        tools:ignore="MissingConstraints,OnClick" />
+        tools:ignore="MissingConstraints,OnClick,UsingOnClickInXml" />
 
     <!-- Header -->
 
