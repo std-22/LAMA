@@ -24,14 +24,31 @@
 
     <!--Body-->
 
-    <ImageView
-        android:id="@+id/info_1"
+    <TextView
+        android:id="@+id/info_text"
         android:layout_width="368dp"
-        android:layout_height="500dp"
-        android:layout_marginTop="24dp"
-        android:contentDescription="@string/description"
-        android:src="@drawable/merge1"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="27dp"
+        android:text="@string/name_of_function"
+        android:textAppearance="@style/Text"
+        android:textColor="?attr/textViewColor"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/function_name" />
+
+    <ImageView
+        android:id="@+id/info_image"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:contentDescription="@string/description"
+        android:src="@drawable/merge1"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.372"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/info_text" />
 </androidx.constraintlayout.widget.ConstraintLayout>

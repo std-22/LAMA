@@ -33,7 +33,7 @@ public class MatrixResult extends AppCompatActivity {
     Dialog dialog;
     FileOutputStream fos;
     enum Output {E, P5, P1}
-    Output output = Output.E;
+    Output output = Output.P1;
 
     private static final int[][] resultTextViewID = {
             {R.id.resultA1, R.id.resultA2, R.id.resultA3, R.id.resultA4, R.id.resultA5, R.id.resultA6},
@@ -92,54 +92,23 @@ public class MatrixResult extends AppCompatActivity {
                 !getIntent().hasExtra("lambda")) {
             double[][] matrixA = (double[][]) getIntent().getExtras().get("matrix_a");
             TextView textView;
-            int temp;
             switch (operation.getName()) {
                 case "DET |A|":
                 case "Ранг матрицы":
                     resultMatrix = new double[1][1];
                     resultMatrix[0][0] = Result.getResult(operation.getName(), matrixA)[0][0];
-                    textView = findViewById(resultTextViewID[0][0]);
-                    textView.setVisibility(View.VISIBLE);
-                    temp = (int) resultMatrix[0][0];
-                    if ((double) temp == resultMatrix[0][0]){
-                        textView.setText(String.valueOf(temp));
-                    } else {
-                        textView.setText(String.valueOf(resultMatrix[0][0]));
-                    }
+                    print("#.###");
                     break;
                 case "Транспонирование":
                 case "Решение системы уравнений":
+                case "Приведение к треугольному виду":
                     resultMatrix = Result.getResult(operation.getName(), matrixA);
-                    for (int i = 0; i < resultMatrix.length; i++) {
-                        for (int j = 0; j < resultMatrix[0].length; j++) {
-                            textView = findViewById(resultTextViewID[i][j]);
-                            textView.setVisibility(View.VISIBLE);
-                            temp = (int) resultMatrix[i][j];
-                            if ((double) temp == resultMatrix[i][j]){
-                                textView.setText(String.valueOf(temp));
-                            } else {
-                                DecimalFormat df = new DecimalFormat("#.###");
-                                textView.setText(df.format(resultMatrix[i][j]));
-                            }
-                        }
-                    }
+                    print("#.###");
                     break;
                 case "A\u1428\u00B9":
                     resultMatrix = Result.getResult(operation.getName(), matrixA);
                     if (MatrixCalculation.determinantCalc(matrixA) != 0) {
-                        for (int i = 0; i < resultMatrix.length; i++) {
-                            for (int j = 0; j < resultMatrix[0].length; j++) {
-                                textView = findViewById(resultTextViewID[i][j]);
-                                textView.setVisibility(View.VISIBLE);
-                                temp = (int) resultMatrix[i][j];
-                                if ((double) temp == resultMatrix[i][j]){
-                                    textView.setText(String.valueOf(temp));
-                                } else {
-                                    DecimalFormat df = new DecimalFormat("#.###");
-                                    textView.setText(df.format(resultMatrix[i][j]));
-                                }
-                            }
-                        }
+                        print("#.###");
                     } else {
                         textView = findViewById(resultTextViewID[0][0]);
                         textView.setVisibility(View.VISIBLE);
@@ -191,22 +160,6 @@ public class MatrixResult extends AppCompatActivity {
                         textView.setText("В процессе разработки");
                     }
                     break;
-                case "Приведение к треугольному виду":
-                    resultMatrix = Result.getResult(operation.getName(), matrixA);
-                    for (int i = 0; i < resultMatrix.length; i++) {
-                        for (int j = 0; j < resultMatrix[0].length - 1; j++) {
-                            textView = findViewById(resultTextViewID[i][j]);
-                            textView.setVisibility(View.VISIBLE);
-                            temp = (int) resultMatrix[i][j];
-                            if ((double) temp == resultMatrix[i][j]){
-                                textView.setText(String.valueOf(temp));
-                            } else {
-                                DecimalFormat df = new DecimalFormat("#.###");
-                                textView.setText(df.format(resultMatrix[i][j]));
-                            }
-                        }
-                    }
-                    break;
                 default:
                     TextView defaultTextView = findViewById(resultTextViewID[0][0]);
                     defaultTextView.setVisibility(View.VISIBLE);
@@ -218,38 +171,14 @@ public class MatrixResult extends AppCompatActivity {
             double[][] matrixA = (double[][]) getIntent().getExtras().get("matrix_a");
             double[][] matrixB = (double[][]) getIntent().getExtras().get("matrix_b");
             resultMatrix = Result.getResult(operation.getName(), matrixA, matrixB);
-            for (int i = 0; i < resultMatrix.length; i++) {
-                for (int j = 0; j < resultMatrix[0].length; j++) {
-                    TextView textView = findViewById(resultTextViewID[i][j]);
-                    textView.setVisibility(View.VISIBLE);
-                    int temp = (int) resultMatrix[i][j];
-                    if ((double) temp == resultMatrix[i][j]){
-                        textView.setText(String.valueOf(temp));
-                    } else {
-                        DecimalFormat df = new DecimalFormat("#.###");
-                        textView.setText(df.format(resultMatrix[i][j]));
-                    }
-                }
-            }
+            print("#.###");
         }
         // Матрица-Число
         else {
             double[][] matrixA = (double[][]) getIntent().getExtras().get("matrix_a");
             double lambda = (double) getIntent().getExtras().get("lambda");
             resultMatrix = Result.getResult(operation.getName(), matrixA, lambda);
-            for (int i = 0; i < resultMatrix.length; i++) {
-                for (int j = 0; j < resultMatrix[0].length; j++) {
-                    TextView textView = findViewById(resultTextViewID[i][j]);
-                    textView.setVisibility(View.VISIBLE);
-                    int temp = (int) resultMatrix[i][j];
-                    if ((double) temp == resultMatrix[i][j]){
-                        textView.setText(String.valueOf(temp));
-                    } else {
-                        DecimalFormat df = new DecimalFormat("#.###");
-                        textView.setText(df.format(resultMatrix[i][j]));
-                    }
-                }
-            }
+            print("#.###");
         }
 
         if (resultMatrix != null && (resultMatrix.length != 1 || resultMatrix[0].length!=1)){
@@ -290,6 +219,22 @@ public class MatrixResult extends AppCompatActivity {
                     }
                 }
             });
+        }
+    }
+
+    public void print(String pattern){
+        for (int i = 0; i < resultMatrix.length; i++) {
+            for (int j = 0; j < resultMatrix[0].length; j++) {
+                TextView textView = findViewById(resultTextViewID[i][j]);
+                textView.setVisibility(View.VISIBLE);
+                int temp = (int) resultMatrix[i][j];
+                if ((double) temp == resultMatrix[i][j]){
+                    textView.setText(String.valueOf(temp));
+                } else {
+                    DecimalFormat df = new DecimalFormat(pattern);
+                    textView.setText(df.format(resultMatrix[i][j]));
+                }
+            }
         }
     }
 
@@ -345,16 +290,70 @@ public class MatrixResult extends AppCompatActivity {
             case E:
                 output = Output.P5;
                 ib.setImageResource(R.drawable.ic_p5);
+                if (resultMatrix != null){
+                    for (int i = 0; i < resultMatrix.length; i++) {
+                        for (int j = 0; j < resultMatrix[0].length; j++) {
+                            TextView textView = findViewById(resultTextViewID[i][j]);
+                            textView.setVisibility(View.VISIBLE);
+                            int temp = (int) resultMatrix[i][j];
+                            if ((double) temp == resultMatrix[i][j]){
+                                textView.setText(String.valueOf(temp));
+                            } else {
+                                double d = resultMatrix[i][j];
+                                int divisor = 1;
+                                while(d % 1 != 0)
+                                {
+                                    d *= 10;
+                                    divisor *= 10;
+                                }
+                                double k = GCD((int) d, divisor);
+                                double ch = d/k;
+                                double zn = divisor/k;
+                                if (ch / zn == resultMatrix[i][j]) {
+                                    int temp_ch = (int) ch;
+                                    int temp_zn = (int) zn;
+                                    if ((double) temp_ch == ch){
+                                        if ((double) temp_zn == zn){
+                                            textView.setText(temp_ch + "/" + temp_zn);
+                                        } else {
+                                            textView.setText(temp_ch + "/" + zn);
+                                        }
+                                    } else {
+                                        if ((double) temp_zn == zn){
+                                            textView.setText(ch + "/" + temp_zn);
+                                        } else {
+                                            textView.setText(ch + "/" + zn);
+                                        }
+                                    }
+                                } else {
+                                    DecimalFormat df = new DecimalFormat("#.###");
+                                    textView.setText(df.format(resultMatrix[i][j]));
+                                }
+                            }
+                        }
+                    }
+                }
                 break;
             case P5:
                 output = Output.P1;
                 ib.setImageResource(R.drawable.ic_p1);
+                if (resultMatrix != null){
+                    print("#.###");
+                }
                 break;
             case P1:
                 output = Output.E;
                 ib.setImageResource(R.drawable.ic_e);
+                if (resultMatrix != null){
+                    print("0.0E0");
+                }
                 break;
         }
+    }
+
+    static int GCD(int a, int b)
+    {
+        return b == 0 ? a : GCD(b, a % b);
     }
 
     @Override
