@@ -13,6 +13,9 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Class of file history
+ */
 public class History extends AppCompatActivity {
     ArrayList<Matrices> matrices = new ArrayList<>();
     SharedPreferences sharedPreferences;

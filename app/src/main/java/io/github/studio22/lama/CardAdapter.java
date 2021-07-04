@@ -25,6 +25,7 @@ import java.util.Scanner;
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
     private final LayoutInflater inflater;
     private final List<Matrices> matrices;
+    //TODO сделать проверку в категории матрица-матрица, при переходе в историю матрицы B с размерами A
     //private String selectedRowSize;
     //private String selectedColumnSize;
     Operation operation;
@@ -74,7 +75,6 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
         } else {
             fontSize = 28;
         }
-        holder.subtitle.setText("Date");
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[0].length; j++) {
                 holder.textViewArray[i][j].setVisibility(View.VISIBLE);
@@ -186,7 +186,6 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        final TextView subtitle;
         final TextView[][] textViewArray = new TextView[6][6];
         final ImageButton ib_next;
         final ImageButton ib_delete;
@@ -194,7 +193,6 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
 
         ViewHolder(View view){
             super(view);
-            subtitle = view.findViewById(R.id.view_info);
             field = view.findViewById(R.id.field);
             ib_next = view.findViewById(R.id.ib_next);
             ib_delete = view.findViewById(R.id.ib_delete);

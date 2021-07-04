@@ -18,6 +18,9 @@ import java.util.List;
 
 import github.hellocsl.cursorwheel.CursorWheelLayout;
 
+/**
+ * Выбор размера матрицы A
+ */
 public class CategoryOperationMatrixA extends AppCompatActivity implements CursorWheelLayout.OnMenuSelectedListener {
     private String selectedRowSize;
     private String selectedColumnSize;

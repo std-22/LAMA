@@ -13,6 +13,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * Ввод матрицы A
+ */
 public class MatrixInput extends AppCompatActivity {
     private int selectedRowSizeA = 1;
     private int selectedColumnSizeA = 1;
@@ -78,21 +81,7 @@ public class MatrixInput extends AppCompatActivity {
         }
 
         //считывание матрицы A с последующего экрана
-        if (getIntent().hasExtra("matrix_a") && "MatrixMatrix".equals(operation.getNameOfClass())) {
-            matrixA = (double[][]) getIntent().getExtras().get("matrix_a");
-            for (int i = 0; i < matrixA.length; i++) {
-                for (int j = 0; j < matrixA[0].length; j++) {
-                    EditText editText = findViewById(editTextId[i][j]);
-                    editText.setVisibility(View.VISIBLE);
-                    int temp = (int) matrixA[i][j];
-                    if ((double) temp == matrixA[i][j]) {
-                        editText.setText(String.valueOf(temp));
-                    } else {
-                        editText.setText(String.valueOf(matrixA[i][j]));
-                    }
-                }
-            }
-        } else if (getIntent().hasExtra("matrix_a") && "Matrix".equals(operation.getNameOfClass())) {
+        if (getIntent().hasExtra("matrix_a") && ("MatrixMatrix".equals(operation.getNameOfClass())||"Matrix".equals(operation.getNameOfClass()))) {
             matrixA = (double[][]) getIntent().getExtras().get("matrix_a");
             for (int i = 0; i < matrixA.length; i++) {
                 for (int j = 0; j < matrixA[0].length; j++) {

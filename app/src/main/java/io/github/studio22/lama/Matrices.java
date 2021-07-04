@@ -8,7 +8,7 @@ public class Matrices {
     }
 
     private final double[][] matrix;
-    public static File internalStorageDir;
+    public static File internalStorageDir; //путь к директории с файлома ламы
 
     Matrices(double[][] matrix){
         this.matrix = matrix;
