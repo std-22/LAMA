@@ -106,6 +106,7 @@ public class History extends AppCompatActivity {
                 double[][] resultMatrix = new double[row][col];
                 for(int i = 0; i < row; i++){
                     for(int j = 0; j < col; j++){
+                        elements[k] = elements[k].replace(",", ".");
                         resultMatrix[i][j] = Double.parseDouble(elements[k]);
                         k++;
                     }
