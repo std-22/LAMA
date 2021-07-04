@@ -52,6 +52,7 @@ public class MatrixLambda extends AppCompatActivity {
             color = "#F9D19A";
         }
 
+        // Всплывающее окно с подсказкой
         tip = mSettings.getBoolean("tip", false);
 
         if (!tip) {
@@ -72,6 +73,8 @@ public class MatrixLambda extends AppCompatActivity {
         }
 
         setInitialData();
+
+        // Навигация свайпом
         final RecyclerView recyclerView = findViewById(R.id.matrix_operations);
         recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
@@ -104,6 +107,7 @@ public class MatrixLambda extends AppCompatActivity {
             }
         });
 
+        // Переход на окно выбора размера матрицы
         final OperationAdapter adapter = new OperationAdapter(this, operations, position -> {
             Intent intent = new Intent(MatrixLambda.this, CategoryOperationMatrixA.class);
             intent.putExtra("selected", operations.get(position));
@@ -112,6 +116,7 @@ public class MatrixLambda extends AppCompatActivity {
         });
         recyclerView.setAdapter(adapter);
 
+        // Реализация свайпа объектов списка
         SwipeHelper swipeHelper = new SwipeHelper(this){
 
             @Override
@@ -131,6 +136,9 @@ public class MatrixLambda extends AppCompatActivity {
         swipeHelper.attachToRecyclerView(recyclerView);
     }
 
+    /**
+     * Добавление операция над матрицей-числом
+     */
     private void setInitialData(){
         operations.add(new Operation ("Поэлементное A + n", nameOfClass));
         operations.add(new Operation ("Поэлементное A - n", nameOfClass));

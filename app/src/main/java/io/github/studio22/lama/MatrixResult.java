@@ -22,7 +22,11 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.text.MessageFormat;
 
+/**
+ * Экран с результатом вычисления
+ */
 public class MatrixResult extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     Boolean state;
@@ -32,7 +36,9 @@ public class MatrixResult extends AppCompatActivity {
     Boolean tip = false;
     Dialog dialog;
     FileOutputStream fos;
+
     enum Output {E, P5, P1}
+
     Output output = Output.P1;
 
     private static final int[][] resultTextViewID = {
@@ -59,6 +65,7 @@ public class MatrixResult extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.matrix_result);
 
+        // Всплывающая подсказка
         tip = mSettings.getBoolean("tip_instruction", false);
 
         if (!tip) {
@@ -181,13 +188,14 @@ public class MatrixResult extends AppCompatActivity {
             print("#.###");
         }
 
-        if (resultMatrix != null && (resultMatrix.length != 1 || resultMatrix[0].length!=1)){
+        // Запоминание результата
+        if (resultMatrix != null && (resultMatrix.length != 1 || resultMatrix[0].length != 1)) {
             TextView rem_matrix = findViewById(R.id.rem_matrix);
             rem_matrix.setVisibility(View.VISIBLE);
             CheckBox checkBox = findViewById(R.id.checkBox);
             checkBox.setVisibility(View.VISIBLE);
             checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
-                if(isChecked) {
+                if (isChecked) {
                     checkBox.setVisibility(View.GONE);
                     Animation anim = AnimationUtils.loadAnimation(this, R.anim.disappearance);
                     rem_matrix.startAnimation(anim);
@@ -198,21 +206,21 @@ public class MatrixResult extends AppCompatActivity {
 
                     try {
                         fos = new FileOutputStream(history, true);
-                        String matrix = resultMatrix.length + " " + resultMatrix[0].length + " ";
+                        StringBuilder matrix = new StringBuilder(resultMatrix.length + " " + resultMatrix[0].length + " ");
                         for (double[] doubles : resultMatrix) {
                             for (int j = 0; j < resultMatrix[0].length; j++) {
                                 int temp = (int) doubles[j];
-                                if ((double) temp == doubles[j]){
-                                    matrix += doubles[j];
+                                if ((double) temp == doubles[j]) {
+                                    matrix.append(doubles[j]);
                                 } else {
                                     DecimalFormat df = new DecimalFormat("#.###");
-                                    matrix += df.format(doubles[j]);
+                                    matrix.append(df.format(doubles[j]));
                                 }
-                                matrix += " ";
+                                matrix.append(" ");
                             }
                         }
-                        matrix += "\n";
-                        fos.write(matrix.getBytes());
+                        matrix.append("\n");
+                        fos.write(matrix.toString().getBytes());
                         fos.close();
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -222,9 +230,14 @@ public class MatrixResult extends AppCompatActivity {
         }
     }
 
-    public void print(String pattern){
+    /**
+     * Вывод результата вычисления
+     *
+     * @param pattern шаблон чисел матрицы
+     */
+    public void print(String pattern) {
         int fontSize;
-        if (resultMatrix.length >= 4 || resultMatrix[0].length >= 4){
+        if (resultMatrix.length >= 4 || resultMatrix[0].length >= 4) {
             fontSize = 22;
         } else {
             fontSize = 28;
@@ -235,7 +248,7 @@ public class MatrixResult extends AppCompatActivity {
                 textView.setVisibility(View.VISIBLE);
                 textView.setTextSize(fontSize);
                 int temp = (int) resultMatrix[i][j];
-                if ((double) temp == resultMatrix[i][j]){
+                if ((double) temp == resultMatrix[i][j]) {
                     textView.setText(String.valueOf(temp));
                 } else {
                     DecimalFormat df = new DecimalFormat(pattern);
@@ -255,7 +268,7 @@ public class MatrixResult extends AppCompatActivity {
             case MotionEvent.ACTION_UP:
                 x2 = event.getX();
                 y2 = event.getY();
-                if (x1<x2 && Math.toDegrees(Math.atan((x2-x1)/Math.abs(y2-y1))) > 30.0){
+                if (x1 < x2 && Math.toDegrees(Math.atan((x2 - x1) / Math.abs(y2 - y1))) > 30.0) {
                     onSwipeBack();
                 }
                 break;
@@ -275,7 +288,7 @@ public class MatrixResult extends AppCompatActivity {
             intent = new Intent(MatrixResult.this, MatrixInput.class);
             double[][] matrixA = (double[][]) getIntent().getExtras().get("matrix_a");
             intent.putExtra("matrix_a", matrixA);
-            if (getIntent().hasExtra("lambda")){
+            if (getIntent().hasExtra("lambda")) {
                 double lambda = (double) getIntent().getExtras().get("lambda");
                 intent.putExtra("lambda", lambda);
             }
@@ -293,13 +306,13 @@ public class MatrixResult extends AppCompatActivity {
 
     public void onClickIB(View view) {
         ImageButton ib = findViewById(R.id.ib);
-        switch (output){
+        switch (output) {
             case E:
                 output = Output.P5;
                 ib.setImageResource(R.drawable.ic_p5);
-                if (resultMatrix != null){
+                if (resultMatrix != null) {
                     int fontSize;
-                    if (resultMatrix.length >= 4 || resultMatrix[0].length >= 4){
+                    if (resultMatrix.length >= 4 || resultMatrix[0].length >= 4) {
                         fontSize = 22;
                     } else {
                         fontSize = 28;
@@ -310,33 +323,36 @@ public class MatrixResult extends AppCompatActivity {
                             textView.setVisibility(View.VISIBLE);
                             textView.setTextSize(fontSize);
                             int temp = (int) resultMatrix[i][j];
-                            if ((double) temp == resultMatrix[i][j]){
+                            if ((double) temp == resultMatrix[i][j]) {
                                 textView.setText(String.valueOf(temp));
                             } else {
                                 double d = resultMatrix[i][j];
                                 int divisor = 1;
-                                while(d % 1 != 0)
-                                {
+                                while (d % 1 != 0) {
                                     d *= 10;
                                     divisor *= 10;
                                 }
                                 double k = GCD((int) d, divisor);
-                                double ch = d/k;
-                                double zn = divisor/k;
+                                double ch = d / k;
+                                double zn = divisor / k;
                                 if (ch / zn == resultMatrix[i][j]) {
                                     int temp_ch = (int) ch;
                                     int temp_zn = (int) zn;
-                                    if ((double) temp_ch == ch){
-                                        if ((double) temp_zn == zn){
-                                            textView.setText(temp_ch + "/" + temp_zn);
+                                    if ((double) temp_ch == ch) {
+                                        if ((double) temp_zn == zn) {
+                                            textView.setText(MessageFormat.format("{0}/{1}",
+                                                    temp_ch, temp_zn));
                                         } else {
-                                            textView.setText(temp_ch + "/" + zn);
+                                            textView.setText(MessageFormat.format("{0}/{1}",
+                                                    temp_ch, zn));
                                         }
                                     } else {
-                                        if ((double) temp_zn == zn){
-                                            textView.setText(ch + "/" + temp_zn);
+                                        if ((double) temp_zn == zn) {
+                                            textView.setText(MessageFormat.format("{0}/{1}",
+                                                    ch, temp_zn));
                                         } else {
-                                            textView.setText(ch + "/" + zn);
+                                            textView.setText(MessageFormat.format("{0}/{1}",
+                                                    ch, zn));
                                         }
                                     }
                                 } else {
@@ -351,22 +367,26 @@ public class MatrixResult extends AppCompatActivity {
             case P5:
                 output = Output.P1;
                 ib.setImageResource(R.drawable.ic_p1);
-                if (resultMatrix != null){
+                if (resultMatrix != null) {
                     print("#.###");
                 }
                 break;
             case P1:
                 output = Output.E;
                 ib.setImageResource(R.drawable.ic_e);
-                if (resultMatrix != null){
+                if (resultMatrix != null) {
                     print("0.0E0");
                 }
                 break;
         }
     }
 
-    static int GCD(int a, int b)
-    {
+    /**
+     * @param a первое число
+     * @param b второе число
+     * @return наименьший общий делитель a и b
+     */
+    static int GCD(int a, int b) {
         return b == 0 ? a : GCD(b, a % b);
     }
 
