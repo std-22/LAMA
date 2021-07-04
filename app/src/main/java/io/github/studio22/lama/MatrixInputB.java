@@ -11,9 +11,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-/**
- * Ввод матрицы B
- */
 public class MatrixInputB extends AppCompatActivity {
     private int selectedRowSizeMatrixB = 1;
     private int selectedColumnSizeMatrixB = 1;

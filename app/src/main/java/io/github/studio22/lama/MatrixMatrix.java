@@ -49,7 +49,6 @@ public class MatrixMatrix extends AppCompatActivity {
             color = "#F9D19A";
         }
 
-        // Всплывающее окно с подсказкой
         tip = mSettings.getBoolean("tip", false);
 
         if (!tip) {
@@ -70,8 +69,6 @@ public class MatrixMatrix extends AppCompatActivity {
         }
 
         setInitialData();
-
-        // Навигация свайпом
         final RecyclerView recyclerView = findViewById(R.id.matrix_operations);
         recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
@@ -104,7 +101,6 @@ public class MatrixMatrix extends AppCompatActivity {
             }
         });
 
-        // Переход на окно выбора размера матрицы
         final OperationAdapter adapter = new OperationAdapter(this, operations, position -> {
             Intent intent = new Intent(MatrixMatrix.this, CategoryOperationMatrixA.class);
             intent.putExtra("selected", operations.get(position));
@@ -113,8 +109,8 @@ public class MatrixMatrix extends AppCompatActivity {
         });
         recyclerView.setAdapter(adapter);
 
-        // Реализация свайпа объектов списка
         SwipeHelper swipeHelper = new SwipeHelper(this){
+
             @Override
             public void instantiateUnderlayButton(RecyclerView.ViewHolder viewHolder, List<UnderlayButton> underlayButtons) {
                 underlayButtons.add(new SwipeHelper.UnderlayButton(
@@ -132,9 +128,6 @@ public class MatrixMatrix extends AppCompatActivity {
             swipeHelper.attachToRecyclerView(recyclerView);
     }
 
-    /**
-     * Добавление операция над матрицей-матрицей
-     */
     private void setInitialData(){
         operations.add(new Operation ("A \u00D7 B", nameOfClass));
         operations.add(new Operation ("A \u00D7 B\u207B\u00B9", nameOfClass));

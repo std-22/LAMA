@@ -1,11 +1,7 @@
 package io.github.studio22.lama;
 
-import android.util.Log;
-
-import java.util.Arrays;
-
 /**
- * Математические операции с матрицей
+ * Класс для совершения математических операция с матрицами
  */
 public class MatrixCalculation {
     /**
@@ -190,7 +186,6 @@ public class MatrixCalculation {
     public static double determinantCalc(double[][] matrix) {
         if (matrix.length == 1)
             return matrix[0][0];
-
         if (matrix.length == 2)
             return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0];
 
@@ -207,17 +202,9 @@ public class MatrixCalculation {
     public static double[][] determinant(double[][] matrix) {
         double[][] result = new double[1][1];
         result[0][0] = determinantCalc(matrix);
-        Log.d("result", Arrays.deepToString(result));
-        Log.d("Size", String.valueOf(result.length) + result[0].length);
         return result;
     }
 
-    /**
-     * @param matrix матрица
-     * @param rowN номер строки
-     * @param columnN номер столбца
-     * @return часть матрицы
-     */
     private static double[][] extractMatrix(double[][] matrix, int rowN, int columnN) {
         double[][] result = new double[rowN][columnN];
         for (int i = 0; i < rowN; i++) {
@@ -227,10 +214,6 @@ public class MatrixCalculation {
         return result;
     }
 
-    /**
-     * @param matrix матрица
-     * @return критерий Сильвестра
-     */
     public static double[][] criterionSilvester(double[][] matrix) {
         boolean positive = true;
         boolean negative = true;
@@ -266,11 +249,6 @@ public class MatrixCalculation {
         return result;
     }
 
-    /**
-     * Поиск собственных значений
-     * @param matrix матрица
-     * @return собственные значения
-     */
     public static double[][] eigenValue(double[][] matrix) {
         if (matrix.length == 2 & matrix[0].length == 2) {
             //TODO выяснить, почему ответы получаются с обратным знаком
@@ -292,11 +270,6 @@ public class MatrixCalculation {
         }
     }
 
-    /**
-     * Поиск собственных векторов
-     * @param matrix матрица
-     * @return собственые вектора
-     */
     public static double[][] eigenVector(double[][] matrix) {
         if (matrix.length == 2 & matrix[0].length == 2) {
             //TODO выяснить, почему ответы получаются с обратным знаком
