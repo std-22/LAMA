@@ -85,7 +85,7 @@ public class MatrixInput extends AppCompatActivity {
                     EditText editText = findViewById(editTextId[i][j]);
                     editText.setVisibility(View.VISIBLE);
                     int temp = (int) matrixA[i][j];
-                    if ((double) temp == matrixA[i][j]){
+                    if ((double) temp == matrixA[i][j]) {
                         editText.setText(String.valueOf(temp));
                     } else {
                         editText.setText(String.valueOf(matrixA[i][j]));
@@ -99,7 +99,7 @@ public class MatrixInput extends AppCompatActivity {
                     EditText editText = findViewById(editTextId[i][j]);
                     editText.setVisibility(View.VISIBLE);
                     int temp = (int) matrixA[i][j];
-                    if ((double) temp == matrixA[i][j]){
+                    if ((double) temp == matrixA[i][j]) {
                         editText.setText(String.valueOf(temp));
                     } else {
                         editText.setText(String.valueOf(matrixA[i][j]));
@@ -113,20 +113,20 @@ public class MatrixInput extends AppCompatActivity {
                     EditText editText = findViewById(editTextId[i][j]);
                     editText.setVisibility(View.VISIBLE);
                     int temp = (int) matrixA[i][j];
-                    if ((double) temp == matrixA[i][j]){
+                    if ((double) temp == matrixA[i][j]) {
                         editText.setText(String.valueOf(temp));
                     } else {
                         editText.setText(String.valueOf(matrixA[i][j]));
                     }
                 }
             }
-            if (getIntent().hasExtra("lambda")){
+            if (getIntent().hasExtra("lambda")) {
                 double lambda = (double) getIntent().getExtras().get("lambda");
                 findViewById(R.id.number_input).setVisibility(View.VISIBLE);
                 editText_lambda = findViewById(R.id.editTextNumber);
                 editText_lambda.setVisibility(View.VISIBLE);
                 int temp = (int) lambda;
-                if ((double) temp == lambda){
+                if ((double) temp == lambda) {
                     editText_lambda.setText(String.valueOf(temp));
                 } else {
                     editText_lambda.setText(String.valueOf(lambda));
@@ -147,7 +147,7 @@ public class MatrixInput extends AppCompatActivity {
             editText.setImeOptions(EditorInfo.IME_NULL);
 
             //Отображение полей для ввода числа в классе матрица-число
-            if ("MatrixLambda".equals(operation.getNameOfClass())){
+            if ("MatrixLambda".equals(operation.getNameOfClass())) {
                 findViewById(R.id.number_input).setVisibility(View.VISIBLE);
                 editText_lambda = findViewById(R.id.editTextNumber);
                 editText_lambda.setVisibility(View.VISIBLE);
@@ -165,7 +165,7 @@ public class MatrixInput extends AppCompatActivity {
             case MotionEvent.ACTION_UP:
                 x2 = event.getX();
                 y2 = event.getY();
-                if (x1<x2 && Math.toDegrees(Math.atan((x2-x1)/Math.abs(y2-y1))) > 30.0){
+                if (x1 < x2 && Math.toDegrees(Math.atan((x2 - x1) / Math.abs(y2 - y1))) > 30.0) {
                     onSwipeBack();
                 }
                 break;
@@ -183,7 +183,7 @@ public class MatrixInput extends AppCompatActivity {
     public void onClickToResult(View view) {
         Intent intent;
 
-        if (getIntent().hasExtra("matrix_a")){
+        if (getIntent().hasExtra("matrix_a")) {
             selectedRowSizeA = matrixA.length;
             selectedColumnSizeA = matrixA[0].length;
         }
@@ -223,7 +223,7 @@ public class MatrixInput extends AppCompatActivity {
                 intent = new Intent(MatrixInput.this, MatrixResult.class);
                 intent.putExtra("matrix_a", matrixA);
                 intent.putExtra("selected", operation);
-                if (editText_lambda != null){
+                if (editText_lambda != null) {
                     intent.putExtra("lambda", Double.parseDouble(editText_lambda.getText().toString()));
                 }
                 startActivity(intent);
