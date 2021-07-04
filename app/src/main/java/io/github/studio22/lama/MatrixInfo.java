@@ -45,10 +45,10 @@ public class MatrixInfo extends AppCompatActivity {
                 infoImage = findViewById(R.id.info_image);
                 if(state){
                     infoImage.setVisibility(View.VISIBLE);
-                    infoImage.setImageResource(R.drawable.diagw);
+                    infoImage.setImageResource(R.drawable.detw);
                 } else {
                     infoImage.setVisibility(View.VISIBLE);
-                    infoImage.setImageResource(R.drawable.diag);
+                    infoImage.setImageResource(R.drawable.det);
                 }
                 break;
             case "Ранг матрицы":
@@ -93,6 +93,14 @@ public class MatrixInfo extends AppCompatActivity {
                 infoText = findViewById(R.id.info_text);
                 infoText.setVisibility(View.VISIBLE);
                 infoText.setText(R.string.Gause);
+                infoImage = findViewById(R.id.info_image);
+                if(state){
+                    infoImage.setVisibility(View.VISIBLE);
+                    infoImage.setImageResource(R.drawable.sysw);
+                } else {
+                    infoImage.setVisibility(View.VISIBLE);
+                    infoImage.setImageResource(R.drawable.sys);
+                }
                 break;
             case "Критерий Сильвестра":
                 infoText = findViewById(R.id.info_text);
@@ -113,6 +121,14 @@ public class MatrixInfo extends AppCompatActivity {
                 infoText = findViewById(R.id.info_text);
                 infoText.setVisibility(View.VISIBLE);
                 infoText.setText("N раз");
+                infoImage = findViewById(R.id.info_image);
+                if(state){
+                    infoImage.setVisibility(View.VISIBLE);
+                    infoImage.setImageResource(R.drawable.scalaraaw);
+                } else {
+                    infoImage.setVisibility(View.VISIBLE);
+                    infoImage.setImageResource(R.drawable.scalaraa);
+                }
                 break;
             case "Поэлементное A + n":
                 infoImage = findViewById(R.id.info_image);
@@ -154,7 +170,7 @@ public class MatrixInfo extends AppCompatActivity {
                     infoImage.setImageResource(R.drawable.anm);
                 }
                 break;
-            case "Поэлементное A ^ n":
+            case "Поэлементное A\u207F":
                 infoImage = findViewById(R.id.info_image);
                 if(state){
                     infoImage.setVisibility(View.VISIBLE);
@@ -162,6 +178,76 @@ public class MatrixInfo extends AppCompatActivity {
                 } else {
                     infoImage.setVisibility(View.VISIBLE);
                     infoImage.setImageResource(R.drawable.anp);
+                }
+            case "A\u1428\u00B9":
+                infoImage = findViewById(R.id.info_image);
+                if(state){
+                    infoImage.setVisibility(View.VISIBLE);
+                    infoImage.setImageResource(R.drawable.invw);
+                } else {
+                    infoImage.setVisibility(View.VISIBLE);
+                    infoImage.setImageResource(R.drawable.inv);
+                }
+                break;
+            case "A \u00D7 B\u207B\u00B9":
+                functionName.setVisibility(View.GONE);
+                infoImage = findViewById(R.id.info_image);
+                if(state){
+                    infoImage.setVisibility(View.VISIBLE);
+                    infoImage.setImageResource(R.drawable.inversew);
+                } else {
+                    infoImage.setVisibility(View.VISIBLE);
+                    infoImage.setImageResource(R.drawable.inverse);
+                }
+                break;
+            case "A \u00D7 B":
+                infoImage = findViewById(R.id.info_image);
+                if(state){
+                    infoImage.setVisibility(View.VISIBLE);
+                    infoImage.setImageResource(R.drawable.scalarw);
+                } else {
+                    infoImage.setVisibility(View.VISIBLE);
+                    infoImage.setImageResource(R.drawable.scalar);
+                }
+                break;
+            case "A + B":
+                infoImage = findViewById(R.id.info_image);
+                if(state){
+                    infoImage.setVisibility(View.VISIBLE);
+                    infoImage.setImageResource(R.drawable.addabw);
+                } else {
+                    infoImage.setVisibility(View.VISIBLE);
+                    infoImage.setImageResource(R.drawable.addab);
+                }
+                break;
+            case "A - B":
+                infoImage = findViewById(R.id.info_image);
+                if(state){
+                    infoImage.setVisibility(View.VISIBLE);
+                    infoImage.setImageResource(R.drawable.subabw);
+                } else {
+                    infoImage.setVisibility(View.VISIBLE);
+                    infoImage.setImageResource(R.drawable.subab);
+                }
+                break;
+            case "Поэлементное A \u00D7 B":
+                infoImage = findViewById(R.id.info_image);
+                if(state){
+                    infoImage.setVisibility(View.VISIBLE);
+                    infoImage.setImageResource(R.drawable.mulabw);
+                } else {
+                    infoImage.setVisibility(View.VISIBLE);
+                    infoImage.setImageResource(R.drawable.mulab);
+                }
+                break;
+            case "Поэлементное A / B":
+                infoImage = findViewById(R.id.info_image);
+                if(state){
+                    infoImage.setVisibility(View.VISIBLE);
+                    infoImage.setImageResource(R.drawable.divabw);
+                } else {
+                    infoImage.setVisibility(View.VISIBLE);
+                    infoImage.setImageResource(R.drawable.divab);
                 }
                 break;
             default:
