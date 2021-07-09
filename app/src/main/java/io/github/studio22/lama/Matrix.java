@@ -1,5 +1,6 @@
 package io.github.studio22.lama;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +11,7 @@ import android.view.MotionEvent;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -109,10 +111,17 @@ public class Matrix extends AppCompatActivity {
 
         // Переход на окно выбора размера матрицы
         final OperationAdapter adapter = new OperationAdapter(this, operations, position -> {
-            Intent intent = new Intent(Matrix.this, CategoryOperationMatrixA.class);
-            intent.putExtra("selected", operations.get(position));
-            startActivity(intent);
-            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            if (operations.get(position).getName().equals("Приведение к диагональному виду") ||
+                    operations.get(position).getName().equals("Поиск собственных значений") ||
+                    operations.get(position).getName().equals("Поиск собственных векторов")) {
+                @SuppressLint("ShowToast") Toast toast = Toast.makeText(this, "В разработке", Toast.LENGTH_SHORT);
+                toast.show();
+            } else {
+                Intent intent = new Intent(Matrix.this, CategoryOperationMatrixA.class);
+                intent.putExtra("selected", operations.get(position));
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            }
         });
         recyclerView.setAdapter(adapter);
 

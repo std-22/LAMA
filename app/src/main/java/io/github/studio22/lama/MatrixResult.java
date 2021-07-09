@@ -113,8 +113,8 @@ public class MatrixResult extends AppCompatActivity {
                     print("#.###");
                     break;
                 case "A\u1428\u00B9":
-                    resultMatrix = Result.getResult(operation.getName(), matrixA);
                     if (MatrixCalculation.determinantCalc(matrixA) != 0) {
+                        resultMatrix = Result.getResult(operation.getName(), matrixA);
                         print("#.###");
                     } else {
                         textView = findViewById(resultTextViewID[0][0]);
