@@ -177,8 +177,14 @@ public class MatrixResult extends AppCompatActivity {
         else if (getIntent().hasExtra("matrix_a") && getIntent().hasExtra("matrix_b")) {
             double[][] matrixA = (double[][]) getIntent().getExtras().get("matrix_a");
             double[][] matrixB = (double[][]) getIntent().getExtras().get("matrix_b");
-            resultMatrix = Result.getResult(operation.getName(), matrixA, matrixB);
-            print("#.###");
+            if (MatrixCalculation.determinantCalc(matrixB) == 0) {
+                TextView textView = findViewById(resultTextViewID[0][0]);
+                textView.setVisibility(View.VISIBLE);
+                textView.setText("Матрица B вырожденная");
+            } else {
+                resultMatrix = Result.getResult(operation.getName(), matrixA, matrixB);
+                print("#.###");
+            }
         }
         // Матрица-Число
         else {
@@ -187,7 +193,6 @@ public class MatrixResult extends AppCompatActivity {
             resultMatrix = Result.getResult(operation.getName(), matrixA, lambda);
             print("#.###");
         }
-
         // Запоминание результата
         if (resultMatrix != null && (resultMatrix.length != 1 || resultMatrix[0].length != 1)) {
             TextView rem_matrix = findViewById(R.id.rem_matrix);
