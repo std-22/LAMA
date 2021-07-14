@@ -2,7 +2,8 @@ package io.github.studio22.lama;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
+import android.text.InputType;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -81,7 +82,9 @@ public class MatrixInput extends AppCompatActivity {
         }
 
         //считывание матрицы A с последующего экрана
-        if (getIntent().hasExtra("matrix_a") && ("MatrixMatrix".equals(operation.getNameOfClass())||"Matrix".equals(operation.getNameOfClass()))) {
+        if (getIntent().hasExtra("matrix_a") &&
+                ("MatrixMatrix".equals(operation.getNameOfClass()) ||
+                        "Matrix".equals(operation.getNameOfClass()))) {
             matrixA = (double[][]) getIntent().getExtras().get("matrix_a");
             for (int i = 0; i < matrixA.length; i++) {
                 for (int j = 0; j < matrixA[0].length; j++) {
@@ -95,7 +98,8 @@ public class MatrixInput extends AppCompatActivity {
                     }
                 }
             }
-        } else if (getIntent().hasExtra("matrix_a") && "MatrixLambda".equals(operation.getNameOfClass())) {
+        } else if (getIntent().hasExtra("matrix_a") &&
+                "MatrixLambda".equals(operation.getNameOfClass())) {
             matrixA = (double[][]) getIntent().getExtras().get("matrix_a");
             for (int i = 0; i < matrixA.length; i++) {
                 for (int j = 0; j < matrixA[0].length; j++) {
@@ -116,8 +120,10 @@ public class MatrixInput extends AppCompatActivity {
                 editText_lambda.setVisibility(View.VISIBLE);
                 int temp = (int) lambda;
                 if ((double) temp == lambda) {
+                    Log.d("IF", "1");
                     editText_lambda.setText(String.valueOf(temp));
                 } else {
+                    Log.d("ELSE", "2");
                     editText_lambda.setText(String.valueOf(lambda));
                 }
             } else {
@@ -133,6 +139,7 @@ public class MatrixInput extends AppCompatActivity {
                     editText.setVisibility(View.VISIBLE);
                 }
             }
+            assert editText != null;
             editText.setImeOptions(EditorInfo.IME_NULL);
 
             //Отображение полей для ввода числа в классе матрица-число
@@ -140,6 +147,9 @@ public class MatrixInput extends AppCompatActivity {
                 findViewById(R.id.number_input).setVisibility(View.VISIBLE);
                 editText_lambda = findViewById(R.id.editTextNumber);
                 editText_lambda.setVisibility(View.VISIBLE);
+                if (functionName.getText().equals("A\u207F")) {
+                    editText_lambda.setInputType(InputType.TYPE_CLASS_NUMBER);
+                }
             }
         }
     }
@@ -196,8 +206,6 @@ public class MatrixInput extends AppCompatActivity {
                 Toast toast = Toast.makeText(getApplicationContext(),
                         "Пропущены значения",
                         Toast.LENGTH_LONG);
-                toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL,
-                        0, 0);
                 toast.show();
             }
         } else {
@@ -221,8 +229,6 @@ public class MatrixInput extends AppCompatActivity {
                 Toast toast = Toast.makeText(getApplicationContext(),
                         "Пропущены значения",
                         Toast.LENGTH_LONG);
-                toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL,
-                        0, 0);
                 toast.show();
             }
         }

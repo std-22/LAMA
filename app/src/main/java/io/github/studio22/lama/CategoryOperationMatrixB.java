@@ -2,7 +2,6 @@ package io.github.studio22.lama;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
@@ -21,7 +20,7 @@ import github.hellocsl.cursorwheel.CursorWheelLayout;
 /**
  * Выбор размера матрицы B
  */
-public class CategoryOperationMatrixB extends AppCompatActivity implements CursorWheelLayout.OnMenuSelectedListener{
+public class CategoryOperationMatrixB extends AppCompatActivity implements CursorWheelLayout.OnMenuSelectedListener {
     private String selectedRowSize;
     private String selectedColumnSize;
     private String selectedRowSizeMatrixB;
@@ -44,7 +43,7 @@ public class CategoryOperationMatrixB extends AppCompatActivity implements Curso
         sharedPreferences = new SharedPreferences(this);
         state = sharedPreferences.loadNightModeState();
 
-        if (state){
+        if (state) {
             setTheme(R.style.DarkAppTheme);
         } else {
             setTheme(R.style.AppTheme);
@@ -56,7 +55,7 @@ public class CategoryOperationMatrixB extends AppCompatActivity implements Curso
         TextView functionName = findViewById(R.id.function_name);
 
         //передача с предыдущего экрана название функции
-        if(getIntent().hasExtra("selected")){
+        if (getIntent().hasExtra("selected")) {
             operation = getIntent().getParcelableExtra("selected");
             functionName.setText(operation.getName());
         }
@@ -94,7 +93,7 @@ public class CategoryOperationMatrixB extends AppCompatActivity implements Curso
             case MotionEvent.ACTION_UP:
                 x2 = event.getX();
                 y2 = event.getY();
-                if (x1<x2 && Math.toDegrees(Math.atan((x2-x1)/Math.abs(y2-y1))) > 30.0){
+                if (x1 < x2 && Math.toDegrees(Math.atan((x2 - x1) / Math.abs(y2 - y1))) > 30.0) {
                     onSwipeBack();
                 }
                 break;
@@ -102,10 +101,10 @@ public class CategoryOperationMatrixB extends AppCompatActivity implements Curso
         return false;
     }
 
-    private void loadData(){
+    private void loadData() {
         textList_left = new ArrayList<>();
         textList_right = new ArrayList<>();
-        for (int i=0; i<12; i++){
+        for (int i = 0; i < 12; i++) {
             textList_left.add(new MenuItemData(numbers[i]));
             textList_right.add(new MenuItemData((numbers[numbers.length - i - 1])));
         }
@@ -118,10 +117,10 @@ public class CategoryOperationMatrixB extends AppCompatActivity implements Curso
 
     @Override
     public void onItemSelected(CursorWheelLayout parent, View view, int pos) {
-        if (parent.getId() == R.id.wheel_text_left){
+        if (parent.getId() == R.id.wheel_text_left) {
             selectedRowSizeMatrixB = textList_left.get(pos).number;
         }
-        if (parent.getId() == R.id.wheel_text_right){
+        if (parent.getId() == R.id.wheel_text_right) {
             selectedColumnSizeMatrixB = textList_right.get(pos).number;
         }
     }
@@ -137,12 +136,10 @@ public class CategoryOperationMatrixB extends AppCompatActivity implements Curso
     public void onClickToInputMatrix(View view) {
         if (!CheckSize.checkSize(operation.getName(),
                 selectedRowSize, selectedColumnSize,
-                selectedRowSizeMatrixB, selectedColumnSizeMatrixB)){
+                selectedRowSizeMatrixB, selectedColumnSizeMatrixB)) {
             Toast toast = Toast.makeText(getApplicationContext(),
-                    "В матрице B должно быть " + selectedColumnSize + " строк",
+                    "Неверно указан размер матрицы",
                     Toast.LENGTH_LONG);
-            toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL,
-                    0, 0);
             toast.show();
             return;
         }
