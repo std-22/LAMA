@@ -2,8 +2,6 @@ package io.github.studio22.lama;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -20,8 +18,6 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
-
-import java.util.List;
 
 /**
  * Класс реализовывает навигацию в приложении
@@ -128,13 +124,5 @@ public class MenuNavActivity extends AppCompatActivity {
                     "Приложение почты не обранужено",
                     Toast.LENGTH_SHORT).show();
         }
-    }
-
-    /* check safety of opening app */
-
-    private Boolean isIntentSafe(Intent intent) {
-        PackageManager packageManager = getPackageManager();
-        @SuppressLint("QueryPermissionsNeeded") List<ResolveInfo> activities = packageManager.queryIntentActivities(intent, 0);
-        return activities.size() > 0;
     }
 }

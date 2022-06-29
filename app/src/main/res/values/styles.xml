@@ -34,6 +34,18 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="input_cell_style">
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="backgroundTint">?attr/textViewColor</item>
+        <item name="android:ems">10</item>
+        <item name="android:inputType">numberSigned|number|numberDecimal</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">?attr/textViewColor</item>
+        <item name="android:visibility">gone</item>
+        <item name="contentDescription">input_cell</item>
+    </style>
+
     <style name="result_view_cell">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>

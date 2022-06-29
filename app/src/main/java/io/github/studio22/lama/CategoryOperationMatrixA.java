@@ -2,7 +2,6 @@ package io.github.studio22.lama;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
@@ -18,6 +17,9 @@ import java.util.List;
 
 import github.hellocsl.cursorwheel.CursorWheelLayout;
 
+/**
+ * Выбор размера матрицы A
+ */
 public class CategoryOperationMatrixA extends AppCompatActivity implements CursorWheelLayout.OnMenuSelectedListener {
     private String selectedRowSize;
     private String selectedColumnSize;
@@ -133,15 +135,17 @@ public class CategoryOperationMatrixA extends AppCompatActivity implements Curso
     }
 
     public void onClickToInputMatrix(View view) {
-        if (!CheckSize.checkSize(operation.getName(), selectedRowSize, selectedColumnSize)) {
-            Toast toast = Toast.makeText(this,
-                    operation.getName() + " применяется только к квадратным матрицам",
-                    Toast.LENGTH_LONG);
-            toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL,
-                    0, 0);
-            toast.show();
-            return;
+        if (operation.getNameOfClass().equals("Matrix") ||
+                operation.getNameOfClass().equals("MatrixLambda")) {
+            if (!CheckSize.checkSize(operation.getName(), selectedRowSize, selectedColumnSize)) {
+                Toast toast = Toast.makeText(this,
+                        operation.getName() + " применяется только к квадратным матрицам",
+                        Toast.LENGTH_LONG);
+                toast.show();
+                return;
+            }
         }
+
 
         Intent intent = new Intent(CategoryOperationMatrixA.this, MatrixInput.class);
 

@@ -1,12 +1,11 @@
 package io.github.studio22.lama;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 
-import java.io.File;
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -27,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         sharedPreferences = new SharedPreferences(this);
         state = sharedPreferences.loadNightModeState();
 
-        if (state){
+        if (state) {
             setTheme(R.style.DarkAppTheme);
         } else {
             setTheme(R.style.AppTheme);
@@ -39,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         Matrices.internalStorageDir = getFilesDir();
 
         ImageView lama = findViewById(R.id.lama_image);
-        if(state){
+        if (state) {
             lama.setImageResource(R.drawable.logo_new_dark);
         } else {
             lama.setImageResource(R.drawable.logo_new);
